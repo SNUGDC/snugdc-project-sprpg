@@ -1,0 +1,19 @@
+/Library/
+/Temp/
+/Obj/
+
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+
+*.*~
+
+#platform
+
+#platform OSX
+.DS_STORE
