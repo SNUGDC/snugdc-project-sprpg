@@ -24,10 +24,9 @@ namespace SPRPG
 
 		private static SaveData LoadDefault()
 		{
-			var text = Resources.Load<TextAsset>(DefaultSaveFilePath);
-			System.Diagnostics.Debug.Assert(text != null);
-			using (TextReader reader = new StringReader(text.text))
-				return JsonMapper.ToObject<SaveData>(reader);
+			SaveData ret;
+			JsonHelper.LoadFromResources(DefaultSaveFilePath, out ret);
+			return ret;
 		}
 
 		public static bool Load(string name)

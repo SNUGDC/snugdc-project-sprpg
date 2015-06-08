@@ -117,7 +117,7 @@ namespace Gem
 			return _this.TryGet(key, out ret) ? ret : _default;
 		}
 
-		public static bool Load<T>(string path, out T data) where T : class
+		public static bool Load<T>(string path, out T data) 
 		{
 			try
 			{
@@ -131,9 +131,25 @@ namespace Gem
 			catch (Exception e)
 			{
 				Debug.LogException(e);
-				data = null;
+				data = default(T);
 				return false;
 			}
+		}
+
+		public static bool LoadFromResources<T>(string path, out T data) 
+		{
+			var text = Resources.Load<TextAsset>(path);
+			if (text == null)
+			{
+				Debug.LogWarning("text asset on " + path + " does not exists.");
+				data = default(T);
+				return false;
+			}
+			
+			using (TextReader reader = new StringReader(text.text))
+				data = JsonMapper.ToObject<T>(reader);
+
+			return true;
 		}
 
 		public static bool Save<T>(string path, T data)
@@ -141,9 +157,9 @@ namespace Gem
 			try
 			{
 				using (var fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
-				using (var reader = new StreamReader(fs))
+				using (var writer = new StreamWriter(fs))
 				{
-					JsonMapper.ToObject<T>(new JsonReader(reader));
+					JsonMapper.ToJson(data, new JsonWriter(writer));
 					return true;
 				}
 			}
