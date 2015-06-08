@@ -1,4 +1,5 @@
-﻿using Gem;
+﻿using System.IO;
+using Gem;
 using LitJson;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace SPRPG
 #if UNITY_EDITOR
 		public static string GetDefaultPath()
 		{
-			return "Assets/Resources/" + _defaultPath;
+			return Directory.GetCurrentDirectory() + "/Assets/Resources/" + _defaultPath + ".json";
 		}
 #endif
 
