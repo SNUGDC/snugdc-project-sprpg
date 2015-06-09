@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-#if UNITY_EDITOR
+#if BALANCE
 using Gem;
 #endif
 
@@ -15,7 +15,7 @@ namespace SPRPG
 
 		private static readonly Data _data;
 
-#if UNITY_EDITOR
+#if BALANCE
 		static DebugConfig()
 		{
 			JsonHelper.Load("Raw/Data/debug.json", out _data);
