@@ -1,1 +1,7 @@
-{}
+{
+	"Scene": {
+		"Camp": {
+			"ScrollDamping": 3
+		}
+	}
+}

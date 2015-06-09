@@ -14,9 +14,9 @@ namespace SPRPG
 		private const string _defaultPath = "Data/default_config";
 		private const string _filename = "config.json";
 
-		private static JsonData _data;
+		private static ConfigData _data;
 
-		public static JsonData Data
+		public static ConfigData Data
 		{
 			get { return _data ?? (_data = Load()); }
 		}
@@ -33,9 +33,9 @@ namespace SPRPG
 			return Application.persistentDataPath + "/" + _filename;
 		}
 
-		private static JsonData Load()
+		private static ConfigData Load()
 		{
-			JsonData ret;
+			ConfigData ret;
 			if (JsonHelper.Load(GetSavePath(), out ret))
 				return ret;
 
