@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0168
+
+using UnityEngine;
 
 namespace SPRPG
 {
