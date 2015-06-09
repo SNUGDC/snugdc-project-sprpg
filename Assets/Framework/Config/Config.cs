@@ -36,7 +36,9 @@ namespace SPRPG
 		private static ConfigData Load()
 		{
 			ConfigData ret;
-			if (JsonHelper.Load(GetSavePath(), out ret))
+
+			if (!DebugConfig.UseDefaultConfig 
+				&& JsonHelper.Load(GetSavePath(), out ret))
 				return ret;
 
 			if (JsonHelper.LoadFromResources(_defaultPath, out ret))
