@@ -1,7 +1,7 @@
 {
 	"Scene": {
 		"Camp": {
-			"ScrollDamping": 3
+			"DecelerationRate": 0.05
 		}
 	}
 }

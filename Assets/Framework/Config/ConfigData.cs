@@ -6,7 +6,7 @@
 		{
 			public struct Camp_
 			{
-				public float ScrollDamping;
+				public double DecelerationRate;
 			}
 			
 			public Camp_ Camp;
