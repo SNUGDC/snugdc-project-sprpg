@@ -98,6 +98,32 @@ namespace Gem
 			val = default(int);
 			return false;
 		}
+		
+		public static bool TryGet(this JsonData _this, string key, out float val)
+		{
+			JsonData data;
+			
+			if (_this.TryGet(key, out data))
+			{
+				if (data.IsInt)
+				{
+					val = (int) data;
+					return true;
+				}
+				else if (data.IsDouble)
+				{
+					val = (float)(double) data;
+					return true;
+				}
+				else
+				{
+					Debug.LogError(MakeMessageWrongType(JsonType.Double, data.GetJsonType()));
+				}
+			}
+
+			val = default(float);
+			return false;
+		}
 
 		public static bool BoolOrDefault(this JsonData _this, string key, bool _default = false)
 		{
@@ -108,6 +134,12 @@ namespace Gem
 		public static int IntOrDefault(this JsonData _this, string key, int _default = 0)
 		{
 			int ret;
+			return _this.TryGet(key, out ret) ? ret : _default;
+		}
+
+		public static float FloatOrDefault(this JsonData _this, string key, float _default = 0)
+		{
+			float ret;
 			return _this.TryGet(key, out ret) ? ret : _default;
 		}
 
