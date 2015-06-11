@@ -8,6 +8,8 @@ namespace SPRPG
 	{
 		private static bool _isLoaded;
 
+		public CharacterDB CharacterDB;
+
 		void Start()
 		{
 			if (_isLoaded)
@@ -16,6 +18,8 @@ namespace SPRPG
 			DontDestroyOnLoad(transform.parent.gameObject);
 
 			Config.TryLoad();
+
+			CharacterDB.Load(CharacterDB);
 
 			App._.transform.SetParent(transform.parent, false);
 
