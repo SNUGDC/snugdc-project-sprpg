@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SPRPG
 {
 	[CustomEditor(typeof (App))]
-	public class AppEditor : Editor<App>
+	public class AppEditor : ComponentEditor<App>
 	{
 		public override void OnInspectorGUI()
 		{

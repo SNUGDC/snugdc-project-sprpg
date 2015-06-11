@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SPRPG
 {
 	[CustomEditor(typeof(DisketteTest))]
-	public class DisketteTestEditor : Editor<DisketteTest>
+	public class DisketteTestEditor : ComponentEditor<DisketteTest>
 	{
 		public override void OnInspectorGUI()
 		{
