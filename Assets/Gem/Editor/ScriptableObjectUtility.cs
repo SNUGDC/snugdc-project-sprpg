@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace Gem
@@ -7,12 +8,19 @@ namespace Gem
 	{
 		public static T CreateAsset<T>(string name = null) where T : ScriptableObject
 		{
-			if (string.IsNullOrEmpty(name))
-				name = "New " + typeof (T).Name;
-			name += ".asset";
-
 			var asset = ScriptableObject.CreateInstance<T>();
-			ProjectWindowUtil.CreateAsset(asset, name);
+
+			var dir = AssetDatabase.GetAssetPath(Selection.activeObject);
+			dir = dir != "" ? Path.GetDirectoryName(dir) : "Assets";
+
+			if (name == null)
+				name = "New " + typeof (T).Name;
+
+			var path = AssetDatabase.GenerateUniqueAssetPath(dir + "/" + name + ".asset");
+
+			AssetDatabase.CreateAsset(asset, path);
+			AssetDatabase.SaveAssets();
+
 			return asset;
 		}
 	}
