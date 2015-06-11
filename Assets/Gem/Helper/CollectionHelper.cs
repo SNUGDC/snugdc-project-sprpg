@@ -27,6 +27,11 @@ namespace Gem
 				yield return c[i];
 		}
 
+		public static T GetOrDefault<T>(this List<T> c, int i)
+		{
+			return i < c.Count ? c[i] : default(T);
+		}
+
 		public static bool RemoveBack<T>(this List<T> c)
 		{
 			if (c.Count == 0)
