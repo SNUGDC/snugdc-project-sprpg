@@ -1,11 +1,6 @@
 ﻿using System.IO;
 using Gem;
-using LitJson;
 using UnityEngine;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace SPRPG
 {
@@ -18,7 +13,12 @@ namespace SPRPG
 
 		public static ConfigData Data
 		{
-			get { return _data ?? (_data = Load()); }
+			get
+			{
+				if (_data == null)
+					TryLoad();
+				return _data;
+			}
 		}
 
 #if UNITY_EDITOR
@@ -31,6 +31,12 @@ namespace SPRPG
 		public static string GetSavePath()
 		{
 			return Application.persistentDataPath + "/" + _filename;
+		}
+
+		public static void TryLoad()
+		{
+			if (_data == null)
+				LoadForced();
 		}
 
 		private static ConfigData Load()

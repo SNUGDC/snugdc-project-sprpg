@@ -15,7 +15,7 @@ namespace SPRPG
 
 			DontDestroyOnLoad(transform.parent.gameObject);
 
-			var loadConfig = Config.Data;
+			Config.TryLoad();
 
 			App._.transform.SetParent(transform.parent, false);
 
