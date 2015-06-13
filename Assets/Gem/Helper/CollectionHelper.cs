@@ -215,6 +215,11 @@ namespace Gem
 			return val;
 		}
 
+		public static void Add<K, V>(this IDictionary<K, V> c, KeyValuePair<K, V> kv)
+		{
+			c.Add(kv.Key, kv.Value);
+		}
+
 		public static bool TryAdd<K, V>(this IDictionary<K, V> c, K key, V val)
 		{
 			try
@@ -264,6 +269,14 @@ namespace Gem
 			{
 				c.Remove(key);
 			}
+		}
+
+		public static Dictionary<K2, V2> Map<K1, V1, K2, V2>(this IDictionary<K1, V1> c, Func<K1, V1, KeyValuePair<K2, V2>> mapper)
+		{
+			var ret = new Dictionary<K2, V2>(c.Count);
+			foreach (var kv in c)
+				ret.Add(mapper(kv.Key, kv.Value));
+			return ret;
 		}
 
 		public static bool Empty<T>(this HashSet<T> c)

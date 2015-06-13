@@ -10,6 +10,9 @@ namespace SPRPG
 		{
 			do
 			{
+				if (!UserCharacters.Load(data.Characters))
+					break;
+
 				return true;
 			} while (false);
 
@@ -19,15 +22,11 @@ namespace SPRPG
 
 		private static SaveData DoSave()
 		{
-			var data = new SaveData();
-
-			do
+			var data = new SaveData
 			{
-				return data;
-			} while (false);
-
-			Debug.LogError("DoSave failed.");
-			return null;
+				Characters = UserCharacters.Save()
+			};
+			return data;
 		}
 	}
 }
