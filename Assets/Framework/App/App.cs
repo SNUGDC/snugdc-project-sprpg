@@ -1,4 +1,6 @@
-﻿namespace SPRPG
+﻿#pragma warning disable 0168
+
+namespace SPRPG
 {
 	public class App : Singleton<App>
 	{

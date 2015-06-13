@@ -39,13 +39,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664dd44cdd098dc44930aa247aad4706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Assets: {fileID: 11438372, guid: 3b1f09a35265d104b929c6e7c93a51b4, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: CampCharacter
+      value: 
+      objectReference: {fileID: 11465436, guid: d7f6a4cb5fb668a4e91bc050d7987b5a,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: CharacterSkeleton
+      value: 
+      objectReference: {fileID: 11488980, guid: 5195aad12081c6746849918a504f26b6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: Assets
+      value: 
+      objectReference: {fileID: 11438372, guid: 3b1f09a35265d104b929c6e7c93a51b4,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169368}
