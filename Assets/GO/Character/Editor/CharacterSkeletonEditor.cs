@@ -63,11 +63,9 @@ namespace SPRPG
 
 			loader.LoadIfNecessary("arm_l_u", ref data.ArmLU);
 			loader.LoadIfNecessary("arm_l_l", ref data.ArmLL);
-			loader.LoadIfNecessary("hand_l", ref data.HandL);
 
 			loader.LoadIfNecessary("arm_r_u", "arm_l_u", ref data.ArmRU);
 			loader.LoadIfNecessary("arm_r_l", "arm_l_l", ref data.ArmRL);
-			loader.LoadIfNecessary("hand_r", "hand_l", ref data.HandR);
 
 			loader.LoadIfNecessary("leg_l_u", ref data.LegLU);
 			loader.LoadIfNecessary("leg_l_l", ref data.LegLL);

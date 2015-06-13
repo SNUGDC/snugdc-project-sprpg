@@ -13,11 +13,9 @@ namespace SPRPG
 
 		public Sprite ArmLU;
 		public Sprite ArmLL;
-		public Sprite HandL;
 
 		public Sprite ArmRU;
 		public Sprite ArmRL;
-		public Sprite HandR;
 
 		public Sprite LegLU;
 		public Sprite LegLL;

@@ -13,11 +13,9 @@ namespace SPRPG
 
 		public SpriteRenderer ArmLU;
 		public SpriteRenderer ArmLL;
-		public SpriteRenderer HandL;
 
 		public SpriteRenderer ArmRU;
 		public SpriteRenderer ArmRL;
-		public SpriteRenderer HandR;
 
 		public SpriteRenderer LegLU;
 		public SpriteRenderer LegLL;
@@ -36,11 +34,9 @@ namespace SPRPG
 
 			ArmLU.sprite = skin.ArmLU;
 			ArmLL.sprite = skin.ArmLL;
-			HandL.sprite = skin.HandL;
 
 			ArmRU.sprite = skin.ArmRU;
 			ArmRL.sprite = skin.ArmRL;
-			HandR.sprite = skin.HandR;
 
 			LegLU.sprite = skin.LegLU;
 			LegLL.sprite = skin.LegLL;
