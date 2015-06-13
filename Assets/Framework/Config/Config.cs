@@ -43,19 +43,33 @@ namespace SPRPG
 		{
 			ConfigData ret;
 
-			if (!DebugConfig.UseDefaultConfig 
-				&& JsonHelper.Load(GetSavePath(), out ret))
+			if (!DebugConfig.UseDefaultConfig
+			    && JsonHelper.Load(GetSavePath(), out ret))
+			{
+				ret.Build();
 				return ret;
+			}
 
 			if (JsonHelper.LoadFromResources(_defaultPath, out ret))
+			{
+				ret.Build();
 				return ret;
+			}
 
 			return null;
 		}
 
 		public static void LoadForced()
 		{
-			_data = Load();
+			var tmp = Load();
+			if (tmp != null)
+			{
+				_data = tmp;
+			}
+			else if (_data == null)
+			{
+				_data = new ConfigData();
+			}
 		}
 
 		public static bool Save()

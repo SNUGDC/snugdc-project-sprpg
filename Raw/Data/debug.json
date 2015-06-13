@@ -1,3 +1,4 @@
 {
-	"UseDefaultConfig": true
+	"UseDefaultConfig": true,
+	"ReloadData": true
 }

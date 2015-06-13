@@ -1,6 +1,4 @@
-﻿using JetBrains.Annotations;
-
-#if BALANCE
+﻿#if BALANCE
 using Gem;
 #endif
 
@@ -10,23 +8,38 @@ namespace SPRPG
 	{
 		private struct Data
 		{
-			[UsedImplicitly] public bool UseDefaultConfig;
+			public bool UseDefaultConfig;
+			public bool ReloadData;
 		}
 
-		private static readonly Data _data;
 
 #if BALANCE
+		private static Data _data;
+
 		static DebugConfig()
 		{
-			JsonHelper.Load("Raw/Data/debug.json", out _data);
+			Load();
 		}
 #else
+		private static readonly Data _data;
+
 		static DebugConfig()
 		{
 			_data.UseDefaultConfig = false;
+			_data.ReloadData = false;
 		}
 #endif
 
+		public static void Load()
+		{
+#if BALANCE
+			Data tmp;
+			if (JsonHelper.Load("Raw/Data/debug.json", out tmp))
+				_data = tmp;
+#endif
+		}
+
 		public static bool UseDefaultConfig { get { return _data.UseDefaultConfig; } }
+		public static bool ReloadData { get { return _data.ReloadData; } }
 	}
 }

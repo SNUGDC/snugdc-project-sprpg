@@ -23,6 +23,21 @@ namespace SPRPG
 		}
 
 		[System.Diagnostics.Conditional("ENABLE_LOG")]
+		public static void Assert(bool condition)
+		{
+		}
+
+		[System.Diagnostics.Conditional("ENABLE_LOG")]
+		public static void Assert(bool condition, string message)
+		{
+		}
+
+		[System.Diagnostics.Conditional("ENABLE_LOG")]
+		public static void Assert(bool condition, string format, params object[] args)
+		{
+		}
+
+		[System.Diagnostics.Conditional("ENABLE_LOG")]
 		public static void Break()
 		{
 		}

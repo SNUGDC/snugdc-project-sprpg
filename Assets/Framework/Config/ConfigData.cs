@@ -8,10 +8,13 @@
 			{
 				public double DecelerationRate;
 			}
-			
+
 			public Camp_ Camp;
 		}
 
 		public Scene_ Scene;
+
+		public void Build()
+		{}
 	}
 }

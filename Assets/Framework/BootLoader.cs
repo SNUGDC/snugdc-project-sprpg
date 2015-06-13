@@ -10,20 +10,23 @@ namespace SPRPG
 
 		public CharacterDB CharacterDB;
 
-		void Start()
+		private void Start()
+		{
+			Load();
+			Destroy(gameObject);
+		}
+
+		private void Load()
 		{
 			if (_isLoaded)
 				return;
 
-			DontDestroyOnLoad(transform.parent.gameObject);
-
 			Config.TryLoad();
+			CampBalance._.Load();
 
-			CharacterDB.Load(CharacterDB);
+			CharacterDB.Init(CharacterDB);
 
-			App._.transform.SetParent(transform.parent, false);
-
-			Destroy(gameObject);
+			App.Init();
 
 			_isLoaded = true;
 		}

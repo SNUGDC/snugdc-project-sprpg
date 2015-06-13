@@ -11,7 +11,24 @@ namespace SPRPG
 		public override void OnInspectorGUI()
 		{
 			base.OnInspectorGUI();
+			RenderScene();
 			RenderConfig();
+			RenderData();
+		}
+
+		private void RenderScene()
+		{
+			GUILayout.Label("scene");
+
+			GUILayout.BeginHorizontal();
+
+			if (GUILayout.Button("reload"))
+			{
+				EditorApplication.SaveCurrentSceneIfUserWantsTo();
+				Application.LoadLevel(Application.loadedLevel);
+			}
+
+			GUILayout.EndHorizontal();
 		}
 
 		private void RenderConfig()
@@ -54,6 +71,19 @@ namespace SPRPG
 			}
 
 			GUI.enabled = true;
+			GUILayout.EndHorizontal();
+		}
+
+		private void RenderData()
+		{
+			GUILayout.Label("data");
+			GUILayout.BeginHorizontal();
+
+			GUI.enabled = Application.isPlaying;
+			if (GUILayout.Button("reload"))
+				DataManager.Reload();
+			GUI.enabled = true;
+
 			GUILayout.EndHorizontal();
 		}
 	}

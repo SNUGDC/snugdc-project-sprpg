@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using Gem;
-using JetBrains.Annotations;
 using UnityEngine;
 
 namespace SPRPG
 {
 	public class CharacterDB : MonoBehaviour
 	{
-		[SerializeField, UsedImplicitly]
+		[SerializeField]
 		private List<CharacterData> _datas;
 
 		private static CharacterDB _db;
@@ -19,7 +18,7 @@ namespace SPRPG
 		}
 #endif
 
-		public static void Load(CharacterDB obj)
+		public static void Init(CharacterDB obj)
 		{
 			Debug.Assert(_db == null);
 			_db = obj;

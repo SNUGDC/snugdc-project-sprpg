@@ -1,5 +1,4 @@
-﻿#pragma warning disable 0168
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace SPRPG
@@ -7,7 +6,8 @@ namespace SPRPG
 	public class CampController 
 		: MonoBehaviour
 	{
-		[SerializeField] private ScrollRect _scrollRect;
+		[SerializeField]
+		private ScrollRect _scrollRect;
 
 		void Start()
 		{
@@ -16,6 +16,8 @@ namespace SPRPG
 		}
 
 		void Update()
-		{}
+		{
+			
+		}
 	}
 }
