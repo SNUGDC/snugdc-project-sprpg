@@ -14,11 +14,16 @@ namespace SPRPG
 		public static string GetSaveDirectory()
 		{
 			return Application.persistentDataPath + "/Save/";
-		}
+		}	
 
 		public static string GetSavePath(string name)
 		{
 			return GetSaveDirectory() + name + ".json";
+		}
+
+		public static string GetDefaultPath()
+		{
+			return Directory.GetCurrentDirectory() + "/Assets/Resources/" + DefaultSaveFilePath + ".json";
 		}
 
 		private static SaveData LoadDefault()

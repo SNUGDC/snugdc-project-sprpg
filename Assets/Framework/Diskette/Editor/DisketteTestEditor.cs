@@ -12,10 +12,22 @@ namespace SPRPG
 		{
 			base.OnInspectorGUI();
 
-			if (!Application.isPlaying)
-				return;
+			if (GUILayout.Button("open default"))
+			{
+				System.Diagnostics.Process.Start(Diskette.GetDefaultPath());
+			}
 
 			var path = Diskette.GetSavePath(Target.SaveName);
+			var exists = File.Exists(path);
+
+			GUI.enabled = exists;
+			if (GUILayout.Button("clear"))
+				File.Delete(path);
+			GUI.enabled = true;
+				
+
+			if (!Application.isPlaying)
+				return;
 
 			{
 				GUILayout.BeginHorizontal();
@@ -27,7 +39,7 @@ namespace SPRPG
 				if (GUILayout.Button("save"))
 					Diskette.Save();
 
-				GUI.enabled = File.Exists(path);
+				GUI.enabled = exists;
 				if (GUILayout.Button("open"))
 					System.Diagnostics.Process.Start(path);
 
