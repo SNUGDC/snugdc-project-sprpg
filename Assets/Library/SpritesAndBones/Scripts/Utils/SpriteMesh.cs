@@ -50,8 +50,8 @@ public class SpriteMesh {
 			Vector3 localScale = owner.localScale;
             owner.localScale = Vector3.one;
 
-			Vector2[] vertices2D = UnityEditor.Sprites.SpriteUtility.GetSpriteMesh(sprite, false);
-            int[] indices = UnityEditor.Sprites.SpriteUtility.GetSpriteIndices(sprite, false).Select(element => (int)element).ToArray();
+			Vector2[] vertices2D = sprite.vertices;
+			int[] indices = sprite.triangles.Select(element => (int)element).ToArray();
 
 			// Create the Vector3 vertices
 			Vector3[] vertices = new Vector3[vertices2D.Length];

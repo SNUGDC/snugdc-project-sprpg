@@ -41,7 +41,7 @@ public class SkinMesh : EditorWindow {
     [MenuItem("Sprites And Bones/Create Mesh")]
     protected static void ShowSkinMeshEditor() {
         var wnd = GetWindow<SkinMesh>();
-        wnd.title = "Create Mesh From Sprite";
+        wnd.titleContent.text = "Create Mesh From Sprite";
         wnd.Show();
     }
 

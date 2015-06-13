@@ -23,6 +23,7 @@ THE SOFTWARE.
 */
 
 using UnityEngine;
+using UnityEngine.Rendering;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -65,6 +66,11 @@ public class Skeleton : MonoBehaviour {
             UseShadows();
         }
     }
+
+	public ShadowCastingMode shadowCastingMode 
+	{
+		get { return useShadows ? ShadowCastingMode.On : ShadowCastingMode.Off; }
+	}
 #endif
 
     private Shader spriteShader;
@@ -323,7 +329,7 @@ public class Skeleton : MonoBehaviour {
                     skin.sharedMaterial.shader = spriteShader;
                 }
 
-                skin.castShadows = useShadows;
+				skin.shadowCastingMode = shadowCastingMode;
                 skin.receiveShadows = useShadows;
             }
         }
@@ -339,7 +345,7 @@ public class Skeleton : MonoBehaviour {
                     spriteRenderer.sharedMaterial.shader = spriteShader;
                 }
 
-                spriteRenderer.castShadows = useShadows;
+				spriteRenderer.shadowCastingMode = shadowCastingMode;
                 spriteRenderer.receiveShadows = useShadows;
             }
         }
