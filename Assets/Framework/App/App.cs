@@ -2,7 +2,10 @@
 {
 	public class App : Singleton<App>
 	{
-		public static void Init() {}
+		public static void Init()
+		{
+			var awake = _;
+		}
 
 #if BALANCE
 		void OnLevelWasLoaded()
