@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Gem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,8 @@ namespace SPRPG
 	public class CampController 
 		: MonoBehaviour
 	{
+		[SerializeField]
+		private Transform _foregroundRoot;
 		[SerializeField]
 		private Transform _worldRoot;
 
@@ -20,6 +21,8 @@ namespace SPRPG
 
 		void Start()
 		{
+			CampCharacter.ForegroundRoot = _foregroundRoot;
+
 			var config = Config.Data.Scene.Camp;
 			_scrollRect.decelerationRate = (float)config.DecelerationRate;
 
@@ -29,23 +32,15 @@ namespace SPRPG
 
 		void LateUpdate()
 		{
+			_foregroundRoot.transform.position = _worldAnchor.position;
 			_worldRoot.transform.position = _worldAnchor.position;
 		}
 
 		void AddCharacter(UserCharacter userCharacter)
 		{
 			var character = CampCharacter.Instantiate(userCharacter);
-			var id = userCharacter.ID;
-
-			CampData.Character_ characterData;
-			if (CampBalance._.Data.CharacterDic.TryGet(id, out characterData))
-			{
-				character.transform.SetParent(_worldRoot, false);
-				character.transform.localPosition = characterData.Position;
-				character.transform.SetLEulerY(characterData.Flip ? 180 : 0);
-			}
-
-			_characters[id] = character;
+			character.transform.SetParent(_worldRoot, false);
+			_characters[userCharacter.ID] = character;
 		}
 	}
 }

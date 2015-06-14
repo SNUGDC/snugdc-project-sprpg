@@ -1,10 +1,13 @@
 ﻿using Gem;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SPRPG
 {
 	public class CampCharacter : MonoBehaviour
 	{
+		public static Transform ForegroundRoot;
+
 		[SerializeField]
 		private CharacterData _data;
 		public CharacterData Data { get { return _data; } }
@@ -13,6 +16,10 @@ namespace SPRPG
 
 		[SerializeField]
 		private Animator _animator;
+
+		private Transform _foregroundParent;
+		[SerializeField]
+		private Button _boundingButton;
 
 		public static CampCharacter Instantiate(UserCharacter character)
 		{
@@ -27,7 +34,40 @@ namespace SPRPG
 
 			SetupRenderer();
 
+			if (ForegroundRoot)
+			{
+				_foregroundParent = new GameObject().transform;
+				_foregroundParent.name = "Character" + _data.ID;
+				_foregroundParent.transform.SetParent(ForegroundRoot, false);
+				_boundingButton.transform.SetParent(_foregroundParent, false);
+			}
+
+			CampData.Character_ campData;
+			if (CampBalance._.Data.CharacterDic.TryGet(_data.ID, out campData))
+			{
+				transform.localPosition = campData.Position;
+				SetFlip(campData.Flip);
+				SetBoundingRect(campData.BoundingRect);
+			}
+
 			_animator.runtimeAnimatorController = _data.CampAnimatorController;
+
+			if (DebugConfig.Draw)
+			{
+				_boundingButton.GetComponent<Image>().color = new Color(0, 1, 0, 0.2f);
+			}
+		}
+
+		void SetFlip(bool val)
+		{
+			transform.SetLEulerY(val ? 180 : 0);
+		}
+
+		void SetBoundingRect(Rect rect)
+		{
+			var rectTf = (RectTransform) _boundingButton.transform;
+			rectTf.offsetMin = rect.min;
+			rectTf.offsetMax = rect.max;
 		}
 
 		void SetupRenderer()
@@ -37,6 +77,16 @@ namespace SPRPG
 			_skeleton.transform.SetParent(transform, false);
 			_skeleton.transform.localPosition = Vector3.zero;
 			_skeleton.SetSkin(_data.Skin);
+		}
+
+		void Update()
+		{
+			_foregroundParent.transform.position = transform.position;
+		}
+
+		public void OnSelect()
+		{
+			Debug.Log("select");
 		}
 	}
 }

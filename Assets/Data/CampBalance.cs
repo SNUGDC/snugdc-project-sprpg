@@ -10,6 +10,7 @@ namespace SPRPG
 		{
 			public Vector2 Position;
 			public bool Flip;
+			public IntRect BoundingRect;
 		}
 
 		public List<Character_> Characters;
@@ -18,6 +19,15 @@ namespace SPRPG
 		public void Build()
 		{
 			var i = 0;
+
+			foreach (var character in Characters)
+			{
+				if (character.BoundingRect.IsZero())
+				{
+					character.BoundingRect = new IntRect(-50, 0, 50, 170);
+				}
+			}
+
 			CharacterDic = Characters.ToDictionary(character => (CharacterID)i++);
 		}
 	}

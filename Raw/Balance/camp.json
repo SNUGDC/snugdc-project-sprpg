@@ -1,15 +1,18 @@
 {
 	"Characters": [
 		{
-			"Position": { "X": 9.5, "Y": 0.9 }
+			"Position": { "X": 9.5, "Y": 0.9 },
+			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		},
 		{
 			"Position": { "X": 7.0, "Y": 0.8 },
-			"Flip": true
+			"Flip": true,
+			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		},
 		{
 			"Position": { "X": 11.0, "Y": 1.3 },
-			"Flip": true
+			"Flip": true,
+			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		}
 	]
 }

@@ -8,6 +8,7 @@ namespace SPRPG
 	{
 		private struct Data
 		{
+			public bool Draw;
 			public bool UseDefaultConfig;
 			public bool ReloadData;
 		}
@@ -25,6 +26,7 @@ namespace SPRPG
 
 		static DebugConfig()
 		{
+			_data.Draw = false;
 			_data.UseDefaultConfig = false;
 			_data.ReloadData = false;
 		}
@@ -39,6 +41,7 @@ namespace SPRPG
 #endif
 		}
 
+		public static bool Draw { get { return _data.Draw; } }
 		public static bool UseDefaultConfig { get { return _data.UseDefaultConfig; } }
 		public static bool ReloadData { get { return _data.ReloadData; } }
 	}

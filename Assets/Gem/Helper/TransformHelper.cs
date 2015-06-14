@@ -91,6 +91,42 @@ namespace Gem
 			_this.SetLPosZ(Mathf.Lerp(_this.localPosition.z, val, lerp));
 		}
 
+		public static float GetLScaleX(this Transform _this)
+		{
+			return _this.localScale.x;
+		}
+
+		public static void SetLScaleX(this Transform _this, float val)
+		{
+			var scale = _this.localScale;
+			scale.x = val;
+			_this.localScale = scale;
+		}
+
+		public static float GetLScaleY(this Transform _this)
+		{
+			return _this.localScale.y;
+		}
+
+		public static void SetLScaleY(this Transform _this, float val)
+		{
+			var scale = _this.localScale;
+			scale.y = val;
+			_this.localScale = scale;
+		}
+
+		public static float GetLScaleZ(this Transform _this)
+		{
+			return _this.localScale.z;
+		}
+
+		public static void SetLScaleZ(this Transform _this, float val)
+		{
+			var scale = _this.localScale;
+			scale.z = val;
+			_this.localScale = scale;
+		}
+
 		public static float GetEulerX(this Transform _this, float val)
 		{
 			return _this.eulerAngles.x;
