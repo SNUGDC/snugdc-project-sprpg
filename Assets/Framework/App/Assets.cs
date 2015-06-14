@@ -9,6 +9,7 @@ namespace SPRPG
 		public CharacterSkeleton CharacterSkeleton;
 
 		public CampCharacter CampCharacter;
+		public CampCharacterTool CampCharacterTool;
 
 		public static void Init(Assets assets)
 		{

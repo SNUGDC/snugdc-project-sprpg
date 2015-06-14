@@ -86,7 +86,12 @@ namespace SPRPG
 
 		public void OnSelect()
 		{
-			Debug.Log("select");
+			var tool = CampCharacterTool.Open(_data.ID);
+			tool.transform.SetParent(_foregroundParent, false);
+
+			var height = ((RectTransform) _boundingButton.transform).offsetMax.y;
+			tool.transform.position = transform.position;
+			tool.transform.Translate(new Vector3(0, height/100.0f));
 		}
 	}
 }

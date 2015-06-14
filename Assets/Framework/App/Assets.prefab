@@ -41,6 +41,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterSkeleton: {fileID: 11488980, guid: 5195aad12081c6746849918a504f26b6, type: 2}
   CampCharacter: {fileID: 11465436, guid: d7f6a4cb5fb668a4e91bc050d7987b5a, type: 2}
+  CampCharacterTool: {fileID: 11490254, guid: 701ee7e24b50a1f4aa5ed79b01bfec8e, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -56,6 +57,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: CampCharacterTool
+      value: 
+      objectReference: {fileID: 11490254, guid: 701ee7e24b50a1f4aa5ed79b01bfec8e,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120712}
