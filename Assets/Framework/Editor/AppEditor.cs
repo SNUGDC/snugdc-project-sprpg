@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Gem;
 using UnityEditor;
 using UnityEngine;
@@ -12,8 +13,15 @@ namespace SPRPG
 		{
 			base.OnInspectorGUI();
 			RenderScene();
+			RenderTransition();
 			RenderConfig();
 			RenderData();
+		}
+
+		private void AskSaveAndLoadLevel(Int32 level)
+		{
+			if (EditorApplication.SaveCurrentSceneIfUserWantsTo())
+				Application.LoadLevel(level);
 		}
 
 		private void RenderScene()
@@ -23,10 +31,26 @@ namespace SPRPG
 			GUILayout.BeginHorizontal();
 
 			if (GUILayout.Button("reload"))
-			{
-				EditorApplication.SaveCurrentSceneIfUserWantsTo();
-				Application.LoadLevel(Application.loadedLevel);
-			}
+				AskSaveAndLoadLevel(Application.loadedLevel);
+
+			GUILayout.EndHorizontal();
+		}
+
+		private void RenderTransition()
+		{
+			if (!Application.isPlaying)
+				return;
+
+			GUILayout.BeginHorizontal();
+
+			if (GUILayout.Button("camp"))
+				Transition.TransferToCamp();
+
+			if (GUILayout.Button("stage"))
+				Transition.TransferToStage();
+
+			if (GUILayout.Button("world"))
+				Transition.TransferToWorld();
 
 			GUILayout.EndHorizontal();
 		}
