@@ -27,7 +27,7 @@ namespace SPRPG
 				AddCharacter(character);
 		}
 
-		void Update()
+		void LateUpdate()
 		{
 			_worldRoot.transform.position = _worldAnchor.position;
 		}
