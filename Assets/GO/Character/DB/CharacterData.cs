@@ -4,7 +4,10 @@ namespace SPRPG
 {
 	public class CharacterData : ScriptableObject
 	{
-		[HideInInspector] public CharacterID ID;
+		[HideInInspector]
+		public CharacterID ID;
+
 		public CharacterSkinData Skin;
+		public AnimatorOverrideController CampAnimatorController;
 	}
 }

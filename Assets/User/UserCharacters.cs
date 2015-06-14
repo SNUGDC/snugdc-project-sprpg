@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Gem;
 
 namespace SPRPG
 {
-	public struct UserCharacter
+	public class UserCharacter
 	{
-		public CharacterID ID;
+		public readonly CharacterID ID;
+		public readonly CharacterData Data;
 
 		public UserCharacter(string id, SaveData.Character character)
 		{
 			ID = CharacterHelper.MakeID(int.Parse(id));
+			Data = CharacterDB.Find(ID);
 		}
 
 		public SaveData.Character ToSaveData()
@@ -21,14 +22,14 @@ namespace SPRPG
 
 	public static class UserCharacters
 	{
-		private static readonly Dictionary<CharacterID, UserCharacter> _dic = new Dictionary<CharacterID, UserCharacter>(CharacterConst.Count);
+		private static readonly Dictionary<CharacterID, UserCharacter> _data = new Dictionary<CharacterID, UserCharacter>(CharacterConst.Count);
 
 		public static bool Load(Dictionary<string, SaveData.Character> characters)
 		{
 			foreach (var kv in characters)
 			{
 				var value = new UserCharacter(kv.Key, kv.Value);
-				_dic[value.ID] = value;
+				_data[value.ID] = value;
 			}
 
 			return true;
@@ -36,7 +37,19 @@ namespace SPRPG
 
 		public static Dictionary<string, SaveData.Character> Save()
 		{
-			return _dic.Map((key, value) => new KeyValuePair<string, SaveData.Character>(key.ToString(), value.ToSaveData()));
+			return _data.Map((key, value) => new KeyValuePair<string, SaveData.Character>(key.ToString(), value.ToSaveData()));
+		}
+
+		public static IEnumerable<UserCharacter> GetEnumerable()
+		{
+			return _data.Values;
+		}
+
+		public static UserCharacter Find(CharacterID id)
+		{
+			UserCharacter ret;
+			_data.TryGet(id, out ret);
+			return ret;
 		}
 	}
 }

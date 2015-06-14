@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf575a0678bb7bf40b12b0664100e5bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Assets: {fileID: 11438372, guid: 3b1f09a35265d104b929c6e7c93a51b4, type: 2}
   CharacterDB: {fileID: 11431490, guid: ab4eea2a0202d7e429f868cd7ed8197f, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -51,6 +52,11 @@ Prefab:
       propertyPath: CharacterDB
       value: 
       objectReference: {fileID: 11431490, guid: ab4eea2a0202d7e429f868cd7ed8197f,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: Assets
+      value: 
+      objectReference: {fileID: 11438372, guid: 3b1f09a35265d104b929c6e7c93a51b4,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

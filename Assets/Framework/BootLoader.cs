@@ -8,6 +8,8 @@ namespace SPRPG
 	{
 		private static bool _isLoaded;
 
+		public Assets Assets;
+
 		public CharacterDB CharacterDB;
 
 		private void Start()
@@ -20,6 +22,8 @@ namespace SPRPG
 		{
 			if (_isLoaded)
 				return;
+
+			Assets.Init(Assets);
 
 			Config.TryLoad();
 			CampBalance._.Load();

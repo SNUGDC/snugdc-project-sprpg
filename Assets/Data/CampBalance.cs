@@ -8,7 +8,7 @@ namespace SPRPG
 	{
 		public class Character_
 		{
-			public Point2 Position;
+			public Vector2 Position;
 		}
 
 		public List<Character_> Characters;
