@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0162
 
-#pragma warning disable 0162
+using UnityEngine;
 
 namespace SPRPG
 {
@@ -11,6 +11,9 @@ namespace SPRPG
 			do
 			{
 				if (!UserCharacters.Load(data.Characters))
+					break;
+
+				if (!Party.Load(data.Party))
 					break;
 
 				return true;
@@ -24,7 +27,8 @@ namespace SPRPG
 		{
 			var data = new SaveData
 			{
-				Characters = UserCharacters.Save()
+				Characters = UserCharacters.Save(),
+				Party = Party.Save(),
 			};
 			return data;
 		}
