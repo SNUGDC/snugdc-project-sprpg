@@ -53,7 +53,7 @@ namespace Gem
 			}
 
 			ret = default(T);
-			Debug.Log(LogMessages.EnumUndefined<T>(str));
+			Debug.Log(LogMessages.ParseFailed<T>(str));
 			return false;
 		}
 
