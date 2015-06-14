@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Character0Idle
+  m_Name: Character0CampIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -861,85 +861,79 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: Skeleton/176265691
+    - path: 2944066501
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/99762681
+    - path: 4283992032
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/4038553137
+    - path: 2485546039
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/2753337224
+    - path: 3230504334
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/2299367325
+    - path: 3986460059
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/2077015659
+    - path: 526236781
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/1457366654
+    - path: 843883640
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/1995942701
+    - path: 4080144109
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/1710400696
+    - path: 1483342201
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/1023083391
+    - path: 2277124250
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/3811256988
+    - path: 2863345807
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/3459920521
+    - path: 1971001708
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: Skeleton/300555114
-      attribute: 1
-      script: {fileID: 0}
-      classID: 4
-      customType: 0
-      isPPtrCurve: 0
-    - path: Skeleton/1710400696
+    - path: 4080144109
       attribute: 2
       script: {fileID: 0}
       classID: 4
