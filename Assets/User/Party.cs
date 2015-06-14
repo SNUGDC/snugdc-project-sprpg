@@ -66,14 +66,56 @@ namespace SPRPG
 			return idxInt;
 		}
 
+		public static PartyEntry Find(CharacterID id)
+		{
+			foreach (var entry in _entries)
+			{
+				if (entry == null)
+					continue;
+				if (entry.Character.ID == id)
+					return entry;
+			}
+			return null;
+		}
+
 		public static PartyEntry Get(PartyIdx idx)
 		{
 			return _entries[ConvertIdxToInt(idx)];
 		}
 
-		public static void Set(PartyIdx idx, UserCharacter character)
+		public static bool TrySet(PartyIdx idx, UserCharacter character)
 		{
+			var id = character.ID;
+
+			if (Find(id) != null)
+			{
+				Debug.LogError("trying to set character " + id + " into " + idx
+					+ ", but " + id);
+				return false;
+			}
+
+			if (Get(idx) != null)
+			{
+				Debug.LogError("trying to set character " + id + " into " + idx
+					+ ", but already occupied by " + id);
+				return false;
+			}
+
 			_entries[ConvertIdxToInt(idx)] = new PartyEntry(idx, character);
+			return true;
+		}
+
+		public static bool Remove(PartyIdx idx)
+		{
+			var intIdx = ConvertIdxToInt(idx);
+			if (_entries[intIdx] != null)
+			{
+				Debug.LogWarning("party entry " + idx + " already does not exist.");
+				return false;
+			}
+
+			_entries[intIdx] = null;
+			return true;
 		}
 
 		public static PartyIdx? GetEmptyEntry()
