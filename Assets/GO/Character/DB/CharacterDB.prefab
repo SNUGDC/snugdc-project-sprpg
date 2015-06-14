@@ -41,6 +41,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _datas:
   - {fileID: 11400000, guid: 32a2fc9dc1cd227429479ae3e5857442, type: 2}
+  - {fileID: 11400000, guid: fef2df503518eff4997f89e39cdc417f, type: 2}
+  - {fileID: 11400000, guid: 7330e13baa8c0174e886191e872790aa, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -50,17 +52,22 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: _datas.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _datas.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 21bdd4ba0c78a0b45ad38d11b1d95645,
+      objectReference: {fileID: 11400000, guid: fef2df503518eff4997f89e39cdc417f,
         type: 2}
     - target: {fileID: 0}
       propertyPath: _datas.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 32a2fc9dc1cd227429479ae3e5857442,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _datas.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7330e13baa8c0174e886191e872790aa,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

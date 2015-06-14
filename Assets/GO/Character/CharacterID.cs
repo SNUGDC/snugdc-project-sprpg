@@ -5,7 +5,7 @@
 
 	public static class CharacterConst
 	{
-		public const int Count = 1;
+		public const int Count = 3;
 	}
 
 	public static class CharacterHelper

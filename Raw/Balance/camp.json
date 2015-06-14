@@ -2,6 +2,14 @@
 	"Characters": [
 		{
 			"Position": { "X": 9.5, "Y": 0.9 }
+		},
+		{
+			"Position": { "X": 7.0, "Y": 0.8 },
+			"Flip": true
+		},
+		{
+			"Position": { "X": 11.0, "Y": 1.3 },
+			"Flip": true
 		}
 	]
 }

@@ -42,6 +42,7 @@ namespace SPRPG
 			{
 				character.transform.SetParent(_worldRoot, false);
 				character.transform.localPosition = characterData.Position;
+				character.transform.SetLEulerY(characterData.Flip ? 180 : 0);
 			}
 
 			_characters[id] = character;

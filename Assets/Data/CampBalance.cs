@@ -9,6 +9,7 @@ namespace SPRPG
 		public class Character_
 		{
 			public Vector2 Position;
+			public bool Flip;
 		}
 
 		public List<Character_> Characters;

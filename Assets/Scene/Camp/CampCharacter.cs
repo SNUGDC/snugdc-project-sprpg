@@ -7,6 +7,7 @@ namespace SPRPG
 	{
 		[SerializeField]
 		private CharacterData _data;
+		public CharacterData Data { get { return _data; } }
 
 		private CharacterSkeleton _skeleton;
 
