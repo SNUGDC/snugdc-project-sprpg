@@ -4,8 +4,13 @@ namespace SPRPG
 {
 	public class CharacterData : ScriptableObject
 	{
-		[HideInInspector]
-		public CharacterID ID;
+		[SerializeField]
+		private int _id;
+		public CharacterID ID
+		{
+			get { return (CharacterID) _id; }
+			set { _id = (int) value; }
+		}
 
 		public CharacterSkinData Skin;
 		public AnimatorOverrideController CampAnimatorController;

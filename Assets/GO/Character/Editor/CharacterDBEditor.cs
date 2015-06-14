@@ -9,7 +9,6 @@ namespace SPRPG
 	{
 		public override void OnInspectorGUI()
 		{
-			GUILayout.Label(Target.ID.ToString());
 			base.OnInspectorGUI();
 
 			if ((Target.Skin == null) && GUILayout.Button("create"))
