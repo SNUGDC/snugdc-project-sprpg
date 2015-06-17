@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 
 namespace SPRPG
 {
@@ -27,11 +28,15 @@ namespace SPRPG
 		}
 	}
 
-	public static class Party
+	public class Party
 	{
-		private static readonly PartyEntry[] _entries = new PartyEntry[3];
+		public const int Size = 3;
 
-		public static bool IsEmpty
+		public static Party _ = new Party();
+
+		private readonly PartyEntry[] _entries = new PartyEntry[Size];
+
+		public bool IsEmpty
 		{
 			get
 			{
@@ -45,7 +50,7 @@ namespace SPRPG
 			}
 		}
 
-		public static bool IsFull
+		public bool IsFull
 		{
 			get
 			{
@@ -59,14 +64,14 @@ namespace SPRPG
 			}
 		}
 
-		private static uint ConvertIdxToInt(PartyIdx idx)
+		private uint ConvertIdxToInt(PartyIdx idx)
 		{
 			var idxInt = (uint)idx;
 			Debug.Assert(idxInt < 3);
 			return idxInt;
 		}
 
-		public static PartyEntry Find(CharacterID id)
+		public PartyEntry Find(CharacterID id)
 		{
 			foreach (var entry in _entries)
 			{
@@ -78,12 +83,28 @@ namespace SPRPG
 			return null;
 		}
 
-		public static PartyEntry Get(PartyIdx idx)
+		public PartyEntry Get(PartyIdx idx)
 		{
 			return _entries[ConvertIdxToInt(idx)];
 		}
 
-		public static bool TrySet(PartyIdx idx, UserCharacter character)
+		private void Set(PartyIdx idx, PartyEntry entry)
+		{
+			_entries[ConvertIdxToInt(idx)] = entry;
+		}
+
+		public bool TryAdd(UserCharacter character)
+		{
+			var emptyEntry = GetFirstEmpty();
+			if (!emptyEntry.HasValue)
+				return false;
+
+			var idx = emptyEntry.Value;
+			Set(idx, new PartyEntry(idx, character));
+			return true;
+		}
+
+		public bool TrySet(PartyIdx idx, UserCharacter character)
 		{
 			var id = character.ID;
 
@@ -101,11 +122,11 @@ namespace SPRPG
 				return false;
 			}
 
-			_entries[ConvertIdxToInt(idx)] = new PartyEntry(idx, character);
+			Set(idx, new PartyEntry(idx, character));
 			return true;
 		}
 
-		public static bool Remove(PartyIdx idx)
+		public bool Remove(PartyIdx idx)
 		{
 			var intIdx = ConvertIdxToInt(idx);
 			if (_entries[intIdx] != null)
@@ -118,7 +139,12 @@ namespace SPRPG
 			return true;
 		}
 
-		public static PartyIdx? GetEmptyEntry()
+		public bool Remove(CharacterID id)
+		{
+			return _entries.SetFirstIf(null, entry => (entry != null && entry.Character.ID == id));
+		}
+
+		public PartyIdx? GetFirstEmpty()
 		{
 			var ret = PartyIdx._1;
 
@@ -132,7 +158,7 @@ namespace SPRPG
 			return null;
 		}
 
-		public static bool Load(SaveData.Party_ saveData)
+		public bool Load(SaveData.Party_ saveData)
 		{
 			if (!IsEmpty)
 			{
@@ -143,26 +169,21 @@ namespace SPRPG
 			return LoadForced(saveData);
 		}
 
-		public static bool LoadForced(SaveData.Party_ saveData)
+		public bool LoadForced(SaveData.Party_ saveData)
 		{
 			for (var i = PartyIdx._1; i <= PartyIdx._3; ++i)
 			{
-				var idxInt = ConvertIdxToInt(i);
 				var entry = saveData[i];
 				if (entry != null)
-				{
-					_entries[idxInt] = new PartyEntry(i, entry);
-				}
+					Set(i, new PartyEntry(i, entry));
 				else
-				{
-					_entries[idxInt] = null;
-				}
+					Set(i, null);
 			}
 
 			return true;
 		}
 
-		public static SaveData.Party_ Save()
+		public SaveData.Party_ Save()
 		{
 			var ret = new SaveData.Party_();
 

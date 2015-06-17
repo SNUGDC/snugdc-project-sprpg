@@ -27,6 +27,24 @@ namespace Gem
 				yield return c[i];
 		}
 
+		public static bool SetFirstIf<T>(this T[] c, T value, Predicate<T> pred) where T : class
+		{
+			var i = 0;
+
+			foreach (var data in c)
+			{
+				if (pred(data))
+				{
+					c[i] = value;
+					return true;
+				}
+
+				++i;
+			}
+
+			return false;
+		}
+
 		public static T GetOrDefault<T>(this List<T> c, int i)
 		{
 			return i < c.Count ? c[i] : default(T);
@@ -40,34 +58,34 @@ namespace Gem
 			return true;
 		}
 
-		public static bool RemoveIf<T>(this List<T> c, Predicate<T> pred)
+		public static bool RemoveIf<T>(this IList<T> c, Predicate<T> pred)
 		{
 			var i = 0;
 
-			foreach (var _data in c)
+			foreach (var data in c)
 			{
-				if (pred(_data))
+				if (pred(data))
 				{
 					c.RemoveAt(i);
 					return true;
 				}
 
-				i++;
+				++i;
 			}
 
 			return false;
 		}
 
-		public static T FindAndRemoveIf<T>(this List<T> c, Predicate<T> pred) 
+		public static T FindAndRemoveIf<T>(this IList<T> c, Predicate<T> pred) 
 		{
 			var i = 0;
 
-			foreach (var _data in c)
+			foreach (var data in c)
 			{
-				if (pred(_data))
+				if (pred(data))
 				{
 					c.RemoveAt(i);
-					return _data;
+					return data;
 				}
 
 				++i;

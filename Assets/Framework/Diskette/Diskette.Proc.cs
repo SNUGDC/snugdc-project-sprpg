@@ -13,7 +13,7 @@ namespace SPRPG
 				if (!UserCharacters.Load(data.Characters))
 					break;
 
-				if (!Party.Load(data.Party))
+				if (!Party._.Load(data.Party))
 					break;
 
 				return true;
@@ -28,7 +28,7 @@ namespace SPRPG
 			var data = new SaveData
 			{
 				Characters = UserCharacters.Save(),
-				Party = Party.Save(),
+				Party = Party._.Save(),
 			};
 			return data;
 		}
