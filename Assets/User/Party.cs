@@ -1,10 +1,14 @@
-﻿using Gem;
+﻿using System;
+using Gem;
 using UnityEngine;
 
 namespace SPRPG
 {
-	public enum PartyIdx { _1 = 0, _2 = 1, _3 = 2 }
+	using OnAddEntry = Action<PartyEntry>;
+	using OnRemoveEntry = Action<CharacterID>;
 
+	public enum PartyIdx { _1 = 0, _2 = 1, _3 = 2 }
+	
 	public class PartyEntry
 	{
 		public readonly PartyIdx Idx;
@@ -36,6 +40,12 @@ namespace SPRPG
 
 		private readonly PartyEntry[] _entries = new PartyEntry[Size];
 
+		public Action<PartyEntry> OnAdd;
+		public Action<PartyIdx, CharacterID> OnRemove;
+
+		private readonly Box<OnAddEntry>[] _onAdd = { new Box<OnAddEntry>(), new Box<OnAddEntry>(), new Box<OnAddEntry>() };
+		private readonly Box<OnRemoveEntry>[] _onRemove = { new Box<OnRemoveEntry>(), new Box<OnRemoveEntry>(), new Box<OnRemoveEntry>() };
+
 		public bool IsEmpty
 		{
 			get
@@ -64,11 +74,17 @@ namespace SPRPG
 			}
 		}
 
-		private uint ConvertIdxToInt(PartyIdx idx)
+		private static uint ConvertIdxToInt(PartyIdx idx)
 		{
 			var idxInt = (uint)idx;
 			Debug.Assert(idxInt < 3);
 			return idxInt;
+		}
+
+		private static PartyIdx ConvertIntToIdx(uint idxInt)
+		{
+			Debug.Assert(idxInt < 3);
+			return (PartyIdx)idxInt;
 		}
 
 		public PartyEntry Find(CharacterID id)
@@ -77,7 +93,7 @@ namespace SPRPG
 			{
 				if (entry == null)
 					continue;
-				if (entry.Character.ID == id)
+				if (entry.Character == id)
 					return entry;
 			}
 			return null;
@@ -99,8 +115,7 @@ namespace SPRPG
 			if (!emptyEntry.HasValue)
 				return false;
 
-			var idx = emptyEntry.Value;
-			Set(idx, new PartyEntry(idx, character));
+			TrySet(emptyEntry.Value, character);
 			return true;
 		}
 
@@ -122,26 +137,44 @@ namespace SPRPG
 				return false;
 			}
 
-			Set(idx, new PartyEntry(idx, character));
+			var entry = new PartyEntry(idx, character);
+			Set(idx, entry);
+			AfterAdd(entry);
 			return true;
+		}
+
+		private void AfterAdd(PartyEntry entry)
+		{
+			GetOnAdd(entry.Idx).Value.CheckAndCall(entry);
+			OnAdd.CheckAndCall(entry);
 		}
 
 		public bool Remove(PartyIdx idx)
 		{
 			var intIdx = ConvertIdxToInt(idx);
-			if (_entries[intIdx] != null)
+			var entry = _entries[intIdx];
+			if (entry == null)
 			{
 				Debug.LogWarning("party entry " + idx + " already does not exist.");
 				return false;
 			}
 
 			_entries[intIdx] = null;
+			AfterRemove(idx, entry.Character);
 			return true;
 		}
 
 		public bool Remove(CharacterID id)
 		{
-			return _entries.SetFirstIf(null, entry => (entry != null && entry.Character.ID == id));
+			var idxInt = _entries.SetFirstIf(null, entry => (entry != null && entry.Character == id));
+			if (idxInt.HasValue) AfterRemove(ConvertIntToIdx((uint)idxInt.Value), id);
+			return idxInt.HasValue;
+		}
+
+		private void AfterRemove(PartyIdx idx, CharacterID character)
+		{
+			GetOnRemove(idx).Value.CheckAndCall(character);
+			OnRemove.CheckAndCall(idx, character);
 		}
 
 		public PartyIdx? GetFirstEmpty()
@@ -156,6 +189,16 @@ namespace SPRPG
 			}
 
 			return null;
+		}
+		
+		public Box<OnAddEntry> GetOnAdd(PartyIdx idx)
+		{
+			return _onAdd[ConvertIdxToInt(idx)];
+		}
+
+		public Box<OnRemoveEntry> GetOnRemove(PartyIdx idx)
+		{
+			return _onRemove[ConvertIdxToInt(idx)];
 		}
 
 		public bool Load(SaveData.Party_ saveData)

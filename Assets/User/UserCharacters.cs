@@ -18,6 +18,11 @@ namespace SPRPG
 		{
 			return new SaveData.Character();
 		}
+
+		public static implicit operator CharacterID(UserCharacter _this)
+		{
+			return _this.ID;
+		}
 	}
 
 	public static class UserCharacters

@@ -13,6 +13,8 @@ namespace SPRPG
 		}
 
 		public CharacterSkinData Skin;
+
+		public Sprite CampEntryIcon;
 		public AnimatorOverrideController CampAnimatorController;
 	}
 }

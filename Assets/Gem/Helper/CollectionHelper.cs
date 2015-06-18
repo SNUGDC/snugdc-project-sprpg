@@ -27,7 +27,7 @@ namespace Gem
 				yield return c[i];
 		}
 
-		public static bool SetFirstIf<T>(this T[] c, T value, Predicate<T> pred) where T : class
+		public static int? SetFirstIf<T>(this T[] c, T value, Predicate<T> pred) where T : class
 		{
 			var i = 0;
 
@@ -36,13 +36,13 @@ namespace Gem
 				if (pred(data))
 				{
 					c[i] = value;
-					return true;
+					return i;
 				}
 
 				++i;
 			}
 
-			return false;
+			return null;
 		}
 
 		public static T GetOrDefault<T>(this List<T> c, int i)

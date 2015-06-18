@@ -8,6 +8,7 @@ namespace SPRPG
 
 		public CharacterSkeleton CharacterSkeleton;
 
+		public Sprite CampEntryEmptySprite;
 		public CampCharacter CampCharacter;
 		public CampCharacterTool CampCharacterTool;
 
