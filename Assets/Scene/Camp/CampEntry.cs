@@ -1,11 +1,9 @@
-﻿using System;
-using Gem;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace SPRPG
 {
-	public class CampEntry : MonoBehaviour
+	public partial class CampEntry : MonoBehaviour
 	{
 		[SerializeField]
 		private PartyIdx _idx;
@@ -36,6 +34,16 @@ namespace SPRPG
 			_party.GetOnRemove(Idx).Value -= OnPartyRemoved;
 		}
 
+		void Update()
+		{
+			UpdateDrag();
+		}
+
+		public void JustSetIdx(PartyIdx idx)
+		{
+			_idx = idx;
+		}
+
 		public void SetCharacter(CharacterID id)
 		{
 			var data = CharacterDB.Find(id);
@@ -56,7 +64,7 @@ namespace SPRPG
 			_characterIcon.sprite = Assets._.CampEntryEmptySprite;
 			_characterIcon.SetNativeSize();
 			_standByButton.interactable = false;
-			Party._.Remove(Idx);
+			_party.Remove(Idx);
 		}
 		
 		private void Refresh()

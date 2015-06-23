@@ -158,6 +158,14 @@ namespace Gem
 			}
 		}
 
+		public static Dictionary<K, V> Map<O, K, V>(this List<O> c, Func<O, KeyValuePair<K, V>> mapper)
+		{
+			var ret = new Dictionary<K, V>(c.Count);
+			foreach (var val in c)
+				ret.Add(mapper(val));
+			return ret;
+		}
+
 		public static void Add<T>(this LinkedList<T> c, T val, PositionType position)
 		{
 			if (position == PositionType.FRONT)

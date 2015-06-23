@@ -8,7 +8,20 @@ namespace SPRPG
 	using OnRemoveEntry = Action<CharacterID>;
 
 	public enum PartyIdx { _1 = 0, _2 = 1, _3 = 2 }
-	
+
+	public static class PartyHelper
+	{
+		public static PartyIdx MakeIdxFromArrayIndex(int val)
+		{
+			return (PartyIdx)val;
+		}
+
+		public static int ToArrayIndex(this PartyIdx _this)
+		{
+			return (int)_this;
+		}
+	}
+
 	public class PartyEntry
 	{
 		public readonly PartyIdx Idx;
