@@ -116,7 +116,6 @@ namespace SPRPG
 			if (draggingIdx == null)
 				draggingIdx = _dragging.Idx;
 
-			Debug.Log(draggingIdx.Value);
 			return draggingIdx.Value;
 		}
 
@@ -148,11 +147,6 @@ namespace SPRPG
 				}
 			}
 
-// 			foreach (var orderIdx in ret)
-// 			{
-// 				Debug.Log(orderIdx);
-// 			}
-
 			return ret;
 		}
 
@@ -175,6 +169,8 @@ namespace SPRPG
 
 			foreach (var myEntry in _entries)
 				myEntry.JustSetIdx(_idxMapper(myEntry.Idx));
+			Party._.Reorder(idx => _idxMapper(idx));
+
 			_entries.Sort((a, b) => b.Idx - a.Idx);
 			_idxMapper = idx => idx;
 		}

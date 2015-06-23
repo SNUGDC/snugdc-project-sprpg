@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Gem;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ namespace SPRPG
 
 	public class PartyEntry
 	{
-		public readonly PartyIdx Idx;
+		public PartyIdx Idx { get; private set; }
 		public readonly UserCharacter Character;
 
 		public PartyEntry(PartyIdx idx, UserCharacter character)
@@ -39,6 +40,11 @@ namespace SPRPG
 			Character = UserCharacters.Find((CharacterID)data.Character);
 		}
 
+		public void JustSetIdx(PartyIdx idx)
+		{
+			Idx = idx;
+		}
+
 		public SaveData.PartyEntry ToSaveData()
 		{
 			return new SaveData.PartyEntry(Character.ID);
@@ -51,7 +57,7 @@ namespace SPRPG
 
 		public static Party _ = new Party();
 
-		private readonly PartyEntry[] _entries = new PartyEntry[Size];
+		private readonly List<PartyEntry> _entries = new List<PartyEntry>(Size) {null, null, null};
 
 		public Action<PartyEntry> OnAdd;
 		public Action<PartyIdx, CharacterID> OnRemove;
@@ -87,19 +93,6 @@ namespace SPRPG
 			}
 		}
 
-		private static uint ConvertIdxToInt(PartyIdx idx)
-		{
-			var idxInt = (uint)idx;
-			Debug.Assert(idxInt < 3);
-			return idxInt;
-		}
-
-		private static PartyIdx ConvertIntToIdx(uint idxInt)
-		{
-			Debug.Assert(idxInt < 3);
-			return (PartyIdx)idxInt;
-		}
-
 		public PartyEntry Find(CharacterID id)
 		{
 			foreach (var entry in _entries)
@@ -114,12 +107,12 @@ namespace SPRPG
 
 		public PartyEntry Get(PartyIdx idx)
 		{
-			return _entries[ConvertIdxToInt(idx)];
+			return _entries[idx.ToArrayIndex()];
 		}
 
 		private void Set(PartyIdx idx, PartyEntry entry)
 		{
-			_entries[ConvertIdxToInt(idx)] = entry;
+			_entries[idx.ToArrayIndex()] = entry;
 		}
 
 		public bool TryAdd(UserCharacter character)
@@ -164,7 +157,7 @@ namespace SPRPG
 
 		public bool Remove(PartyIdx idx)
 		{
-			var intIdx = ConvertIdxToInt(idx);
+			var intIdx = idx.ToArrayIndex();
 			var entry = _entries[intIdx];
 			if (entry == null)
 			{
@@ -180,7 +173,7 @@ namespace SPRPG
 		public bool Remove(CharacterID id)
 		{
 			var idxInt = _entries.SetFirstIf(null, entry => (entry != null && entry.Character == id));
-			if (idxInt.HasValue) AfterRemove(ConvertIntToIdx((uint)idxInt.Value), id);
+			if (idxInt.HasValue) AfterRemove(PartyHelper.MakeIdxFromArrayIndex(idxInt.Value), id);
 			return idxInt.HasValue;
 		}
 
@@ -203,15 +196,22 @@ namespace SPRPG
 
 			return null;
 		}
-		
+
+		public void Reorder(Func<PartyIdx, PartyIdx> func)
+		{
+			foreach (var entry in _entries)
+				entry.JustSetIdx(func(entry.Idx));
+			_entries.Sort((a, b) => a.Idx.CompareTo(b.Idx));
+		}
+
 		public Box<OnAddEntry> GetOnAdd(PartyIdx idx)
 		{
-			return _onAdd[ConvertIdxToInt(idx)];
+			return _onAdd[idx.ToArrayIndex()];
 		}
 
 		public Box<OnRemoveEntry> GetOnRemove(PartyIdx idx)
 		{
-			return _onRemove[ConvertIdxToInt(idx)];
+			return _onRemove[idx.ToArrayIndex()];
 		}
 
 		public bool Load(SaveData.Party_ saveData)
@@ -245,7 +245,7 @@ namespace SPRPG
 
 			for (var i = PartyIdx._1; i <= PartyIdx._3; ++i)
 			{
-				var idxInt = ConvertIdxToInt(i);
+				var idxInt = i.ToArrayIndex();
 				var entry = _entries[idxInt];
 				if (entry != null)
 					ret[i] = entry.ToSaveData();

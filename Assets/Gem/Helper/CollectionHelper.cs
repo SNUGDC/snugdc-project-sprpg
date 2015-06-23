@@ -94,6 +94,24 @@ namespace Gem
 			return default(T);
 		}
 
+		public static int? SetFirstIf<T>(this List<T> c, T value, Predicate<T> pred) where T : class
+		{
+			var i = 0;
+
+			foreach (var data in c)
+			{
+				if (pred(data))
+				{
+					c[i] = value;
+					return i;
+				}
+
+				++i;
+			}
+
+			return null;
+		}
+
 		public static void Resize<T>(this List<T> c, int size, T init = default(T))
 		{
 			var curSize = c.Count;
