@@ -10,6 +10,7 @@ namespace SPRPG.Camp
 
 		private const string EntryInText = Sentence.PartyEntryIn;
 		private const string EntryOutText = Sentence.PartyEntryOut;
+		private const float CloseDelay = 0.1f;
 
 		public static CharacterTool Current { get; private set; }
 
@@ -43,6 +44,12 @@ namespace SPRPG.Camp
 		{
 			Debug.Assert(Current == this);
 			Refresh();
+		}
+
+		void Update()
+		{
+			if (Input.GetMouseButton(0))
+				Invoke("Close", CloseDelay);
 		}
 
 		public void Close()
@@ -93,12 +100,6 @@ namespace SPRPG.Camp
 
 		public void OnSelectCharacterWindow()
 		{
-			
-		}
-
-		public void OnSelectCancel()
-		{
-			Close();
 		}
 	}
 }
