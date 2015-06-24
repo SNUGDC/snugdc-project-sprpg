@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Gem;
 using UnityEngine;
 
-namespace SPRPG
+namespace SPRPG.Camp
 {
 	public class CampEntryAligner : MonoBehaviour
 	{

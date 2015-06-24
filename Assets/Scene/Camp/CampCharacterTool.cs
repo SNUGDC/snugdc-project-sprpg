@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SPRPG
+namespace SPRPG.Camp
 {
 	public class CampCharacterTool : MonoBehaviour
 	{

@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace SPRPG
+namespace SPRPG.Camp
 {
 	[CustomEditor(typeof(CampEntry))]
 	public class CampEntryEditor : ComponentEditor<CampEntry>

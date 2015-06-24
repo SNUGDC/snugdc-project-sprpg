@@ -2,7 +2,7 @@
 using Gem;
 using UnityEngine;
 
-namespace SPRPG
+namespace SPRPG.Camp
 {
 	public partial class CampEntry
 	{
