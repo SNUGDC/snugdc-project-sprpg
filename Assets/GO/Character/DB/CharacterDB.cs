@@ -9,7 +9,13 @@ namespace SPRPG
 		[SerializeField]
 		private List<CharacterData> _datas;
 
-		private static CharacterDB _db;
+		public static CharacterDB _ { get; private set; }
+
+		public static void Init(CharacterDB obj)
+		{
+			Debug.Assert(_ == null);
+			_ = obj;
+		}
 
 #if UNITY_EDITOR
 		public List<CharacterData> Edit()
@@ -18,15 +24,9 @@ namespace SPRPG
 		}
 #endif
 
-		public static void Init(CharacterDB obj)
+		public CharacterData Find(CharacterID id)
 		{
-			Debug.Assert(_db == null);
-			_db = obj;
-		}
-
-		public static CharacterData Find(CharacterID id)
-		{
-			var ret = _db._datas.GetOrDefault((int) id);
+			var ret = _datas.GetOrDefault((int) id);
 			if (ret == null)
 				Debug.LogWarning(LogMessages.KeyNotExists(id));
 			return ret;

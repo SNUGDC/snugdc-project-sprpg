@@ -11,7 +11,7 @@ namespace SPRPG
 		public UserCharacter(string id, SaveData.Character character)
 		{
 			ID = CharacterHelper.MakeID(int.Parse(id));
-			Data = CharacterDB.Find(ID);
+			Data = CharacterDB._.Find(ID);
 		}
 
 		public SaveData.Character ToSaveData()

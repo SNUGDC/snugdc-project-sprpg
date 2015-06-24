@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Gem;
 using UnityEngine;
@@ -20,6 +21,13 @@ namespace SPRPG
 		public static int ToArrayIndex(this PartyIdx _this)
 		{
 			return (int)_this;
+		}
+
+		public static IEnumerable<PartyIdx> GetEnumerable()
+		{
+			yield return PartyIdx._1;
+			yield return PartyIdx._2;
+			yield return PartyIdx._3;
 		}
 	}
 
@@ -51,7 +59,7 @@ namespace SPRPG
 		}
 	}
 
-	public class Party
+	public class Party : IEnumerable<PartyEntry>
 	{
 		public const int Size = 3;
 
@@ -64,6 +72,8 @@ namespace SPRPG
 
 		private readonly Box<OnAddEntry>[] _onAdd = { new Box<OnAddEntry>(), new Box<OnAddEntry>(), new Box<OnAddEntry>() };
 		private readonly Box<OnRemoveEntry>[] _onRemove = { new Box<OnRemoveEntry>(), new Box<OnRemoveEntry>(), new Box<OnRemoveEntry>() };
+
+		public Action OnReorder;
 
 		public bool IsEmpty
 		{
@@ -199,9 +209,19 @@ namespace SPRPG
 
 		public void Reorder(Func<PartyIdx, PartyIdx> func)
 		{
-			foreach (var entry in _entries)
-				entry.JustSetIdx(func(entry.Idx));
-			_entries.Sort((a, b) => a.Idx.CompareTo(b.Idx));
+			var old = new List<PartyEntry>(_entries);
+			_entries.Clear();
+			_entries.Resize(Size);
+
+			foreach (var entry in old)
+			{
+				if (entry == null) continue;
+				var newIdx = func(entry.Idx);
+				entry.JustSetIdx(newIdx);
+				_entries[newIdx.ToArrayIndex()] = entry;
+			}
+
+			OnReorder.CheckAndCall();
 		}
 
 		public Box<OnAddEntry> GetOnAdd(PartyIdx idx)
@@ -252,6 +272,16 @@ namespace SPRPG
 			}
 
 			return ret;
+		}
+
+		public IEnumerator<PartyEntry> GetEnumerator()
+		{
+			return _entries.GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 	}
 }

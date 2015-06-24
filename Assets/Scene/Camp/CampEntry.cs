@@ -22,16 +22,14 @@ namespace SPRPG
 		{
 			_standByButton.interactable = false;
 
-			_party.GetOnAdd(Idx).Value += OnPartyAdded;
-			_party.GetOnRemove(Idx).Value += OnPartyRemoved;
+			RegisterPartyCallback(Idx);
 
 			Refresh();
 		}
 
 		void OnDestroy()
 		{
-			_party.GetOnAdd(Idx).Value -= OnPartyAdded;
-			_party.GetOnRemove(Idx).Value -= OnPartyRemoved;
+			UnregisterPartyCallback(Idx);
 		}
 
 		void Update()
@@ -39,14 +37,28 @@ namespace SPRPG
 			UpdateDrag();
 		}
 
+		void RegisterPartyCallback(PartyIdx idx)
+		{
+			_party.GetOnAdd(idx).Value += OnPartyAdded;
+			_party.GetOnRemove(idx).Value += OnPartyRemoved;
+		}
+
+		void UnregisterPartyCallback(PartyIdx idx)
+		{
+			_party.GetOnAdd(idx).Value -= OnPartyAdded;
+			_party.GetOnRemove(idx).Value -= OnPartyRemoved;
+		}
+
 		public void JustSetIdx(PartyIdx idx)
 		{
+			UnregisterPartyCallback(_idx);
 			_idx = idx;
+			RegisterPartyCallback(_idx);
 		}
 
 		public void SetCharacter(CharacterID id)
 		{
-			var data = CharacterDB.Find(id);
+			var data = CharacterDB._.Find(id);
 			if (data == null) return;
 
 			Character = id;

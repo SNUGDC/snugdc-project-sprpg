@@ -93,7 +93,7 @@ namespace SPRPG
 			_id = (CharacterID)EditorGUILayout.IntField((int) _id);
 			if (GUILayout.Button("apply"))
 			{
-				var data = CharacterDB.Find(_id);
+				var data = CharacterDB._.Find(_id);
 				if (data) Target.SetSkin(data.Skin);
 			}
 

@@ -6,6 +6,17 @@ namespace SPRPG
 {
 	public class CampData
 	{
+		public class Cargo_
+		{
+			public class Entry
+			{
+				public Vector2 Position;
+			}
+
+			public Vector2 Position;
+			public List<Entry> Entries;
+		}
+
 		public class Character_
 		{
 			public Vector2 Position;
@@ -13,6 +24,7 @@ namespace SPRPG
 			public IntRect BoundingRect;
 		}
 
+		public Cargo_ Cargo;
 		public List<Character_> Characters;
 		public Dictionary<CharacterID, Character_> CharacterDic;
 
