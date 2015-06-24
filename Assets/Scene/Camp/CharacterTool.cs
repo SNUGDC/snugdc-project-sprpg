@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 namespace SPRPG.Camp
 {
-	public class CampCharacterTool : MonoBehaviour
+	public class CharacterTool : MonoBehaviour
 	{
 		private enum EntryState { NotIn, In, }
 
 		private const string EntryInText = Sentence.PartyEntryIn;
 		private const string EntryOutText = Sentence.PartyEntryOut;
 
-		public static CampCharacterTool Current { get; private set; }
+		public static CharacterTool Current { get; private set; }
 
 		public CharacterID ID { get; private set; }
 
@@ -24,7 +24,7 @@ namespace SPRPG.Camp
 		[SerializeField]
 		private Text _entryText;
 
-		public static CampCharacterTool Open(CharacterID id)
+		public static CharacterTool Open(CharacterID id)
 		{
 			CloseCurrent();
 			Current = Assets._.CampCharacterTool.Instantiate();

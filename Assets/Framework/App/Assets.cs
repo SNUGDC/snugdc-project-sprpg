@@ -10,7 +10,7 @@ namespace SPRPG
 
 		public Sprite CampEntryEmptySprite;
 		public Camp.CampCharacter CampCharacter;
-		public Camp.CampCharacterTool CampCharacterTool;
+		public Camp.CharacterTool CampCharacterTool;
 
 		public static void Init(Assets assets)
 		{

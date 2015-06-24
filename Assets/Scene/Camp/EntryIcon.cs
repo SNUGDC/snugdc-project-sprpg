@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace SPRPG.Camp
 {
-	public partial class CampEntry : MonoBehaviour
+	public partial class EntryIcon : MonoBehaviour
 	{
 		[SerializeField]
 		private PartyIdx _idx;

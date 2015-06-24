@@ -86,7 +86,7 @@ namespace SPRPG.Camp
 
 		public void OnSelect()
 		{
-			var tool = CampCharacterTool.Open(_data.ID);
+			var tool = CharacterTool.Open(_data.ID);
 			tool.transform.SetParent(_foregroundParent, false);
 
 			var height = ((RectTransform) _boundingButton.transform).offsetMax.y;

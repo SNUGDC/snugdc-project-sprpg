@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SPRPG.Camp
 {
-	public class CampEntryAligner : MonoBehaviour
+	public class EntryIconAligner : MonoBehaviour
 	{
 		private const float AnchorXStart = 0.58f;
 		private const float AnchorXInterval = 0.16f;
@@ -16,9 +16,9 @@ namespace SPRPG.Camp
 		private const float AlignThresholdX = 0.1f;
 
 		[SerializeField]
-		private List<CampEntry> _entries;
+		private List<EntryIcon> _entries;
 
-		private CampEntry _dragging;
+		private EntryIcon _dragging;
 
 		private Func<PartyIdx, PartyIdx> _idxMapper = idx => idx;
 
@@ -158,12 +158,12 @@ namespace SPRPG.Camp
 			return GetRotatedOrder(orgDraggingIdx, curDraggingIdx);
 		}
 
-		void OnDragBegin(CampEntry entry)
+		void OnDragBegin(EntryIcon entry)
 		{
 			_dragging = entry;
 		}
 
-		void OnDragEnd(CampEntry entry)
+		void OnDragEnd(EntryIcon entry)
 		{
 			_dragging = null;
 

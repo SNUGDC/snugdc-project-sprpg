@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace SPRPG.Camp
 {
-	public partial class CampEntry
+	public partial class EntryIcon
 	{
 		public bool IsDragging { get; private set; }
 
-		public Action<CampEntry> OnDragBegin;
-		public Action<CampEntry> OnDragEnd;
+		public Action<EntryIcon> OnDragBegin;
+		public Action<EntryIcon> OnDragEnd;
 
 		public void UpdateDrag()
 		{
