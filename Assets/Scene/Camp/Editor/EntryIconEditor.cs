@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SPRPG.Camp
 {
 	[CustomEditor(typeof(EntryIcon))]
-	public class CampEntryEditor : ComponentEditor<EntryIcon>
+	public class EntryIconEditor : ComponentEditor<EntryIcon>
 	{
 		private CharacterID _character;
 
