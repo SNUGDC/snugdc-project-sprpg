@@ -42,8 +42,9 @@ namespace SPRPG.Camp
 		{
 			foreach (var entry in _entries)
 			{
-				entry.OnDragBegin += OnDragBegin;
-				entry.OnDragEnd += OnDragEnd;
+				var entryLocal = entry;
+				entry.Drag.OnDragBegin += delegate { OnDragBegin(entryLocal); };
+				entry.Drag.OnDragEnd += delegate { OnDragEnd(entryLocal); };
 			}
 		}
 
@@ -70,7 +71,7 @@ namespace SPRPG.Camp
 
 			foreach (var entry in _entries)
 			{
-				if (entry.IsDragging) continue;
+				if (entry.Drag.IsDragging) continue;
 				var rect = entry.GetRectTransform();
 				var orgAnchor = rect.anchorMin;
 

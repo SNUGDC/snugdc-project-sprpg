@@ -24,16 +24,5 @@ namespace Gem
 			_this.anchorMax = val;
 			_this.anchorMin = val;
 		}
-
-		public static void TranslateAnchor(this RectTransform _this, Vector2 val)
-		{
-			var parentRect = _this.transform.parent.GetRectTransform();
-			var parentSize = parentRect.offsetMax - parentRect.offsetMin;
-			var deltaAnchor = val.ScaleInverse(parentSize);
-
-			_this.anchorMin += deltaAnchor;
-			_this.anchorMax += deltaAnchor;
-			_this.anchoredPosition = Vector2.zero;
-		}
 	}
 }

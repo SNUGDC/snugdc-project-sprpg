@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace SPRPG.Camp
 {
-	public partial class EntryIcon : MonoBehaviour
+	public class EntryIcon : MonoBehaviour
 	{
 		[SerializeField]
 		private PartyIdx _idx;
 		public PartyIdx Idx { get { return _idx; } }
 		public CharacterID? Character { get; private set; }
+
+		public EntryIconDrag Drag;
 
 		private Party _party { get { return Party._; } }
 
@@ -25,16 +28,23 @@ namespace SPRPG.Camp
 			RegisterPartyCallback(Idx);
 
 			Refresh();
+
+			Drag.OnDragStay += (entryIconDrag, pointerEventData) =>
+			{
+				var parentRect = transform.parent.GetRectTransform();
+				var parentSize = parentRect.offsetMax - parentRect.offsetMin;
+				var anchor = pointerEventData.position.ScaleInverse(parentSize);
+
+				var rect = this.GetRectTransform();
+				rect.anchorMin = anchor;
+				rect.anchorMax = anchor;
+				rect.anchoredPosition = Vector2.zero;
+			};
 		}
 
 		void OnDestroy()
 		{
 			UnregisterPartyCallback(Idx);
-		}
-
-		void Update()
-		{
-			UpdateDrag();
 		}
 
 		void RegisterPartyCallback(PartyIdx idx)
