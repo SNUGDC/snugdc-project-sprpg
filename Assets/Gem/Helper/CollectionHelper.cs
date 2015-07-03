@@ -285,7 +285,7 @@ namespace Gem
 			return _ret;
 		}
 
-		public static bool GetAndRemove<K, V>(this IDictionary<K, V> c, K key, out V val)
+		public static bool TryGetAndRemove<K, V>(this IDictionary<K, V> c, K key, out V val)
 		{
 			if (c.TryGetValue(key, out val))
 			{
@@ -294,9 +294,19 @@ namespace Gem
 			}
 			else
 			{
+				return false;
+			}
+		}
+
+		public static bool GetAndRemove<K, V>(this IDictionary<K, V> c, K key, out V val)
+		{
+			if (!c.TryGetAndRemove(key, out val))
+			{
 				Debug.LogError(LogMessages.KeyNotExists(key));
 				return false;
 			}
+
+			return true;
 		}
 
 		public static void RemoveIf<K, V>(this IDictionary<K, V> c, Func<K, V, bool> pred)
