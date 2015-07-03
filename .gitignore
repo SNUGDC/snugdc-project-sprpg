@@ -17,5 +17,9 @@
 
 #platform
 
+#platform Windows
+/Assets/UnityVS/
+/Assets/UnityVS.meta
+
 #platform OSX
 .DS_STORE
