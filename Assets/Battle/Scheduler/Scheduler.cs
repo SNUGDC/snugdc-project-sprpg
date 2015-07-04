@@ -11,15 +11,15 @@ namespace SPRPG.Battle
 
 	public class Scheduler
 	{
-		public enum JobID {}
+		public enum JobId {}
 
 		private struct Job
 		{
-			public JobID ID;
+			public JobId Id;
 			public Action Callback;
 		}
 
-		private JobID _uniqueID = default(JobID);
+		private JobId _uniqueId = default(JobId);
 		public Tick Base { get; private set; }
 		public Tick Current { get; private set; }
 		public Tick Relative { get { return Current.Sub(Base); } }
@@ -42,12 +42,12 @@ namespace SPRPG.Battle
 
 		private readonly Dictionary<Tick, List<Job>> _jobs = new Dictionary<Tick, List<Job>>();
 
-		private JobID AssignUniqueID()
+		private JobId AssignUniqueId()
 		{
-			return _uniqueID++;
+			return _uniqueId++;
 		}
 
-		public JobID AddRelative(Tick tick, Action callback)
+		public JobId AddRelative(Tick tick, Action callback)
 		{
 			Debug.Assert(tick == default(Tick), "you should not add job to current tick.");
 			Debug.Assert(callback != null, "callback is null.");
@@ -61,9 +61,9 @@ namespace SPRPG.Battle
 				_jobs[absolute] = jobsTick;
 			}
 
-			var jobID = AssignUniqueID();
-			jobsTick.Add(new Job { ID = jobID, Callback = callback });
-			return jobID;
+			var jobId = AssignUniqueId();
+			jobsTick.Add(new Job { Id = jobId, Callback = callback });
+			return jobId;
 		}
 
 		public void Rebase()
