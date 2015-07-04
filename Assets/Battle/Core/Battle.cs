@@ -72,12 +72,14 @@ namespace SPRPG.Battle
 		private void PerformSkill(Term term, InputGrade inputGrade)
 		{
 			Debug.Log("term: " + term + ", grade: " + inputGrade);
+			if (inputGrade == InputGrade.Bad) return;
 			_party.Leader.PerformSkill(term.ToSkillSlot());
 		}
 
 		private void PerformShift(Term term, InputGrade inputGrade)
 		{
 			Debug.Log("term: " + term + ", grade: " + inputGrade);
+			if (inputGrade == InputGrade.Bad) return;
 			_party.Shift();
 		}
 
