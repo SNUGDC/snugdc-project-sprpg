@@ -23,15 +23,6 @@ namespace SPRPG.Battle
 
 	public class Scheduler
 	{
-		public enum JobId {}
-
-		private struct Job
-		{
-			public JobId Id;
-			public Action Callback;
-		}
-
-		private JobId _uniqueId = default(JobId);
 		public Tick Base { get; private set; }
 		public Tick Current { get; private set; }
 
@@ -55,32 +46,6 @@ namespace SPRPG.Battle
 
 		public Period Period { get { return (Period) ((int) Current/(int) Const.Period); } }
 
-		private readonly Dictionary<Tick, List<Job>> _jobs = new Dictionary<Tick, List<Job>>();
-
-		private JobId AssignUniqueId()
-		{
-			return _uniqueId++;
-		}
-
-		public JobId AddRelative(Tick tick, Action callback)
-		{
-			Debug.Assert(tick == default(Tick), "you should not add job to current tick.");
-			Debug.Assert(callback != null, "callback is null.");
-
-			var absolute = Current.Add(tick);
-
-			var jobsTick = _jobs[absolute];
-			if (jobsTick == null)
-			{
-				jobsTick = new List<Job>();
-				_jobs[absolute] = jobsTick;
-			}
-
-			var jobId = AssignUniqueId();
-			jobsTick.Add(new Job { Id = jobId, Callback = callback });
-			return jobId;
-		}
-
 		public void Rebase()
 		{
 			Base = Current;
@@ -89,13 +54,6 @@ namespace SPRPG.Battle
 		public void Proceed()
 		{
 			++Current;
-
-			List<Job> jobsTick;
-			if (!_jobs.TryGetAndRemove(Current, out jobsTick))
-				return;
-
-			foreach (var job in jobsTick)
-				job.Callback();
 		}
 
 		public TermAndDistance GetCloseTermAndDistance()
