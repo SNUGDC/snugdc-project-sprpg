@@ -9,6 +9,18 @@ namespace SPRPG.Battle
 	public enum Term { _1, _2, _3, _4 }
 	public enum Period {}
 
+	public struct TermAndDistance
+	{
+		public Term Term;
+		public Tick Distance;
+
+		public TermAndDistance(Term term, Tick distance)
+		{
+			Term = term;
+			Distance = distance;
+		}
+	}
+
 	public class Scheduler
 	{
 		public enum JobId {}
@@ -85,6 +97,13 @@ namespace SPRPG.Battle
 
 			foreach (var job in jobsTick)
 				job.Callback();
+		}
+
+		public TermAndDistance GetCloseTermAndDistance()
+		{
+			const int halfTerm = (int)Const.Term / 2;
+			var distance = ((int)Relative + halfTerm) % (int)Const.Term - halfTerm;
+			return new TermAndDistance(CloseTerm, (Tick) distance);
 		}
 	}
 

@@ -1,2 +1,2 @@
--define:BALANCE
+-define:BALANCE;KEYBOARD_SUPPORTED
 -nowarn:0649

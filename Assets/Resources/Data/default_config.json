@@ -3,5 +3,9 @@
 		"Camp": {
 			"DecelerationRate": 0.05
 		}
+	},
+	"Battle": {
+		"InputValidBefore": 3,
+		"InputValidAfter": 3
 	}
 }
