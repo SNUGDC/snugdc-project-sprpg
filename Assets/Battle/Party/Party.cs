@@ -12,7 +12,7 @@ namespace SPRPG.Battle
 
 	public class Party : IEnumerable<Character>
 	{
-		public Character Leader { get; private set; }
+		public Character Leader { get { return this[PartyIdx._1]; } }
 
 		private readonly Character[] _characters = new Character[SPRPG.Party.Size];
 
@@ -27,8 +27,6 @@ namespace SPRPG.Battle
 			InitCharacter(PartyIdx._1, def._1);
 			InitCharacter(PartyIdx._2, def._2);
 			InitCharacter(PartyIdx._3, def._3);
-
-			Leader = this[PartyIdx._1];
 		}
 
 		private void InitCharacter(PartyIdx idx, CharacterId id)
