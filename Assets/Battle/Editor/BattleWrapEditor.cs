@@ -5,8 +5,10 @@ using UnityEngine;
 namespace SPRPG.Battle
 {
 	[CustomEditor(typeof(Battle))]
-	public class BattleEditor : ComponentEditor<Battle>
+	public class BattleWrapEditor : ComponentEditor<BattleWrapper>
 	{
+		private Battle _battle { get { return Target.EditBattle(); } }
+
 		public override void OnInspectorGUI()
 		{
 			base.OnInspectorGUI();
@@ -20,7 +22,7 @@ namespace SPRPG.Battle
 
 		private void RenderScheduler()
 		{
-			var scheduler = Target.Scheduler;
+			var scheduler = _battle.Scheduler;
 
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("base: " + scheduler.Base);
@@ -63,9 +65,9 @@ namespace SPRPG.Battle
 		{
 			GUILayout.BeginHorizontal();
 			if (GUILayout.Button("skill"))
-				Target.EditInputReceiver().ForceSkill();
+				_battle.EditInputReceiver().ForceSkill();
 			if (GUILayout.Button("shift"))
-				Target.EditInputReceiver().ForceShift();
+				_battle.EditInputReceiver().ForceShift();
 			GUILayout.EndHorizontal();
 		}
 	}

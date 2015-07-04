@@ -23,10 +23,13 @@ namespace SPRPG
 			if (_isLoaded)
 				return;
 
+			JsonBindings.Setup();
+
 			Assets.Init(Assets);
 
 			Config.TryLoad();
 			CampBalance._.Load();
+			SkillBalance._.Load();
 
 			CharacterDB.Init(CharacterDB);
 

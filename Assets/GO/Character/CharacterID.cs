@@ -1,7 +1,9 @@
 ﻿namespace SPRPG
 {
 	public enum CharacterID
-	{}
+	{
+		Warrior,
+	}
 
 	public static class CharacterConst
 	{

@@ -18,36 +18,20 @@ namespace SPRPG.Battle
 		}
 	}
 
-	public class Battle : MonoBehaviour
+	public class Battle 
 	{
-		public static BattleDef DefToInit;
-
 		public readonly Scheduler Scheduler = new Scheduler();
 
-		private bool _isInited;
-		private InputReceiver _inputReceiver;
-		private SkillInputProcessor _skillInputProcessor;
-		private ShiftInputProcessor _shiftInputProcessor;
+		private readonly InputReceiver _inputReceiver;
+		private readonly SkillInputProcessor _skillInputProcessor;
+		private readonly ShiftInputProcessor _shiftInputProcessor;
 
-		private Party _party;
-		private Boss _boss;
+		private readonly Party _party;
+		private readonly Boss _boss;
+		public Boss Boss { get; private set; }
 
-		void Start()
+		public Battle(BattleDef def)
 		{
-			if (DefToInit != null)
-				Init(DefToInit);
-		}
-
-		public void Init(BattleDef def)
-		{
-			if (_isInited)
-			{
-				Debug.LogError("already inited.");
-				return;
-			}
-
-			_isInited = true;
-
 #if BALANCE
 			if (def.UseDataInput)
 			{
@@ -67,6 +51,13 @@ namespace SPRPG.Battle
 
 			_party = new Party(def.PartyDef);
 			_boss = BossFactory.Create(def.Stage.ToBossId());
+
+			SkillActor.Reset(this);
+		}
+
+		void OnDestroy()
+		{
+			SkillActor.Reset(null);
 		}
 
 		void Update()
@@ -86,6 +77,7 @@ namespace SPRPG.Battle
 		private void PerformShift(Term term, InputGrade inputGrade)
 		{
 			Debug.Log("term: " + term + ", grade: " + inputGrade);
+			_party.Shift();
 		}
 
 

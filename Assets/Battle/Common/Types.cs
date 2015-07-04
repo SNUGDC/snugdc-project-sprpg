@@ -11,11 +11,6 @@
 		Good, Bad,
 	}
 
-	public enum Element
-	{
-		Normal,
-	}
-
 	public enum Hp { }
 
 	public struct Damage

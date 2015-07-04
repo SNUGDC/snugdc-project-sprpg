@@ -1,7 +1,16 @@
-﻿namespace SPRPG.Battle
+﻿using UnityEngine;
+
+namespace SPRPG.Battle
 {
 	public abstract class SkillActor
 	{
+		public static Battle Context { get; private set; }
+		public static void Reset(Battle context)
+		{
+			Debug.Assert(Context == null || context == null);
+			Context = context;
+		}
+
 		public SkillKey Key { get { return _data.Key; } }
 		private readonly SkillBalanceData _data;
 
@@ -11,15 +20,5 @@
 		}
 
 		public abstract void Perform();
-	}
-
-	public class NullSkillActor : SkillActor
-	{
-		public NullSkillActor() 
-			: base(new SkillBalanceData())
-		{}
-
-		public override void Perform()
-		{}
 	}
 }

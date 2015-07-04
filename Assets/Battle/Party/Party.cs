@@ -32,5 +32,10 @@
 		{
 			this[idx] = new Character(CharacterDB._.Find(id));
 		}
+
+		public void Shift()
+		{
+			// todo
+		}
 	}
 }

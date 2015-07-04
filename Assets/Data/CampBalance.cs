@@ -44,11 +44,11 @@ namespace SPRPG
 		}
 	}
 
-	public class CampBalance : Balance<CampData>
+	public sealed class CampBalance : Balance<CampData>
 	{
 		public static readonly CampBalance _ = new CampBalance();
 
-		protected CampBalance() : base("camp")
+		private CampBalance() : base("camp")
 		{}
 
 		protected override void AfterLoad(bool success)

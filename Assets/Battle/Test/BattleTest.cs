@@ -15,7 +15,7 @@ namespace SPRPG.Battle
 				_3 = (CharacterID) 2,
 			};
 
-			Battle.DefToInit = new BattleDef(Stage, party)
+			BattleWrapper.Def = new BattleDef(Stage, party)
 			{
 #if BALANCE
 				UseDataInput = false,

@@ -149,6 +149,17 @@ namespace Gem
 			return _this.TryGet(key, out ret) ? ret : _default;
 		}
 
+		public static T ParseOrDefault<T>(this JsonData thiz)
+		{
+			Debug.Assert(thiz.IsString);
+			return EnumHelper.ParseOrDefault<T>((string) thiz);
+		}
+
+		public static T ToObject<T>(this JsonData thiz)
+		{
+			return JsonMapper.ToObject<T>(JsonMapper.ToJson(thiz));
+		}
+
 		public static bool Load<T>(string path, out T data) 
 		{
 			try
