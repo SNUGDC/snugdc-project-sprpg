@@ -1,4 +1,5 @@
-﻿using Gem;
+﻿using System;
+using Gem;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ namespace SPRPG.Battle
 
 			RenderScheduler();
 			RenderInput();
+			RenderParty();
+			RenderBoss();
 		}
 
 		private void RenderScheduler()
@@ -69,6 +72,27 @@ namespace SPRPG.Battle
 			if (GUILayout.Button("shift"))
 				_battle.EditInputReceiver().ForceShift();
 			GUILayout.EndHorizontal();
+		}
+
+		private void RenderParty()
+		{
+			if (_battle.Party == null) return;
+			foreach (var character in _battle.Party)
+				RenderCharacter(character);
+		}
+
+		private void RenderCharacter(Character character)
+		{
+			GUILayout.Label(character.Id.ToString());
+			GUILayout.Label(String.Format("hp: {0} ({1})", character.Hp, character.HpMax));
+		}
+
+		private void RenderBoss()
+		{
+			if (_battle.Boss == null)
+				return;
+
+			GUILayout.Label("boss: " + _battle.Boss.Hp);
 		}
 	}
 }

@@ -27,6 +27,7 @@ namespace SPRPG.Battle
 		private readonly ShiftInputProcessor _shiftInputProcessor;
 
 		private readonly Party _party;
+		public Party Party { get { return _party; } }
 		private readonly Boss _boss;
 		public Boss Boss { get { return _boss; } }
 
