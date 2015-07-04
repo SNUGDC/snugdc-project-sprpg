@@ -7,6 +7,13 @@ namespace SPRPG.Battle
 #if BALANCE
 		public bool UseDataInput;
 #endif
+
+		public readonly PartyDef PartyDef;
+
+		public BattleDef(PartyDef party)
+		{
+			PartyDef = party;
+		}
 	}
 
 	public class Battle : MonoBehaviour
@@ -16,9 +23,11 @@ namespace SPRPG.Battle
 		public readonly Scheduler Scheduler = new Scheduler();
 
 		private bool _isInited;
-		public InputReceiver _inputReceiver;
+		private InputReceiver _inputReceiver;
 		private SkillInputProcessor _skillInputProcessor;
 		private ShiftInputProcessor _shiftInputProcessor;
+
+		private Party _party;
 
 		void Start()
 		{
@@ -52,6 +61,8 @@ namespace SPRPG.Battle
 			_skillInputProcessor.OnInvoke += PerformSkill;
 			_shiftInputProcessor = new ShiftInputProcessor(_inputReceiver, Scheduler);
 			_shiftInputProcessor.OnInvoke += PerformShift;
+
+			_party = new Party(def.PartyDef);
 		}
 
 		void Update()
@@ -65,6 +76,7 @@ namespace SPRPG.Battle
 		private void PerformSkill(Term term, InputGrade inputGrade)
 		{
 			Debug.Log("term: " + term + ", grade: " + inputGrade);
+			_party.Leader.PerformSkill(term.ToSkillSlot());
 		}
 
 		private void PerformShift(Term term, InputGrade inputGrade)

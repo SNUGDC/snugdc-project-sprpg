@@ -10,4 +10,14 @@
 	{
 		Good, Bad,
 	}
+
+	public enum Hp { }
+
+	public static class ExtensionMethods
+	{
+		public static Hp ToValue(this StatHp thiz)
+		{
+			return (Hp)(int) thiz;
+		}
+	}
 }

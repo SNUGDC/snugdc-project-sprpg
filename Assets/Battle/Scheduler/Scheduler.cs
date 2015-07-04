@@ -128,18 +128,18 @@ namespace SPRPG.Battle
 			return (Tick) ((int) thiz*(int) Const.Period);
 		}
 
-		public static SkillIdx ToSkillIdx(this Term thiz)
+		public static SkillSlot ToSkillSlot(this Term thiz)
 		{
 			switch (thiz)
 			{
-				case Term._1: return SkillIdx._1;
-				case Term._2: return SkillIdx._2;
-				case Term._3: return SkillIdx._3;
-				case Term._4: return SkillIdx._4;
+				case Term._1: return SkillSlot._1;
+				case Term._2: return SkillSlot._2;
+				case Term._3: return SkillSlot._3;
+				case Term._4: return SkillSlot._4;
 			}
 
 			Debug.LogError(LogMessages.EnumUndefined(thiz));
-			return default(SkillIdx);
+			return default(SkillSlot);
 		}
 	}
 }
