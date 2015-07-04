@@ -28,7 +28,7 @@ namespace SPRPG.Battle
 
 		private readonly Party _party;
 		private readonly Boss _boss;
-		public Boss Boss { get; private set; }
+		public Boss Boss { get { return _boss; } }
 
 		public Battle(BattleDef def)
 		{

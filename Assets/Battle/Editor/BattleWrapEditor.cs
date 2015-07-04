@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
-	[CustomEditor(typeof(Battle))]
+	[CustomEditor(typeof(BattleWrapper))]
 	public class BattleWrapEditor : ComponentEditor<BattleWrapper>
 	{
 		private Battle _battle { get { return Target.EditBattle(); } }
