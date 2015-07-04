@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
@@ -34,7 +34,9 @@ namespace SPRPG.Battle
 		private JobId _uniqueId = default(JobId);
 		public Tick Base { get; private set; }
 		public Tick Current { get; private set; }
+
 		public Tick Relative { get { return Current.Sub(Base); } }
+		public Tick RelativePeriodic { get { return (Tick)((int) Relative%(int) Const.Period); } }
 
 		public bool IsPerfectTerm { get { return ((int)Relative % (int)Const.Term) == 0; } }
 
@@ -43,9 +45,10 @@ namespace SPRPG.Battle
 			get
 			{
 				const int halfTerm = (int) Const.Term/2;
-				var relative = (int)Relative;
+				var relative = (int)RelativePeriodic;
 				if (relative < halfTerm)
 					return Term._4;
+
 				return (Term)((relative - halfTerm) / (int)Const.Term);
 			}
 		}
@@ -85,11 +88,7 @@ namespace SPRPG.Battle
 
 		public void Proceed()
 		{
-			Debug.Assert(Relative < Const.Period);
-
 			++Current;
-			if (Relative >= Const.Period)
-				Base = Period.ToTick();
 
 			List<Job> jobsTick;
 			if (!_jobs.TryGetAndRemove(Current, out jobsTick))
@@ -127,6 +126,20 @@ namespace SPRPG.Battle
 		public static Tick ToTick(this Period thiz)
 		{
 			return (Tick) ((int) thiz*(int) Const.Period);
+		}
+
+		public static SkillIdx ToSkillIdx(this Term thiz)
+		{
+			switch (thiz)
+			{
+				case Term._1: return SkillIdx._1;
+				case Term._2: return SkillIdx._2;
+				case Term._3: return SkillIdx._3;
+				case Term._4: return SkillIdx._4;
+			}
+
+			Debug.LogError(LogMessages.EnumUndefined(thiz));
+			return default(SkillIdx);
 		}
 	}
 }

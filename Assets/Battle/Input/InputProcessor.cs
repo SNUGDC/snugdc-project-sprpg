@@ -33,9 +33,17 @@ namespace SPRPG.Battle
 
 		private void RebaseAndInvoke()
 		{
+			if ((int) _scheduler.Relative < (int) Const.Term/2)
+			{
+				_scheduler.Rebase();
+				OnInvoke.CheckAndCall(Term._1, InputGrade.Bad);
+				return;
+			}
+
 			var termAndDistance = _scheduler.GetCloseTermAndDistance();
 			_scheduler.Rebase();
-			OnInvoke.CheckAndCall(termAndDistance.Term, GradeInput(termAndDistance.Distance));
+			var inputGrade = GradeInput(termAndDistance.Distance);
+			OnInvoke.CheckAndCall(termAndDistance.Term, inputGrade);
 		}
 	}
 

@@ -49,7 +49,7 @@ namespace SPRPG.Battle
 			if (GUILayout.Button("period"))
 			{
 				scheduler.Proceed();
-				while (scheduler.Relative != default(Tick))
+				while (scheduler.RelativePeriodic != default(Tick))
 					scheduler.Proceed();
 			}
 
