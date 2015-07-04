@@ -4,14 +4,18 @@ namespace SPRPG.Battle
 {
 	public class BattleTest : MonoBehaviour
 	{
+		public StageId Stage;
+
 		void Awake()
 		{
-			Battle.DefToInit = new BattleDef(new PartyDef
+			var party = new PartyDef
 			{
-				_1 = (CharacterID)0,
-				_2 = (CharacterID)1,
-				_3 = (CharacterID)2,
-			})
+				_1 = (CharacterID) 0,
+				_2 = (CharacterID) 1,
+				_3 = (CharacterID) 2,
+			};
+
+			Battle.DefToInit = new BattleDef(Stage, party)
 			{
 #if BALANCE
 				UseDataInput = false,

@@ -11,7 +11,18 @@
 		Good, Bad,
 	}
 
+	public enum Element
+	{
+		Normal,
+	}
+
 	public enum Hp { }
+
+	public struct Damage
+	{
+		public Hp Value;
+		public Element Element;
+	}
 
 	public static class ExtensionMethods
 	{

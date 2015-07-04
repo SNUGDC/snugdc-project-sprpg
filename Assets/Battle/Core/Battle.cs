@@ -8,10 +8,12 @@ namespace SPRPG.Battle
 		public bool UseDataInput;
 #endif
 
+		public readonly StageId Stage;
 		public readonly PartyDef PartyDef;
 
-		public BattleDef(PartyDef party)
+		public BattleDef(StageId stage, PartyDef party)
 		{
+			Stage = stage;
 			PartyDef = party;
 		}
 	}
@@ -28,6 +30,7 @@ namespace SPRPG.Battle
 		private ShiftInputProcessor _shiftInputProcessor;
 
 		private Party _party;
+		private Boss _boss;
 
 		void Start()
 		{
@@ -63,6 +66,7 @@ namespace SPRPG.Battle
 			_shiftInputProcessor.OnInvoke += PerformShift;
 
 			_party = new Party(def.PartyDef);
+			_boss = BossFactory.Create(def.Stage.ToBossId());
 		}
 
 		void Update()
