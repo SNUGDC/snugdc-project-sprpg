@@ -1,4 +1,7 @@
-﻿namespace SPRPG.Battle
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace SPRPG.Battle
 {
 	public struct PartyDef
 	{
@@ -7,7 +10,7 @@
 		public CharacterId _3;
 	}
 
-	public class Party
+	public class Party : IEnumerable<Character>
 	{
 		public Character Leader { get; private set; }
 
@@ -35,7 +38,22 @@
 
 		public void Shift()
 		{
-			// todo
+			var tmp = this[PartyIdx._3];
+			this[PartyIdx._3] = this[PartyIdx._2];
+			this[PartyIdx._2] = this[PartyIdx._1];
+			this[PartyIdx._1] = tmp;
+		}
+
+		public IEnumerator<Character> GetEnumerator()
+		{
+			yield return this[PartyIdx._1];
+			yield return this[PartyIdx._2];
+			yield return this[PartyIdx._3];
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 	}
 }
