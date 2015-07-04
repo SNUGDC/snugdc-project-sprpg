@@ -16,9 +16,9 @@ namespace SPRPG
 	{
 		[SerializeField]
 		private int _id;
-		public CharacterID ID
+		public CharacterId Id
 		{
-			get { return (CharacterID) _id; }
+			get { return (CharacterId) _id; }
 			set { _id = (int) value; }
 		}
 

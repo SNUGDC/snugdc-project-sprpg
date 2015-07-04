@@ -22,7 +22,7 @@ namespace SPRPG
 		{
 			UnityTypeBindings.Register();
 			BindEnumAsString<Element>();
-			BindEnumAsString<CharacterID>();
+			BindEnumAsString<CharacterId>();
 			BindEnumAsString<SkillKey>();
 			BindEnumAsNatural<SkillTear>();
 			BindEnumAsNatural<Battle.Hp>();

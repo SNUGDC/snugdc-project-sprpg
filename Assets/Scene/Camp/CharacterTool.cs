@@ -14,7 +14,7 @@ namespace SPRPG.Camp
 
 		public static CharacterTool Current { get; private set; }
 
-		public CharacterID ID { get; private set; }
+		public CharacterId Id { get; private set; }
 
 		private Party _party { get { return Party._; } }
 
@@ -25,11 +25,11 @@ namespace SPRPG.Camp
 		[SerializeField]
 		private Text _entryText;
 
-		public static CharacterTool Open(CharacterID id)
+		public static CharacterTool Open(CharacterId id)
 		{
 			CloseCurrent();
 			Current = Assets._.CampCharacterTool.Instantiate();
-			Current.ID = id;
+			Current.Id = id;
 			return Current;
 		}
 
@@ -62,7 +62,7 @@ namespace SPRPG.Camp
 
 		private void Refresh()
 		{
-			var _entity = _party.Find(ID);
+			var _entity = _party.Find(Id);
 			if (_entity == null)
 			{
 				_entryState = EntryState.NotIn;
@@ -81,17 +81,17 @@ namespace SPRPG.Camp
 		{
 			if (_entryState == EntryState.In)
 			{
-				if (!_party.Remove(ID))
-					Debug.Assert(false, "entry remove failed: " + ID);
+				if (!_party.Remove(Id))
+					Debug.Assert(false, "entry remove failed: " + Id);
 			}
 			else if (_entryState == EntryState.NotIn)
 			{
-				var character = UserCharacters.Find(ID);
-				Debug.Assert(character != null, "Character is not owned by user: " + ID);
+				var character = UserCharacters.Find(Id);
+				Debug.Assert(character != null, "Character is not owned by user: " + Id);
 				if (character != null)
 				{
 					if (!_party.TryAdd(character))
-						Debug.Assert(false, "Character add failed: " + ID);
+						Debug.Assert(false, "Character add failed: " + Id);
 				}
 			}
 

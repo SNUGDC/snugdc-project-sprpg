@@ -37,13 +37,13 @@ namespace SPRPG.Camp
 			if (ForegroundRoot)
 			{
 				_foregroundParent = new GameObject().transform;
-				_foregroundParent.name = "Character" + _data.ID;
+				_foregroundParent.name = "Character" + _data.Id;
 				_foregroundParent.transform.SetParent(ForegroundRoot, false);
 				_boundingButton.transform.SetParent(_foregroundParent, false);
 			}
 
 			CampData.Character_ campData;
-			if (CampBalance._.Data.CharacterDic.TryGet(_data.ID, out campData))
+			if (CampBalance._.Data.CharacterDic.TryGet(_data.Id, out campData))
 			{
 				transform.localPosition = campData.Position;
 				SetFlip(campData.Flip);
@@ -86,7 +86,7 @@ namespace SPRPG.Camp
 
 		public void OnSelect()
 		{
-			var tool = CharacterTool.Open(_data.ID);
+			var tool = CharacterTool.Open(_data.Id);
 			tool.transform.SetParent(_foregroundParent, false);
 
 			var height = ((RectTransform) _boundingButton.transform).offsetMax.y;

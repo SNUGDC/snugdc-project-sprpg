@@ -4,25 +4,25 @@ namespace Gem
 {
 	public static class ComponentHelper
 	{
-		public static GameObject Instantiate(this GameObject _this)
+		public static GameObject Instantiate(this GameObject thiz)
 		{
-			return Object.Instantiate(_this);
+			return Object.Instantiate(thiz);
 		}
 
-		public static T Instantiate<T>(this T _this) where T : Component
+		public static T Instantiate<T>(this T thiz) where T : Component
 		{
-			return _this.gameObject.Instantiate().GetComponent<T>();
+			return thiz.gameObject.Instantiate().GetComponent<T>();
 		}
 
-		public static T AddComponent<T>(this Component _this) where T : Component
+		public static T AddComponent<T>(this Component thiz) where T : Component
 		{
-			return _this.gameObject.AddComponent<T>();
+			return thiz.gameObject.AddComponent<T>();
 		}
 
-		public static T AddIfNotExists<T>(this GameObject _this) where T : Component
+		public static T AddIfNotExists<T>(this GameObject thiz) where T : Component
 		{
-			var ret = _this.GetComponent<T>();
-			return ret ?? _this.AddComponent<T>();
+			var ret = thiz.GetComponent<T>();
+			return ret ?? thiz.AddComponent<T>();
 		}
 	}
 }

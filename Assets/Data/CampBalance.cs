@@ -26,7 +26,7 @@ namespace SPRPG
 
 		public Cargo_ Cargo;
 		public List<Character_> Characters;
-		public Dictionary<CharacterID, Character_> CharacterDic;
+		public Dictionary<CharacterId, Character_> CharacterDic;
 
 		public void Build()
 		{
@@ -40,7 +40,7 @@ namespace SPRPG
 				}
 			}
 
-			CharacterDic = Characters.ToDictionary(character => (CharacterID)i++);
+			CharacterDic = Characters.ToDictionary(character => (CharacterId)i++);
 		}
 	}
 

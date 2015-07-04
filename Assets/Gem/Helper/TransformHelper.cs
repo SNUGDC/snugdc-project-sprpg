@@ -4,214 +4,214 @@ namespace Gem
 {
 	public static class TransformHelper
 	{
-		public static void SetPos(this Transform _this, Vector2 val)
+		public static void SetPos(this Transform thiz, Vector2 val)
 		{
-			var pos = _this.position;
+			var pos = thiz.position;
 			pos.x = val.x;
 			pos.y = val.y;
-			_this.position = pos;
+			thiz.position = pos;
 		}
 
-		public static void SetLPos(this Transform _this, Vector2 val)
+		public static void SetLPos(this Transform thiz, Vector2 val)
 		{
-			var pos = _this.localPosition;
+			var pos = thiz.localPosition;
 			pos.x = val.x;
 			pos.y = val.y;
-			_this.localPosition = pos;
+			thiz.localPosition = pos;
 		}
 
-		public static void SetPosX(this Transform _this, float val)
+		public static void SetPosX(this Transform thiz, float val)
 		{
-			var pos = _this.position;
+			var pos = thiz.position;
 			pos.x = val;
-			_this.position = pos;
+			thiz.position = pos;
 		}
 
-		public static void SetPosY(this Transform _this, float val)
+		public static void SetPosY(this Transform thiz, float val)
 		{
-			var pos = _this.position;
+			var pos = thiz.position;
 			pos.y = val;
-			_this.position = pos;
+			thiz.position = pos;
 		}
 
-		public static void SetPosZ(this Transform _this, float val)
+		public static void SetPosZ(this Transform thiz, float val)
 		{
-			var pos = _this.position;
+			var pos = thiz.position;
 			pos.z = val;
-			_this.position = pos;
+			thiz.position = pos;
 		}
 
-		public static void SetLPosX(this Transform _this, float val)
+		public static void SetLPosX(this Transform thiz, float val)
 		{
-			var pos = _this.localPosition;
+			var pos = thiz.localPosition;
 			pos.x = val;
-			_this.localPosition = pos;
+			thiz.localPosition = pos;
 		}
 
-		public static void SetLPosY(this Transform _this, float val)
+		public static void SetLPosY(this Transform thiz, float val)
 		{
-			var pos = _this.localPosition;
+			var pos = thiz.localPosition;
 			pos.y = val;
-			_this.localPosition = pos;
+			thiz.localPosition = pos;
 		}
 
-		public static void SetLPosZ(this Transform _this, float val)
+		public static void SetLPosZ(this Transform thiz, float val)
 		{
-			var pos = _this.localPosition;
+			var pos = thiz.localPosition;
 			pos.z = val;
-			_this.localPosition = pos;
+			thiz.localPosition = pos;
 		}
 
-		public static void AddPos(this Transform _this, Vector2 val)
+		public static void AddPos(this Transform thiz, Vector2 val)
 		{
-			var pos = _this.position;
+			var pos = thiz.position;
 			pos += (Vector3)val;
-			_this.position = pos;
+			thiz.position = pos;
 		}
 
-		public static void AddLPos(this Transform _this, Vector2 val)
+		public static void AddLPos(this Transform thiz, Vector2 val)
 		{
-			var pos = _this.localPosition;
+			var pos = thiz.localPosition;
 			pos += (Vector3)val;
-			_this.localPosition = pos;
+			thiz.localPosition = pos;
 		}
 
-		public static void LerpLPosX(this Transform _this, float val, float lerp)
+		public static void LerpLPosX(this Transform thiz, float val, float lerp)
 		{
-			_this.SetLPosX(Mathf.Lerp(_this.localPosition.x, val, lerp));
+			thiz.SetLPosX(Mathf.Lerp(thiz.localPosition.x, val, lerp));
 		}
 
-		public static void LerpLPosY(this Transform _this, float val, float lerp)
+		public static void LerpLPosY(this Transform thiz, float val, float lerp)
 		{
-			_this.SetLPosY(Mathf.Lerp(_this.localPosition.y, val, lerp));
+			thiz.SetLPosY(Mathf.Lerp(thiz.localPosition.y, val, lerp));
 		}
 
-		public static void LerpLPosZ(this Transform _this, float val, float lerp)
+		public static void LerpLPosZ(this Transform thiz, float val, float lerp)
 		{
-			_this.SetLPosZ(Mathf.Lerp(_this.localPosition.z, val, lerp));
+			thiz.SetLPosZ(Mathf.Lerp(thiz.localPosition.z, val, lerp));
 		}
 
-		public static float GetLScaleX(this Transform _this)
+		public static float GetLScaleX(this Transform thiz)
 		{
-			return _this.localScale.x;
+			return thiz.localScale.x;
 		}
 
-		public static void SetLScaleX(this Transform _this, float val)
+		public static void SetLScaleX(this Transform thiz, float val)
 		{
-			var scale = _this.localScale;
+			var scale = thiz.localScale;
 			scale.x = val;
-			_this.localScale = scale;
+			thiz.localScale = scale;
 		}
 
-		public static float GetLScaleY(this Transform _this)
+		public static float GetLScaleY(this Transform thiz)
 		{
-			return _this.localScale.y;
+			return thiz.localScale.y;
 		}
 
-		public static void SetLScaleY(this Transform _this, float val)
+		public static void SetLScaleY(this Transform thiz, float val)
 		{
-			var scale = _this.localScale;
+			var scale = thiz.localScale;
 			scale.y = val;
-			_this.localScale = scale;
+			thiz.localScale = scale;
 		}
 
-		public static float GetLScaleZ(this Transform _this)
+		public static float GetLScaleZ(this Transform thiz)
 		{
-			return _this.localScale.z;
+			return thiz.localScale.z;
 		}
 
-		public static void SetLScaleZ(this Transform _this, float val)
+		public static void SetLScaleZ(this Transform thiz, float val)
 		{
-			var scale = _this.localScale;
+			var scale = thiz.localScale;
 			scale.z = val;
-			_this.localScale = scale;
+			thiz.localScale = scale;
 		}
 
-		public static float GetEulerX(this Transform _this, float val)
+		public static float GetEulerX(this Transform thiz, float val)
 		{
-			return _this.eulerAngles.x;
+			return thiz.eulerAngles.x;
 		}
 
-		public static void SetEulerX(this Transform _this, float val)
+		public static void SetEulerX(this Transform thiz, float val)
 		{
-			var euler = _this.eulerAngles;
+			var euler = thiz.eulerAngles;
 			euler.x = val;
-			_this.eulerAngles = euler;
+			thiz.eulerAngles = euler;
 		}
 
-		public static float GetEulerY(this Transform _this, float val)
+		public static float GetEulerY(this Transform thiz, float val)
 		{
-			return _this.eulerAngles.y;
+			return thiz.eulerAngles.y;
 		}
 
-		public static void SetEulerY(this Transform _this, float val)
+		public static void SetEulerY(this Transform thiz, float val)
 		{
-			var euler = _this.eulerAngles;
+			var euler = thiz.eulerAngles;
 			euler.y = val;
-			_this.eulerAngles = euler;
+			thiz.eulerAngles = euler;
 		}
 
-		public static float GetEulerZ(this Transform _this, float val)
+		public static float GetEulerZ(this Transform thiz, float val)
 		{
-			return _this.eulerAngles.z;
+			return thiz.eulerAngles.z;
 		}
 
-		public static void SetEulerZ(this Transform _this, float val)
+		public static void SetEulerZ(this Transform thiz, float val)
 		{
-			var euler = _this.eulerAngles;
+			var euler = thiz.eulerAngles;
 			euler.z = val;
-			_this.eulerAngles = euler;
+			thiz.eulerAngles = euler;
 		}
 
-		public static float GetLEulerX(this Transform _this)
+		public static float GetLEulerX(this Transform thiz)
 		{
-			return _this.localEulerAngles.x;
+			return thiz.localEulerAngles.x;
 		}
 
-		public static void SetLEulerX(this Transform _this, float val)
+		public static void SetLEulerX(this Transform thiz, float val)
 		{
-			var euler = _this.localEulerAngles;
+			var euler = thiz.localEulerAngles;
 			euler.x = val;
-			_this.localEulerAngles = euler;
+			thiz.localEulerAngles = euler;
 		}
 
-		public static float GetLEulerY(this Transform _this)
+		public static float GetLEulerY(this Transform thiz)
 		{
-			return _this.localEulerAngles.y;
+			return thiz.localEulerAngles.y;
 		}
 
-		public static void SetLEulerY(this Transform _this, float val)
+		public static void SetLEulerY(this Transform thiz, float val)
 		{
-			var euler = _this.localEulerAngles;
+			var euler = thiz.localEulerAngles;
 			euler.y = val;
-			_this.localEulerAngles = euler;
+			thiz.localEulerAngles = euler;
 		}
 
-		public static float GetLEulerZ(this Transform _this)
+		public static float GetLEulerZ(this Transform thiz)
 		{
-			return _this.localEulerAngles.z;
+			return thiz.localEulerAngles.z;
 		}
 
-		public static void SetLEulerZ(this Transform _this, float val)
+		public static void SetLEulerZ(this Transform thiz, float val)
 		{
-			var euler = _this.localEulerAngles;
+			var euler = thiz.localEulerAngles;
 			euler.z = val;
-			_this.localEulerAngles = euler;
+			thiz.localEulerAngles = euler;
 		}
 
-		public static void AddLEulerX(this Transform _this, float val)
+		public static void AddLEulerX(this Transform thiz, float val)
 		{
-			_this.SetLEulerX(_this.GetLEulerX() + val);
+			thiz.SetLEulerX(thiz.GetLEulerX() + val);
 		}
 
-		public static void AddLEulerY(this Transform _this, float val)
+		public static void AddLEulerY(this Transform thiz, float val)
 		{
-			_this.SetLEulerY(_this.GetLEulerY() + val);
+			thiz.SetLEulerY(thiz.GetLEulerY() + val);
 		}
 
-		public static void AddLEulerZ(this Transform _this, float val)
+		public static void AddLEulerZ(this Transform thiz, float val)
 		{
-			_this.SetLEulerZ(_this.GetLEulerZ() + val);
+			thiz.SetLEulerZ(thiz.GetLEulerZ() + val);
 		}
 	}
 }

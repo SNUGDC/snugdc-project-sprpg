@@ -5,13 +5,13 @@ namespace SPRPG
 {
 	public class UserCharacter
 	{
-		public readonly CharacterID ID;
+		public readonly CharacterId Id;
 		public readonly CharacterData Data;
 
 		public UserCharacter(string id, SaveData.Character character)
 		{
-			ID = CharacterHelper.MakeID(int.Parse(id));
-			Data = CharacterDB._.Find(ID);
+			Id = CharacterHelper.MakeId(int.Parse(id));
+			Data = CharacterDB._.Find(Id);
 		}
 
 		public SaveData.Character ToSaveData()
@@ -19,22 +19,22 @@ namespace SPRPG
 			return new SaveData.Character();
 		}
 
-		public static implicit operator CharacterID(UserCharacter _this)
+		public static implicit operator CharacterId(UserCharacter thiz)
 		{
-			return _this.ID;
+			return thiz.Id;
 		}
 	}
 
 	public static class UserCharacters
 	{
-		private static readonly Dictionary<CharacterID, UserCharacter> _data = new Dictionary<CharacterID, UserCharacter>(CharacterConst.Count);
+		private static readonly Dictionary<CharacterId, UserCharacter> _data = new Dictionary<CharacterId, UserCharacter>(CharacterConst.Count);
 
 		public static bool Load(Dictionary<string, SaveData.Character> characters)
 		{
 			foreach (var kv in characters)
 			{
 				var value = new UserCharacter(kv.Key, kv.Value);
-				_data[value.ID] = value;
+				_data[value.Id] = value;
 			}
 
 			return true;
@@ -50,7 +50,7 @@ namespace SPRPG
 			return _data.Values;
 		}
 
-		public static UserCharacter Find(CharacterID id)
+		public static UserCharacter Find(CharacterId id)
 		{
 			UserCharacter ret;
 			_data.TryGet(id, out ret);

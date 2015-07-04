@@ -16,7 +16,7 @@ namespace SPRPG
 			public PartyEntry()
 			{}
 
-			public PartyEntry(CharacterID id)
+			public PartyEntry(CharacterId id)
 			{
 				Character = (int)id;
 			}

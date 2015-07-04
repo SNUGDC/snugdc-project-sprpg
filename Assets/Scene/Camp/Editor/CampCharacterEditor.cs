@@ -14,7 +14,7 @@ namespace SPRPG.Camp
 				return;
 
 			Handles.Label(Target.transform.position + Vector3.down * 0.1f,
-				data.ID.ToString(),
+				data.Id.ToString(),
 				new GUIStyle { fontSize = 16 }); 
 		}
 	}

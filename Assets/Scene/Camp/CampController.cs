@@ -17,7 +17,7 @@ namespace SPRPG.Camp
 		[SerializeField]
 		private Transform _worldAnchor;
 
-		private readonly Dictionary<CharacterID, CampCharacter> _characters = new Dictionary<CharacterID, CampCharacter>();
+		private readonly Dictionary<CharacterId, CampCharacter> _characters = new Dictionary<CharacterId, CampCharacter>();
 
 		void Start()
 		{
@@ -40,7 +40,7 @@ namespace SPRPG.Camp
 		{
 			var character = CampCharacter.Instantiate(userCharacter);
 			character.transform.SetParent(_worldRoot, false);
-			_characters[userCharacter.ID] = character;
+			_characters[userCharacter.Id] = character;
 		}
 	}
 }

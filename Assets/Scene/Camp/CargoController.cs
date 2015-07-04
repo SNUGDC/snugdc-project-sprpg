@@ -41,7 +41,7 @@ namespace SPRPG.Camp
 			this[entry.Idx].SetCharacter(entry.Character);
 		}
 
-		private void OnRemove(PartyIdx idx, CharacterID id)
+		private void OnRemove(PartyIdx idx, CharacterId id)
 		{
 			this[idx].RemoveCharacter();
 		}

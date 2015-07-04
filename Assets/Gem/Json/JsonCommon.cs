@@ -9,14 +9,14 @@ namespace LitJson
 		public int X;
 		public int Y;
 
-		public static implicit operator UnityEngine.Vector2(Point2 _this)
+		public static implicit operator UnityEngine.Vector2(Point2 thiz)
 		{
-			return new UnityEngine.Vector2(_this.X, _this.Y);
+			return new UnityEngine.Vector2(thiz.X, thiz.Y);
 		}
 
-		public static implicit operator UnityEngine.Vector3(Point2 _this)
+		public static implicit operator UnityEngine.Vector3(Point2 thiz)
 		{
-			return (UnityEngine.Vector2) _this;
+			return (UnityEngine.Vector2) thiz;
 		}
 	}
 
@@ -26,14 +26,14 @@ namespace LitJson
 		public double X;
 		public double Y;
 
-		public static implicit operator UnityEngine.Vector2(Vector2 _this)
+		public static implicit operator UnityEngine.Vector2(Vector2 thiz)
 		{
-			return new UnityEngine.Vector2((float)_this.X, (float)_this.Y);
+			return new UnityEngine.Vector2((float)thiz.X, (float)thiz.Y);
 		}
 
-		public static implicit operator UnityEngine.Vector3(Vector2 _this)
+		public static implicit operator UnityEngine.Vector3(Vector2 thiz)
 		{
-			return (UnityEngine.Vector2)_this;
+			return (UnityEngine.Vector2)thiz;
 		}
 	}
 
@@ -65,9 +65,9 @@ namespace LitJson
 				&& MaxX == 0 && MaxY == 0;
 		}
 
-		public static implicit operator Rect(IntRect _this)
+		public static implicit operator Rect(IntRect thiz)
 		{
-			return new Rect(_this.MinX, _this.MinY, _this.Width, _this.Height);
+			return new Rect(thiz.MinX, thiz.MinY, thiz.Width, thiz.Height);
 		}
 	}
 

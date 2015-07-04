@@ -7,7 +7,7 @@ namespace SPRPG
 	[CustomEditor(typeof (CharacterSkinData))]
 	public class CharacterSkinDataEditor : ScriptableObjectEditor<CharacterSkinData>
 	{
-		private CharacterID _id;
+		private CharacterId _id;
 
 		public override void OnInspectorGUI()
 		{
@@ -15,7 +15,7 @@ namespace SPRPG
 
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("auto");
-			_id = (CharacterID)EditorGUILayout.IntField((int)_id);
+			_id = (CharacterId)EditorGUILayout.IntField((int)_id);
 
 			if (GUILayout.Button("apply"))
 				AutoApply(Target, _id);
@@ -25,7 +25,7 @@ namespace SPRPG
 
 		private struct Loader
 		{
-			public Loader(CharacterID id)
+			public Loader(CharacterId id)
 			{
 				var idStr = ((int)id).ToString();
 				_dir = "Assets/R/Character/" + idStr + "/ch_" + idStr + "_";
@@ -51,7 +51,7 @@ namespace SPRPG
 			private readonly string _dir;
 		}
 
-		public static void AutoApply(CharacterSkinData data, CharacterID id)
+		public static void AutoApply(CharacterSkinData data, CharacterId id)
 		{
 			var loader = new Loader(id);
 
@@ -79,7 +79,7 @@ namespace SPRPG
 	[CustomEditor(typeof(CharacterSkeleton))]
 	public class CharacterSkeletonEditor : ComponentEditor<CharacterSkeleton>
 	{
-		private CharacterID _id;
+		private CharacterId _id;
 
 		public override void OnInspectorGUI()
 		{
@@ -90,7 +90,7 @@ namespace SPRPG
 
 			GUILayout.BeginHorizontal();
 
-			_id = (CharacterID)EditorGUILayout.IntField((int) _id);
+			_id = (CharacterId)EditorGUILayout.IntField((int) _id);
 			if (GUILayout.Button("apply"))
 			{
 				var data = CharacterDB._.Find(_id);

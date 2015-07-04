@@ -24,7 +24,7 @@ namespace SPRPG
 		}
 #endif
 
-		public CharacterData Find(CharacterID id)
+		public CharacterData Find(CharacterId id)
 		{
 			var ret = _datas.GetOrDefault((int) id);
 			if (ret == null)

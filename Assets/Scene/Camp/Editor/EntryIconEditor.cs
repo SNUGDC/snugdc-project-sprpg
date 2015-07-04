@@ -7,7 +7,7 @@ namespace SPRPG.Camp
 	[CustomEditor(typeof(EntryIcon))]
 	public class EntryIconEditor : ComponentEditor<EntryIcon>
 	{
-		private CharacterID _character;
+		private CharacterId _character;
 
 		public override void OnInspectorGUI()
 		{
@@ -17,7 +17,7 @@ namespace SPRPG.Camp
 				return;
 
 			GUILayout.BeginHorizontal();
-			_character = (CharacterID)EditorGUILayout.IntField("character", (int)_character);
+			_character = (CharacterId)EditorGUILayout.IntField("character", (int)_character);
 			if (GUILayout.Button("set"))
 				Target.SetCharacter(_character);
 			if (GUILayout.Button("remove"))

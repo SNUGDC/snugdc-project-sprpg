@@ -2,9 +2,9 @@
 {
 	public struct PartyDef
 	{
-		public CharacterID _1;
-		public CharacterID _2;
-		public CharacterID _3;
+		public CharacterId _1;
+		public CharacterId _2;
+		public CharacterId _3;
 	}
 
 	public class Party
@@ -28,7 +28,7 @@
 			Leader = this[PartyIdx._1];
 		}
 
-		private void InitCharacter(PartyIdx idx, CharacterID id)
+		private void InitCharacter(PartyIdx idx, CharacterId id)
 		{
 			this[idx] = new Character(CharacterDB._.Find(id));
 		}

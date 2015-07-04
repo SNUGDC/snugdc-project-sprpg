@@ -13,9 +13,9 @@ namespace SPRPG
 
 			if ((Target.Skin == null) && GUILayout.Button("create"))
 			{
-				var skinName = "Character" + Target.ID + "Skin";
+				var skinName = "Character" + Target.Id + "Skin";
 				Target.Skin = Gem.ScriptableObjectUtility.CreateAsset<CharacterSkinData>(skinName);
-				CharacterSkinDataEditor.AutoApply(Target.Skin, Target.ID);
+				CharacterSkinDataEditor.AutoApply(Target.Skin, Target.Id);
 				EditorUtility.SetDirty(Target);
 			}
 		}
@@ -34,9 +34,9 @@ namespace SPRPG
 			if (GUILayout.Button("add"))
 			{
 				var datas = Target.Edit();
-				var newID = (CharacterID)datas.Count;
-				var data = Gem.ScriptableObjectUtility.CreateAsset<CharacterData>("Character" + newID);
-				data.ID = newID;
+				var newId = (CharacterId)datas.Count;
+				var data = Gem.ScriptableObjectUtility.CreateAsset<CharacterData>("Character" + newId);
+				data.Id = newId;
 				datas.Add(data);
 			}
 		}

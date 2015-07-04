@@ -59,10 +59,10 @@ namespace Gem
 			return false;
 		}
 
-		public static bool TryGet(this JsonData _this, string key, out bool val)
+		public static bool TryGet(this JsonData thiz, string key, out bool val)
 		{
 			JsonData data;
-			if (_this.TryGet(key, out data))
+			if (thiz.TryGet(key, out data))
 			{
 				if (data.IsBoolean)
 				{
@@ -78,11 +78,11 @@ namespace Gem
 			return false;
 		}
 
-		public static bool TryGet(this JsonData _this, string key, out int val)
+		public static bool TryGet(this JsonData thiz, string key, out int val)
 		{
 			JsonData data;
 			
-			if (_this.TryGet(key, out data))
+			if (thiz.TryGet(key, out data))
 			{
 				if (data.IsNatural)
 				{
@@ -99,11 +99,11 @@ namespace Gem
 			return false;
 		}
 		
-		public static bool TryGet(this JsonData _this, string key, out float val)
+		public static bool TryGet(this JsonData thiz, string key, out float val)
 		{
 			JsonData data;
 			
-			if (_this.TryGet(key, out data))
+			if (thiz.TryGet(key, out data))
 			{
 				if (data.IsNatural)
 				{
@@ -125,28 +125,28 @@ namespace Gem
 			return false;
 		}
 
-		public static bool BoolOrDefault(this JsonData _this, string key, bool _default = false)
+		public static bool BoolOrDefault(this JsonData thiz, string key, bool _default = false)
 		{
 			bool ret;
-			return _this.TryGet(key, out ret) ? ret : _default;
+			return thiz.TryGet(key, out ret) ? ret : _default;
 		}
 
-		public static int IntOrDefault(this JsonData _this, string key, int _default = 0)
+		public static int IntOrDefault(this JsonData thiz, string key, int _default = 0)
 		{
 			int ret;
-			return _this.TryGet(key, out ret) ? ret : _default;
+			return thiz.TryGet(key, out ret) ? ret : _default;
 		}
 
-		public static float FloatOrDefault(this JsonData _this, string key, float _default = 0)
+		public static float FloatOrDefault(this JsonData thiz, string key, float _default = 0)
 		{
 			float ret;
-			return _this.TryGet(key, out ret) ? ret : _default;
+			return thiz.TryGet(key, out ret) ? ret : _default;
 		}
 
-		public static string StringOrDefault(this JsonData _this, string key, string _default = "")
+		public static string StringOrDefault(this JsonData thiz, string key, string _default = "")
 		{
 			string ret;
-			return _this.TryGet(key, out ret) ? ret : _default;
+			return thiz.TryGet(key, out ret) ? ret : _default;
 		}
 
 		public static T ParseOrDefault<T>(this JsonData thiz)

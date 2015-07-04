@@ -7,7 +7,7 @@ using UnityEngine;
 namespace SPRPG
 {
 	using OnAddEntry = Action<PartyEntry>;
-	using OnRemoveEntry = Action<CharacterID>;
+	using OnRemoveEntry = Action<CharacterId>;
 
 	public enum PartyIdx { _1 = 0, _2 = 1, _3 = 2 }
 
@@ -18,9 +18,9 @@ namespace SPRPG
 			return (PartyIdx)val;
 		}
 
-		public static int ToArrayIndex(this PartyIdx _this)
+		public static int ToArrayIndex(this PartyIdx thiz)
 		{
-			return (int)_this;
+			return (int)thiz;
 		}
 
 		public static IEnumerable<PartyIdx> GetEnumerable()
@@ -45,7 +45,7 @@ namespace SPRPG
 		public PartyEntry(PartyIdx idx, SaveData.PartyEntry data)
 		{
 			Idx = idx;
-			Character = UserCharacters.Find((CharacterID)data.Character);
+			Character = UserCharacters.Find((CharacterId)data.Character);
 		}
 
 		public void JustSetIdx(PartyIdx idx)
@@ -55,7 +55,7 @@ namespace SPRPG
 
 		public SaveData.PartyEntry ToSaveData()
 		{
-			return new SaveData.PartyEntry(Character.ID);
+			return new SaveData.PartyEntry(Character.Id);
 		}
 	}
 
@@ -68,7 +68,7 @@ namespace SPRPG
 		private readonly List<PartyEntry> _entries = new List<PartyEntry>(Size) {null, null, null};
 
 		public Action<PartyEntry> OnAdd;
-		public Action<PartyIdx, CharacterID> OnRemove;
+		public Action<PartyIdx, CharacterId> OnRemove;
 
 		private readonly Box<OnAddEntry>[] _onAdd = { new Box<OnAddEntry>(), new Box<OnAddEntry>(), new Box<OnAddEntry>() };
 		private readonly Box<OnRemoveEntry>[] _onRemove = { new Box<OnRemoveEntry>(), new Box<OnRemoveEntry>(), new Box<OnRemoveEntry>() };
@@ -103,7 +103,7 @@ namespace SPRPG
 			}
 		}
 
-		public PartyEntry Find(CharacterID id)
+		public PartyEntry Find(CharacterId id)
 		{
 			foreach (var entry in _entries)
 			{
@@ -137,7 +137,7 @@ namespace SPRPG
 
 		public bool TrySet(PartyIdx idx, UserCharacter character)
 		{
-			var id = character.ID;
+			var id = character.Id;
 
 			if (Find(id) != null)
 			{
@@ -180,14 +180,14 @@ namespace SPRPG
 			return true;
 		}
 
-		public bool Remove(CharacterID id)
+		public bool Remove(CharacterId id)
 		{
 			var idxInt = _entries.SetFirstIf(null, entry => (entry != null && entry.Character == id));
 			if (idxInt.HasValue) AfterRemove(PartyHelper.MakeIdxFromArrayIndex(idxInt.Value), id);
 			return idxInt.HasValue;
 		}
 
-		private void AfterRemove(PartyIdx idx, CharacterID character)
+		private void AfterRemove(PartyIdx idx, CharacterId character)
 		{
 			GetOnRemove(idx).Value.CheckAndCall(character);
 			OnRemove.CheckAndCall(idx, character);

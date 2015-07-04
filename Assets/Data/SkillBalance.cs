@@ -12,7 +12,7 @@ namespace SPRPG
 		public SkillKey Key;
 		public string Name;
 		public SkillTear Tear;
-		public CharacterID MajorUser;
+		public CharacterId MajorUser;
 		public string DescriptionFormat;
 		public JsonData Arguments;
 

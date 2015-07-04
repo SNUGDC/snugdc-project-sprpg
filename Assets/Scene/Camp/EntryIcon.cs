@@ -9,7 +9,7 @@ namespace SPRPG.Camp
 		[SerializeField]
 		private PartyIdx _idx;
 		public PartyIdx Idx { get { return _idx; } }
-		public CharacterID? Character { get; private set; }
+		public CharacterId? Character { get; private set; }
 
 		public EntryIconDrag Drag;
 
@@ -66,7 +66,7 @@ namespace SPRPG.Camp
 			RegisterPartyCallback(_idx);
 		}
 
-		public void SetCharacter(CharacterID id)
+		public void SetCharacter(CharacterId id)
 		{
 			var data = CharacterDB._.Find(id);
 			if (data == null) return;
@@ -113,7 +113,7 @@ namespace SPRPG.Camp
 			SetCharacter(entry.Character);
 		}
 
-		private void OnPartyRemoved(CharacterID character)
+		private void OnPartyRemoved(CharacterId character)
 		{
 			RemoveCharacter();
 		}

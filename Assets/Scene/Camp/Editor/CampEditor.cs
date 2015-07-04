@@ -7,7 +7,7 @@ namespace SPRPG.Camp
 	[CustomEditor(typeof(CargoEntry))]
 	public class CargoEntryEditor : ComponentEditor<CargoEntry>
 	{
-		private CharacterID _character;
+		private CharacterId _character;
 
 		public override void OnInspectorGUI()
 		{
@@ -18,7 +18,7 @@ namespace SPRPG.Camp
 
 			GUILayout.BeginHorizontal();
 
-			_character = (CharacterID)EditorGUILayout.IntField("character", (int)_character);
+			_character = (CharacterId)EditorGUILayout.IntField("character", (int)_character);
 
 			if (GUILayout.Button("apply"))
 				Target.SetCharacter(_character);

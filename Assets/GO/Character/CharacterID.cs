@@ -1,6 +1,6 @@
 ﻿namespace SPRPG
 {
-	public enum CharacterID
+	public enum CharacterId
 	{
 		Warrior,
 	}
@@ -12,9 +12,9 @@
 
 	public static class CharacterHelper
 	{
-		public static CharacterID MakeID(int id)
+		public static CharacterId MakeId(int id)
 		{
-			return (CharacterID)id;
+			return (CharacterId)id;
 		}
 	}
 }

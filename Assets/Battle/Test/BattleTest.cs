@@ -10,9 +10,9 @@ namespace SPRPG.Battle
 		{
 			var party = new PartyDef
 			{
-				_1 = (CharacterID) 0,
-				_2 = (CharacterID) 1,
-				_3 = (CharacterID) 2,
+				_1 = (CharacterId) 0,
+				_2 = (CharacterId) 1,
+				_3 = (CharacterId) 2,
 			};
 
 			BattleWrapper.Def = new BattleDef(Stage, party)
