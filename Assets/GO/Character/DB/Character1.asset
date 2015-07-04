@@ -11,8 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a3ab9c227552d4c9952d4e5b150ab8, type: 3}
   m_Name: Character1
   m_EditorClassIdentifier: 
-  _id: 1
+  Id: 2
   Skin: {fileID: 11400000, guid: bc0db070cd23b0042a2daa5d38c070da, type: 2}
+  Stats:
+    _hp: 100
+  Passive: 0
+  SkillSet:
+    _1: 1
+    _2: 2
+    _3: 3
+    _4: 4
   CampEntryIcon: {fileID: 21300000, guid: 554a8af6267c3db4d89b5a2d8f7b9637, type: 3}
   CampAnimatorController: {fileID: 22100000, guid: 2493ef259e5c60041babb775f229f0ce,
     type: 2}

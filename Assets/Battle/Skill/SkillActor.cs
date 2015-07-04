@@ -12,9 +12,10 @@ namespace SPRPG.Battle
 		}
 
 		public SkillKey Key { get { return _data.Key; } }
+		public SkillBalanceData Data { get { return _data; } }
 		private readonly SkillBalanceData _data;
 
-		public SkillActor(SkillBalanceData data)
+		protected SkillActor(SkillBalanceData data)
 		{
 			_data = data;
 		}

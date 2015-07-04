@@ -4,24 +4,17 @@ using UnityEngine;
 namespace SPRPG
 {
 	[Serializable]
-	public struct SkillSetDef
+	public class SkillSetDef
 	{
-		public SkillKey _1;
-		public SkillKey _2;
-		public SkillKey _3;
-		public SkillKey _4;
+		public SkillKey _1 = SkillKey.None1;
+		public SkillKey _2 = SkillKey.None2;
+		public SkillKey _3 = SkillKey.None3;
+		public SkillKey _4 = SkillKey.None4;
 	}
 
 	public class CharacterData : ScriptableObject
 	{
-		[SerializeField]
-		private int _id;
-		public CharacterId Id
-		{
-			get { return (CharacterId) _id; }
-			set { _id = (int) value; }
-		}
-
+		public CharacterId Id;
 		public CharacterSkinData Skin;
 
 		public Stats Stats;

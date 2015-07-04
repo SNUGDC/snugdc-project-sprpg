@@ -2,7 +2,9 @@
 {
 	public enum CharacterId
 	{
-		Warrior,
+		Warrior = 1,
+		Wizard = 2,
+		Archer = 3,
 	}
 
 	public static class CharacterConst

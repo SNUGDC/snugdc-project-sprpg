@@ -5,10 +5,17 @@
 		Normal = 0,
 	}
 
-	public enum PassiveKey { }
+	public enum PassiveKey
+	{
+		None = 0,
+	}
 
 	public enum SkillKey
 	{
+		None1 = 1,
+		None2 = 2,
+		None3 = 3,
+		None4 = 4,
 		WarriorAttack,
 	}
 
@@ -17,12 +24,12 @@
 
 	public enum StageId
 	{
-		Radiation,
+		Radiation = 1,
 	}
 
 	public enum BossId
 	{
-		Radiation,
+		Radiation = 1,
 	}
 
 	public static partial class ExternsionMethods

@@ -1,4 +1,8 @@
 [
+	{ "Key": "None1", "Tear": 1 },
+	{ "Key": "None2", "Tear": 2 },
+	{ "Key": "None3", "Tear": 3 },
+	{ "Key": "None4", "Tear": 4 },
 	{
 		"Key": "WarriorAttack",
 		"Name": "공격",
