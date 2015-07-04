@@ -84,14 +84,14 @@ namespace Gem
 			
 			if (_this.TryGet(key, out data))
 			{
-				if (data.IsInt)
+				if (data.IsNatural)
 				{
 					val = (int) data;
 					return true;
 				}
 				else
 				{
-					Debug.LogError(MakeMessageWrongType(JsonType.Int, data.GetJsonType()));
+					Debug.LogError(MakeMessageWrongType(JsonType.Natural, data.GetJsonType()));
 				}
 			}
 
@@ -105,19 +105,19 @@ namespace Gem
 			
 			if (_this.TryGet(key, out data))
 			{
-				if (data.IsInt)
+				if (data.IsNatural)
 				{
 					val = (int) data;
 					return true;
 				}
-				else if (data.IsDouble)
+				else if (data.IsReal)
 				{
-					val = (float)(double) data;
+					val = (float) data;
 					return true;
 				}
 				else
 				{
-					Debug.LogError(MakeMessageWrongType(JsonType.Double, data.GetJsonType()));
+					Debug.LogError(MakeMessageWrongType(JsonType.Real, data.GetJsonType()));
 				}
 			}
 
