@@ -1,4 +1,6 @@
-﻿namespace SPRPG.Battle
+﻿using UnityEngine;
+
+namespace SPRPG.Battle
 {
 	public class SkillManager
 	{
@@ -7,7 +9,11 @@
 		public SkillActor this[SkillSlot slot]
 		{
 			get { return _actors[slot.ToIndex()]; }
-			private set { _actors[slot.ToIndex()] = value; }
+			private set
+			{
+				Debug.Assert(slot.ToTear() == value.Data.Tear, "tear and slot does not match.");
+				_actors[slot.ToIndex()] = value;
+			}
 		}
 
 		public SkillManager(SkillSetDef def)

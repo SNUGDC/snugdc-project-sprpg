@@ -19,8 +19,7 @@ namespace SPRPG.Battle
 					return new AttackSkillActor(data, damage);
 			}
 
-			// todo
-			return new NullSkillActor();
+			return new NullSkillActor(data);
 		}
 	}
 }

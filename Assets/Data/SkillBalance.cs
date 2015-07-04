@@ -7,8 +7,6 @@ namespace SPRPG
 {
 	public class SkillBalanceData
 	{
-		[JsonInclude]
-		public string Key1;
 		public SkillKey Key;
 		public string Name;
 		public SkillTear Tear;

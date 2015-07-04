@@ -6,6 +6,10 @@
 			: base(new SkillBalanceData())
 		{ }
 
+		public NullSkillActor(SkillBalanceData data)
+			: base(data)
+		{ }
+
 		public override void Perform()
 		{ }
 	}
