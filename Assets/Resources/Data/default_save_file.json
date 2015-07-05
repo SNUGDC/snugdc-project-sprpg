@@ -1,19 +1,19 @@
 {
 	"Characters" : {
-		"0" : {},
-		"1" : {},
-		"2" : {}
+		"Warrior" : {},
+		"Wizard" : {},
+		"Archer" : {}
 
 	},
 	"Party" : {
 		"_1" : {
-			"Character" : 0
+			"Character" : "Warrior"
 		},
 		"_2" : {
-			"Character" : 1
+			"Character" : "Wizard"
 		},
 		"_3" : {
-			"Character" : 2
+			"Character" : "Archer"
 		}
 	}
 }

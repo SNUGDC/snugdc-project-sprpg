@@ -14,6 +14,11 @@
 
 	public static class CharacterHelper
 	{
+		public static CharacterId MakeIdWithIndex(int i)
+		{
+			return (CharacterId)(i + 1);
+		}
+
 		public static int ToIndex(this CharacterId thiz)
 		{
 			return (int) thiz - 1;

@@ -40,7 +40,7 @@ namespace SPRPG
 				}
 			}
 
-			CharacterDic = Characters.ToDictionary(character => (CharacterId)i++);
+			CharacterDic = Characters.ToDictionary(character => CharacterHelper.MakeIdWithIndex(i++));
 		}
 	}
 

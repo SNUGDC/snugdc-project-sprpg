@@ -11,14 +11,14 @@ namespace SPRPG
 
 		public class PartyEntry
 		{
-			public int Character;
+			public CharacterId Character;
 
 			public PartyEntry()
 			{}
 
 			public PartyEntry(CharacterId id)
 			{
-				Character = (int)id;
+				Character = id;
 			}
 		}
 
