@@ -17,6 +17,7 @@ namespace SPRPG.Battle
 		public readonly BattlePhase ResultWon;
 		public readonly BattlePhase ResultLost;
 
+		public bool IsIdle { get { return Current == Idle; } }
 		public bool IsResult { get { return Current == ResultWon || Current == ResultLost; } }
 
 		public BattleFsm(Battle context)

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
+	public enum JobId { }
+
 	public class SchedulerJobQueue
 	{
-		public enum JobId { }
-
 		private struct Job
 		{
 			public JobId Id;
@@ -24,6 +24,7 @@ namespace SPRPG.Battle
 		private readonly Scheduler _scheduler;
 		private Tick _lastSync;
 		private readonly Dictionary<Tick, List<Job>> _jobs = new Dictionary<Tick, List<Job>>();
+		private readonly Dictionary<JobId, Tick> _jobToTick = new Dictionary<JobId, Tick>();
 
 		public SchedulerJobQueue(Scheduler scheduler)
 		{
@@ -46,8 +47,8 @@ namespace SPRPG.Battle
 
 			Debug.Assert(callback != null, "callback is null.");
 
-			var jobsTick = _jobs[tick];
-			if (jobsTick == null)
+			List<Job> jobsTick;
+			if (!_jobs.TryGetValue(tick, out jobsTick))
 			{
 				jobsTick = new List<Job>();
 				_jobs[tick] = jobsTick;
@@ -55,7 +56,22 @@ namespace SPRPG.Battle
 
 			var jobId = AssignUniqueId();
 			jobsTick.Add(new Job { Id = jobId, Callback = callback });
+			_jobToTick.Add(jobId, tick);
 			return jobId;
+		}
+
+		public bool Remove(JobId jobId)
+		{
+			Tick tick;
+			if (!_jobToTick.TryGetAndRemove(jobId, out tick))
+			{
+				Debug.LogError("job " + jobId + " not found.");
+				return false;
+			}
+
+			var result = _jobs[tick].RemoveIf(job => job.Id == jobId);
+			Debug.Assert(result);
+			return true;
 		}
 
 		public void Sync()
@@ -72,7 +88,10 @@ namespace SPRPG.Battle
 				return;
 
 			foreach (var job in jobsTick)
+			{
+				_jobToTick.Remove(job.Id);
 				job.Callback();
+			}
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
@@ -57,10 +58,13 @@ namespace SPRPG.Battle
 			_boss = BossFactory.Create(def.Stage.ToBossId());
 
 			SkillActor.Reset(this);
+
+			Scheduler.OnProceed += OnTick;
 		}
 
 		void OnDestroy()
 		{
+			Scheduler.OnProceed -= OnTick;
 			SkillActor.Reset(null);
 		}
 
@@ -70,6 +74,12 @@ namespace SPRPG.Battle
 
 			if (_inputReceiver != null)
 				_inputReceiver.Update(dt);
+		}
+
+		private void OnTick(Scheduler scheduler)
+		{
+			if (Fsm.IsIdle)
+				Fsm.Cycle();
 		}
 
 		private void PerformSkill(Term term, InputGrade inputGrade)
@@ -90,5 +100,17 @@ namespace SPRPG.Battle
 #if UNITY_EDITOR
 		public InputReceiver EditInputReceiver() { return _inputReceiver; }
 #endif
+	}
+
+	public static class BattleHelper
+	{
+		public static JobId AddPlayerPerform(this Battle thiz, Tick delay, Action callback)
+		{
+			return thiz.Fsm.PlayerPerform.JobQueue.AddRelative(delay, callback);
+		}
+		public static bool RemovePlayerPerform(this Battle thiz, JobId jobId)
+		{
+			return thiz.Fsm.PlayerPerform.JobQueue.Remove(jobId);
+		}
 	}
 }

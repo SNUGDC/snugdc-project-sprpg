@@ -21,5 +21,6 @@ namespace SPRPG.Battle
 		}
 
 		public abstract void Perform();
+		public abstract void Cancel();
 	}
 }

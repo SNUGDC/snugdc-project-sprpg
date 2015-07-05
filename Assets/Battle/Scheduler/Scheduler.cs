@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Gem;
 using UnityEngine;
 
@@ -46,6 +45,8 @@ namespace SPRPG.Battle
 
 		public Period Period { get { return (Period) ((int) Current/(int) Const.Period); } }
 
+		public Action<Scheduler> OnProceed;
+
 		public void Rebase()
 		{
 			Base = Current;
@@ -54,6 +55,7 @@ namespace SPRPG.Battle
 		public void Proceed()
 		{
 			++Current;
+			OnProceed.CheckAndCall(this);
 		}
 
 		public TermAndDistance GetCloseTermAndDistance()
