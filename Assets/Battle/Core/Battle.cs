@@ -21,6 +21,7 @@ namespace SPRPG.Battle
 	public class Battle 
 	{
 		public readonly Scheduler Scheduler = new Scheduler();
+		public readonly BattleFsm Fsm;
 
 		private readonly InputReceiver _inputReceiver;
 		private readonly SkillInputProcessor _skillInputProcessor;
@@ -33,6 +34,8 @@ namespace SPRPG.Battle
 
 		public Battle(BattleDef def)
 		{
+			Fsm = new BattleFsm(this);
+
 #if BALANCE
 			if (def.UseDataInput)
 			{
