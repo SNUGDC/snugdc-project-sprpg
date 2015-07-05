@@ -10,7 +10,7 @@ namespace SPRPG
 
 		public UserCharacter(string id, SaveData.Character character)
 		{
-			Id = CharacterHelper.MakeId(int.Parse(id));
+			Id = EnumHelper.ParseOrDefault<CharacterId>(id);
 			Data = CharacterDB._.Find(Id);
 		}
 

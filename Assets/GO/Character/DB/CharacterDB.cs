@@ -26,7 +26,7 @@ namespace SPRPG
 
 		public CharacterData Find(CharacterId id)
 		{
-			var ret = _datas.GetOrDefault((int) id);
+			var ret = _datas.GetOrDefault(id.ToIndex());
 			if (ret == null)
 				Debug.LogWarning(LogMessages.KeyNotExists(id));
 			return ret;
