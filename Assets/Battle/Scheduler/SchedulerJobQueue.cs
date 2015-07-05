@@ -18,7 +18,7 @@ namespace SPRPG.Battle
 		private static JobId _uniqueId = default(JobId);
 		private static JobId AssignUniqueId()
 		{
-			return _uniqueId++;
+			return ++_uniqueId;
 		}
 
 		private readonly Scheduler _scheduler;
@@ -33,21 +33,24 @@ namespace SPRPG.Battle
 
 		public JobId AddRelative(Tick tick, Action callback)
 		{
-			if (tick == default(Tick))
+			return AddAbsolte(_scheduler.Current.Add(tick), callback);
+		}
+
+		public JobId AddAbsolte(Tick tick, Action callback)
+		{
+			if (tick == _scheduler.Current)
 			{
-				Debug.Assert(tick == default(Tick), "you should not add job to current tick, anyway callback immediately.");
+				Debug.LogError("you should not add job to current tick, anyway callback immediately.");
 				return default(JobId);
 			}
 
 			Debug.Assert(callback != null, "callback is null.");
 
-			var absolute = _scheduler.Current.Add(tick);
-
-			var jobsTick = _jobs[absolute];
+			var jobsTick = _jobs[tick];
 			if (jobsTick == null)
 			{
 				jobsTick = new List<Job>();
-				_jobs[absolute] = jobsTick;
+				_jobs[tick] = jobsTick;
 			}
 
 			var jobId = AssignUniqueId();
@@ -57,7 +60,7 @@ namespace SPRPG.Battle
 
 		public void Sync()
 		{
-			Debug.Assert(_lastSync == _scheduler.Current - 1);
+			Debug.Assert(_lastSync == default(Tick) || _lastSync == _scheduler.Current - 1);
 			while (_lastSync < _scheduler.Current)
 				InvokeAndRemove(++_lastSync);
 		}
