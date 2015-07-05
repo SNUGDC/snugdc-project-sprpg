@@ -8,7 +8,7 @@ namespace SPRPG.Battle
 
 		public bool RealtimeEnabled = true;
 
-		private Battle _battle;
+		public Battle Battle { get; private set; }
 		private BattleRealtime _realtime;
 
 		void Start()
@@ -17,24 +17,17 @@ namespace SPRPG.Battle
 			if (Def == null)
 				return;
 
-			_battle = new Battle(Def);
-			_realtime = new BattleRealtime(_battle);
+			Battle = new Battle(Def);
+			_realtime = new BattleRealtime(Battle);
 			Def = null;
 		}
 
 		void Update()
 		{
-			_battle.Update(Time.deltaTime);
+			Battle.Update(Time.deltaTime);
 
 			if (RealtimeEnabled)
 				_realtime.Update(Time.deltaTime);
 		}
-
-#if UNITY_EDITOR
-		public Battle EditBattle()
-		{
-			return _battle;
-		}
-#endif
 	}
 }

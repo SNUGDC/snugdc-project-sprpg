@@ -8,7 +8,7 @@ namespace SPRPG.Battle
 	[CustomEditor(typeof(BattleWrapper))]
 	public class BattleWrapEditor : ComponentEditor<BattleWrapper>
 	{
-		private Battle _battle { get { return Target.EditBattle(); } }
+		private Battle _battle { get { return Target.Battle; } }
 
 		public override void OnInspectorGUI()
 		{
