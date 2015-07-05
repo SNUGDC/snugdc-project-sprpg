@@ -1,5 +1,4 @@
 ﻿#pragma warning disable 0168
-
 using UnityEngine;
 
 namespace SPRPG
@@ -30,6 +29,7 @@ namespace SPRPG
 			Config.TryLoad();
 			CampBalance._.Load();
 			SkillBalance._.Load();
+			Battle.BossBalance._.Load();
 
 			CharacterDB.Init(CharacterDB);
 

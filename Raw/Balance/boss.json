@@ -1,0 +1,17 @@
+{
+	"Radiation": {
+		"Name": "방사능",
+		"_stats": {
+			"Hp": 100
+		},
+		"_skills": [
+			{
+				"Key": "Attack",
+				"Proportion": 5,
+				"Duration": 60,
+				"_condition": { "Type": "True" },
+				"Arguments": { "Damage": 5 }
+			}
+		]
+	}
+}

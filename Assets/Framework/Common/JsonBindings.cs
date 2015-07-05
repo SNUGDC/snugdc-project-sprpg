@@ -1,5 +1,4 @@
 ﻿using System;
-using Gem;
 using LitJson;
 
 namespace SPRPG
@@ -21,11 +20,16 @@ namespace SPRPG
 		public static void Setup()
 		{
 			UnityTypeBindings.Register();
+			BindEnumAsNatural<SkillTear>();
+			BindEnumAsNatural<Battle.Tick>();
+			BindEnumAsNatural<Battle.Proportion>();
+			BindEnumAsNatural<Battle.Hp>();
 			BindEnumAsString<Element>();
 			BindEnumAsString<CharacterId>();
+			BindEnumAsString<BossId>();
 			BindEnumAsString<SkillKey>();
-			BindEnumAsNatural<SkillTear>();
-			BindEnumAsNatural<Battle.Hp>();
+			BindEnumAsString<Battle.BossConditionType>();
+			BindEnumAsString<Battle.BossSkillLocalKey>();
 		}
 	}
 }
