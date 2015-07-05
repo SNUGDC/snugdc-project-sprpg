@@ -10,9 +10,9 @@ namespace SPRPG.Battle
 
 		void Update()
 		{
-			var scheduler = HudController.Context.Scheduler;
-			_text.text = scheduler.Relative.ToString();
-			_text.color = scheduler.IsPerfectTerm ? Color.red : Color.black;
+			var clock = HudController.Context.PlayerClock;
+			_text.text = clock.Relative.ToString();
+			_text.color = clock.IsPerfectTerm ? Color.red : Color.black;
 		}
 	}
 }

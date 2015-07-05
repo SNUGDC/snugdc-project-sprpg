@@ -18,7 +18,7 @@
 			while (_elapsed >= _secondPerTick)
 			{
 				_elapsed -= _secondPerTick;
-				_battle.Scheduler.Proceed();
+				_battle.Clock.Proceed();
 			}
 		}
 	}

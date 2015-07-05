@@ -20,10 +20,25 @@ namespace SPRPG.Battle
 		}
 	}
 
-	public class Scheduler
+	public class Clock
 	{
-		public Tick Base { get; private set; }
 		public Tick Current { get; private set; }
+
+		public Action<Clock> OnProceed;
+
+		public void Proceed()
+		{
+			++Current;
+			OnProceed.CheckAndCall(this);
+		}
+	}
+
+	public class RelativeClock
+	{
+		private readonly Clock _clock;
+
+		public Tick Base { get; private set; }
+		public Tick Current { get { return _clock.Current; } }
 
 		public Tick Relative { get { return Current.Sub(Base); } }
 		public Tick RelativePeriodic { get { return (Tick)((int) Relative%(int) Const.Period); } }
@@ -45,17 +60,14 @@ namespace SPRPG.Battle
 
 		public Period Period { get { return (Period) ((int) Current/(int) Const.Period); } }
 
-		public Action<Scheduler> OnProceed;
+		public RelativeClock(Clock clock)
+		{
+			_clock = clock;
+		}
 
 		public void Rebase()
 		{
 			Base = Current;
-		}
-
-		public void Proceed()
-		{
-			++Current;
-			OnProceed.CheckAndCall(this);
 		}
 
 		public TermAndDistance GetCloseTermAndDistance()
@@ -66,7 +78,7 @@ namespace SPRPG.Battle
 		}
 	}
 
-	public static class SchedulerHelper
+	public static class ClockHelper
 	{
 		public static Tick Add(this Tick thiz, Tick other)
 		{

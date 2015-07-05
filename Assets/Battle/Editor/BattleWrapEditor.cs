@@ -17,49 +17,50 @@ namespace SPRPG.Battle
 			if (!Application.isPlaying)
 				return;
 
-			RenderScheduler();
+			RenderClock();
 			RenderInput();
 			RenderParty();
 			RenderBoss();
 		}
 
-		private void RenderScheduler()
+		private void RenderClock()
 		{
-			var scheduler = _battle.Scheduler;
+			var clock = _battle.Clock;
+			var playerClock = _battle.PlayerClock;
 
 			GUILayout.BeginHorizontal();
-			GUILayout.Label("base: " + scheduler.Base);
-			GUILayout.Label("current: " + scheduler.Current);
-			GUILayout.Label("relative: " + scheduler.Relative);
+			GUILayout.Label("base: " + playerClock.Base);
+			GUILayout.Label("current: " + playerClock.Current);
+			GUILayout.Label("relative: " + playerClock.Relative);
 			GUILayout.EndHorizontal();
 
 			GUILayout.BeginHorizontal();
-			GUILayout.Label("term: " + scheduler.CloseTerm);
-			GUILayout.Label("period: " + scheduler.Period);
-			GUILayout.Label("distance: " + scheduler.GetCloseTermAndDistance().Distance);
+			GUILayout.Label("term: " + playerClock.CloseTerm);
+			GUILayout.Label("period: " + playerClock.Period);
+			GUILayout.Label("distance: " + playerClock.GetCloseTermAndDistance().Distance);
 			GUILayout.EndHorizontal();
 
 			GUILayout.BeginHorizontal();
 
 			if (GUILayout.Button("proceed"))
-				scheduler.Proceed();
+				clock.Proceed();
 
 			if (GUILayout.Button("term"))
 			{
-				scheduler.Proceed();
-				while (!scheduler.IsPerfectTerm)
-					scheduler.Proceed();
+				clock.Proceed();
+				while (!playerClock.IsPerfectTerm)
+					clock.Proceed();
 			}
 
 			if (GUILayout.Button("period"))
 			{
-				scheduler.Proceed();
-				while (scheduler.RelativePeriodic != default(Tick))
-					scheduler.Proceed();
+				clock.Proceed();
+				while (playerClock.RelativePeriodic != default(Tick))
+					clock.Proceed();
 			}
 
 			if (GUILayout.Button("rebase"))
-				scheduler.Rebase();
+				playerClock.Rebase();
 
 			GUILayout.EndHorizontal();
 		}

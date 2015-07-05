@@ -21,7 +21,8 @@ namespace SPRPG.Battle
 
 	public class Battle 
 	{
-		public readonly Scheduler Scheduler = new Scheduler();
+		public readonly Clock Clock = new Clock();
+		public readonly RelativeClock PlayerClock;
 		public readonly BattleFsm Fsm;
 
 		private readonly InputReceiver _inputReceiver;
@@ -35,6 +36,7 @@ namespace SPRPG.Battle
 
 		public Battle(BattleDef def)
 		{
+			PlayerClock = new RelativeClock(Clock);
 			Fsm = new BattleFsm(this);
 
 #if BALANCE
@@ -49,9 +51,9 @@ namespace SPRPG.Battle
 				_inputReceiver = InputReceiverFactory.CreatePlatformPreferred();
 			}
 
-			_skillInputProcessor = new SkillInputProcessor(_inputReceiver, Scheduler);
+			_skillInputProcessor = new SkillInputProcessor(_inputReceiver, PlayerClock);
 			_skillInputProcessor.OnInvoke += PerformSkill;
-			_shiftInputProcessor = new ShiftInputProcessor(_inputReceiver, Scheduler);
+			_shiftInputProcessor = new ShiftInputProcessor(_inputReceiver, PlayerClock);
 			_shiftInputProcessor.OnInvoke += PerformShift;
 
 			_party = new Party(def.PartyDef);
@@ -59,12 +61,12 @@ namespace SPRPG.Battle
 
 			SkillActor.Reset(this);
 
-			Scheduler.OnProceed += OnTick;
+			Clock.OnProceed += OnTick;
 		}
 
 		~Battle()
 		{
-			Scheduler.OnProceed -= OnTick;
+			Clock.OnProceed -= OnTick;
 			SkillActor.Reset(null);
 		}
 
@@ -74,7 +76,7 @@ namespace SPRPG.Battle
 				_inputReceiver.Update(dt);
 		}
 
-		private void OnTick(Scheduler scheduler)
+		private void OnTick(Clock clock)
 		{
 			if (Fsm.IsIdle)
 				Fsm.Cycle();
@@ -104,11 +106,11 @@ namespace SPRPG.Battle
 	{
 		public static JobId AddPlayerPerform(this Battle thiz, Tick delay, Action callback)
 		{
-			return thiz.Fsm.PlayerPerform.JobQueue.AddRelative(delay, callback);
+			return thiz.Fsm.PlayerPerform.Schedule.AddRelative(delay, callback);
 		}
 		public static bool RemovePlayerPerform(this Battle thiz, JobId jobId)
 		{
-			return thiz.Fsm.PlayerPerform.JobQueue.Remove(jobId);
+			return thiz.Fsm.PlayerPerform.Schedule.Remove(jobId);
 		}
 	}
 }

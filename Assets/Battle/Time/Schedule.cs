@@ -7,7 +7,7 @@ namespace SPRPG.Battle
 {
 	public enum JobId { }
 
-	public class SchedulerJobQueue
+	public class Schedule
 	{
 		private struct Job
 		{
@@ -21,25 +21,25 @@ namespace SPRPG.Battle
 			return ++_uniqueId;
 		}
 
-		private readonly Scheduler _scheduler;
+		private readonly Clock _clock;
 		private Tick _lastSync;
 		private readonly Dictionary<Tick, List<Job>> _jobs = new Dictionary<Tick, List<Job>>();
 		private readonly Dictionary<JobId, Tick> _jobToTick = new Dictionary<JobId, Tick>();
 
-		public SchedulerJobQueue(Scheduler scheduler)
+		public Schedule(Clock clock)
 		{
-			_scheduler = scheduler;
-			_lastSync = scheduler.Current;
+			_clock = clock;
+			_lastSync = clock.Current;
 		}
 
 		public JobId AddRelative(Tick tick, Action callback)
 		{
-			return AddAbsolte(_scheduler.Current.Add(tick), callback);
+			return AddAbsolte(_clock.Current.Add(tick), callback);
 		}
 
 		public JobId AddAbsolte(Tick tick, Action callback)
 		{
-			if (tick == _scheduler.Current)
+			if (tick == _clock.Current)
 			{
 				Debug.LogError("you should not add job to current tick, anyway callback immediately.");
 				return default(JobId);
@@ -76,8 +76,8 @@ namespace SPRPG.Battle
 
 		public void Sync()
 		{
-			Debug.Assert(_lastSync == default(Tick) || _lastSync == _scheduler.Current - 1);
-			while (_lastSync < _scheduler.Current)
+			Debug.Assert(_lastSync == default(Tick) || _lastSync == _clock.Current - 1);
+			while (_lastSync < _clock.Current)
 				InvokeAndRemove(++_lastSync);
 		}
 

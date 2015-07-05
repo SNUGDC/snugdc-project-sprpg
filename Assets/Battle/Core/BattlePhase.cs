@@ -19,19 +19,19 @@
 		public BattleState State { get { return _state; } }
 
 		private readonly Battle _context;
-		private readonly SchedulerJobQueue _jobQueue;
-		public SchedulerJobQueue JobQueue { get { return _jobQueue; } }
+		private readonly Schedule _schedule;
+		public Schedule Schedule { get { return _schedule; } }
 
 		public BattlePhase(Battle context, BattleState state)
 		{
 			_state = state;
 			_context = context;
-			_jobQueue = new SchedulerJobQueue(context.Scheduler);
+			_schedule = new Schedule(context.Clock);
 		}
 
 		public virtual void Enter()
 		{
-			_jobQueue.Sync();
+			_schedule.Sync();
 		}
 
 		public virtual void Exit()

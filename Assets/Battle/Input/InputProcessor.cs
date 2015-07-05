@@ -6,13 +6,13 @@ namespace SPRPG.Battle
 	public class InputProcessor
 	{
 		protected readonly InputReceiver Receiver;
-		private readonly Scheduler _scheduler;
+		private readonly RelativeClock _clock;
 		public Action<Term, InputGrade> OnInvoke;
 		
-		public InputProcessor(InputReceiver receiver, Scheduler scheduler)
+		public InputProcessor(InputReceiver receiver, RelativeClock clock)
 		{
 			Receiver = receiver;
-			_scheduler = scheduler;
+			_clock = clock;
 		}
 
 		protected void OnInput()
@@ -33,15 +33,15 @@ namespace SPRPG.Battle
 
 		private void RebaseAndInvoke()
 		{
-			if ((int) _scheduler.Relative < (int) Const.Term/2)
+			if ((int) _clock.Relative < (int) Const.Term/2)
 			{
-				_scheduler.Rebase();
+				_clock.Rebase();
 				OnInvoke.CheckAndCall(Term._1, InputGrade.Bad);
 				return;
 			}
 
-			var termAndDistance = _scheduler.GetCloseTermAndDistance();
-			_scheduler.Rebase();
+			var termAndDistance = _clock.GetCloseTermAndDistance();
+			_clock.Rebase();
 			var inputGrade = GradeInput(termAndDistance.Distance);
 			OnInvoke.CheckAndCall(termAndDistance.Term, inputGrade);
 		}
@@ -49,8 +49,8 @@ namespace SPRPG.Battle
 
 	public sealed class SkillInputProcessor : InputProcessor
 	{
-		public SkillInputProcessor(InputReceiver receiver, Scheduler scheduler)
-			: base(receiver, scheduler)
+		public SkillInputProcessor(InputReceiver receiver, RelativeClock clock)
+			: base(receiver, clock)
 		{
 			Receiver.OnSkill += OnInput;
 		}
@@ -63,8 +63,8 @@ namespace SPRPG.Battle
 
 	public class ShiftInputProcessor : InputProcessor
 	{
-		public ShiftInputProcessor(InputReceiver receiver, Scheduler scheduler) 
-			: base(receiver, scheduler)
+		public ShiftInputProcessor(InputReceiver receiver, RelativeClock clock) 
+			: base(receiver, clock)
 		{
 			Receiver.OnShift += OnInput;
 		}
