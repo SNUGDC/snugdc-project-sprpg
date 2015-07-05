@@ -5,6 +5,7 @@
 		}
 	},
 	"Battle": {
+		"TickPerSecond": 30,
 		"InputValidBefore": 3,
 		"InputValidAfter": 3
 	}

@@ -5,17 +5,11 @@ namespace SPRPG.Battle
 	public class BattleTest : MonoBehaviour
 	{
 		public StageId Stage;
+		public PartyDef Party;
 
 		void Awake()
 		{
-			var party = new PartyDef
-			{
-				_1 = (CharacterId) 0,
-				_2 = (CharacterId) 1,
-				_3 = (CharacterId) 2,
-			};
-
-			BattleWrapper.Def = new BattleDef(Stage, party)
+			BattleWrapper.Def = new BattleDef(Stage, Party)
 			{
 #if BALANCE
 				UseDataInput = false,

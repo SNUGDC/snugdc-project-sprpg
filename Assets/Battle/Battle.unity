@@ -275,6 +275,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stage: 1
+  Party:
+    _1: 1
+    _2: 2
+    _3: 3
 --- !u!114 &2086338272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b1184a9ca5ef444878e1d0b3cee042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RealtimeEnabled: 0
 --- !u!4 &2086338273
 Transform:
   m_ObjectHideFlags: 0

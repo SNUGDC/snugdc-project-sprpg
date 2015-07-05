@@ -1,13 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace SPRPG.Battle
 {
+	[Serializable]
 	public struct PartyDef
 	{
 		public CharacterId _1;
 		public CharacterId _2;
 		public CharacterId _3;
+
+		public PartyDef(CharacterId character1, CharacterId character2, CharacterId character3)
+		{
+			_1 = character1;
+			_2 = character2;
+			_3 = character3;
+		}
 	}
 
 	public class Party : IEnumerable<Character>

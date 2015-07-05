@@ -14,6 +14,7 @@
 
 		public struct Battle_
 		{
+			public int TickPerSecond;
 			public int InputValidBefore;
 			public int InputValidAfter;
 		}

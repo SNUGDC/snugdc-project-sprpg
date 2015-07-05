@@ -62,16 +62,14 @@ namespace SPRPG.Battle
 			Scheduler.OnProceed += OnTick;
 		}
 
-		void OnDestroy()
+		~Battle()
 		{
 			Scheduler.OnProceed -= OnTick;
 			SkillActor.Reset(null);
 		}
 
-		void Update()
+		public void Update(float dt)
 		{
-			var dt = Time.deltaTime;
-
 			if (_inputReceiver != null)
 				_inputReceiver.Update(dt);
 		}
