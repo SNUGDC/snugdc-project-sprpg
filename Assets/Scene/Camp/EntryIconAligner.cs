@@ -12,7 +12,7 @@ namespace SPRPG.Camp
 		private const float AnchorY = 0.85f;
 
 		private const float AlignLerpScale = 10;
-		private const float AlignRangeY = 0.1f;
+		private const float AlignRangeY = 0.2f;
 		private const float AlignThresholdX = 0.1f;
 
 		[SerializeField]
