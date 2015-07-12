@@ -213,5 +213,10 @@ namespace Gem
 		{
 			thiz.SetLEulerZ(thiz.GetLEulerZ() + val);
 		}
+
+		public static float GetWidth(this RectTransform thiz)
+		{
+			return thiz.offsetMax.x - thiz.offsetMin.x;
+		}
 	}
 }
