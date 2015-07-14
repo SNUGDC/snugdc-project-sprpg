@@ -1,4 +1,6 @@
-﻿namespace SPRPG
+﻿using System.Collections.Generic;
+
+namespace SPRPG
 {
 	public enum Proportion { }
 
@@ -67,6 +69,17 @@
 		public static Hp ToValue(this StatHp thiz)
 		{
 			return (Hp)(int)thiz;
+		}
+	}
+
+	public static class SkillHelper
+	{
+		public static IEnumerator<SkillSlot> GetSlotEnumerator()
+		{
+			yield return SkillSlot._1;
+			yield return SkillSlot._2;
+			yield return SkillSlot._3;
+			yield return SkillSlot._4;
 		}
 	}
 }

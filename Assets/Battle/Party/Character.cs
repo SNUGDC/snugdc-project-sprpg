@@ -11,7 +11,9 @@
 		public readonly Hp HpMax;
 
 		private readonly Passive _passive;
+
 		private readonly SkillManager _skillManager;
+		public SkillManager SkillManager { get { return _skillManager; } }
 
 		public Character(CharacterData data)
 		{

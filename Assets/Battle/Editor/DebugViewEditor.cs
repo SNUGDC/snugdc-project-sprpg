@@ -17,20 +17,31 @@ namespace SPRPG.Battle
 			if (!Application.isPlaying)
 				return;
 
-			RenderParty();
+			RenderParty(Battle.Party);
 		}
 
-		private void RenderParty()
+		private static void RenderParty(Party party)
 		{
-			if (Battle.Party == null) return;
-			foreach (var character in Battle.Party)
+			if (party == null) return;
+			foreach (var character in party)
 				RenderCharacter(character);
 		}
 
-		private void RenderCharacter(Character character)
+		private static void RenderCharacter(Character character)
 		{
 			GUILayout.Label(character.Id.ToString());
 			GUILayout.Label(String.Format("hp: {0} ({1})", character.Hp, character.HpMax));
+
+			foreach (var actor in character.SkillManager)
+				RenderSkillActor(actor);
+		}
+
+		private static void RenderSkillActor(SkillActor actor)
+		{
+			GUILayout.BeginHorizontal();
+			GUILayout.Label(actor.Key.ToString());
+			GUILayout.Label(actor.Data.Describe());
+			GUILayout.EndHorizontal();
 		}
 	}
 }
