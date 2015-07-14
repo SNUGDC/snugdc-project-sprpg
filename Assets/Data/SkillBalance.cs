@@ -12,12 +12,14 @@ namespace SPRPG
 		public SkillTear Tear;
 		public CharacterId MajorUser;
 		public string DescriptionFormat;
+		public SkillDescriptor Descriptor;
 		public JsonData Arguments;
 
 		public string Describe()
 		{
-			// todo
-			return "todo";
+			if (Descriptor == null)
+				return "undefined descriptor";
+			return Descriptor(this);
 		}
 	}
 
@@ -39,6 +41,9 @@ namespace SPRPG
 
 			_dic = Data.ToDictionary(element => element.Key);
 			Data.Clear();
+
+			foreach (var kv in _dic)
+				kv.Value.Descriptor = SkillDescriptorFactory.Create(kv.Key);
 		}
 
 		public SkillBalanceData Find(SkillKey key)

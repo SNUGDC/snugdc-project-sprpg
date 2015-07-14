@@ -8,7 +8,7 @@
 		"Name": "공격",
 		"Tear": 1,
 		"MajorUser": "Warrior",
-		"DescriptionFormat": "적에게 $(Damage)의 데미지를 준다.",
+		"DescriptionFormat": "적에게 {Damage}의 데미지를 준다.",
 		"Arguments": {
 			"Damage": { "Value": 50 }
 		}
