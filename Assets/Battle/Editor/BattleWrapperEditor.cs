@@ -1,12 +1,11 @@
-﻿using System;
-using Gem;
+﻿using Gem;
 using UnityEditor;
 using UnityEngine;
 
 namespace SPRPG.Battle
 {
 	[CustomEditor(typeof(BattleWrapper))]
-	public class BattleWrapEditor : ComponentEditor<BattleWrapper>
+	public class BattleWrapperEditor : ComponentEditor<BattleWrapper>
 	{
 		private Battle _battle { get { return Target.Battle; } }
 
@@ -19,7 +18,6 @@ namespace SPRPG.Battle
 
 			RenderClock();
 			RenderInput();
-			RenderParty();
 			RenderBoss();
 		}
 
@@ -73,19 +71,6 @@ namespace SPRPG.Battle
 			if (GUILayout.Button("shift"))
 				_battle.EditInputReceiver().ForceShift();
 			GUILayout.EndHorizontal();
-		}
-
-		private void RenderParty()
-		{
-			if (_battle.Party == null) return;
-			foreach (var character in _battle.Party)
-				RenderCharacter(character);
-		}
-
-		private void RenderCharacter(Character character)
-		{
-			GUILayout.Label(character.Id.ToString());
-			GUILayout.Label(String.Format("hp: {0} ({1})", character.Hp, character.HpMax));
 		}
 
 		private void RenderBoss()

@@ -20,6 +20,11 @@ namespace SPRPG.Battle
 			Battle = new Battle(Def);
 			_realtime = new BattleRealtime(Battle);
 			Def = null;
+
+#if UNITY_EDITOR
+			var partyDebugView = gameObject.AddComponent<PartyDebugView>();
+			partyDebugView.BattleWrapper = this;
+#endif
 		}
 
 		void Update()
