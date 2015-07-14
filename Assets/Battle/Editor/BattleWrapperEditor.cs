@@ -19,6 +19,9 @@ namespace SPRPG.Battle
 			RenderClock();
 			RenderInput();
 			RenderBoss();
+
+			if (Target.RealtimeEnabled)
+				EditorUtility.SetDirty(Target);
 		}
 
 		private void RenderClock()
