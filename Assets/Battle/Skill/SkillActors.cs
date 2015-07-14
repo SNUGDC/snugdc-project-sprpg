@@ -20,6 +20,7 @@
 	public class AttackSkillActor : SkillActor
 	{
 		public readonly Damage Damage;
+		private Battle _battle { get { return Battle._; } }
 		private JobId _performJob;
 
 		public AttackSkillActor(SkillBalanceData data, Damage damage)
@@ -30,19 +31,19 @@
 
 		public override void Perform()
 		{
-			Context.AddPlayerPerform((Tick) 3, DoPerform);
+			_battle.AddPlayerPerform((Tick)3, DoPerform);
 		}
 
 		private void DoPerform()
 		{
-			Context.Boss.Hit(Damage);
+			_battle.Boss.Hit(Damage);
 			_performJob = default(JobId);
 		}
 
 		public override void Cancel()
 		{
 			if (_performJob == default(JobId)) return;
-			Context.RemovePlayerPerform(_performJob);
+			_battle.RemovePlayerPerform(_performJob);
 			_performJob = default(JobId);
 		}
 	}

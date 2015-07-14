@@ -11,8 +11,6 @@
 		Good, Bad,
 	}
 
-	public enum Proportion { }
-
 	public enum Hp { }
 
 	public struct Damage

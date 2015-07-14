@@ -19,6 +19,7 @@
 		public BattleState State { get { return _state; } }
 
 		private readonly Battle _context;
+		protected Battle Context { get { return _context; } }
 		private readonly Schedule _schedule;
 		public Schedule Schedule { get { return _schedule; } }
 
@@ -37,14 +38,6 @@
 		public virtual void Exit()
 		{
 			
-		}
-	}
-
-	public static class BattlePhaseFactory
-	{
-		public static BattlePhase Create(Battle context, BattleState state)
-		{
-			return new BattlePhase(context, state);
 		}
 	}
 }

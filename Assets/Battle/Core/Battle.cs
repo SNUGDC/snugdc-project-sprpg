@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = System.Random;
 
 namespace SPRPG.Battle
 {
@@ -21,6 +22,10 @@ namespace SPRPG.Battle
 
 	public class Battle 
 	{
+		public static Battle _ { get; private set; }
+
+		public readonly Random Random = new Random();
+
 		public readonly Clock Clock = new Clock();
 		public readonly RelativeClock PlayerClock;
 		public readonly BattleFsm Fsm;
@@ -31,11 +36,17 @@ namespace SPRPG.Battle
 
 		private readonly Party _party;
 		public Party Party { get { return _party; } }
+
 		private readonly Boss _boss;
 		public Boss Boss { get { return _boss; } }
+		private readonly BossAi _bossAi;
+		public BossAi BossAi { get { return _bossAi; } }
 
 		public Battle(BattleDef def)
 		{
+			Debug.Assert(_ == null);
+			_ = this;
+
 			PlayerClock = new RelativeClock(Clock);
 			Fsm = new BattleFsm(this);
 
@@ -58,16 +69,17 @@ namespace SPRPG.Battle
 
 			_party = new Party(def.PartyDef);
 			_boss = BossFactory.Create(def.Stage.ToBossId());
-
-			SkillActor.Reset(this);
+			_bossAi = BossFactory.CreateAi(_boss);
 
 			Clock.OnProceed += OnTick;
 		}
 
 		~Battle()
 		{
+			Debug.Assert(_ == this);
+			_ = null;
+
 			Clock.OnProceed -= OnTick;
-			SkillActor.Reset(null);
 		}
 
 		public void Update(float dt)
@@ -96,7 +108,6 @@ namespace SPRPG.Battle
 			_party.Shift();
 		}
 
-
 #if UNITY_EDITOR
 		public InputReceiver EditInputReceiver() { return _inputReceiver; }
 #endif
@@ -108,9 +119,20 @@ namespace SPRPG.Battle
 		{
 			return thiz.Fsm.PlayerPerform.Schedule.AddRelative(delay, callback);
 		}
+
 		public static bool RemovePlayerPerform(this Battle thiz, JobId jobId)
 		{
 			return thiz.Fsm.PlayerPerform.Schedule.Remove(jobId);
+		}
+
+		public static JobId AddBossPerform(this Battle thiz, Tick delay, Action callback)
+		{
+			return thiz.Fsm.BossPerform.Schedule.AddRelative(delay, callback);
+		}
+
+		public static bool RemoveBossPerform(this Battle thiz, JobId jobId)
+		{
+			return thiz.Fsm.BossPerform.Schedule.Remove(jobId);
 		}
 	}
 }

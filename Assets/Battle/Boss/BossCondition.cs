@@ -19,7 +19,7 @@ namespace SPRPG.Battle
 			Type = type;
 		}
 
-		public abstract bool Test();
+		public abstract bool Test(Battle context, Boss boss);
 	}
 
 	public sealed class BossFalseCondition : BossCondition
@@ -28,7 +28,7 @@ namespace SPRPG.Battle
 			: base(BossConditionType.False)
 		{}
 
-		public override bool Test()
+		public override bool Test(Battle context, Boss boss)
 		{
 			return false;
 		}
@@ -40,7 +40,7 @@ namespace SPRPG.Battle
 			: base(BossConditionType.True)
 		{}
 
-		public override bool Test()
+		public override bool Test(Battle context, Boss boss)
 		{
 			return true;
 		}

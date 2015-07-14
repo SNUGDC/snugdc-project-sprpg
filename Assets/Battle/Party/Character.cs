@@ -21,6 +21,11 @@
 			_skillManager = new SkillManager(data.SkillSet);
 		}
 
+		public void Hit(Damage dmg)
+		{
+			Hp -= dmg.Value;
+		}
+
 		public void PerformSkill(SkillSlot idx)
 		{
 			_skillManager[idx].Perform();

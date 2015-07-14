@@ -10,7 +10,7 @@
 				"Proportion": 5,
 				"Duration": 60,
 				"_condition": { "Type": "True" },
-				"Arguments": { "Damage": 5 }
+				"Arguments": { "Damage": { "Value": 5 } }
 			}
 		]
 	}

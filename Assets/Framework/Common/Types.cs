@@ -1,5 +1,7 @@
 ﻿namespace SPRPG
 {
+	public enum Proportion { }
+
 	public enum Element
 	{
 		Normal = 0,

@@ -4,7 +4,12 @@
 	{
 		public static Boss Create(BossId id)
 		{
-			return new Boss((Hp) 100);
+			return new Boss(BossBalance._.Find(id));
+		}
+
+		public static BossAi CreateAi(Boss boss)
+		{
+			return new BossAi(boss);
 		}
 	}
 }

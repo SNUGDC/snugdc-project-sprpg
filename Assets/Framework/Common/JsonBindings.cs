@@ -20,9 +20,9 @@ namespace SPRPG
 		public static void Setup()
 		{
 			UnityTypeBindings.Register();
+			BindEnumAsNatural<Proportion>();
 			BindEnumAsNatural<SkillTear>();
 			BindEnumAsNatural<Battle.Tick>();
-			BindEnumAsNatural<Battle.Proportion>();
 			BindEnumAsNatural<Battle.Hp>();
 			BindEnumAsString<Element>();
 			BindEnumAsString<CharacterId>();

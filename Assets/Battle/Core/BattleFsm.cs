@@ -13,7 +13,7 @@ namespace SPRPG.Battle
 		public readonly BattlePhase PlayerPassive;
 		public readonly BattlePhase BossPassive;
 		public readonly BattlePhase PlayerPerform;
-		public readonly BattlePhase BossPerform;
+		public readonly BossPerformPhase BossPerform;
 		public readonly BattlePhase ResultWon;
 		public readonly BattlePhase ResultLost;
 
@@ -28,7 +28,7 @@ namespace SPRPG.Battle
 			PlayerPassive = new BattlePhase(context, BattleState.PlayerPassive);
 			BossPassive = new BattlePhase(context, BattleState.BossPassive);
 			PlayerPerform = new BattlePhase(context, BattleState.PlayerPerform);
-			BossPerform = new BattlePhase(context, BattleState.BossPerform);
+			BossPerform = new BossPerformPhase(context);
 			ResultWon = new BattlePhase(context, BattleState.ResultWon);
 			ResultLost = new BattlePhase(context, BattleState.ResultLost);
 
