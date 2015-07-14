@@ -22,8 +22,8 @@ namespace SPRPG
 			UnityTypeBindings.Register();
 			BindEnumAsNatural<Proportion>();
 			BindEnumAsNatural<SkillTear>();
+			BindEnumAsNatural<Hp>();
 			BindEnumAsNatural<Battle.Tick>();
-			BindEnumAsNatural<Battle.Hp>();
 			BindEnumAsString<Element>();
 			BindEnumAsString<CharacterId>();
 			BindEnumAsString<BossId>();

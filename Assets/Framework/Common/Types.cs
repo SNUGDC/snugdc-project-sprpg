@@ -34,7 +34,15 @@
 		Radiation = 1,
 	}
 
-	public static partial class ExternsionMethods
+	public enum Hp { }
+
+	public struct Damage
+	{
+		public Hp Value;
+		public Element Element;
+	}
+
+	public static partial class ExtensionMethods
 	{
 		public static int ToIndex(this SkillSlot thiz)
 		{
@@ -54,6 +62,11 @@
 		public static BossId ToBossId(this StageId thiz)
 		{
 			return (BossId) (int) thiz;
+		}
+
+		public static Hp ToValue(this StatHp thiz)
+		{
+			return (Hp)(int)thiz;
 		}
 	}
 }
