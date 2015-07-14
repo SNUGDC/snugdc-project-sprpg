@@ -10,13 +10,10 @@ namespace SPRPG.Battle
 			if (data == null)
 				return new NullSkillActor();
 
-			var arguments = data.Arguments;
-
 			switch (key)
 			{
 				case SkillKey.WarriorAttack:
-					var damage = arguments["Damage"].ToObject<Damage>();
-					return new AttackSkillActor(data, damage);
+					return new AttackSkillActor(data);
 			}
 
 			return new NullSkillActor(data);

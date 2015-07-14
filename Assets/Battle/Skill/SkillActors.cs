@@ -1,4 +1,6 @@
-﻿namespace SPRPG.Battle
+﻿using System;
+
+namespace SPRPG.Battle
 {
 	public class NullSkillActor : SkillActor
 	{
@@ -19,14 +21,15 @@
 
 	public class AttackSkillActor : SkillActor
 	{
-		public readonly Damage Damage;
+		public readonly AttackSkillArguments Arguments;
+
 		private Battle _battle { get { return Battle._; } }
 		private JobId _performJob;
 
-		public AttackSkillActor(SkillBalanceData data, Damage damage)
+		public AttackSkillActor(SkillBalanceData data)
 			: base(data)
 		{
-			Damage = damage;
+			Arguments = new AttackSkillArguments(data.Arguments);
 		}
 
 		public override void Perform()
@@ -36,7 +39,7 @@
 
 		private void DoPerform()
 		{
-			_battle.Boss.Hit(Damage);
+			_battle.Boss.Hit(Arguments.Damage);
 			_performJob = default(JobId);
 		}
 
