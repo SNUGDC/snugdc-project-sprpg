@@ -25,7 +25,8 @@
 		public readonly AttackSkillArguments Arguments;
 
 		private Battle _battle { get { return Battle._; } }
-		private JobId _performJob;
+		private Job _performJob;
+		private Job _stopJob;
 
 		public AttackSkillActor(SkillBalanceData data)
 			: base(data)
@@ -35,21 +36,19 @@
 
 		protected override void DoStart()
 		{
-			_battle.AddPlayerPerform((Tick)3, Perform);
-			_battle.AddPlayerPerform((Tick)7, Stop);
+			_performJob = _battle.AddPlayerPerform((Tick)3, Perform);
+			_stopJob = _battle.AddPlayerPerform((Tick)7, Stop);
 		}
 
 		private void Perform()
 		{
 			_battle.Boss.Hit(Arguments.Damage);
-			_performJob = default(JobId);
 		}
 
-		protected override void DoStop()
+		protected override void DoCancel()
 		{
-			if (_performJob == default(JobId)) return;
-			_battle.RemovePlayerPerform(_performJob);
-			_performJob = default(JobId);
+			_performJob.Cancel();
+			_stopJob.Cancel();
 		}
 	}
 }

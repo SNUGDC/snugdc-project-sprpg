@@ -48,7 +48,7 @@ namespace SPRPG.Battle
 		}
 
 		protected abstract void DoStart();
-		protected abstract void DoStop();
+		protected virtual void DoStop() { }
 		protected virtual void DoCancel() { }
 	}
 }

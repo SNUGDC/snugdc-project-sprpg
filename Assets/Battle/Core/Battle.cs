@@ -115,24 +115,19 @@ namespace SPRPG.Battle
 
 	public static class BattleHelper
 	{
-		public static JobId AddPlayerPerform(this Battle thiz, Tick delay, Action callback)
+		public static Job AddPlayerPerform(this Battle thiz, Tick delay, Action callback)
 		{
-			return thiz.Fsm.PlayerPerform.Schedule.AddRelative(delay, callback);
+			return new Job(thiz.Fsm.PlayerPerform.Schedule, delay, callback);
 		}
 
-		public static bool RemovePlayerPerform(this Battle thiz, JobId jobId)
+		public static Job AddBossPerform(this Battle thiz, Tick delay, Action callback)
 		{
-			return thiz.Fsm.PlayerPerform.Schedule.Remove(jobId);
+			return new Job(thiz.Fsm.BossPerform.Schedule, delay, callback);
 		}
 
-		public static JobId AddBossPerform(this Battle thiz, Tick delay, Action callback)
+		public static Job AddAfterTurn(this Battle thiz, Tick delay, Action callback)
 		{
-			return thiz.Fsm.BossPerform.Schedule.AddRelative(delay, callback);
-		}
-
-		public static bool RemoveBossPerform(this Battle thiz, JobId jobId)
-		{
-			return thiz.Fsm.BossPerform.Schedule.Remove(jobId);
+			return new Job(thiz.Fsm.AfterTurn.Schedule, delay, callback);
 		}
 	}
 }

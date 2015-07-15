@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Gem;
 using UnityEngine;
 
@@ -23,8 +24,8 @@ namespace SPRPG.Battle
 
 		private readonly Clock _clock;
 		private Tick _lastSync;
-		private readonly Dictionary<Tick, List<Job>> _jobs = new Dictionary<Tick, List<Job>>();
-		private readonly Dictionary<JobId, Tick> _jobToTick = new Dictionary<JobId, Tick>();
+		private readonly SortedDictionary<Tick, List<Job>> _jobs = new SortedDictionary<Tick, List<Job>>();
+		private readonly SortedDictionary<JobId, Tick> _jobToTick = new SortedDictionary<JobId, Tick>();
 
 		public Schedule(Clock clock)
 		{
@@ -60,16 +61,31 @@ namespace SPRPG.Battle
 			return jobId;
 		}
 
-		public bool Remove(JobId jobId)
+		private Tick? FindTick(JobId jobId)
 		{
+			if (_jobToTick.Empty())
+				return null;
+
+			if (_jobToTick.First().Key > jobId)
+				return null;
+
 			Tick tick;
 			if (!_jobToTick.TryGetAndRemove(jobId, out tick))
+				return null;
+
+			return tick;
+		}
+
+		public bool Remove(JobId jobId)
+		{
+			var tick = FindTick(jobId);
+			if (!tick.HasValue)
 			{
 				Debug.LogError("job " + jobId + " not found.");
 				return false;
 			}
-
-			var result = _jobs[tick].RemoveIf(job => job.Id == jobId);
+			
+			var result = _jobs[tick.Value].RemoveIf(job => job.Id == jobId);
 			Debug.Assert(result);
 			return true;
 		}

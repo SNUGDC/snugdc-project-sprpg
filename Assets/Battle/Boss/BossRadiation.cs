@@ -7,8 +7,8 @@ namespace SPRPG.Battle
 	{
 		private readonly Damage _damage;
 
-		private JobId _hitJob;
-		private JobId _stopJob;
+		private Job _hitJob;
+		private Job _stopJob;
 
 		public RadiationAttackSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
 			: base(context, boss, data)
@@ -19,27 +19,14 @@ namespace SPRPG.Battle
 
 		protected override void DoStart()
 		{
-			// todo: extract value to json.
-			_hitJob = Context.AddBossPerform((Tick)3, () =>
-			{
-				Context.Party.Leader.Hit(_damage);
-				_hitJob = default(JobId);
-			});
-
-			_stopJob = Context.Fsm.AfterTurn.Schedule.AddRelative((Tick) 5, () =>
-			{
-				_stopJob = default(JobId);
-				Stop();
-			});
+			_hitJob = Context.AddBossPerform((Tick)3, () => Context.Party.Leader.Hit(_damage));
+			_stopJob = Context.AddAfterTurn((Tick) 5, Stop);
 		}
 
-		protected override void DoStop()
+		protected override void DoCancel()
 		{
-			if (_hitJob != default(JobId))
-				Context.RemoveBossPerform(_hitJob);
-
-			if (_stopJob != default(JobId))
-				Context.Fsm.AfterTurn.Schedule.Remove(_stopJob);
+			_hitJob.Cancel();
+			_stopJob.Cancel();
 		}
 	}
 }
