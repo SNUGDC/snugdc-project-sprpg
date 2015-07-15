@@ -1,9 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Gem
 {
 	public static class CSharpHelper
 	{
+		public static IEnumerable<Pair<int, int>> Range2D(int len1, int len2)
+		{
+			foreach (var i1 in Enumerable.Range(0, len1))
+			{
+				foreach (var i2 in Enumerable.Range(0, len2))
+				{
+					yield return new Pair<int, int>(i1, i2);
+				}
+			}
+		}
+
 		public static void CheckAndCall(this Action act)
 		{
 			if (act != null) act();
