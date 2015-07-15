@@ -33,14 +33,20 @@ namespace SPRPG.Battle
 			GUILayout.Label(String.Format("hp: {0} ({1})", character.Hp, character.HpMax));
 
 			foreach (var actor in character.SkillManager)
-				RenderSkillActor(actor);
+				RenderSkillActor(actor, character.SkillManager.Running == actor);
 		}
 
-		private static void RenderSkillActor(SkillActor actor)
+		private static void RenderSkillActor(SkillActor actor, bool isPerforming)
 		{
 			GUILayout.BeginHorizontal();
+
+			var color = isPerforming ? Color.green : Color.gray;
+			var style = new GUIStyle { normal = { textColor = color } };
+			GUILayout.Label("O", style);
+
 			GUILayout.Label(actor.Key.ToString());
 			GUILayout.Label(actor.Data.Describe());
+
 			GUILayout.EndHorizontal();
 		}
 	}
