@@ -2,7 +2,7 @@
 
 namespace Gem
 {
-	public static class ActionHelper
+	public static class CSharpHelper
 	{
 		public static void CheckAndCall(this Action act)
 		{
