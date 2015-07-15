@@ -17,7 +17,7 @@ namespace SPRPG.Battle
 			_damage = Data.Arguments["Damage"].ToObject<Damage>();
 		}
 
-		protected override void DoPerform()
+		protected override void DoStart()
 		{
 			// todo: extract value to json.
 			_hitJob = Context.AddBossPerform((Tick)3, () =>

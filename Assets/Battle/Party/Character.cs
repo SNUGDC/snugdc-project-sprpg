@@ -30,7 +30,7 @@
 
 		public void PerformSkill(SkillSlot idx)
 		{
-			_skillManager[idx].Perform();
+			_skillManager.Perform(idx);
 		}
 	}
 }

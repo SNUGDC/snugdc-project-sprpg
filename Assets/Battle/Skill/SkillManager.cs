@@ -6,6 +6,9 @@ namespace SPRPG.Battle
 {
 	public class SkillManager : IEnumerable<SkillActor>
 	{
+		public bool IsRunning { get { return Running != null; } }
+		public SkillActor Running { get; private set; }
+
 		private readonly SkillActor[] _actors = new SkillActor[SPRPG.Const.SkillSlotSize];
 
 		public SkillActor this[SkillSlot slot]
@@ -24,6 +27,25 @@ namespace SPRPG.Battle
 			this[SkillSlot._2] = SkillFactory.Create(def._2);
 			this[SkillSlot._3] = SkillFactory.Create(def._3);
 			this[SkillSlot._4] = SkillFactory.Create(def._4);
+		}
+
+		public void Perform(SkillSlot idx)
+		{
+			if (IsRunning)
+			{
+				Debug.LogError("run again, performing: " + Running.Key);
+				return;
+			}
+
+			Running = this[idx];
+			Running.OnStop += OnStop;
+			Running.Start();
+		}
+
+		private void OnStop(SkillActor skillActor)
+		{
+			Running.OnStop -= OnStop;
+			Running = null;
 		}
 
 		public IEnumerator<SkillActor> GetEnumerator()
