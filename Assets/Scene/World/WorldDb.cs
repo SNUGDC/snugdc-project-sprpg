@@ -10,6 +10,7 @@ namespace SPRPG
 	{
 		public StageId Key;
 		public string Detail;
+		public BossId Boss;
 		public LitJson.Vector2 ButtonPosition;
 	}
 	
