@@ -104,8 +104,10 @@ namespace SPRPG
 			GUILayout.BeginHorizontal();
 
 			GUI.enabled = Application.isPlaying;
+#if BALANCE 
 			if (GUILayout.Button("reload"))
 				DataManager.Reload();
+#endif
 			GUI.enabled = true;
 
 			GUILayout.EndHorizontal();
