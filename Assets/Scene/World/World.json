@@ -1,0 +1,32 @@
+[
+	{
+		"Key": "Radiation",
+		"Detail": "Radiation",
+		"ButtonPosition": { "X":1.0, "Y":1.0 }
+	},
+	{
+		"Key": "Noise",
+		"Detail": "Noise",
+		"ButtonPosition": { "X":1.0, "Y":1.0 }
+	},
+	{
+		"Key": "Water",
+		"Detail": "Water",
+		"ButtonPosition": { "X":1.0, "Y":1.0 }
+	},
+	{
+		"Key": "Atmosphere",
+		"Detail": "Atmosphere",
+		"ButtonPosition": { "X":1.0, "Y":1.0 }
+	},
+	{
+		"Key": "Dessert",
+		"Detail": "Dessert",
+		"ButtonPosition": { "X":1.0, "Y":1.0 }
+	},
+	{
+		"Key": "PoisonForest",
+		"Detail": "PoisonForest",
+		"ButtonPosition": { "X":1.0, "Y":1.0 }
+	}
+]
