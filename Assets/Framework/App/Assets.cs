@@ -6,6 +6,8 @@ namespace SPRPG
 	{
 		public static Assets _ { get; private set; }
 
+	    public TextAsset WorldDb;
+
 		public CharacterSkeleton CharacterSkeleton;
 
 		public Sprite CampEntryEmptySprite;

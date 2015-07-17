@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff6dff071d7035478eeff62cbeaf29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldDb: {fileID: 4900000, guid: 0ddaf0cfc4281f34fa559e10cd81dec3, type: 3}
   CharacterSkeleton: {fileID: 11488980, guid: 5195aad12081c6746849918a504f26b6, type: 2}
   CampEntryEmptySprite: {fileID: 21300000, guid: ea987810f26e4e344a7efc806ec22fc2,
     type: 3}
@@ -69,6 +70,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: ea987810f26e4e344a7efc806ec22fc2,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: WorldDb
+      value: 
+      objectReference: {fileID: 4900000, guid: 0ddaf0cfc4281f34fa559e10cd81dec3, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120712}

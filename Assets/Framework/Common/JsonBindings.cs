@@ -25,6 +25,7 @@ namespace SPRPG
 			BindEnumAsNatural<Hp>();
 			BindEnumAsNatural<Battle.Tick>();
 			BindEnumAsString<Element>();
+			BindEnumAsString<StageId>();
 			BindEnumAsString<CharacterId>();
 			BindEnumAsString<BossId>();
 			BindEnumAsString<SkillKey>();

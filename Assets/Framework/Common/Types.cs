@@ -29,6 +29,11 @@ namespace SPRPG
 	public enum StageId
 	{
 		Radiation = 1,
+		Noise, 
+		Water,
+		Atmosphere,
+		Dessert, 
+		PoisonForest,
 	}
 
 	public enum BossId
