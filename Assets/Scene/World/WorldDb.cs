@@ -34,5 +34,10 @@ namespace SPRPG
 			Debug.LogError(LogMessages.KeyNotExists(key));
 			return null;
 		}
+
+		public static IEnumerable<StageData> GetEnumerable()
+		{
+			return Data;
+		}
 	}
 }
