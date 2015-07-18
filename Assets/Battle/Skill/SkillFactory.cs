@@ -20,6 +20,8 @@ namespace SPRPG.Battle
 					return new NullSkillActor(data, owner);
 				case SkillKey.WarriorAttack:
 					return new AttackSkillActor(data, owner);
+				case SkillKey.WarriorHeal:
+					return new HealSkillActor(data, owner);
 			}
 
 			Debug.LogError(LogMessages.EnumNotHandled(key));

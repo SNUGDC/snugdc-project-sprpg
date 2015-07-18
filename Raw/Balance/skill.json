@@ -12,5 +12,15 @@
 		"Arguments": {
 			"Damage": { "Value": 50 }
 		}
+	},
+	{
+		"Key": "WarriorHeal",
+		"Name": "힐",
+		"Tear": 3,
+		"MajorUser": "Warrior",
+		"DescriptionFormat": "자신의 체력을 {Amount} 회복한다.",
+		"Arguments": {
+			"Amount": 50
+		}
 	}
 ]

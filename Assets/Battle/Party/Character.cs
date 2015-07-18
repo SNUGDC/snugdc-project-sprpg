@@ -28,6 +28,11 @@
 			Hp -= dmg.Value;
 		}
 
+		public void Heal(Hp val)
+		{
+			Hp += (int)val;
+		}
+
 		public void PerformSkill(SkillSlot idx)
 		{
 			_skillManager.Perform(idx);

@@ -21,6 +21,7 @@ namespace SPRPG
 		None3 = 3,
 		None4 = 4,
 		WarriorAttack,
+		WarriorHeal,
 	}
 
 	public enum SkillSlot { _1 = 0, _2 = 1, _3 = 2, _4 = 3 }

@@ -51,4 +51,36 @@
 			_stopJob.Cancel();
 		}
 	}
+
+	public sealed class HealSkillActor : SkillActor
+	{
+		public readonly HealSkillArguments Arguments;
+
+		private Battle _battle { get { return Battle._; } }
+		private Job _performJob;
+		private Job _stopJob;
+
+		public HealSkillActor(SkillBalanceData data, Character owner)
+			: base(data, owner)
+		{
+			Arguments = new HealSkillArguments(data.Arguments);
+		}
+
+		protected override void DoStart()
+		{
+			_performJob = _battle.AddPlayerPerform((Tick)3, Perform);
+			_stopJob = _battle.AddPlayerPerform((Tick)7, Stop);
+		}
+
+		private void Perform()
+		{
+			Owner.Heal(Arguments.Amount);
+		}
+
+		protected override void DoCancel()
+		{
+			_performJob.Cancel();
+			_stopJob.Cancel();
+		}
+	}
 }

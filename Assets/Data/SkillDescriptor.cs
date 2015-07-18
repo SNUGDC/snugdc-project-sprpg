@@ -28,6 +28,13 @@ namespace SPRPG
 						var args = new AttackSkillArguments(data.Arguments);
 						return data.DescriptionFormat.Replace(AttackSkillArguments.DamageKey, args.Damage.Value);
 					};
+
+				case SkillKey.WarriorHeal:
+					return data =>
+					{
+						var args = new HealSkillArguments(data.Arguments);
+						return data.DescriptionFormat.Replace(HealSkillArguments.AmountKey, args.Amount);
+					};
 			}
 
 			Debug.LogError(LogMessages.EnumUndefined(key));

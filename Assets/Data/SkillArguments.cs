@@ -14,4 +14,16 @@ namespace SPRPG
 			Damage = args[DamageKey].ToObject<Damage>();
 		}
 	}
+
+	public struct HealSkillArguments
+	{
+		public const string AmountKey = "Amount";
+
+		public readonly Hp Amount;
+
+		public HealSkillArguments(JsonData args)
+		{
+			Amount = (Hp)args[AmountKey].GetNatural();
+		}
+	}
 }
