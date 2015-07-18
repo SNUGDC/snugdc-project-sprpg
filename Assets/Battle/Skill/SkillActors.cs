@@ -2,12 +2,12 @@
 {
 	public sealed class NullSkillActor : SkillActor
 	{
-		public NullSkillActor()
-			: base(new SkillBalanceData())
+		public NullSkillActor(Character owner)
+			: base(new SkillBalanceData(), owner)
 		{ }
 
-		public NullSkillActor(SkillBalanceData data)
-			: base(data)
+		public NullSkillActor(SkillBalanceData data, Character owner)
+			: base(data, owner)
 		{ }
 
 		protected override void DoStart()
@@ -28,8 +28,8 @@
 		private Job _performJob;
 		private Job _stopJob;
 
-		public AttackSkillActor(SkillBalanceData data)
-			: base(data)
+		public AttackSkillActor(SkillBalanceData data, Character owner)
+			: base(data, owner)
 		{
 			Arguments = new AttackSkillArguments(data.Arguments);
 		}

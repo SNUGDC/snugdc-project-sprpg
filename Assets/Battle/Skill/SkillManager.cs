@@ -21,12 +21,12 @@ namespace SPRPG.Battle
 			}
 		}
 
-		public SkillManager(SkillSetDef def)
+		public SkillManager(SkillSetDef def, Character owner)
 		{
-			this[SkillSlot._1] = SkillFactory.Create(def._1);
-			this[SkillSlot._2] = SkillFactory.Create(def._2);
-			this[SkillSlot._3] = SkillFactory.Create(def._3);
-			this[SkillSlot._4] = SkillFactory.Create(def._4);
+			this[SkillSlot._1] = SkillFactory.Create(def._1, owner);
+			this[SkillSlot._2] = SkillFactory.Create(def._2, owner);
+			this[SkillSlot._3] = SkillFactory.Create(def._3, owner);
+			this[SkillSlot._4] = SkillFactory.Create(def._4, owner);
 		}
 
 		public void Perform(SkillSlot idx)

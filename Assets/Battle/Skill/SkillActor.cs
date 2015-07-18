@@ -11,7 +11,7 @@ namespace SPRPG.Battle
 
 		public new Action<SkillActor> OnStop;
 
-		protected SkillActor(SkillBalanceData data)
+		protected SkillActor(SkillBalanceData data, Character owner)
 		{
 			Data = data;
 			Owner = owner;

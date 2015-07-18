@@ -20,7 +20,7 @@
 			_data = data;
 			Hp = HpMax = data.Stats.Hp.ToValue();
 			_passive = PassiveFactory.Create(data.Passive);
-			_skillManager = new SkillManager(data.SkillSet);
+			_skillManager = new SkillManager(data.SkillSet, this);
 		}
 
 		public void Hit(Damage dmg)
