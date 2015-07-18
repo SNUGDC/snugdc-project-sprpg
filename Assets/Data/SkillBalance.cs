@@ -9,7 +9,7 @@ namespace SPRPG
 	{
 		public SkillKey Key;
 		public string Name;
-		public SkillTear Tear;
+		public SkillTier Tier;
 		public CharacterId MajorUser;
 		public string DescriptionFormat;
 		public SkillDescriptor Descriptor;

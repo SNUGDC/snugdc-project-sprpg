@@ -16,7 +16,7 @@ namespace SPRPG.Battle
 			get { return _actors[slot.ToIndex()]; }
 			private set
 			{
-				Debug.Assert(slot.ToTear() == value.Data.Tear, "tear and slot does not match.");
+				Debug.Assert(slot.ToTier() == value.Data.Tier, "tier and slot does not match.");
 				_actors[slot.ToIndex()] = value;
 			}
 		}

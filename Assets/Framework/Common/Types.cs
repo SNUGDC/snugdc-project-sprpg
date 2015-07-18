@@ -31,7 +31,7 @@ namespace SPRPG
 	}
 
 	public enum SkillSlot { _1 = 0, _2 = 1, _3 = 2, _4 = 3 }
-	public enum SkillTear { _1 = 1, _2 = 2, _3 = 3, _4 = 4 }
+	public enum SkillTier { _1 = 1, _2 = 2, _3 = 3, _4 = 4 }
 
 	public enum StageId
 	{
@@ -68,12 +68,12 @@ namespace SPRPG
 			return (int) thiz;
 		}
 
-		public static SkillTear ToTear(this SkillSlot thiz)
+		public static SkillTier ToTier(this SkillSlot thiz)
 		{
-			return (SkillTear)((int)thiz + 1);
+			return (SkillTier)((int)thiz + 1);
 		}
 
-		public static SkillSlot ToSlot(this SkillTear thiz)
+		public static SkillSlot ToSlot(this SkillTier thiz)
 		{
 			return (SkillSlot) ((int) thiz - 1);
 		}

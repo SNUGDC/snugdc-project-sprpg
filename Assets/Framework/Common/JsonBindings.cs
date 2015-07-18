@@ -21,7 +21,7 @@ namespace SPRPG
 		{
 			UnityTypeBindings.Register();
 			BindEnumAsNatural<Proportion>();
-			BindEnumAsNatural<SkillTear>();
+			BindEnumAsNatural<SkillTier>();
 			BindEnumAsNatural<Hp>();
 			BindEnumAsNatural<Tick>();
 			BindEnumAsString<Element>();
