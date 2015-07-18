@@ -333,6 +333,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8dd86050dad56a43a920efc70e2893e, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1034114415 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11467704, guid: c8dd86050dad56a43a920efc70e2893e,
+    type: 2}
+  m_PrefabInternal: {fileID: 448157874}
+  m_Script: {fileID: 11500000, guid: e672ee0e1768c9f40b74a4f9a4837f48, type: 3}
 --- !u!1 &1116489415
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,3 +573,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a02f4b79d62644fbd4f9600efcf9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clock: {fileID: 1034114415}

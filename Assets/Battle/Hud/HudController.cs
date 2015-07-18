@@ -6,9 +6,12 @@ namespace SPRPG.Battle
 	{
 		public static HudController _ { get; private set; }
 		public static Battle Context { get { return _._battleWrapper.Battle; } }
-
+		
 		private BattleWrapper _battleWrapper;
 
+		[SerializeField]
+		private HudClock _clock;
+		
 		void Start()
 		{
 			Debug.Assert(_ == null);
@@ -21,6 +24,11 @@ namespace SPRPG.Battle
 		{
 			Debug.Assert(_ == this);
 			_ = null;
+		}
+
+		void Update()
+		{
+			_clock.RefreshTime(_battleWrapper.Battle.PlayerClock.Relative);
 		}
 	}
 }
