@@ -19,6 +19,7 @@ namespace SPRPG.Battle
 				case SkillKey.None4:
 					return new NullSkillActor(data, owner);
 				case SkillKey.WarriorAttack:
+				case SkillKey.WarriorStrongAttack:
 					return new AttackSkillActor(data, owner);
 				case SkillKey.WarriorHeal:
 					return new HealSkillActor(data, owner);

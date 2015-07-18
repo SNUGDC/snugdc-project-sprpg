@@ -23,6 +23,7 @@ namespace SPRPG
 					return delegate { return "invalid skill: " + key; };
 
 				case SkillKey.WarriorAttack:
+				case SkillKey.WarriorStrongAttack:
 					return data =>
 					{
 						var args = new AttackSkillArguments(data.Arguments);
