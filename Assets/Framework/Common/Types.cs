@@ -4,6 +4,10 @@ namespace SPRPG
 {
 	public enum Proportion { }
 
+	public enum Tick { }
+	public enum Term { _1, _2, _3, _4 }
+	public enum Period { }
+
 	public enum Element
 	{
 		Normal = 0,

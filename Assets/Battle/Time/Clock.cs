@@ -4,10 +4,6 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
-	public enum Tick {}
-	public enum Term { _1, _2, _3, _4 }
-	public enum Period {}
-
 	public struct TermAndDistance
 	{
 		public Term Term;

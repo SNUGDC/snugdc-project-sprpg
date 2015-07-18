@@ -23,7 +23,7 @@ namespace SPRPG
 			BindEnumAsNatural<Proportion>();
 			BindEnumAsNatural<SkillTear>();
 			BindEnumAsNatural<Hp>();
-			BindEnumAsNatural<Battle.Tick>();
+			BindEnumAsNatural<Tick>();
 			BindEnumAsString<Element>();
 			BindEnumAsString<StageId>();
 			BindEnumAsString<CharacterId>();
