@@ -84,7 +84,7 @@ namespace SPRPG.Battle
 
 		public void Update(float dt)
 		{
-			if (_inputReceiver != null)
+			if (!Fsm.IsResult && _inputReceiver != null)
 				_inputReceiver.Update(dt);
 		}
 

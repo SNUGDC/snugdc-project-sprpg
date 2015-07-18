@@ -8,6 +8,8 @@ namespace SPRPG.Battle
 		public BossId Id { get { return Data.Id; } }
 		public readonly BossBalanceData Data;
 
+		public bool IsAlive { get { return Hp > 0; } }
+
 		public Hp Hp { get; private set; }
 		private readonly Hp _hpMax;
 

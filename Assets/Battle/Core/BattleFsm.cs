@@ -5,6 +5,8 @@ namespace SPRPG.Battle
 {
 	public class BattleFsm
 	{
+		private readonly Battle _context;
+
 		public BattlePhase Current { get; private set; }
 
 		public readonly BattlePhase Idle;
@@ -22,6 +24,8 @@ namespace SPRPG.Battle
 
 		public BattleFsm(Battle context)
 		{
+			_context = context;
+
 			Idle = new BattlePhase(context, BattleState.Idle);
 			BeforeTurn = new BattlePhase(context, BattleState.BeforeTurn);
 			AfterTurn = new BattlePhase(context, BattleState.AfterTurn);
@@ -29,8 +33,8 @@ namespace SPRPG.Battle
 			BossPassive = new BattlePhase(context, BattleState.BossPassive);
 			PlayerPerform = new BattlePhase(context, BattleState.PlayerPerform);
 			BossPerform = new BossPerformPhase(context);
-			ResultWon = new BattlePhase(context, BattleState.ResultWon);
-			ResultLost = new BattlePhase(context, BattleState.ResultLost);
+			ResultWon = new ResultWonPhase(context);
+			ResultLost = new ResultLostPhase(context);
 
 			Current = Idle;
 			Current.Enter();
@@ -38,7 +42,20 @@ namespace SPRPG.Battle
 
 		private bool CheckAndTransferToResult()
 		{
-			// todo
+			Debug.Assert(!IsResult, "phase is already result.");
+
+			if (BattleRule.CheckLose(_context))
+			{
+				Transfer(ResultLost);
+				return true;
+			}
+
+			if (BattleRule.CheckWin(_context))
+			{
+				Transfer(ResultWon);
+				return true;
+			}
+
 			return false;
 		}
 
@@ -85,7 +102,7 @@ namespace SPRPG.Battle
 			{
 				Proceed();
 			}
-			while (Current != Idle);
+			while (!IsIdle && !IsResult);
 		}
 	}
 }

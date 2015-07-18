@@ -51,6 +51,13 @@ namespace SPRPG.Battle
 			this[PartyIdx._1] = tmp;
 		}
 
+		public bool IsSomeoneAlive()
+		{
+			foreach (var member in this)
+				if (member.IsAlive) return true;
+			return false;
+		}
+
 		public IEnumerator<Character> GetEnumerator()
 		{
 			yield return this[PartyIdx._1];

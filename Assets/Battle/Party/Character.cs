@@ -7,6 +7,8 @@
 		private readonly CharacterData _data;
 		public CharacterData Data { get { return _data; } }
 
+		public bool IsAlive { get { return Hp > 0; } }
+
 		public Hp Hp { get; private set; }
 		public readonly Hp HpMax;
 
