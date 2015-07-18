@@ -9,7 +9,7 @@ namespace SPRPG
 
 		public Assets Assets;
 
-		public CharacterDB CharacterDB;
+		public CharacterDb CharacterDb;
 
 		private void Start()
 		{
@@ -31,7 +31,7 @@ namespace SPRPG
 			SkillBalance._.Load();
 			Battle.BossBalance._.Load();
 
-			CharacterDB.Init(CharacterDB);
+			CharacterDb.Init(CharacterDb);
 
 			App.Init();
 

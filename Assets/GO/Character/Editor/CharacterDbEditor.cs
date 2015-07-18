@@ -21,8 +21,8 @@ namespace SPRPG
 		}
 	}
 
-	[CustomEditor(typeof(CharacterDB))]
-	public class CharacterDBEditor : ComponentEditor<CharacterDB>
+	[CustomEditor(typeof(CharacterDb))]
+	public class CharacterDbEditor : ComponentEditor<CharacterDb>
 	{
 		public override void OnInspectorGUI()
 		{
