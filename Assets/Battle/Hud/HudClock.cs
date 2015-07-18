@@ -5,14 +5,16 @@ namespace SPRPG.Battle
 {
 	public class HudClock : MonoBehaviour
 	{
-		[SerializeField]
-		private Text _text;
+		private const int DegreePerTick = 360 / (int)Const.Period;
 
-		void Update()
+		[SerializeField]
+		private Image _arrow;
+
+		public void RefreshTime(Tick tick)
 		{
-			var clock = HudController.Context.PlayerClock;
-			_text.text = clock.Relative.ToString();
-			_text.color = clock.IsPerfectTerm ? Color.red : Color.black;
+			var rotation = _arrow.transform.eulerAngles;
+			rotation.z = -(int)tick * DegreePerTick;
+			_arrow.transform.eulerAngles = rotation;
 		}
 	}
 }
