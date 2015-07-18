@@ -12,6 +12,11 @@
 			return "enum " + val + " of " + typeof(T).Name + " undefined.";
 		}
 
+		public static string EnumNotHandled<T>(T val)
+		{
+			return "enum " + val + " of " + typeof(T).Name + " not handled.";
+		}
+
 		public static string KeyExists<T>(T key)
 		{
 			return "key " + key + " exists.";
