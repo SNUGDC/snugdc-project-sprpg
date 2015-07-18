@@ -18,7 +18,6 @@ namespace SPRPG.Battle
 
 			RenderClock();
 			RenderInput();
-			RenderBoss();
 
 			if (Target.RealtimeEnabled)
 				EditorUtility.SetDirty(Target);
@@ -74,14 +73,6 @@ namespace SPRPG.Battle
 			if (GUILayout.Button("shift"))
 				_battle.EditInputReceiver().ForceShift();
 			GUILayout.EndHorizontal();
-		}
-
-		private void RenderBoss()
-		{
-			if (_battle.Boss == null)
-				return;
-
-			GUILayout.Label("boss: " + _battle.Boss.Hp);
 		}
 	}
 }

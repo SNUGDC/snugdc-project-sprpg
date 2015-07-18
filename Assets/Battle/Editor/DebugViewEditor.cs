@@ -50,4 +50,23 @@ namespace SPRPG.Battle
 			GUILayout.EndHorizontal();
 		}
 	}
+
+	[CustomEditor(typeof (BossDebugView))]
+	public class BossDebugViewEditor : ComponentEditor<BossDebugView>
+	{
+		private Battle Battle { get { return Target.Battle; } }
+
+		public override void OnInspectorGUI()
+		{
+			RenderBoss();
+		}
+
+		private void RenderBoss()
+		{
+			if (Battle.Boss == null)
+				return;
+
+			GUILayout.Label("boss: " + Battle.Boss.Hp);
+		}
+	}
 }

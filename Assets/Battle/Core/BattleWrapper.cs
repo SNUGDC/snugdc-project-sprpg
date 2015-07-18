@@ -24,6 +24,9 @@ namespace SPRPG.Battle
 #if UNITY_EDITOR
 			var partyDebugView = gameObject.AddComponent<PartyDebugView>();
 			partyDebugView.BattleWrapper = this;
+
+			var bossDebugView = gameObject.AddComponent<BossDebugView>();
+			bossDebugView.BattleWrapper = this;
 #endif
 		}
 
