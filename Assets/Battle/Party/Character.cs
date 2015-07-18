@@ -17,6 +17,8 @@
 		private readonly SkillManager _skillManager;
 		public SkillManager SkillManager { get { return _skillManager; } }
 
+		private Tick _evadeDurationLeft;
+
 		public Character(CharacterData data)
 		{
 			_data = data;
@@ -27,20 +29,34 @@
 
 		public void BeforeTurn()
 		{
+			if (CheckEvadeDuration())
+				_evadeDurationLeft -= 1;
 		}
 
 		public void AfterTurn()
 		{
 		}
 
+		public bool CheckEvadeDuration()
+		{
+			return _evadeDurationLeft > 0;
+		}
+
 		public void Hit(Damage dmg)
 		{
+			if (CheckEvadeDuration())
+				return;
 			Hp -= dmg.Value;
 		}
 
 		public void Heal(Hp val)
 		{
 			Hp += (int)val;
+		}
+
+		public void Evade(Tick duration)
+		{
+			_evadeDurationLeft = duration;
 		}
 
 		public void PerformSkill(SkillSlot idx)

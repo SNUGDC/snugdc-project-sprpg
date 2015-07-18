@@ -1,4 +1,6 @@
-﻿namespace SPRPG.Battle
+﻿using UnityEngine;
+
+namespace SPRPG.Battle
 {
 	public sealed class NullSkillActor : SkillActor
 	{
@@ -75,6 +77,38 @@
 		private void Perform()
 		{
 			Owner.Heal(Arguments.Amount);
+		}
+
+		protected override void DoCancel()
+		{
+			_performJob.Cancel();
+			_stopJob.Cancel();
+		}
+	}
+
+	public sealed class EvasionSkillActor : SkillActor
+	{
+		public readonly FiniteSkillArguments Arguments;
+
+		private Battle _battle { get { return Battle._; } }
+		private Job _performJob;
+		private Job _stopJob;
+
+		public EvasionSkillActor(SkillBalanceData data, Character owner)
+			: base(data, owner)
+		{
+			Arguments = new FiniteSkillArguments(data.Arguments);
+		}
+
+		protected override void DoStart()
+		{
+			_performJob = _battle.AddPlayerPerform((Tick)3, Perform);
+			_stopJob = _battle.AddPlayerPerform((Tick)7, Stop);
+		}
+
+		private void Perform()
+		{
+			Owner.Evade(Arguments.Duration);
 		}
 
 		protected override void DoCancel()

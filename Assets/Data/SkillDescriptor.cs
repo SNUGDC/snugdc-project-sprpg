@@ -29,6 +29,12 @@ namespace SPRPG
 						return data.DescriptionFormat.Replace(AttackSkillArguments.DamageKey, args.Damage.Value);
 					};
 
+				case SkillKey.WarriorEvasion:
+					return data =>
+					{
+						var args = new FiniteSkillArguments(data.Arguments);
+						return data.DescriptionFormat.Replace(FiniteSkillArguments.DurationKey, args.Duration);
+					};
 				case SkillKey.WarriorHeal:
 					return data =>
 					{

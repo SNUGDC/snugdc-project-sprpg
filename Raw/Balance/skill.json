@@ -14,6 +14,16 @@
 		}
 	},
 	{
+		"Key": "WarriorEvasion",
+		"Name": "공격",
+		"Tear": 2,
+		"MajorUser": "Warrior",
+		"DescriptionFormat": "{Duration} Tick동안 적 공격에 피해를 입지 않는다.",
+		"Arguments": {
+			"Duration": 30
+		}
+	},
+	{
 		"Key": "WarriorHeal",
 		"Name": "힐",
 		"Tear": 3,

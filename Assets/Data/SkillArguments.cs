@@ -3,6 +3,19 @@ using LitJson;
 
 namespace SPRPG
 {
+
+	public struct FiniteSkillArguments
+	{
+		public const string DurationKey = "Duration";
+
+		public readonly Tick Duration;
+
+		public FiniteSkillArguments(JsonData args)
+		{
+			Duration = (Tick) args[DurationKey].GetNatural();
+		}
+	}
+
 	public struct AttackSkillArguments
 	{
 		public const string DamageKey = "Damage";
