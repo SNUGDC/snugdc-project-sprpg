@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace SPRPG
 {
-	public class CharacterDB : MonoBehaviour
+	public class CharacterDb : MonoBehaviour
 	{
 		[SerializeField]
 		private List<CharacterData> _datas;
 
-		public static CharacterDB _ { get; private set; }
+		public static CharacterDb _ { get; private set; }
 
-		public static void Init(CharacterDB obj)
+		public static void Init(CharacterDb obj)
 		{
 			Debug.Assert(_ == null);
 			_ = obj;

@@ -68,7 +68,7 @@ namespace SPRPG.Camp
 
 		public void SetCharacter(CharacterId id)
 		{
-			var data = CharacterDB._.Find(id);
+			var data = CharacterDb._.Find(id);
 			if (data == null) return;
 
 			Character = id;

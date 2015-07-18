@@ -17,7 +17,7 @@ namespace SPRPG.Camp
 
 		public void SetCharacter(CharacterId id)
 		{
-			var characterData = CharacterDB._.Find(id);
+			var characterData = CharacterDb._.Find(id);
 			if (characterData == null) return;
 			Skeleton.gameObject.SetActive(true);
 			Skeleton.SetSkin(characterData.Skin);

@@ -40,7 +40,7 @@ namespace SPRPG.Battle
 
 		private void InitCharacter(PartyIdx idx, CharacterId id)
 		{
-			this[idx] = new Character(CharacterDB._.Find(id));
+			this[idx] = new Character(CharacterDb._.Find(id));
 		}
 
 		public void Shift()
