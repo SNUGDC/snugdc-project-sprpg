@@ -25,6 +25,14 @@
 			_skillManager = new SkillManager(data.SkillSet, this);
 		}
 
+		public void BeforeTurn()
+		{
+		}
+
+		public void AfterTurn()
+		{
+		}
+
 		public void Hit(Damage dmg)
 		{
 			Hp -= dmg.Value;

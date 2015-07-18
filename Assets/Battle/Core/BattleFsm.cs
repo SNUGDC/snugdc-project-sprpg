@@ -10,8 +10,8 @@ namespace SPRPG.Battle
 		public BattlePhase Current { get; private set; }
 
 		public readonly BattlePhase Idle;
-		public readonly BattlePhase BeforeTurn;
-		public readonly BattlePhase AfterTurn;
+		public readonly BeforeTurnPhase BeforeTurn;
+		public readonly AfterTurnPhase AfterTurn;
 		public readonly BattlePhase PlayerPassive;
 		public readonly BattlePhase BossPassive;
 		public readonly BattlePhase PlayerPerform;
@@ -27,8 +27,8 @@ namespace SPRPG.Battle
 			_context = context;
 
 			Idle = new BattlePhase(context, BattleState.Idle);
-			BeforeTurn = new BattlePhase(context, BattleState.BeforeTurn);
-			AfterTurn = new BattlePhase(context, BattleState.AfterTurn);
+			BeforeTurn = new BeforeTurnPhase(context);
+			AfterTurn = new AfterTurnPhase(context);
 			PlayerPassive = new BattlePhase(context, BattleState.PlayerPassive);
 			BossPassive = new BattlePhase(context, BattleState.BossPassive);
 			PlayerPerform = new BattlePhase(context, BattleState.PlayerPerform);

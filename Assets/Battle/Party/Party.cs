@@ -58,6 +58,18 @@ namespace SPRPG.Battle
 			return false;
 		}
 
+		public void BeforeTurn()
+		{
+			foreach (var member in this)
+				member.BeforeTurn();
+		}
+
+		public void AfterTurn()
+		{
+			foreach (var member in this)
+				member.AfterTurn();
+		}
+
 		public IEnumerator<Character> GetEnumerator()
 		{
 			yield return this[PartyIdx._1];

@@ -2,6 +2,30 @@
 
 namespace SPRPG.Battle
 {
+	public class BeforeTurnPhase : BattlePhase
+	{
+		public BeforeTurnPhase(Battle context) : base(context, BattleState.BeforeTurn)
+		{}
+
+		public override void Enter()
+		{
+			Context.Party.BeforeTurn();
+			base.Enter();
+		}
+	}
+
+	public class AfterTurnPhase : BattlePhase
+	{
+		public AfterTurnPhase(Battle context) : base(context, BattleState.AfterTurn)
+		{ }
+
+		public override void Enter()
+		{
+			base.Enter();
+			Context.Party.AfterTurn();
+		}
+	}
+
 	public class BossPerformPhase : BattlePhase
 	{
 		public BossPerformPhase(Battle context) : base(context, BattleState.BossPerform)
@@ -19,7 +43,7 @@ namespace SPRPG.Battle
 	public class ResultWonPhase : BattlePhase
 	{
 		public ResultWonPhase(Battle context) : base(context, BattleState.ResultWon)
-		{}
+		{ }
 
 		public override void Enter()
 		{
