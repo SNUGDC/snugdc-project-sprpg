@@ -13,11 +13,17 @@ namespace SPRPG.Battle
 
 			switch (key)
 			{
+				case SkillKey.None1:
+				case SkillKey.None2:
+				case SkillKey.None3:
+				case SkillKey.None4:
+					return new NullSkillActor(data, owner);
 				case SkillKey.WarriorAttack:
 					return new AttackSkillActor(data, owner);
 			}
 
-			return new NullSkillActor(data);
+			Debug.LogError(LogMessages.EnumNotHandled(key));
+			return new NullSkillActor(data, owner);
 		}
 	}
 }
