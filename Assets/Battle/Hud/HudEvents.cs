@@ -32,8 +32,8 @@ namespace SPRPG.Battle.View
 
 		private static void AfterTurn()
 		{
-			foreach (var onCharacterHpChanged in OnCharacterHpChanged)
-				onCharacterHpChanged.Value.TryInvoke();
+			foreach (var action in OnCharacterHpChanged)
+				action.Value.TryInvoke();
 			OnSomeCharacterHpChanged.TryInvoke();
 		}
 
