@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
@@ -23,6 +24,7 @@ namespace SPRPG.Battle
 		{
 			base.Enter();
 			Context.Party.AfterTurn();
+			Events.AfterTurn.CheckAndCall();
 		}
 	}
 

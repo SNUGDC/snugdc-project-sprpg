@@ -2,6 +2,8 @@
 
 namespace SPRPG.Battle
 {
+	public delegate void OnHpChanged(Hp cur, Hp old);
+
 	public class Character
 	{
 		public CharacterId Id { get { return Data.Id; } }
@@ -19,7 +21,12 @@ namespace SPRPG.Battle
 			{
 				value = (Hp)((int)value).Clamp(0, (int)HpMax);
 				if (_hp == value) return;
+
+				var oldHp = _hp;
 				_hp = value;
+
+				if (OnHpChanged != null) 
+					OnHpChanged(_hp, oldHp);
 			}
 		}
 
@@ -31,6 +38,8 @@ namespace SPRPG.Battle
 		public SkillManager SkillManager { get { return _skillManager; } }
 
 		private Tick _evadeDurationLeft;
+
+		public OnHpChanged OnHpChanged;
 
 		public Character(CharacterData data)
 		{

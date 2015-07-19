@@ -56,6 +56,9 @@ namespace SPRPG.Battle
 		{
 			var member = new Character(CharacterDb._.Find(id));
 			this[idx] = member;
+			var onCharacterHpChanged = Events.GetOnCharacterHpChanged(idx);
+			member.OnHpChanged += (cur, old) => onCharacterHpChanged.Value.CheckAndCall(member, old);
+			member.OnHpChanged += (cur, old) => Events.OnSomeCharacterHpChanged.CheckAndCall(idx, member, old);
 		}
 
 		public void Shift() { ++ShiftCount; }
