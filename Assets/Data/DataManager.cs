@@ -1,4 +1,6 @@
-﻿namespace SPRPG
+﻿using SPRPG.Battle;
+
+namespace SPRPG
 {
 	public static class DataManager
 	{
@@ -8,6 +10,7 @@
 			DebugConfig.Load();
 			Config.LoadForced();
 			CampBalance._.LoadForced();
+			BattleBalance._.LoadForced();
 		}
 #endif
 	}

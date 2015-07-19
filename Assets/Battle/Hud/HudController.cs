@@ -28,6 +28,7 @@ namespace SPRPG.Battle.View
 			_party.gameObject.SetActive(true);
 			
 			_partyPlacer = new PartyPlacer(Context.Party, _party);
+			_partyPlacer.ResetPosition();
 
 			Events.AfterTurn += AfterTurn;
 		}
