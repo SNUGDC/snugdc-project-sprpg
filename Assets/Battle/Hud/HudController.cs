@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SPRPG.Battle.Hud;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
@@ -11,6 +12,10 @@ namespace SPRPG.Battle
 
 		[SerializeField]
 		private HudClock _clock;
+
+		[SerializeField]
+		private HudHpBar[] _hpBars;
+
 		
 		void Start()
 		{
@@ -18,6 +23,13 @@ namespace SPRPG.Battle
 			_ = this;
 
 			_battleWrapper = FindObjectOfType<BattleWrapper>();
+
+			HudEvents.OnSomeCharacterHpChanged.Action += OnSomeCharacterHpChanged;
+		}
+
+		private void OnSomeCharacterHpChanged(OriginalPartyIdx idx, Character character, Hp oldHp)
+		{
+			_hpBars[idx.ToArrayIndex()].SetHp(character.Hp);
 		}
 
 		void OnDestroy()
