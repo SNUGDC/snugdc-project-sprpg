@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Gem;
 using UnityEngine;
 
 namespace SPRPG.Profile
@@ -7,6 +9,16 @@ namespace SPRPG.Profile
 	{
 		[SerializeField] 
 		private List<SkillButton> _slots;
+
+		public Action<SkillKey> OnClick;
+
+		void Start()
+		{
+			foreach (var slot in _slots)
+			{
+				slot.OnClickCallback += OnClick;
+			}
+		}
 
 		public void SetSlot(SkillSlot num, SkillKey key)
 		{
