@@ -25,6 +25,7 @@ namespace SPRPG
 				case SkillKey.WarriorAttack:
 				case SkillKey.WarriorStrongAttack:
 				case SkillKey.ArcherAttack:
+				case SkillKey.ArcherStrongShot:
 					return data =>
 					{
 						var args = new AttackSkillArguments(data.Arguments);

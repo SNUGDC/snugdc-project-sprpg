@@ -27,6 +27,7 @@ namespace SPRPG.Battle
 				case SkillKey.ArcherEvasion:
 					return new EvasionSkillActor(data, owner);
 				case SkillKey.ArcherAttack:
+				case SkillKey.ArcherStrongShot:
 					return new ArcherAttackSkillActor(data, owner);
 			}
 
