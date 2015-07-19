@@ -2,7 +2,7 @@
 
 namespace SPRPG.Profile
 {
-	public class ProfileTransitionControl : MonoBehaviour 
+	public class ProfileControl : MonoBehaviour 
 	{
 		public void Back()
 		{
@@ -12,6 +12,6 @@ namespace SPRPG.Profile
 		public void TransferToSetting()
 		{
 			Transition.TransferToSetting();
-		}
+		}		
 	}
 }
