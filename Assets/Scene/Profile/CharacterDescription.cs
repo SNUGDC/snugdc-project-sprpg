@@ -5,11 +5,12 @@ namespace SPRPG.Profile
 {
 	public class CharacterDescription : MonoBehaviour
 	{
-		public Text Text;
+		[SerializeField]
+		private Text _text;
 
 		public void SetDescription(string value)
 		{
-			Text.text = value;
+			_text.text = value;
 		}
 	}
 }
