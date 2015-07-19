@@ -8,15 +8,18 @@ namespace SPRPG.Battle.View
 	public static class HudEvents
 	{
 		public static OnSomeCharacterHpChanged OnSomeCharacterHpChanged;
+		private static readonly List<OnCharacterHpChanged> OnCharacterHpChanged;
 
-		private static readonly List<OnCharacterHpChanged> OnCharacterHpChanged = new List<OnCharacterHpChanged>
-		{
-			new OnCharacterHpChanged(), new OnCharacterHpChanged(), new OnCharacterHpChanged(),
-		};
 
 		static HudEvents()
 		{
 			Events.AfterTurn += AfterTurn;
+
+			// initialize CharacterHpChanged
+			OnCharacterHpChanged = new List<OnCharacterHpChanged>
+			{
+				new OnCharacterHpChanged(), new OnCharacterHpChanged(), new OnCharacterHpChanged(),
+			};
 
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
 			{
