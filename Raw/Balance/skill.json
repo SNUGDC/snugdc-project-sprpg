@@ -50,30 +50,30 @@
 	
 	{
 		"Key": "ArcherAttack",
-		"Name": "ê³µê²©",
+		"Name": "공격",
 		"Tier": 1,
 		"MajorUser": "Archer",
-		"DescriptionFormat": "ì ì—ê²Œ {Damage}ì˜ ë°ë¯¸ì§€ë¥¼ ì¤€ë‹¤.",
+		"DescriptionFormat": "적에게 {Damage}의 데미지를 준다.",
 		"Arguments": {
 			"Damage": { "Value": 70 }
 		}
 	},
 	{
 		"Key": "ArcherEvasion",
-		"Name": "íšŒí”¼",
+		"Name": "회피",
 		"Tier": 2,
 		"MajorUser": "Archer",
-		"DescriptionFormat": "{Duration} tick ë™ì•ˆ ì  ê³µê²©ì— í”¼í•´ë¥¼ ìž…ì§€ ì•ŠëŠ”ë‹¤.",
+		"DescriptionFormat": "{Duration} tick 동안 적 공격에 피해를 입지 않는다.",
 		"Arguments": {
 			"Duration": 30
 		}
 	},
 	{
 		"Key": "ArcherStrongShot",
-		"Name": "ì„¸ê²Œìœë‹¤",
+		"Name": "세게쏜다",
 		"Tier": 3,
 		"MajorUser": "Archer",
-		"DescriptionFormat": "ì ì—ê²Œ {Damage}ì˜ ë°ë¯¸ì§€ë¥¼ ì¤€ë‹¤.",
+		"DescriptionFormat": "적에게 {Damage}의 데미지를 준다.",
 		"Arguments": {
 			"Damage": { "Value": 210 }
 		}
