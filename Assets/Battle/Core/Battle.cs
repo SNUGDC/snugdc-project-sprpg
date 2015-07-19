@@ -113,7 +113,7 @@ namespace SPRPG.Battle
 #endif
 	}
 
-	public static class BattleHelper
+	public static partial class BattleHelper
 	{
 		public static Job AddPlayerPerform(this Battle thiz, Tick delay, Action callback)
 		{

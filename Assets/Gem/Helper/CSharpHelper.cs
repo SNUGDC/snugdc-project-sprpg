@@ -6,6 +6,8 @@ namespace Gem
 {
 	public static class CSharpHelper
 	{
+		public static int ModPositive(int x, int y) { return (x%y + y)%y; }
+
 		public static IEnumerable<Pair<int, int>> Range2D(int len1, int len2)
 		{
 			foreach (var i1 in Enumerable.Range(0, len1))
