@@ -19,6 +19,10 @@ namespace SPRPG.Battle.View
 		private PartyView _party;
 		private PartyPlacer _partyPlacer;
 
+		[SerializeField]
+		private HudHpBar[] _hpBars;
+
+		
 		void Start()
 		{
 			Debug.Assert(_ == null);
@@ -32,11 +36,19 @@ namespace SPRPG.Battle.View
 			_partyPlacer.ResetPosition();
 
 			Events.AfterTurn += AfterTurn;
-			Events.OnBossHpChanged += OnBossHpChanged;
+
+			HudEvents.OnSomeCharacterHpChanged.Action += OnSomeCharacterHpChanged;
 
 #if UNITY_EDITOR
 			DebugLogger.Init();
 #endif
+		}
+
+		private void OnSomeCharacterHpChanged(OriginalPartyIdx idx, Character character, Hp oldHp)
+		{
+			_hpBars[idx.ToArrayIndex()].SetHp(character.Hp);
+			Events.OnBossHpChanged += OnBossHpChanged;
+
 		}
 
 		void OnDestroy()

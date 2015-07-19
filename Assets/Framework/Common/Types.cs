@@ -16,6 +16,9 @@ namespace SPRPG
 	public enum PassiveKey
 	{
 		None = 0,
+		Warrior = 1,
+		Wizard = 2,
+		Archer = 3,
 	}
 
 	public enum SkillKey
@@ -28,6 +31,9 @@ namespace SPRPG
 		WarriorEvasion = 7,
         WarriorHeal = 6,
 		WarriorStrongAttack = 8,
+		ArcherAttack = 9,
+		ArcherEvasion = 10,
+		ArcherStrongShot=11,
 	}
 
 	public enum SkillSlot { _1 = 0, _2 = 1, _3 = 2, _4 = 3 }

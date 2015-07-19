@@ -16,7 +16,7 @@ MonoBehaviour:
   Skin: {fileID: 11400000, guid: bc0db070cd23b0042a2daa5d38c070da, type: 2}
   Stats:
     _hp: 100
-  Passive: 0
+  Passive: 2
   SkillSet:
     _1: 1
     _2: 2
