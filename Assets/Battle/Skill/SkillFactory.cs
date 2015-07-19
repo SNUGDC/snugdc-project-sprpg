@@ -24,6 +24,7 @@ namespace SPRPG.Battle
 				case SkillKey.WarriorHeal:
 					return new HealSkillActor(data, owner);
 				case SkillKey.WarriorEvasion:
+				case SkillKey.ArcherEvasion:
 					return new EvasionSkillActor(data, owner);
 				case SkillKey.ArcherAttack:
 					return new ArcherAttackSkillActor(data, owner);

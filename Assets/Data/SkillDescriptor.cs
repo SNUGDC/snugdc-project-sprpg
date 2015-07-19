@@ -32,6 +32,7 @@ namespace SPRPG
 					};
 
 				case SkillKey.WarriorEvasion:
+				case SkillKey.ArcherEvasion:
 					return data =>
 					{
 						var args = new FiniteSkillArguments(data.Arguments);
