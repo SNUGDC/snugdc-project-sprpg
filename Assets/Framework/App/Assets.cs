@@ -14,6 +14,8 @@ namespace SPRPG
 		public Camp.CampCharacter CampCharacter;
 		public Camp.CharacterTool CampCharacterTool;
 
+		public Battle.View.CharacterView CharacterView;
+
 		public static void Init(Assets assets)
 		{
 			_ = assets;
