@@ -6,6 +6,7 @@
 	{
 		"Key": "WarriorAttack",
 		"Name": "공격",
+		"Icon": "Debug/Glyph/0",
 		"Tier": 1,
 		"MajorUser": "Warrior",
 		"DescriptionFormat": "적에게 {Damage}의 데미지를 준다.",
@@ -16,6 +17,7 @@
 	{
 		"Key": "WarriorEvasion",
 		"Name": "공격",
+		"Icon": "Debug/Glyph/1",
 		"Tier": 2,
 		"MajorUser": "Warrior",
 		"DescriptionFormat": "{Duration} Tick동안 적 공격에 피해를 입지 않는다.",
@@ -26,6 +28,7 @@
 	{
 		"Key": "WarriorHeal",
 		"Name": "힐",
+		"Icon": "Debug/Glyph/2",
 		"Tier": 3,
 		"MajorUser": "Warrior",
 		"DescriptionFormat": "자신의 체력을 {Amount} 회복한다.",
@@ -36,6 +39,7 @@
 	{
 		"Key": "WarriorStrongAttack",
 		"Name": "강공격",
+		"Icon": "Debug/Glyph/3"",
 		"Tier": 4,
 		"MajorUser": "Warrior",
 		"DescriptionFormat": "적에게 {Damage}의 데미지를 준다.",

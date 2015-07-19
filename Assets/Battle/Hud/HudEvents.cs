@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SPRPG.Battle.Hud
+namespace SPRPG.Battle.View
 {
 	using OnSomeCharacterHpChanged = DelayedOverrideAction<OriginalPartyIdx, Character, Hp>;
 	using OnCharacterHpChanged = Box<DelayedOverrideAction<Character, Hp>>;

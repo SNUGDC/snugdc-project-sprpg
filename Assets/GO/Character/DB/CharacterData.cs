@@ -15,6 +15,7 @@ namespace SPRPG
 	public class CharacterData : ScriptableObject
 	{
 		public CharacterId Id;
+		public string Detail;
 		public CharacterSkinData Skin;
 
 		public Stats Stats;

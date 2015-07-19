@@ -7,6 +7,8 @@ namespace SPRPG
 		private const string CampSceneName = "Camp";
 		private const string WorldSceneName = "World";
 		private const string StageSceneName = "Stage";
+		private const string ProfileSceneName = "Profile";
+		private const string SettingSceneName = "Setting";
 
 		public static void TransferToCamp()
 		{
@@ -21,6 +23,16 @@ namespace SPRPG
 		public static void TransferToStage()
 		{
 			Application.LoadLevel(StageSceneName);
+		}
+
+		public static void TransferToProfile()
+		{
+			Application.LoadLevel(ProfileSceneName);
+		}
+		
+		public static void TransferToSetting()
+		{
+			Application.LoadLevel(SettingSceneName);
 		}
 	}
 }
