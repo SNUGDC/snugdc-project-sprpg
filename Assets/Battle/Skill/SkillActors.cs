@@ -22,7 +22,7 @@ namespace SPRPG.Battle
 		{ }
 	}
 
-	public sealed class AttackSkillActor : SkillActor
+	public class AttackSkillActor : SkillActor
 	{
 		public readonly AttackSkillArguments Arguments;
 
@@ -42,7 +42,7 @@ namespace SPRPG.Battle
 			_stopJob = _battle.AddPlayerPerform((Tick)7, Stop);
 		}
 
-		private void Perform()
+		protected virtual void Perform()
 		{
 			_battle.Boss.Hit(Arguments.Damage);
 		}
@@ -115,6 +115,24 @@ namespace SPRPG.Battle
 		{
 			_performJob.Cancel();
 			_stopJob.Cancel();
+		}
+	}
+
+	public sealed class ArcherAttackSkillActor : AttackSkillActor
+	{
+		public ArcherAttackSkillActor(SkillBalanceData data, Character owner) : base(data, owner)
+		{}
+
+		protected override void Perform()
+		{
+			var archerPassive = ((ArcherPassive) Owner.Passive);
+			if (!archerPassive.IsArrowLeft)
+			{
+				Debug.LogError("No Arrows Left.");
+				return;
+			}
+			base.Perform();
+			archerPassive.DecreaseArrow();
 		}
 	}
 }

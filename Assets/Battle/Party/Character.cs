@@ -32,7 +32,7 @@ namespace SPRPG.Battle
 
 		public readonly Hp HpMax;
 
-		private readonly Passive _passive;
+		public readonly Passive Passive;
 
 		private readonly SkillManager _skillManager;
 		public SkillManager SkillManager { get { return _skillManager; } }
@@ -45,7 +45,7 @@ namespace SPRPG.Battle
 		{
 			_data = data;
 			Hp = HpMax = data.Stats.Hp.ToValue();
-			_passive = PassiveFactory.Create(data.Passive);
+			Passive = PassiveFactory.Create(data.Passive);
 			_skillManager = new SkillManager(data.SkillSet, this);
 		}
 

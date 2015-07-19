@@ -25,6 +25,8 @@ namespace SPRPG.Battle
 					return new HealSkillActor(data, owner);
 				case SkillKey.WarriorEvasion:
 					return new EvasionSkillActor(data, owner);
+				case SkillKey.ArcherAttack:
+					return new ArcherAttackSkillActor(data, owner);
 			}
 
 			Debug.LogError(LogMessages.EnumNotHandled(key));

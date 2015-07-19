@@ -44,7 +44,28 @@
 		"MajorUser": "Warrior",
 		"DescriptionFormat": "적에게 {Damage}의 데미지를 준다.",
 		"Arguments": {
-			"Damage": { "Value": 300}
+			"Damage": { "Value": 300 }
+		}
+	},
+	
+	{
+		"Key": "ArcherAttack",
+		"Name": "ê³µê²©",
+		"Tier": 1,
+		"MajorUser": "Archer",
+		"DescriptionFormat": "ì ì—ê²Œ {Damage}ì˜ ë°ë¯¸ì§€ë¥¼ ì¤€ë‹¤.",
+		"Arguments": {
+			"Damage": { "Value": 70 }
+		}
+	},
+	{
+		"Key": "ArcherEvasion",
+		"Name": "íšŒí”¼",
+		"Tier": 2,
+		"MajorUser": "Archer",
+		"DescriptionFormat": "{Duration} tick ë™ì•ˆ ì  ê³µê²©ì— í”¼í•´ë¥¼ ìž…ì§€ ì•ŠëŠ”ë‹¤.",
+		"Arguments": {
+			"Duration": 30
 		}
 	}
 ]
