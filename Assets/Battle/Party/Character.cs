@@ -1,4 +1,6 @@
-﻿namespace SPRPG.Battle
+﻿using Gem;
+
+namespace SPRPG.Battle
 {
 	public class Character
 	{
@@ -9,7 +11,18 @@
 
 		public bool IsAlive { get { return Hp > 0; } }
 
-		public Hp Hp { get; private set; }
+		private Hp _hp;
+		public Hp Hp
+		{
+			get { return _hp; }
+			private set
+			{
+				value = (Hp)((int)value).Clamp(0, (int)HpMax);
+				if (_hp == value) return;
+				_hp = value;
+			}
+		}
+
 		public readonly Hp HpMax;
 
 		private readonly Passive _passive;

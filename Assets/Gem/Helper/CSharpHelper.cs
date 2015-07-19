@@ -6,6 +6,13 @@ namespace Gem
 {
 	public static class CSharpHelper
 	{
+		public static T Clamp<T>(this T thiz, T min, T max) where T : IComparable<T>
+		{
+			if (thiz.CompareTo(min) < 0) return min;
+			if (thiz.CompareTo(max) > 0) return max;
+			return thiz;
+		}
+
 		public static int ModPositive(int x, int y) { return (x%y + y)%y; }
 
 		public static IEnumerable<Pair<int, int>> Range2D(int len1, int len2)
