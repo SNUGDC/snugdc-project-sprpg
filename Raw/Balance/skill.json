@@ -39,7 +39,7 @@
 	{
 		"Key": "WarriorStrongAttack",
 		"Name": "강공격",
-		"Icon": "Debug/Glyph/3"",
+		"Icon": "Debug/Glyph/3",
 		"Tier": 4,
 		"MajorUser": "Warrior",
 		"DescriptionFormat": "적에게 {Damage}의 데미지를 준다.",
