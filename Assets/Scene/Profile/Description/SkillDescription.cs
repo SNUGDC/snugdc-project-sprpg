@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SPRPG
+namespace SPRPG.Profile
 {
 	
 	public class SkillDescription : MonoBehaviour 
