@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace SPRPG
 {
-	using OnAddEntry = Action<PartyEntry>;
-	using OnRemoveEntry = Action<CharacterId>;
+	using OnAddMember = Action<PartyMember>;
+	using OnRemoveMember = Action<CharacterId>;
 
 	public enum PartyIdx { _1 = 0, _2 = 1, _3 = 2 }
 
@@ -31,18 +31,18 @@ namespace SPRPG
 		}
 	}
 
-	public class PartyEntry
+	public class PartyMember
 	{
 		public PartyIdx Idx { get; private set; }
 		public readonly UserCharacter Character;
 
-		public PartyEntry(PartyIdx idx, UserCharacter character)
+		public PartyMember(PartyIdx idx, UserCharacter character)
 		{
 			Idx = idx;
 			Character = character;
 		}
 
-		public PartyEntry(PartyIdx idx, SaveData.PartyEntry data)
+		public PartyMember(PartyIdx idx, SaveData.PartyMember data)
 		{
 			Idx = idx;
 			Character = UserCharacters.Find((CharacterId)data.Character);
@@ -53,25 +53,25 @@ namespace SPRPG
 			Idx = idx;
 		}
 
-		public SaveData.PartyEntry ToSaveData()
+		public SaveData.PartyMember ToSaveData()
 		{
-			return new SaveData.PartyEntry(Character.Id);
+			return new SaveData.PartyMember(Character.Id);
 		}
 	}
 
-	public class Party : IEnumerable<PartyEntry>
+	public class Party : IEnumerable<PartyMember>
 	{
 		public const int Size = 3;
 
 		public static Party _ = new Party();
 
-		private readonly List<PartyEntry> _entries = new List<PartyEntry>(Size) {null, null, null};
+		private readonly List<PartyMember> _members = new List<PartyMember>(Size) {null, null, null};
 
-		public Action<PartyEntry> OnAdd;
+		public Action<PartyMember> OnAdd;
 		public Action<PartyIdx, CharacterId> OnRemove;
 
-		private readonly Box<OnAddEntry>[] _onAdd = { new Box<OnAddEntry>(), new Box<OnAddEntry>(), new Box<OnAddEntry>() };
-		private readonly Box<OnRemoveEntry>[] _onRemove = { new Box<OnRemoveEntry>(), new Box<OnRemoveEntry>(), new Box<OnRemoveEntry>() };
+		private readonly Box<OnAddMember>[] _onAdd = { new Box<OnAddMember>(), new Box<OnAddMember>(), new Box<OnAddMember>() };
+		private readonly Box<OnRemoveMember>[] _onRemove = { new Box<OnRemoveMember>(), new Box<OnRemoveMember>(), new Box<OnRemoveMember>() };
 
 		public Action OnReorder;
 
@@ -79,9 +79,9 @@ namespace SPRPG
 		{
 			get
 			{
-				foreach (var entry in _entries)
+				foreach (var member in _members)
 				{
-					if (entry != null)
+					if (member != null)
 						return false;
 				}
 
@@ -93,9 +93,9 @@ namespace SPRPG
 		{
 			get
 			{
-				foreach (var entry in _entries)
+				foreach (var member in _members)
 				{
-					if (entry == null)
+					if (member == null)
 						return false;
 				}
 
@@ -103,35 +103,35 @@ namespace SPRPG
 			}
 		}
 
-		public PartyEntry Find(CharacterId id)
+		public PartyMember Find(CharacterId id)
 		{
-			foreach (var entry in _entries)
+			foreach (var member in _members)
 			{
-				if (entry == null)
+				if (member == null)
 					continue;
-				if (entry.Character == id)
-					return entry;
+				if (member.Character == id)
+					return member;
 			}
 			return null;
 		}
 
-		public PartyEntry Get(PartyIdx idx)
+		public PartyMember Get(PartyIdx idx)
 		{
-			return _entries[idx.ToArrayIndex()];
+			return _members[idx.ToArrayIndex()];
 		}
 
-		private void Set(PartyIdx idx, PartyEntry entry)
+		private void Set(PartyIdx idx, PartyMember member)
 		{
-			_entries[idx.ToArrayIndex()] = entry;
+			_members[idx.ToArrayIndex()] = member;
 		}
 
 		public bool TryAdd(UserCharacter character)
 		{
-			var emptyEntry = GetFirstEmpty();
-			if (!emptyEntry.HasValue)
+			var emptyMember = GetFirstEmpty();
+			if (!emptyMember.HasValue)
 				return false;
 
-			TrySet(emptyEntry.Value, character);
+			TrySet(emptyMember.Value, character);
 			return true;
 		}
 
@@ -153,36 +153,36 @@ namespace SPRPG
 				return false;
 			}
 
-			var entry = new PartyEntry(idx, character);
-			Set(idx, entry);
-			AfterAdd(entry);
+			var member = new PartyMember(idx, character);
+			Set(idx, member);
+			AfterAdd(member);
 			return true;
 		}
 
-		private void AfterAdd(PartyEntry entry)
+		private void AfterAdd(PartyMember member)
 		{
-			GetOnAdd(entry.Idx).Value.CheckAndCall(entry);
-			OnAdd.CheckAndCall(entry);
+			GetOnAdd(member.Idx).Value.CheckAndCall(member);
+			OnAdd.CheckAndCall(member);
 		}
 
 		public bool Remove(PartyIdx idx)
 		{
 			var intIdx = idx.ToArrayIndex();
-			var entry = _entries[intIdx];
-			if (entry == null)
+			var member = _members[intIdx];
+			if (member == null)
 			{
-				Debug.LogWarning("party entry " + idx + " already does not exist.");
+				Debug.LogWarning("party member " + idx + " already does not exist.");
 				return false;
 			}
 
-			_entries[intIdx] = null;
-			AfterRemove(idx, entry.Character);
+			_members[intIdx] = null;
+			AfterRemove(idx, member.Character);
 			return true;
 		}
 
 		public bool Remove(CharacterId id)
 		{
-			var idxInt = _entries.SetFirstIf(null, entry => (entry != null && entry.Character == id));
+			var idxInt = _members.SetFirstIf(null, member => (member != null && member.Character == id));
 			if (idxInt.HasValue) AfterRemove(PartyHelper.MakeIdxFromArrayIndex(idxInt.Value), id);
 			return idxInt.HasValue;
 		}
@@ -197,9 +197,9 @@ namespace SPRPG
 		{
 			var ret = PartyIdx._1;
 
-			foreach (var entry in _entries)
+			foreach (var member in _members)
 			{
-				if (entry == null)
+				if (member == null)
 					return ret;
 				++ret;
 			}
@@ -209,27 +209,27 @@ namespace SPRPG
 
 		public void Reorder(Func<PartyIdx, PartyIdx> func)
 		{
-			var old = new List<PartyEntry>(_entries);
-			_entries.Clear();
-			_entries.Resize(Size);
+			var old = new List<PartyMember>(_members);
+			_members.Clear();
+			_members.Resize(Size);
 
-			foreach (var entry in old)
+			foreach (var member in old)
 			{
-				if (entry == null) continue;
-				var newIdx = func(entry.Idx);
-				entry.JustSetIdx(newIdx);
-				_entries[newIdx.ToArrayIndex()] = entry;
+				if (member == null) continue;
+				var newIdx = func(member.Idx);
+				member.JustSetIdx(newIdx);
+				_members[newIdx.ToArrayIndex()] = member;
 			}
 
 			OnReorder.CheckAndCall();
 		}
 
-		public Box<OnAddEntry> GetOnAdd(PartyIdx idx)
+		public Box<OnAddMember> GetOnAdd(PartyIdx idx)
 		{
 			return _onAdd[idx.ToArrayIndex()];
 		}
 
-		public Box<OnRemoveEntry> GetOnRemove(PartyIdx idx)
+		public Box<OnRemoveMember> GetOnRemove(PartyIdx idx)
 		{
 			return _onRemove[idx.ToArrayIndex()];
 		}
@@ -249,9 +249,9 @@ namespace SPRPG
 		{
 			for (var i = PartyIdx._1; i <= PartyIdx._3; ++i)
 			{
-				var entry = saveData[i];
-				if (entry != null)
-					Set(i, new PartyEntry(i, entry));
+				var member = saveData[i];
+				if (member != null)
+					Set(i, new PartyMember(i, member));
 				else
 					Set(i, null);
 			}
@@ -266,17 +266,17 @@ namespace SPRPG
 			for (var i = PartyIdx._1; i <= PartyIdx._3; ++i)
 			{
 				var idxInt = i.ToArrayIndex();
-				var entry = _entries[idxInt];
-				if (entry != null)
-					ret[i] = entry.ToSaveData();
+				var member = _members[idxInt];
+				if (member != null)
+					ret[i] = member.ToSaveData();
 			}
 
 			return ret;
 		}
 
-		public IEnumerator<PartyEntry> GetEnumerator()
+		public IEnumerator<PartyMember> GetEnumerator()
 		{
-			return _entries.GetEnumerator();
+			return _members.GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()

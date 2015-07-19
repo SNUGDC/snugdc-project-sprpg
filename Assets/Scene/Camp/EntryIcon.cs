@@ -108,7 +108,7 @@ namespace SPRPG.Camp
 			RemoveCharacter();
 		}
 
-		private void OnPartyAdded(PartyEntry entry)
+		private void OnPartyAdded(PartyMember entry)
 		{
 			SetCharacter(entry.Character);
 		}

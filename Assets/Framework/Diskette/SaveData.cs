@@ -9,14 +9,14 @@ namespace SPRPG
 		public struct Character
 		{}
 
-		public class PartyEntry
+		public class PartyMember
 		{
 			public CharacterId Character;
 
-			public PartyEntry()
+			public PartyMember()
 			{}
 
-			public PartyEntry(CharacterId id)
+			public PartyMember(CharacterId id)
 			{
 				Character = id;
 			}
@@ -24,11 +24,11 @@ namespace SPRPG
 
 		public struct Party_
 		{
-			public PartyEntry _1;
-			public PartyEntry _2;
-			public PartyEntry _3;
+			public PartyMember _1;
+			public PartyMember _2;
+			public PartyMember _3;
 
-			public PartyEntry this[PartyIdx idx]
+			public PartyMember this[PartyIdx idx]
 			{
 				get
 				{

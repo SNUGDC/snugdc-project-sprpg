@@ -36,7 +36,7 @@ namespace SPRPG.Camp
 			_party.OnReorder -= OnReorder;
 		}
 
-		private void OnAdd(PartyEntry entry)
+		private void OnAdd(PartyMember entry)
 		{
 			this[entry.Idx].SetCharacter(entry.Character);
 		}
