@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Character2
   m_EditorClassIdentifier: 
   Id: 3
+  Detail: Archer
   Skin: {fileID: 11400000, guid: bc0db070cd23b0042a2daa5d38c070da, type: 2}
   Stats:
     _hp: 100

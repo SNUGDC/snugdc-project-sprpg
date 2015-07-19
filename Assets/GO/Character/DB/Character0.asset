@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Character0
   m_EditorClassIdentifier: 
   Id: 1
+  Detail: Warrior
   Skin: {fileID: 11400000, guid: bc0db070cd23b0042a2daa5d38c070da, type: 2}
   Stats:
     _hp: 100
