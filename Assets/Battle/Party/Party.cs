@@ -25,7 +25,7 @@ namespace SPRPG.Battle
 		public Character Leader { get { return this[ShiftedPartyIdx._1]; } }
 		public int ShiftCount { get; private set; }
 
-		private readonly Character[] _characters = new Character[SPRPG.Party.Size];
+		private readonly Character[] _members = new Character[SPRPG.Party.Size];
 
 		public ShiftedPartyIdx OriginalToShiftedIdx(OriginalPartyIdx value)
 		{
@@ -39,8 +39,8 @@ namespace SPRPG.Battle
 
 		public Character this[OriginalPartyIdx idx]
 		{
-			get { return _characters[idx.ToArrayIndex()]; }
-			private set { _characters[idx.ToArrayIndex()] = value; }
+			get { return _members[idx.ToArrayIndex()]; }
+			private set { _members[idx.ToArrayIndex()] = value; }
 		}
 		
 		public Character this[ShiftedPartyIdx idx] { get { return this[ShiftedToOriginalIdx(idx)]; } }
