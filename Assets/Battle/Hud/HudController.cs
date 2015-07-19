@@ -26,10 +26,16 @@ namespace SPRPG.Battle.View
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
 				_party[idx].SetInitData(Context.Party[idx].Data);
 			_party.gameObject.SetActive(true);
+			
+			_partyPlacer = new PartyPlacer(Context.Party, _party);
+
+			Events.AfterTurn += AfterTurn;
 		}
 
 		void OnDestroy()
 		{
+			Events.AfterTurn -= AfterTurn;
+
 			Debug.Assert(_ == this);
 			_ = null;
 		}
@@ -37,6 +43,11 @@ namespace SPRPG.Battle.View
 		void Update()
 		{
 			_clock.RefreshTime(_battleWrapper.Battle.PlayerClock.Relative);
+		}
+
+		public void AfterTurn()
+		{
+			_partyPlacer.AfterTurn();
 		}
 	}
 }
