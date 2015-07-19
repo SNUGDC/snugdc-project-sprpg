@@ -14,11 +14,8 @@ namespace SPRPG.Battle
 		public static Action AfterTurn;  
 
 		public static OnSomeCharacterHpChanged OnSomeCharacterHpChanged;
+		private static readonly List<OnCharacterHpChanged> OnCharacterHpChanged;
 
-		private static readonly List<OnCharacterHpChanged> OnCharacterHpChanged = new List<OnCharacterHpChanged>
-		{
-			new OnCharacterHpChanged(), new OnCharacterHpChanged(), new OnCharacterHpChanged(),
-		};
 		public static OnSomeCharacterDead OnSomeCharacterDead;
 		private static readonly List<OnCharacterDead> OnCharacterDead;
 
@@ -26,6 +23,11 @@ namespace SPRPG.Battle
 
 		static Events()
 		{
+			OnCharacterHpChanged = new List<OnCharacterHpChanged>
+			{
+				new OnCharacterHpChanged(), new OnCharacterHpChanged(), new OnCharacterHpChanged(),
+			};
+
 			OnCharacterDead = new List<OnCharacterDead>
 			{
 				new OnCharacterDead(), new OnCharacterDead(), new OnCharacterDead(),
