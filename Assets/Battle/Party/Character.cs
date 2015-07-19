@@ -3,6 +3,7 @@
 namespace SPRPG.Battle
 {
 	public delegate void OnHpChanged(Hp cur, Hp old);
+	public delegate void OnDead();
 
 	public class Character
 	{
@@ -27,6 +28,9 @@ namespace SPRPG.Battle
 
 				if (OnHpChanged != null) 
 					OnHpChanged(_hp, oldHp);
+
+				if (value == 0 && OnDead != null)
+					OnDead();
 			}
 		}
 
@@ -40,6 +44,7 @@ namespace SPRPG.Battle
 		private Tick _evadeDurationLeft;
 
 		public OnHpChanged OnHpChanged;
+		public OnDead OnDead;
 
 		public Character(CharacterData data)
 		{
