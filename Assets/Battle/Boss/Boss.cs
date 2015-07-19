@@ -10,7 +10,19 @@ namespace SPRPG.Battle
 
 		public bool IsAlive { get { return Hp > 0; } }
 
-		public Hp Hp { get; private set; }
+		private Hp _hp;
+		public Hp Hp
+		{
+			get { return _hp; }
+			private set
+			{
+				value = (Hp)((int)value).Clamp(0, (int)_hpMax);
+				if (Hp == value) return;
+				var oldHp = Hp;
+				_hp = value;
+				Events.OnBossHpChanged.CheckAndCall(this, oldHp);
+			}
+		}
 		private readonly Hp _hpMax;
 
 		public Action<Boss> OnDead;
