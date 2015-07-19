@@ -12,11 +12,6 @@ namespace SPRPG.Profile
 
 		void Start()
 		{
-			_slots.SetSlot(SkillSlot._1, SkillKey.WarriorAttack);
-			_slots.SetSlot(SkillSlot._2, SkillKey.WarriorEvasion);
-			_slots.SetSlot(SkillSlot._3, SkillKey.WarriorHeal);
-			_slots.SetSlot(SkillSlot._4, SkillKey.WarriorStrongAttack);
-
 			_slots.OnClick += key => _skillDescription.SetDescription(key);
 		}
 
