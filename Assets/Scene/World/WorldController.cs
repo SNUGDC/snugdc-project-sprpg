@@ -29,9 +29,15 @@ namespace SPRPG.World
 			}
 		}
 
-		public void back()
+		public void Back()
 		{
 			Transition.TransferToCamp();
 		}
+
+		public void TransferToSetting()
+		{
+			Transition.TransferToSetting();
+		}
+
 	}
 }
