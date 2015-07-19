@@ -13,6 +13,8 @@ namespace SPRPG.Battle.View
 
 		[SerializeField]
 		private HudClock _clock;
+		[SerializeField]
+		private HudHpBar _bossHpBar;
 
 		[SerializeField]
 		private PartyView _party;
@@ -31,6 +33,7 @@ namespace SPRPG.Battle.View
 			_partyPlacer.ResetPosition();
 
 			Events.AfterTurn += AfterTurn;
+			Events.OnBossHpChanged += OnBossHpChanged;
 		}
 
 		void OnDestroy()
@@ -49,6 +52,11 @@ namespace SPRPG.Battle.View
 		public void AfterTurn()
 		{
 			_partyPlacer.AfterTurn();
+		}
+
+		private void OnBossHpChanged(Boss boss, Hp oldHp)
+		{
+			_bossHpBar.SetHp(boss.Hp);
 		}
 	}
 }
