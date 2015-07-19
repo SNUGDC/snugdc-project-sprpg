@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SPRPG.Battle.View
 {
@@ -34,6 +33,10 @@ namespace SPRPG.Battle.View
 
 			Events.AfterTurn += AfterTurn;
 			Events.OnBossHpChanged += OnBossHpChanged;
+
+#if UNITY_EDITOR
+			DebugLogger.Init();
+#endif
 		}
 
 		void OnDestroy()
