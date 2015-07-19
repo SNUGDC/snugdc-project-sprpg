@@ -28,5 +28,10 @@ namespace SPRPG.World
 				bossButton.SetIcon(stageData.Boss);
 			}
 		}
+
+		public void back()
+		{
+			Transition.TransferToCamp();
+		}
 	}
 }

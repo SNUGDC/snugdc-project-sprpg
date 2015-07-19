@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace SPRPG.Profile
+namespace SPRPG
 {
 	public class CharacterDescription : MonoBehaviour
 	{
