@@ -77,14 +77,15 @@ namespace SPRPG.Camp
 
 				var mappedIdx = _idxMapper(entry.Idx);
 				var targetAnchor = GetAnchor(mappedIdx);
-				rect.SetAnchor(Vector2.Lerp(orgAnchor, targetAnchor, lerp));
-				rect.anchoredPosition = Vector2.zero;
+				rect.SetAnchorAndAnchoredPositionToZero(Vector2.Lerp(orgAnchor, targetAnchor, lerp));
 			}
 		}
 
 		private PartyIdx GetDraggigIdx()
 		{
-			var x = _dragging.GetRectTransform().anchorMin.x;
+			var posX = _dragging.GetRectTransform().localPosition.x;
+			var x = posX / _dragging.transform.parent.GetRectTransform().GetWidth() + 0.5f;
+			
 			var orgDraggingIdx = _dragging.Idx;
 			PartyIdx? draggingIdx = null;
 
@@ -166,6 +167,9 @@ namespace SPRPG.Camp
 
 		void OnDragEnd(EntryIcon entry)
 		{
+			var anchor = _dragging.GetRectTransform().GetProportionalPositionToParent();
+			anchor += new Vector2(0.5f, 0.5f);
+			_dragging.GetRectTransform().SetAnchorAndAnchoredPositionToZero(anchor);
 			_dragging = null;
 
 			foreach (var myEntry in _entries)

@@ -31,14 +31,7 @@ namespace SPRPG.Camp
 
 			Drag.OnDragStay += (entryIconDrag, pointerEventData) =>
 			{
-				var parentRect = transform.parent.GetRectTransform();
-				var parentSize = parentRect.offsetMax - parentRect.offsetMin;
-				var anchor = pointerEventData.position.ScaleInverse(parentSize);
-
-				var rect = this.GetRectTransform();
-				rect.anchorMin = anchor;
-				rect.anchorMax = anchor;
-				rect.anchoredPosition = Vector2.zero;
+				transform.position = pointerEventData.position;
 			};
 		}
 

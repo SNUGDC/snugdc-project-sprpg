@@ -224,6 +224,12 @@ namespace Gem
 			return (RectTransform)thiz.transform;
 		}
 
+		public static Vector2 GetProportionalPositionToParent(this RectTransform thiz)
+		{
+			var localPosition = (Vector2)thiz.localPosition;
+			return localPosition.ScaleInverse(thiz.parent.GetRectTransform().sizeDelta);
+		}
+
 		public static float GetWidth(this RectTransform thiz)
 		{
 			return thiz.offsetMax.x - thiz.offsetMin.x;
@@ -233,6 +239,12 @@ namespace Gem
 		{
 			thiz.anchorMax = val;
 			thiz.anchorMin = val;
+		}
+
+		public static void SetAnchorAndAnchoredPositionToZero(this RectTransform thiz, Vector2 anchor)
+		{
+			thiz.SetAnchor(anchor);
+			thiz.anchoredPosition = Vector2.zero;
 		}
 	}
 }
