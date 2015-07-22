@@ -34,10 +34,14 @@ namespace SPRPG.World
 			Transition.TransferToCamp();
 		}
 
+		public void TransferToBattle()
+		{
+			Transition.TransferToStage();
+		}
+
 		public void TransferToSetting()
 		{
 			Transition.TransferToSetting();
 		}
-
 	}
 }

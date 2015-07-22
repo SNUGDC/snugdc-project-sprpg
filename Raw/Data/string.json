@@ -1,4 +1,5 @@
 {
 	"start-press_to_start": "모험을 시작합니다.",
-	"camp-goto_world": "스테이지 선택"
+	"camp-goto_world": "스테이지 선택",
+	"world-goto_battle": "배틀 시작"
 }

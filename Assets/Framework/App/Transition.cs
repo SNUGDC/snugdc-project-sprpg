@@ -6,7 +6,7 @@ namespace SPRPG
 	{
 		private const string CampSceneName = "Camp";
 		private const string WorldSceneName = "World";
-		private const string StageSceneName = "Stage";
+		private const string StageSceneName = "Battle";
 		private const string ProfileSceneName = "Profile";
 		private const string SettingSceneName = "Setting";
 

@@ -10,8 +10,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/World/World.unity
   - enabled: 1
-    path: Assets/Scene/Stage/Stage.unity
-  - enabled: 1
     path: Assets/Scene/Setting/Setting.unity
   - enabled: 1
     path: Assets/Scene/Profile/Profile.unity
+  - enabled: 1
+    path: Assets/Battle/Battle.unity
