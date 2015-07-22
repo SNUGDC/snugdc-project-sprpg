@@ -1,4 +1,5 @@
 ﻿using Gem;
+using UnityEngine;
 
 namespace SPRPG
 {
@@ -24,9 +25,11 @@ namespace SPRPG
 
 		public void LoadForced()
 		{
+			string path = "Raw/Balance/" + _name + ".json";
+
 			// todo: load from Assets when BALANCE is undefined.
 			T tmp;
-			var success = JsonHelper.Load("Raw/Balance/" + _name + ".json", out tmp);
+			var success = JsonHelper.Load(path, out tmp);
 
 			if (success)
 			{
@@ -34,6 +37,7 @@ namespace SPRPG
 			}
 			else if (_data == null)
 			{
+				Debug.LogError("load " + path + " failed.");
 				_data = new T();
 			}
 
