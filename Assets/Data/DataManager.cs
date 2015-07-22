@@ -9,6 +9,7 @@ namespace SPRPG
 		{
 			DebugConfig.Load();
 			Config.LoadForced();
+			TextDictionary.Load();
 			CampBalance._.LoadForced();
 			BattleBalance._.LoadForced();
 		}
