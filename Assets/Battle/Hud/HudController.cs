@@ -36,7 +36,7 @@ namespace SPRPG.Battle.View
 			_partyPlacer.ResetPosition();
 
 			Events.AfterTurn += AfterTurn;
-
+			Events.OnBossHpChanged += OnBossHpChanged;
 			HudEvents.OnSomeCharacterHpChanged.Action += OnSomeCharacterHpChanged;
 
 #if UNITY_EDITOR
@@ -47,13 +47,13 @@ namespace SPRPG.Battle.View
 		private void OnSomeCharacterHpChanged(OriginalPartyIdx idx, Character character, Hp oldHp)
 		{
 			_hpBars[idx.ToArrayIndex()].SetHp(character.Hp);
-			Events.OnBossHpChanged += OnBossHpChanged;
-
 		}
 
 		void OnDestroy()
 		{
 			Events.AfterTurn -= AfterTurn;
+			Events.OnBossHpChanged -= OnBossHpChanged;
+			HudEvents.OnSomeCharacterHpChanged.Action -= OnSomeCharacterHpChanged;
 
 			Debug.Assert(_ == this);
 			_ = null;
