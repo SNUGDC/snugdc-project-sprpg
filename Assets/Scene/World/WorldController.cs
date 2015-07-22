@@ -36,7 +36,8 @@ namespace SPRPG.World
 
 		public void TransferToBattle()
 		{
-			Transition.TransferToBattle();
+			// todo: pass stage.
+			Transition.TransferToBattleWithUserBattleDef(StageId.Radiation);
 		}
 
 		public void TransferToSetting()

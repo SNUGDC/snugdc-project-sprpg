@@ -19,6 +19,8 @@ namespace SPRPG.Battle
 
 			Battle = new Battle(Def);
 			_realtime = new BattleRealtime(Battle);
+			RealtimeEnabled = Def.RealtimeEnabled;
+
 			Def = null;
 
 #if UNITY_EDITOR

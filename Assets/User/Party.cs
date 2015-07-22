@@ -103,6 +103,22 @@ namespace SPRPG
 			}
 		}
 
+		private CharacterId GetIdOrDefault(PartyIdx idx)
+		{
+			var member = Get(idx);
+			if (member == null)
+			{
+				Debug.LogError("member " + idx + " is null.");
+				return CharacterId.Warrior;
+			}
+			return member.Character;
+		}
+
+		public Battle.PartyDef MakeDef()
+		{
+			return new Battle.PartyDef(GetIdOrDefault(PartyIdx._1), GetIdOrDefault(PartyIdx._2), GetIdOrDefault(PartyIdx._3));
+		}
+
 		public PartyMember Find(CharacterId id)
 		{
 			foreach (var member in _members)

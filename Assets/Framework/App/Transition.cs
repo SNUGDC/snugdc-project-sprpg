@@ -20,8 +20,20 @@ namespace SPRPG
 			Application.LoadLevel(WorldSceneName);
 		}
 
-		public static void TransferToBattle()
+		public static void TransferToBattleWithUserBattleDef(StageId stage)
 		{
+			TransferToBattle(UserUtil.MakeBattleDef(stage));
+		}
+
+		public static void TransferToBattleWithoutDef()
+		{
+			Debug.LogWarning("trying to transfer without def. sure?");
+			Application.LoadLevel(BattleSceneName);
+		}
+
+		public static void TransferToBattle(Battle.BattleDef def)
+		{
+			Battle.BattleWrapper.Def = def;
 			Application.LoadLevel(BattleSceneName);
 		}
 

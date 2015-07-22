@@ -13,6 +13,8 @@ namespace SPRPG.Battle
 		public readonly StageId Stage;
 		public readonly PartyDef PartyDef;
 
+		public bool RealtimeEnabled = true;
+
 		public BattleDef(StageId stage, PartyDef party)
 		{
 			Stage = stage;

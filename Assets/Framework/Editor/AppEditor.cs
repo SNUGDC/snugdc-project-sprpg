@@ -47,7 +47,7 @@ namespace SPRPG
 				Transition.TransferToCamp();
 
 			if (GUILayout.Button("battle"))
-				Transition.TransferToBattle();
+				Transition.TransferToBattleWithoutDef();
 
 			if (GUILayout.Button("world"))
 				Transition.TransferToWorld();
