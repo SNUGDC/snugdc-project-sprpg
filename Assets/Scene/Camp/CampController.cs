@@ -42,5 +42,10 @@ namespace SPRPG.Camp
 			character.transform.SetParent(_worldRoot, false);
 			_characters[userCharacter.Id] = character;
 		}
+
+		public void GotoWorld()
+		{
+			Transition.TransferToWorld();
+		}
 	}
 }
