@@ -535,6 +535,7 @@ GameObject:
   - 224: {fileID: 2110740462}
   - 222: {fileID: 2110740464}
   - 114: {fileID: 2110740463}
+  - 114: {fileID: 2110740465}
   m_Layer: 5
   m_Name: PressToStart
   m_TagString: Untagged
@@ -584,10 +585,22 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TODO
+  m_Text: '#start-press_to_start#'
 --- !u!222 &2110740464
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2110740461}
+--- !u!114 &2110740465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2110740461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba814adc5678e149bfd0f0480604751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FormatOnStart: 1
