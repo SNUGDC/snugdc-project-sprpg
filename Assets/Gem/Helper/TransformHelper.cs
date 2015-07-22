@@ -214,9 +214,25 @@ namespace Gem
 			thiz.SetLEulerZ(thiz.GetLEulerZ() + val);
 		}
 
+		public static RectTransform GetRectTransform(this GameObject thiz)
+		{
+			return (RectTransform)thiz.transform;
+		}
+
+		public static RectTransform GetRectTransform<T>(this T thiz) where T : Component
+		{
+			return (RectTransform)thiz.transform;
+		}
+
 		public static float GetWidth(this RectTransform thiz)
 		{
 			return thiz.offsetMax.x - thiz.offsetMin.x;
+		}
+
+		public static void SetAnchor(this RectTransform thiz, Vector2 val)
+		{
+			thiz.anchorMax = val;
+			thiz.anchorMin = val;
 		}
 	}
 }
