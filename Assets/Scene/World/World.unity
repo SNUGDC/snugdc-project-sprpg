@@ -363,7 +363,7 @@ GameObject:
   - 95: {fileID: 1022007355}
   - 114: {fileID: 1022007357}
   m_Layer: 5
-  m_Name: overlay
+  m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
