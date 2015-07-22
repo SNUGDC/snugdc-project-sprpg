@@ -22,7 +22,12 @@ namespace SPRPG.Camp
 
 			var entries = cargoData.Entries;
 			for (var i = 0; i != Party.Size; ++i)
-				_entries[i].transform.localPosition = entries[i].Position;
+			{
+				var entry = _entries[i];
+				entry.transform.localPosition = entries[i].Position;
+				var member = _party.Get(PartyHelper.MakeIdxFromArrayIndex(i));
+				if (member != null) entry.SetCharacter(member.Character);
+			}
 
 			_party.OnAdd += OnAdd;
 			_party.OnRemove += OnRemove;
