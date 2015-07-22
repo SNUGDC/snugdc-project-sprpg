@@ -36,7 +36,7 @@ namespace SPRPG.World
 
 		public void TransferToBattle()
 		{
-			Transition.TransferToStage();
+			Transition.TransferToBattle();
 		}
 
 		public void TransferToSetting()

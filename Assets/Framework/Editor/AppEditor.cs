@@ -46,8 +46,8 @@ namespace SPRPG
 			if (GUILayout.Button("camp"))
 				Transition.TransferToCamp();
 
-			if (GUILayout.Button("stage"))
-				Transition.TransferToStage();
+			if (GUILayout.Button("battle"))
+				Transition.TransferToBattle();
 
 			if (GUILayout.Button("world"))
 				Transition.TransferToWorld();
