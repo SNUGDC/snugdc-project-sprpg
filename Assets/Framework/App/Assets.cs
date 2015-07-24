@@ -15,6 +15,8 @@ namespace SPRPG
 		public Camp.CharacterTool CampCharacterTool;
 
 		public Battle.View.CharacterView CharacterView;
+		public Battle.View.ResultWinPopup ResultWinPopup;
+		public Battle.View.ResultLosePopup ResultLosePopup;
 
 		public static void Init(Assets assets)
 		{
