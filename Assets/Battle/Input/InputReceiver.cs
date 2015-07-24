@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
@@ -104,13 +105,10 @@ namespace SPRPG.Battle
 	{
 		public override void Update(RelativeClock clock, float dt)
 		{
-			foreach (var touch in Input.touches)
-			{
-				if (touch.phase == TouchPhase.Began)
-				{
-					Debug.Log(touch.position.ToString());
-				}
-			}
+			if (!Input.GetMouseButtonDown(0)) return;
+			var x = UnityHelper.MouseProportionalPosition().x;
+			if (x > 0.5f) CaptureSkill(clock);
+			else CaptureShift(clock);
 		}
 	}
 #endif
@@ -136,14 +134,10 @@ namespace SPRPG.Battle
 
 		public static InputReceiver CreatePlatformPreferred()
 		{
-#if (UNITY_ANDROID || UNITY_IOS)
 #if TOUCH_SUPPORTED
 			return new TouchInputReceiver();
-#endif
 #elif KEYBOARD_SUPPORTED
 			return new KeyboardInputReceiver();
-#else
-#error undefined platform
 #endif
 		}
 	}

@@ -8,5 +8,15 @@ namespace Gem
 		{
 			return new Vector2(thiz.x / val.x, thiz.y / val.y);
 		}
+
+		public static Vector2 GetScreenSize()
+		{
+			return new Vector2(Screen.width, Screen.height);
+		}
+
+		public static Vector2 MouseProportionalPosition()
+		{
+			return ((Vector2) Input.mousePosition).ScaleInverse(GetScreenSize());
+		}
 	}
 }
