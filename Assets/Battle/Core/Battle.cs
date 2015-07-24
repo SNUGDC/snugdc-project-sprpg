@@ -33,8 +33,7 @@ namespace SPRPG.Battle
 		public readonly BattleFsm Fsm;
 
 		private readonly InputReceiver _inputReceiver;
-		private readonly SkillInputProcessor _skillInputProcessor;
-		private readonly ShiftInputProcessor _shiftInputProcessor;
+		public InputReceiver InputReceiver { get { return _inputReceiver; } }
 
 		private readonly Party _party;
 		public Party Party { get { return _party; } }
@@ -64,11 +63,6 @@ namespace SPRPG.Battle
 				_inputReceiver = InputReceiverFactory.CreatePlatformPreferred();
 			}
 
-			_skillInputProcessor = new SkillInputProcessor(_inputReceiver, PlayerClock);
-			_skillInputProcessor.OnInvoke += PerformSkill;
-			_shiftInputProcessor = new ShiftInputProcessor(_inputReceiver, PlayerClock);
-			_shiftInputProcessor.OnInvoke += PerformShift;
-
 			_party = new Party(def.PartyDef);
 			_boss = BossFactory.Create(def.Stage.ToBossId());
 			_bossAi = BossFactory.CreateAi(_boss);
@@ -87,7 +81,7 @@ namespace SPRPG.Battle
 		public void Update(float dt)
 		{
 			if (!Fsm.IsResult && _inputReceiver != null)
-				_inputReceiver.Update(dt);
+				_inputReceiver.Update(PlayerClock, dt);
 		}
 
 		private void OnTick(Clock clock)
@@ -95,24 +89,6 @@ namespace SPRPG.Battle
 			if (Fsm.IsIdle)
 				Fsm.Cycle();
 		}
-
-		private void PerformSkill(Term term, InputGrade inputGrade)
-		{
-			Debug.Log("term: " + term + ", grade: " + inputGrade);
-			if (inputGrade == InputGrade.Bad) return;
-			_party.Leader.PerformSkill(term.ToSkillSlot());
-		}
-
-		private void PerformShift(Term term, InputGrade inputGrade)
-		{
-			Debug.Log("term: " + term + ", grade: " + inputGrade);
-			if (inputGrade == InputGrade.Bad) return;
-			_party.Shift();
-		}
-
-#if UNITY_EDITOR
-		public InputReceiver EditInputReceiver() { return _inputReceiver; }
-#endif
 	}
 
 	public static partial class BattleHelper

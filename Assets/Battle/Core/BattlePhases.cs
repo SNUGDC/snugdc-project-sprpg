@@ -28,6 +28,54 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public class InputPhase : BattlePhase
+	{
+		private Party _party { get { return Context.Party; } }
+
+		public InputPhase(Battle context) : base(context, BattleState.Input)
+		{}
+
+		public override void Enter()
+		{
+			base.Enter();
+			// first perform skill.
+			var skillPerformed = TrySkill();
+			// if skill is not performed, then perform shift.
+			if (!skillPerformed) TryShift();
+
+			var receiver = Context.InputReceiver;
+			if (receiver.IsSomeReceived) 
+				Context.PlayerClock.Rebase();
+			receiver.Invalidate();
+		}
+
+		private bool TrySkill()
+		{
+			var skill = Context.InputReceiver.Skill;
+			if (!skill.HasValue) return false;
+
+			var termAndGrade = skill.Value;
+			Debug.Log(termAndGrade);
+			if (termAndGrade.Grade == InputGrade.Bad) return true;
+
+			_party.Leader.PerformSkill(termAndGrade.Term.ToSkillSlot());
+			return true;
+		}
+
+		private bool TryShift()
+		{
+			var shift = Context.InputReceiver.Shift;
+			if (!shift.HasValue) return false;
+
+			var termAndGrade = shift.Value;
+			Debug.Log(termAndGrade);
+			if (termAndGrade.Grade == InputGrade.Bad) return true;
+
+			_party.Shift();
+			return true;
+		}
+	}
+
 	public class BossPerformPhase : BattlePhase
 	{
 		public BossPerformPhase(Battle context) : base(context, BattleState.BossPerform)

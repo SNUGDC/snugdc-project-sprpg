@@ -5,6 +5,7 @@
 		Idle,
 		BeforeTurn,
 		AfterTurn,
+		Input,
 		PlayerPassive,
 		BossPassive,
 		PlayerPerform,

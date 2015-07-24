@@ -69,9 +69,9 @@ namespace SPRPG.Battle
 		{
 			GUILayout.BeginHorizontal();
 			if (GUILayout.Button("skill"))
-				_battle.EditInputReceiver().ForceSkill();
+				_battle.InputReceiver.ForceCaptureSkill(_battle.PlayerClock);
 			if (GUILayout.Button("shift"))
-				_battle.EditInputReceiver().ForceShift();
+				_battle.InputReceiver.ForceCaptureShift(_battle.PlayerClock);
 			GUILayout.EndHorizontal();
 		}
 	}
