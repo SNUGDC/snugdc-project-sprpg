@@ -98,7 +98,7 @@ namespace SPRPG.Battle
 		public override void Enter()
 		{
 			base.Enter();
-			Debug.Log("result: won");
+			Events.OnWin.CheckAndCall();
 		}
 	}
 
@@ -111,7 +111,7 @@ namespace SPRPG.Battle
 		public override void Enter()
 		{
 			base.Enter();
-			Debug.Log("result: lost");
+			Events.OnLose.CheckAndCall();
 		}
 	}
 }

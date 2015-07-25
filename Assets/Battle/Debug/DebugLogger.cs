@@ -18,6 +18,9 @@ namespace SPRPG.Battle.View
 			{
 				Debug.Log(String.Format("{1}({0}) is dead.", idx, character.Id));
 			};
+
+			Events.OnWin += () => Debug.Log("result: won");
+			Events.OnLose += () => Debug.Log("result: lost");
 		}
 
 		public static void Init()

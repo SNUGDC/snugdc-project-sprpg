@@ -21,6 +21,9 @@ namespace SPRPG.Battle
 
 		public static OnBossHpChanged OnBossHpChanged;
 
+		public static Action OnWin;
+		public static Action OnLose;
+
 		static Events()
 		{
 			OnCharacterHpChanged = new List<OnCharacterHpChanged>
