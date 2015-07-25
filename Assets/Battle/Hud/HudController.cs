@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle.View
 {
@@ -9,6 +10,9 @@ namespace SPRPG.Battle.View
 		
 		[SerializeField]
 		private BattleWrapper _battleWrapper;
+
+		[SerializeField]
+		private RectTransform _overlay;
 
 		[SerializeField]
 		private HudClock _clock;
@@ -39,6 +43,9 @@ namespace SPRPG.Battle.View
 			Events.OnBossHpChanged += OnBossHpChanged;
 			HudEvents.OnSomeCharacterHpChanged.Action += OnSomeCharacterHpChanged;
 
+			Events.OnWin += OnWin;
+			Events.OnLose += OnLose;
+
 #if UNITY_EDITOR
 			DebugLogger.Init();
 #endif
@@ -54,6 +61,9 @@ namespace SPRPG.Battle.View
 			Events.AfterTurn -= AfterTurn;
 			Events.OnBossHpChanged -= OnBossHpChanged;
 			HudEvents.OnSomeCharacterHpChanged.Action -= OnSomeCharacterHpChanged;
+
+			Events.OnWin -= OnWin;
+			Events.OnLose -= OnLose;
 
 			Debug.Assert(_ == this);
 			_ = null;
@@ -72,6 +82,23 @@ namespace SPRPG.Battle.View
 		private void OnBossHpChanged(Boss boss, Hp oldHp)
 		{
 			_bossHpBar.SetHp(boss.Hp);
+		}
+
+		private void OnWin()
+		{
+			var popup = PopupOpener.OpenResultWin(_overlay);
+			popup.CloseCallback += TransferAfterResult;
+		}
+
+		private void OnLose()
+		{
+			var popup = PopupOpener.OpenResultLose(_overlay);
+			popup.CloseCallback += TransferAfterResult;
+		}
+
+		private void TransferAfterResult()
+		{
+			Transition.TransferToWorld();
 		}
 	}
 }

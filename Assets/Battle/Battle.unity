@@ -1315,6 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _battleWrapper: {fileID: 2086338272}
+  _overlay: {fileID: 172873735}
   _clock: {fileID: 1034114415}
   _bossHpBar: {fileID: 2017610284}
   _party: {fileID: 341662552}
