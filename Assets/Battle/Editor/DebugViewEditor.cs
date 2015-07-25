@@ -32,6 +32,8 @@ namespace SPRPG.Battle
 			GUILayout.Label(character.Id.ToString());
 			GUILayout.Label(String.Format("hp: {0} ({1})", character.Hp, character.HpMax));
 
+			character.Passive.OnInspectorGUI();
+
 			foreach (var actor in character.SkillManager)
 				RenderSkillActor(actor, character.SkillManager.Running == actor);
 		}
@@ -50,7 +52,7 @@ namespace SPRPG.Battle
 			GUILayout.EndHorizontal();
 		}
 	}
-
+	
 	[CustomEditor(typeof (BossDebugView))]
 	public class BossDebugViewEditor : ComponentEditor<BossDebugView>
 	{

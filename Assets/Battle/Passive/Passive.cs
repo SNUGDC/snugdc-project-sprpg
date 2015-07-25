@@ -6,5 +6,12 @@
 		{
 			// do nothing.
 		}
+
+#if UNITY_EDITOR
+		public virtual void OnInspectorGUI()
+		{
+			// do nothing.
+		}
+#endif
 	}
 }
