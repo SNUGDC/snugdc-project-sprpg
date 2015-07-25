@@ -50,13 +50,32 @@ namespace Gem
 			return i < c.Count ? c[i] : default(T);
 		}
 
-		public static bool RemoveBack<T>(this List<T> c)
+		public static bool RemoveBack<T>(this List<T> c) 
 		{
 			if (c.Count == 0)
+			{
+				Debug.LogError("empty.");
 				return false;
+			}
+
 			c.RemoveAt(c.Count - 1);
 			return true;
 		}
+
+		public static bool PopBack<T>(this List<T> c, out T val) 
+		{
+			if (c.Count == 0)
+			{
+				Debug.LogError("empty.");
+				val = default(T);
+				return false;
+			}
+
+			val = c[c.Count - 1];
+			c.RemoveAt(c.Count - 1);
+			return true;
+		}
+
 
 		public static bool RemoveIf<T>(this IList<T> c, Predicate<T> pred)
 		{
@@ -204,6 +223,31 @@ namespace Gem
 			}
 
 			return false;
+		}
+
+		public static bool PopLast<T>(this LinkedList<T> c, out T val)
+		{
+			if (c.Empty())
+			{
+				Debug.LogError("empty.");
+				val = default(T);
+				return false;
+			}
+
+			val = c.Last.Value;
+			c.RemoveLast();
+			return true;
+		}
+
+		public static T PopOrDefault<T>(this LinkedList<T> c, T defaultValue)
+		{
+			T ret;
+			if (!c.PopLast(out ret))
+			{
+				Debug.LogError("default value will be returned.");
+				return defaultValue;	
+			}
+			return ret;
 		}
 
 		public static bool TryGet<K, V>(this IDictionary<K, V> c, K key, out V val)
