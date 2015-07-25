@@ -2,6 +2,9 @@
 {
 	public class Passive
 	{
-		
+		public virtual void Tick()
+		{
+			// do nothing.
+		}
 	}
 }

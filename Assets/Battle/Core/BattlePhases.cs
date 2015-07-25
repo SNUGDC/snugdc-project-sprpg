@@ -76,6 +76,20 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public class PlayerPassivePhase : BattlePhase
+	{
+		public PlayerPassivePhase(Battle context) : base(context, BattleState.PlayerPassive)
+		{
+		}
+
+		public override void Enter()
+		{
+			foreach (var member in Context.Party)
+				member.Passive.Tick();
+			base.Enter();
+		}
+	}
+
 	public class BossPerformPhase : BattlePhase
 	{
 		public BossPerformPhase(Battle context) : base(context, BattleState.BossPerform)

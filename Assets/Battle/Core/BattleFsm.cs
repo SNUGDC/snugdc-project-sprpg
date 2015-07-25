@@ -13,7 +13,7 @@ namespace SPRPG.Battle
 		public readonly BeforeTurnPhase BeforeTurn;
 		public readonly AfterTurnPhase AfterTurn;
 		public readonly InputPhase Input;
-		public readonly BattlePhase PlayerPassive;
+		public readonly PlayerPassivePhase PlayerPassive;
 		public readonly BattlePhase BossPassive;
 		public readonly BattlePhase PlayerPerform;
 		public readonly BossPerformPhase BossPerform;
@@ -31,7 +31,7 @@ namespace SPRPG.Battle
 			BeforeTurn = new BeforeTurnPhase(context);
 			AfterTurn = new AfterTurnPhase(context);
 			Input = new InputPhase(context);
-			PlayerPassive = new BattlePhase(context, BattleState.PlayerPassive);
+			PlayerPassive = new PlayerPassivePhase(context);
 			BossPassive = new BattlePhase(context, BattleState.BossPassive);
 			PlayerPerform = new BattlePhase(context, BattleState.PlayerPerform);
 			BossPerform = new BossPerformPhase(context);
