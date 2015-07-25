@@ -1,4 +1,5 @@
 ﻿using Gem;
+using LitJson;
 using UnityEngine;
 
 namespace SPRPG
@@ -10,6 +11,13 @@ namespace SPRPG
 		private static string Replace(this string thiz, string key, object value)
 		{
 			return thiz.Replace('{' + key + '}', value.ToString());
+		}
+
+		private static string Replace(this string thiz, JsonData arguments)
+		{
+			foreach (var arg in arguments.GetDictEnum())
+				thiz = thiz.Replace(arg.Key, arg.Value);
+			return thiz;
 		}
 
 		public static SkillDescriptor Create(SkillKey key)
@@ -34,17 +42,8 @@ namespace SPRPG
 
 				case SkillKey.WarriorEvasion:
 				case SkillKey.ArcherEvasion:
-					return data =>
-					{
-						var args = new FiniteSkillArguments(data.Arguments);
-						return data.DescriptionFormat.Replace(FiniteSkillArguments.DurationKey, args.Duration);
-					};
 				case SkillKey.WarriorHeal:
-					return data =>
-					{
-						var args = new HealSkillArguments(data.Arguments);
-						return data.DescriptionFormat.Replace(HealSkillArguments.AmountKey, args.Amount);
-					};
+					return data => data.DescriptionFormat.Replace(data.Arguments);
 			}
 
 			Debug.LogError(LogMessages.EnumUndefined(key));
