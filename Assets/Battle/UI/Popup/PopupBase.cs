@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle.View
 {
 	public class PopupBase : MonoBehaviour
 	{
 		private readonly PopupFsm _fsm = new PopupFsm();
+		public Action CloseCallback;
 
 		public bool TryOpen(RectTransform parent)
 		{
@@ -16,8 +19,12 @@ namespace SPRPG.Battle.View
 		public bool TryClose(bool destroyGameObject)
 		{
 			var ret = _fsm.TryClose();
-			if (destroyGameObject) 
-				Destroy(gameObject);
+			if (ret)
+			{
+				if (destroyGameObject) 
+					Destroy(gameObject);
+				CloseCallback.CheckAndCall();
+			}
 			return ret;
 		}
 	}

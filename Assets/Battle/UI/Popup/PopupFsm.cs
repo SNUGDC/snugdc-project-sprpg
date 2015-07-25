@@ -9,9 +9,6 @@ namespace SPRPG.Battle.View
 		public bool IsOpened { get; private set; }
 		public bool IsClosed { get { return !IsOpened; } }
 
-		public Action OpenCallback;
-		public Action CloseCallback;
-
 		public PopupFsm(bool isOpened = false)
 		{
 			IsOpened = isOpened;
@@ -31,7 +28,6 @@ namespace SPRPG.Battle.View
 			}
 
 			JustSetOpened();
-			OpenCallback.CheckAndCall();
 			return true;
 		}
 
@@ -44,7 +40,6 @@ namespace SPRPG.Battle.View
 			}
 
 			IsOpened = false;
-			CloseCallback.CheckAndCall();
 			return true;
 		}
 	}
