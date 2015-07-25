@@ -29,6 +29,8 @@ namespace SPRPG.Battle
 				case SkillKey.ArcherAttack:
 				case SkillKey.ArcherStrongShot:
 					return new ArcherAttackSkillActor(data, owner);
+				case SkillKey.ArcherArrowRain:
+					return new ArcherArrowRainSkillActor(data, owner);
 			}
 
 			Debug.LogError(LogMessages.EnumNotHandled(key));

@@ -16,13 +16,19 @@ namespace SPRPG.Battle
 
 		public void DecreaseArrow()
 		{
-			Debug.Log("decreasing arrows.");
 			if (Arrows > 0)
 				--Arrows;
 			else
 			{
 				Debug.LogError("No more arrows!");
 			}
+		}
+
+		public bool RemoveAllArrows()
+		{
+			var ret = Arrows > 0;
+			Arrows = 0;
+			return ret;
 		}
 	}
 }

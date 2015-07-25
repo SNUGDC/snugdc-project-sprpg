@@ -39,4 +39,16 @@ namespace SPRPG
 			Amount = (Hp)args[AmountKey].GetNatural();
 		}
 	}
+
+	public struct ArcherArrowRainArguments
+	{
+		public const string DamagePerArrowKey = "DamagePerArrow";
+
+		public readonly Hp DamagePerArrow;
+
+		public ArcherArrowRainArguments(JsonData args)
+		{
+			DamagePerArrow = (Hp)args[DamagePerArrowKey].GetNatural();
+		}
+	}
 }

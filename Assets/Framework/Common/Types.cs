@@ -29,11 +29,12 @@ namespace SPRPG
 		None4 = 4,
 		WarriorAttack = 5,
 		WarriorEvasion = 7,
-        WarriorHeal = 6,
+		WarriorHeal = 6,
 		WarriorStrongAttack = 8,
 		ArcherAttack = 9,
 		ArcherEvasion = 10,
-		ArcherStrongShot=11,
+		ArcherStrongShot = 11,
+		ArcherArrowRain = 12,
 	}
 
 	public enum SkillSlot { _1 = 0, _2 = 1, _3 = 2, _4 = 3 }
@@ -65,6 +66,18 @@ namespace SPRPG
 	{
 		public Hp Value;
 		public Element Element;
+
+		public Damage(Hp value)
+		{
+			Value = value;
+			Element = Element.Normal;
+		}
+
+		public Damage(Hp value, Element element)
+		{
+			Value = value;
+			Element = element;
+		}
 	}
 
 	public static partial class ExtensionMethods

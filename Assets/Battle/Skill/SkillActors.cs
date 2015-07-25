@@ -130,4 +130,29 @@ namespace SPRPG.Battle
 			archerPassive.DecreaseArrow();
 		}
 	}
+
+	public sealed class ArcherArrowRainSkillActor : SingleDelayedPerformSkillActor
+	{
+		private ArcherPassive OwnerPassive { get { return (ArcherPassive) Owner.Passive; } }
+
+		public readonly ArcherArrowRainArguments Arguments;
+
+		public ArcherArrowRainSkillActor(SkillBalanceData data, Character owner) : base(data, owner, (Tick) 3, (Tick) 7)
+		{
+			Arguments = new ArcherArrowRainArguments(data.Arguments);
+		}
+
+		protected override void Perform()
+		{
+			if (!OwnerPassive.IsArrowLeft)
+			{
+				Debug.LogError("No Arrows Left.");
+				return;
+			}
+			var dmgValue = ((Hp) ((int) Arguments.DamagePerArrow*OwnerPassive.Arrows));
+			var dmg = new Damage(dmgValue);
+			Battle.Boss.Hit(dmg);
+			OwnerPassive.RemoveAllArrows();
+		}
+	}
 }

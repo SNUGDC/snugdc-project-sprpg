@@ -77,5 +77,15 @@
 		"Arguments": {
 			"Damage": { "Value": 210 }
 		}
+	},
+	{
+		"Key": "ArcherArrowRain",
+		"Name": "화살비",
+		"Tier": 4,
+		"MajorUser": "Archer",
+		"DescriptionFormat": "적에게 화살개수*{DamagePerArrow}의 데미지를 준다.",
+		"Arguments": {
+			"DamagePerArrow": 70
+		}
 	}
 ]

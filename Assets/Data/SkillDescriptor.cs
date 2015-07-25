@@ -43,6 +43,7 @@ namespace SPRPG
 				case SkillKey.WarriorEvasion:
 				case SkillKey.ArcherEvasion:
 				case SkillKey.WarriorHeal:
+				case SkillKey.ArcherArrowRain:
 					return data => data.DescriptionFormat.Replace(data.Arguments);
 			}
 
