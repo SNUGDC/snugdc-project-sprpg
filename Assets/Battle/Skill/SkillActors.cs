@@ -22,7 +22,30 @@ namespace SPRPG.Battle
 		{ }
 	}
 
-	public class AttackSkillActor : SkillActor
+	public abstract class SingleDelayedPerformSkillActor : SkillActor
+	{
+		protected Battle Battle { get { return Battle._; } }
+		private readonly Tick _duration;
+		private readonly Tick _performTick;
+		private Job _performJob;
+		private Job _stopJob;
+
+		public SingleDelayedPerformSkillActor(SkillBalanceData data, Character owner, Tick duration, Tick performTick) : base(data, owner)
+		{
+			_duration = duration;
+			_performTick = performTick;
+		}
+
+		protected override void DoStart()
+		{
+			_performJob = Battle.AddPlayerPerform(_performTick, Perform);
+			_stopJob = Battle.AddPlayerPerform(_duration, Stop);
+		}
+
+		protected abstract void Perform();
+	}
+
+	public class AttackSkillActor : SingleDelayedPerformSkillActor 
 	{
 		public readonly AttackSkillArguments Arguments;
 
@@ -31,58 +54,30 @@ namespace SPRPG.Battle
 		private Job _stopJob;
 
 		public AttackSkillActor(SkillBalanceData data, Character owner)
-			: base(data, owner)
+			: base(data, owner, (Tick)3, (Tick)5)
 		{
 			Arguments = new AttackSkillArguments(data.Arguments);
 		}
 
-		protected override void DoStart()
-		{
-			_performJob = _battle.AddPlayerPerform((Tick)3, Perform);
-			_stopJob = _battle.AddPlayerPerform((Tick)7, Stop);
-		}
-
-		protected virtual void Perform()
+		protected override void Perform()
 		{
 			_battle.Boss.Hit(Arguments.Damage);
 		}
-
-		protected override void DoCancel()
-		{
-			_performJob.Cancel();
-			_stopJob.Cancel();
-		}
 	}
 
-	public sealed class HealSkillActor : SkillActor
+	public sealed class HealSkillActor : SingleDelayedPerformSkillActor 
 	{
 		public readonly HealSkillArguments Arguments;
 
-		private Battle _battle { get { return Battle._; } }
-		private Job _performJob;
-		private Job _stopJob;
-
 		public HealSkillActor(SkillBalanceData data, Character owner)
-			: base(data, owner)
+			: base(data, owner, (Tick)3, (Tick)7)
 		{
 			Arguments = new HealSkillArguments(data.Arguments);
 		}
 
-		protected override void DoStart()
-		{
-			_performJob = _battle.AddPlayerPerform((Tick)3, Perform);
-			_stopJob = _battle.AddPlayerPerform((Tick)7, Stop);
-		}
-
-		private void Perform()
+		protected override void Perform()
 		{
 			Owner.Heal(Arguments.Amount);
-		}
-
-		protected override void DoCancel()
-		{
-			_performJob.Cancel();
-			_stopJob.Cancel();
 		}
 	}
 
@@ -121,11 +116,11 @@ namespace SPRPG.Battle
 	public sealed class ArcherAttackSkillActor : AttackSkillActor
 	{
 		public ArcherAttackSkillActor(SkillBalanceData data, Character owner) : base(data, owner)
-		{}
+		{ }
 
 		protected override void Perform()
 		{
-			var archerPassive = ((ArcherPassive) Owner.Passive);
+			var archerPassive = ((ArcherPassive)Owner.Passive);
 			if (!archerPassive.IsArrowLeft)
 			{
 				Debug.LogError("No Arrows Left.");
