@@ -19,8 +19,8 @@ MonoBehaviour:
   Passive: 3
   SkillSet:
     _1: 9
-    _2: 2
-    _3: 3
+    _2: 10
+    _3: 11
     _4: 12
   CampEntryIcon: {fileID: 21300000, guid: d440b20a50d44d741a4eb9b90cee0115, type: 3}
   CampAnimatorController: {fileID: 22100000, guid: 2493ef259e5c60041babb775f229f0ce,
