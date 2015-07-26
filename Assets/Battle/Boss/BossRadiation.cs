@@ -17,6 +17,7 @@ namespace SPRPG.Battle
 		protected override void DoTick()
 		{
 			if (!_cooltimer.Tick()) return;
+			if (!Test()) return;
 			Context.Party.HitParty(_arguments);
 		}
 	}
