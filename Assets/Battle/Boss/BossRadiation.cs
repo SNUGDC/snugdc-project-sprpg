@@ -21,30 +21,20 @@ namespace SPRPG.Battle
 		}
 	}
 
-	public class BossRadiationAttackSkillActor : BossSkillActor
+	public class BossRadiationAttackSkillActor : BossSingleDelayedPerformSkillActor 
 	{
 		private readonly BossDamageArgument _damage;
 
-		private Job _hitJob;
-		private Job _stopJob;
-
 		public BossRadiationAttackSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
-			: base(context, boss, data)
+			: base(context, boss, data, (Tick)3, (Tick)5)
 		{
 			Debug.Assert(boss.Id == BossId.Radiation);
 			_damage = new BossDamageArgument(data.Arguments);
 		}
 
-		protected override void DoStart()
+		protected override void Perform()
 		{
-			_hitJob = Context.AddBossPerform((Tick)3, () => Context.Party.HitLeaderOrMemberIfLeaderIsDead(_damage));
-			_stopJob = Context.AddAfterTurn((Tick) 5, Stop);
-		}
-
-		protected override void DoCancel()
-		{
-			_hitJob.Cancel();
-			_stopJob.Cancel();
+			Context.Party.HitLeaderOrMemberIfLeaderIsDead(_damage);
 		}
 	}
 
