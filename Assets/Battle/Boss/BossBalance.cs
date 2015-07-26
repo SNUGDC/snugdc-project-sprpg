@@ -18,7 +18,7 @@ namespace SPRPG.Battle
 
 	public class BossSkillCommonBalanceData
 	{
-		public Proportion Proportion;
+		public Weight Weight;
 		public Tick Duration;
 
 		public JsonData _condition;

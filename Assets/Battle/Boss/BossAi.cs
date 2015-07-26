@@ -26,7 +26,7 @@ namespace SPRPG.Battle
 			{
 				var data = kv.Value;
 				if (data.Condition.Test(context, _boss))
-					sampler.Add(data.Proportion, data);
+					sampler.Add(data.Weight, data);
 			}
 
 			return sampler.Sample(context.Random);

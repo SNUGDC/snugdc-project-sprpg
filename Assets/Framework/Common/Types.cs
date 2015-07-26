@@ -2,7 +2,7 @@
 
 namespace SPRPG
 {
-	public enum Proportion { }
+	public enum Weight { }
 
 	public enum Tick { }
 	public enum Term { _1, _2, _3, _4 }

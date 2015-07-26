@@ -20,7 +20,7 @@ namespace SPRPG
 		public static void Setup()
 		{
 			UnityTypeBindings.Register();
-			BindEnumAsNatural<Proportion>();
+			BindEnumAsNatural<Weight>();
 			BindEnumAsNatural<SkillTier>();
 			BindEnumAsNatural<Hp>();
 			BindEnumAsNatural<Tick>();
