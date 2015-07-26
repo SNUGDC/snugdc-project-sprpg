@@ -24,7 +24,7 @@ namespace SPRPG.Battle
 			switch (data.Key)
 			{
 				case BossSkillLocalKey.Attack:
-					return new RadiationAttackSkillActor(context, boss, data);
+					return new BossRadiationAttackSkillActor(context, boss, data);
 				default:
 					Debug.LogError(LogMessages.EnumUndefined(data.Key));
 					return null;

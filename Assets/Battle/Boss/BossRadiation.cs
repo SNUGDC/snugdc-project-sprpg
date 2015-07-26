@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
-	public class RadiationAttackSkillActor : BossSkillActor
+	public class BossRadiationAttackSkillActor : BossSkillActor
 	{
 		private readonly Damage _damage;
 
 		private Job _hitJob;
 		private Job _stopJob;
 
-		public RadiationAttackSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
+		public BossRadiationAttackSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
 			: base(context, boss, data)
 		{
 			Debug.Assert(boss.Id == BossId.Radiation);
