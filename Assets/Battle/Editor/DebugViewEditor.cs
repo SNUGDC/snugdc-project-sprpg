@@ -30,14 +30,31 @@ namespace SPRPG.Battle
 		private static void RenderCharacter(Character character)
 		{
 			GUILayout.Label(character.Id.ToString());
-			GUILayout.Label(String.Format("hp: {0} ({1})", character.Hp, character.HpMax));
 
+			GUILayout.BeginHorizontal();
+			GUILayout.Label(string.Format("hp: {0} ({1})", character.Hp, character.HpMax));
+			if (character.StatusCondition != null) RenderStatusCondition(character.StatusCondition);
+			GUILayout.EndHorizontal();
+				
 			character.Passive.OnInspectorGUI();
 
 			foreach (var actor in character.SkillManager)
 				RenderSkillActor(actor, character.SkillManager.Running == actor);
 		}
 
+		private static void RenderStatusCondition(StatusConditionType type)
+		{
+			var color = Color.gray;
+			switch (type)
+			{
+				case StatusConditionType.Poison: color = Color.magenta; break;
+				default: Debug.LogError(LogMessages.EnumNotHandled(type)); break;
+			}
+			
+			var style = new GUIStyle { normal = { textColor = color } };
+			GUILayout.Label("O", style);
+		}
+		
 		private static void RenderSkillActor(SkillActor actor, bool isPerforming)
 		{
 			GUILayout.BeginHorizontal();
