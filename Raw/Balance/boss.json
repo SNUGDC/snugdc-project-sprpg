@@ -7,8 +7,7 @@
 		"_passives": [
 			{
 				"Key": "RadioactiveArea",
-				"Duration": 60,
-				"_condition": { "Type": "True" },
+				"_activateCondition": { "Type": "True" },
 				"Arguments": { "Damage": { "Value": 5, "Element": "Poison" } }
 			}
 		],
@@ -17,21 +16,21 @@
 				"Key": "Attack",
 				"Weight": 5,
 				"Duration": 60,
-				"_condition": { "Type": "True" },
+				"_sampleCondition": { "Type": "True" },
 				"Arguments": { "Damage": { "Value": 5 } }
 			},
 			{
 				"Key": "MassAttack",
 				"Weight": 5,
 				"Duration": 60,
-				"_condition": { "Type": "True" },
+				"_sampleCondition": { "Type": "True" },
 				"Arguments": { "Damage": { "Value": 5 } }
 			},
 			{
 				"Key": "Radioactivity",
 				"Weight": 5,
 				"Duration": 60,
-				"_condition": { "Type": "True" },
+				"_sampleCondition": { "Type": "True" },
 				"Arguments": { "Percentage": 50, "StatusCondition": "Poison" }
 			}
 		]

@@ -18,31 +18,34 @@ namespace SPRPG.Battle
 		Radioactivity,
 	}
 
-	public class BossSkillCommonBalanceData
+	public class BossPassiveBalanceData
 	{
-		public Weight Weight;
-		public Tick Duration;
-
-		public JsonData _condition;
-		public Condition Condition;
-
+		public BossPassiveLocalKey Key;
+		[JsonInclude] private JsonData _activateCondition;
+		[JsonIgnore] public Condition ActivateCondition;
 		public JsonData Arguments;
 
 		public void Build(BossId id)
 		{
-			Condition = ConditionFactory.Create(_condition);
-			_condition = null;
+			ActivateCondition = ConditionFactory.Create(_activateCondition);
+			_activateCondition = null;
 		}
 	}
 
-	public class BossPassiveBalanceData : BossSkillCommonBalanceData
-	{
-		public BossPassiveLocalKey Key;
-	}
-
-	public class BossSkillBalanceData : BossSkillCommonBalanceData
+	public class BossSkillBalanceData
 	{
 		public BossSkillLocalKey Key;
+		public Weight Weight;
+		public Tick Duration;
+		[JsonInclude] private JsonData _sampleCondition;
+		[JsonIgnore] public Condition SampleCondition;
+		public JsonData Arguments;
+		
+		public void Build(BossId id)
+		{
+			SampleCondition = ConditionFactory.Create(_sampleCondition);
+			_sampleCondition = null;
+		}
 	}
 	
 	public class BossBalanceData
