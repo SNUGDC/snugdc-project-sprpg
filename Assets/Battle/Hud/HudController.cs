@@ -103,7 +103,7 @@ namespace SPRPG.Battle.View
 
 		private void TransferAfterResult()
 		{
-			Transition.TransferToWorld();
+			Transition.TransferToPreviousScene(SceneType.Battle);
 		}
 	}
 }
