@@ -37,7 +37,7 @@ namespace SPRPG.Battle
 
 		protected override void DoStart()
 		{
-			_hitJob = Context.AddBossPerform((Tick)3, () => Context.Party.Leader.Hit(_damage));
+			_hitJob = Context.AddBossPerform((Tick)3, () => Context.Party.HitLeaderOrMemberIfLeaderIsDead(_damage));
 			_stopJob = Context.AddAfterTurn((Tick) 5, Stop);
 		}
 
