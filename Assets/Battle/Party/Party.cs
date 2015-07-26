@@ -71,6 +71,20 @@ namespace SPRPG.Battle
 				if (member.IsAlive) return true;
 			return false;
 		}
+		
+		public Character GetAliveLeaderOrMember()
+		{
+			if (Leader.IsAlive)
+				return Leader;
+
+			foreach (var member in this)
+			{
+				if (member.IsAlive)
+					return member;
+			}
+
+			return null;
+		}
 
 		public void BeforeTurn()
 		{

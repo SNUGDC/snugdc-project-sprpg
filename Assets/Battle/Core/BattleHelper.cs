@@ -26,20 +26,10 @@ namespace SPRPG.Battle
 
 		public static bool HitLeaderOrMemberIfLeaderIsDead(this Party thiz, Damage damage)
 		{
-			if (thiz.Leader.IsAlive)
-			{
-				thiz.Leader.Hit(damage);
-				return true;
-			}
-
-			foreach (var member in thiz)
-			{
-				if (!member.IsAlive) continue;
-				member.Hit(damage);
-				return true;
-			}
-
-			return false;
+			var member = thiz.GetAliveLeaderOrMember();
+			if (member == null) return false;
+			member.Hit(damage);
+			return true;
 		}
 
 		public static void HitParty(this Party thiz, Damage damage)
