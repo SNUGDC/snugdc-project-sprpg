@@ -58,18 +58,9 @@ namespace SPRPG.Battle
 			this[idx] = member;
 
 			var onCharacterHpChanged = Events.GetOnCharacterHpChanged(idx);
-			member.OnHpChanged += (cur, old) =>
-			{
-				onCharacterHpChanged.Value.CheckAndCall(member, old);
-				Events.OnSomeCharacterHpChanged.CheckAndCall(idx, member, old);
-			};
-
+			member.OnHpChanged += (cur, old) => onCharacterHpChanged.Value.CheckAndCall(idx, member, old);
 			var onCharacterDead = Events.GetOnCharacterDead(idx);
-			member.OnDead += () =>
-			{
-				onCharacterDead.Value.CheckAndCall(member);
-				Events.OnSomeCharacterDead.CheckAndCall(idx, member);
-			};
+			member.OnDead += () => onCharacterDead.Value.CheckAndCall(idx, member);
 		}
 
 		public void Shift() { ++ShiftCount; }

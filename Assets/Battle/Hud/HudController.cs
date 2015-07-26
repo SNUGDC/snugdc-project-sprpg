@@ -1,5 +1,4 @@
-﻿using Gem;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SPRPG.Battle.View
 {
@@ -41,7 +40,9 @@ namespace SPRPG.Battle.View
 
 			Events.AfterTurn += AfterTurn;
 			Events.OnBossHpChanged += OnBossHpChanged;
-			HudEvents.OnSomeCharacterHpChanged.Action += OnSomeCharacterHpChanged;
+
+			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
+				HudEvents.GetOnCharacterHpChanged(idx).Value.Action += OnSomeCharacterHpChanged;
 
 			Events.OnWin += OnWin;
 			Events.OnLose += OnLose;
@@ -60,7 +61,9 @@ namespace SPRPG.Battle.View
 		{
 			Events.AfterTurn -= AfterTurn;
 			Events.OnBossHpChanged -= OnBossHpChanged;
-			HudEvents.OnSomeCharacterHpChanged.Action -= OnSomeCharacterHpChanged;
+
+			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
+				HudEvents.GetOnCharacterHpChanged(idx).Value.Action -= OnSomeCharacterHpChanged;
 
 			Events.OnWin -= OnWin;
 			Events.OnLose -= OnLose;
