@@ -6,6 +6,7 @@ namespace SPRPG.Battle
 	using OnCharacterHpChanged = Box<Action<OriginalPartyIdx, Character, Hp>>;
 	using OnCharacterDead = Box<Action<OriginalPartyIdx, Character>>;
 	using OnBossHpChanged = Action<Boss, Hp>;
+	using OnBossSkillStart = Action<Boss, BossSkillActor>;
 
 	public static class Events
 	{
@@ -15,6 +16,7 @@ namespace SPRPG.Battle
 		private static readonly List<OnCharacterDead> OnCharacterDead;
 
 		public static OnBossHpChanged OnBossHpChanged;
+		public static OnBossSkillStart OnBossSkillStart;
 
 		public static Action OnWin;
 		public static Action OnLose;

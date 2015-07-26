@@ -1,10 +1,12 @@
 ﻿using System;
 using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
 	public abstract class BossSkillActor : SkillActorBase
 	{
+		public BossSkillLocalKey LocalKey { get { return Data.Key; } }
 		protected readonly Battle Context;
 		protected readonly Boss Boss;
 		protected readonly BossSkillBalanceData Data;

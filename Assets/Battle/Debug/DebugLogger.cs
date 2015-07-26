@@ -11,6 +11,11 @@ namespace SPRPG.Battle.View
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
 				AttachMember(idx);
 
+			Events.OnBossSkillStart += (boss, actor) =>
+			{
+				Debug.Log("boss used skill " + actor.LocalKey);
+			};
+
 			Events.OnWin += () => Debug.Log("result: won");
 			Events.OnLose += () => Debug.Log("result: lost");
 		}

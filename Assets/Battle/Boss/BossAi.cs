@@ -43,7 +43,8 @@ namespace SPRPG.Battle
 			var data = Sample(context);
 			_current = _skillFactory.Create(context, _boss, data);
 			_current.OnStop += OnStop;
-			_current.Start();	
+			_current.Start();
+			Events.OnBossSkillStart.CheckAndCall(_boss, _current);
 		}
 
 		private void OnStop(BossSkillActor skill)
