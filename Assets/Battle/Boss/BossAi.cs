@@ -40,7 +40,11 @@ namespace SPRPG.Battle
 				Debug.LogError("has no skill.");
 				return;
 			}
+
 			var data = Sample(context);
+			if (data == null)
+				return;
+
 			Current = _skillFactory.Create(context, _boss, data);
 			Current.OnStop += OnStop;
 			Current.Start();
