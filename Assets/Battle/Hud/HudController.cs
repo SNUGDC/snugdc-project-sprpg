@@ -9,7 +9,8 @@ namespace SPRPG.Battle.View
 		
 		[SerializeField]
 		private BattleWrapper _battleWrapper;
-
+		private Battle _battle { get { return _battleWrapper.Battle; } }
+		
 		[SerializeField]
 		private RectTransform _overlay;
 
@@ -74,7 +75,8 @@ namespace SPRPG.Battle.View
 
 		void Update()
 		{
-			_clock.RefreshTime(_battleWrapper.Battle.PlayerClock.Relative);
+			if (!_battle.Fsm.IsResult)
+				_clock.RefreshTime(_battle.PlayerClock.Relative);
 		}
 
 		public void AfterTurn()
