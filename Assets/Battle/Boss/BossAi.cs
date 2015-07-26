@@ -5,11 +5,11 @@ namespace SPRPG.Battle
 {
 	public class BossAi
 	{
-		public bool IsPerforming { get { return _current != null; } }
+		public bool IsPerforming { get { return Current != null; } }
 
 		private readonly Boss _boss;
 		private readonly BossSkillFactory _skillFactory;
-		private BossSkillActor _current;
+		public BossSkillActor Current;
 
 		public BossAi(Boss boss)
 		{
@@ -41,16 +41,16 @@ namespace SPRPG.Battle
 				return;
 			}
 			var data = Sample(context);
-			_current = _skillFactory.Create(context, _boss, data);
-			_current.OnStop += OnStop;
-			_current.Start();
-			Events.OnBossSkillStart.CheckAndCall(_boss, _current);
+			Current = _skillFactory.Create(context, _boss, data);
+			Current.OnStop += OnStop;
+			Current.Start();
+			Events.OnBossSkillStart.CheckAndCall(_boss, Current);
 		}
 
 		private void OnStop(BossSkillActor skill)
 		{
-			Debug.Assert(_current == skill);
-			_current = null;
+			Debug.Assert(Current == skill);
+			Current = null;
 		}
 	}
 }

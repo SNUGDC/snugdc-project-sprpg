@@ -57,18 +57,43 @@ namespace SPRPG.Battle
 	public class BossDebugViewEditor : ComponentEditor<BossDebugView>
 	{
 		private Battle Battle { get { return Target.Battle; } }
+		private Boss Boss { get { return Battle.Boss; } }
+		private BossAi BossAi { get { return Battle.BossAi; } }
 
 		public override void OnInspectorGUI()
 		{
-			RenderBoss();
+			if (Boss == null) return;
+			RenderStatus();
+			RenderCurrentSkill();
+			RenderAllSkills();
+			EditorUtility.SetDirty(Target);
 		}
 
-		private void RenderBoss()
+		private void RenderStatus()
 		{
-			if (Battle.Boss == null)
-				return;
+			GUILayout.Label("boss: " + Boss.Hp);
+		}
 
-			GUILayout.Label("boss: " + Battle.Boss.Hp);
+		private void RenderCurrentSkill()
+		{
+			if (BossAi.Current == null)
+			{
+				GUILayout.Label("current: no skill");
+				return;
+			}
+
+			GUILayout.Label("current: " + BossAi.Current.LocalKey);
+		}
+
+		private void RenderAllSkills()
+		{
+			foreach (var kv in Boss.Data.Skills)
+				RenderSkill(kv.Value);
+		}
+
+		private void RenderSkill(BossSkillBalanceData data)
+		{
+			GUILayout.Label("[" + data.Key + "] weight:" + data.Weight);
 		}
 	}
 }
