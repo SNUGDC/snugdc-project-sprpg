@@ -5,9 +5,9 @@ namespace SPRPG.Battle
 {
 	public class StatusConditionFsm
 	{
-		public bool IsActive { get { return TickLeft > 0; } }
+		public bool IsActive { get { return DurationLeft > 0; } }
 		public Tick Duration { get; private set; }
-		public Tick TickLeft { get { return Duration - (int)TotalElapsed; } }
+		public Tick DurationLeft { get { return Duration - (int)TotalElapsed; } }
 		public Tick TotalElapsed { get; private set; }
 
 		public StatusConditionFsm(Tick duration)
@@ -28,11 +28,17 @@ namespace SPRPG.Battle
 
 	public abstract class StatusConditionActor
 	{
+		public readonly StatusConditionType Type;
+		protected StatusConditionActor(StatusConditionType type) { Type = type; }
 		public abstract void Tick(Pawn pawn, Tick totalElapsed);
 	}
 
 	public class StatusCondition
 	{
+		public StatusConditionType Type { get { return _actor.Type; } }
+		public bool IsActive { get { return _fsm.IsActive; } }
+		public Tick DurationLeft { get { return _fsm.DurationLeft; } }
+
 		private readonly Pawn _pawn;
 		private readonly StatusConditionFsm _fsm;
 		private readonly StatusConditionActor _actor;
@@ -61,6 +67,8 @@ namespace SPRPG.Battle
 	{
 		public const Tick Cooltime = Const.Term;
 		public const Hp Damage = (Hp) 30;
+
+		public StatusConditionPoisonActor() : base(StatusConditionType.Poison) { }
 
 		private static bool IsTriggered(Tick totalElapsed)
 		{
