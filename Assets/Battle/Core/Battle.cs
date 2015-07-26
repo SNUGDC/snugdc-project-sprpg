@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = System.Random;
 
 namespace SPRPG.Battle
@@ -27,6 +26,7 @@ namespace SPRPG.Battle
 		public static Battle _ { get; private set; }
 
 		public readonly Random Random = new Random();
+		public readonly SymbolBinding Binding;
 
 		public readonly Clock Clock = new Clock();
 		public readonly RelativeClock PlayerClock;
@@ -48,6 +48,7 @@ namespace SPRPG.Battle
 			Debug.Assert(_ == null);
 			_ = this;
 
+			Binding = new SymbolBinding();
 			PlayerClock = new RelativeClock(Clock);
 			Fsm = new BattleFsm(this);
 

@@ -23,6 +23,8 @@ namespace SPRPG.Battle
 			}
 		}
 
+		public Percentage HpPercentage { get { return (Percentage)((int)Hp/(float) (int) HpMax*100); } }
+
 		public StatusCondition StatusCondition { get; private set; }
 
 		protected Pawn(Stats stats)
