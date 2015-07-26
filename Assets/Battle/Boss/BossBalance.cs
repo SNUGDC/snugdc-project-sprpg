@@ -9,6 +9,7 @@ namespace SPRPG.Battle
 	{
 		None,
 		RadioactiveArea,
+		Step1MeltDown,
 	}
 	
 	public enum BossSkillLocalKey

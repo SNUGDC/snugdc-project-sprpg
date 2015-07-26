@@ -21,6 +21,45 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public class BossRadiationStep1MeltDownPassive : BossTogglePassive
+	{
+		private const Tick HealCooltime = Const.Term;
+
+		private readonly StatDamageModifier _damageModifier;
+		private readonly Hp _heal;
+		private readonly Cooltimer _cooltimer = new Cooltimer(HealCooltime);
+
+		public BossRadiationStep1MeltDownPassive(Battle context, Boss boss, BossPassiveBalanceData data)
+			: base(context, boss, data)
+		{
+			_damageModifier = (StatDamageModifier) (int) data.Arguments["DamageModifier"];
+			_heal = (Hp) (int) data.Arguments["Heal"];
+		}
+
+		protected override void DoTick()
+		{
+			base.DoTick();
+
+			if (WasActivated)
+			{
+				if (_cooltimer.Tick())
+					Boss.Heal(_heal);
+			}
+		}
+
+		protected override void ToggleOn()
+		{
+			base.ToggleOn();
+			Boss.Stats.AddDamageModifier(_damageModifier);
+		}
+
+		protected override void ToggleOff()
+		{
+			base.ToggleOff();
+			Boss.Stats.RemoveDamageModifier(_damageModifier);
+		}
+	}
+
 	public class BossRadiationAttackSkillActor : BossSingleDelayedPerformSkillActor 
 	{
 		private readonly BossDamageArgument _damage;
@@ -68,6 +107,8 @@ namespace SPRPG.Battle
 			{
 				case BossPassiveLocalKey.RadioactiveArea:
 					return new BossRadioactiveAreaPassive(context, boss, data);
+				case BossPassiveLocalKey.Step1MeltDown:
+					return new BossRadiationStep1MeltDownPassive(context, boss, data);
 				default:
 					Debug.LogError("boss " + key + "'s skill " + key + " not handled.");
 					return new BossNonePassive(context, boss);

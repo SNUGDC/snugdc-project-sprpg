@@ -8,6 +8,20 @@
 			{
 				"Key": "RadioactiveArea",
 				"Arguments": { "Damage": { "Value": 5, "Element": "Poison" } }
+			},
+			{
+				"Key": "Step1MeltDown",
+				"Arguments": {
+					"ActivateCondition": { 
+						"Type": "And",
+						"Array": [
+							{ "Type": "CompareInt", "Operator": "<", "Value1": "BossHpPercentage", "Value2": 50 },
+							{ "Type": "CompareInt", "Operator": ">=", "Value1": "BossHpPercentage", "Value2": 25 }
+						]
+					},
+					"DamageModifier": 500, 
+					"Heal": 30 
+				}
 			}
 		],
 		"_skills": [

@@ -35,6 +35,18 @@ namespace SPRPG
 			get { return (StatDamageModifier)_damageModifier; }
 			set { _damageModifier = (int) value; }
 		}
+
+		public StatDamageModifier AddDamageModifier(StatDamageModifier val)
+		{
+			DamageModifier += (int)val;
+			return DamageModifier;
+		}
+
+		public StatDamageModifier RemoveDamageModifier(StatDamageModifier val)
+		{
+			var neg = (StatDamageModifier)(-(int) val);
+			return AddDamageModifier(neg);
+		}
 	}
 
 	public struct JsonStats
