@@ -5,20 +5,22 @@ using LitJson;
 
 namespace SPRPG.Battle
 {
+	public enum BossPassiveLocalKey
+	{
+		None,
+	}
+	
 	public enum BossSkillLocalKey
 	{
 		Attack,
 	}
 
-	public class BossSkillBalanceData
+	public class BossSkillCommonBalanceData
 	{
-		public BossSkillLocalKey Key;
 		public Proportion Proportion;
 		public Tick Duration;
 
-		[JsonInclude]
-		private JsonData _condition;
-		[JsonIgnore]
+		public JsonData _condition;
 		public BossCondition Condition;
 
 		public JsonData Arguments;
@@ -30,6 +32,16 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public class BossPassiveBalanceData : BossSkillCommonBalanceData
+	{
+		public BossPassiveLocalKey Key;
+	}
+
+	public class BossSkillBalanceData : BossSkillCommonBalanceData
+	{
+		public BossSkillLocalKey Key;
+	}
+	
 	public class BossBalanceData
 	{
 		[JsonIgnore]
@@ -42,6 +54,11 @@ namespace SPRPG.Battle
 		public Stats Stats;
 
 		[JsonInclude]
+		private List<BossPassiveBalanceData> _passives;
+		[JsonIgnore]
+		public Dictionary<BossPassiveLocalKey, BossPassiveBalanceData> Passives;
+
+		[JsonInclude]
 		private List<BossSkillBalanceData> _skills;
 		[JsonIgnore]
 		public Dictionary<BossSkillLocalKey, BossSkillBalanceData> Skills;
@@ -50,6 +67,11 @@ namespace SPRPG.Battle
 		{
 			Id = id;
 			Stats = _stats;
+			Passives = _passives.ToDictionary(data =>
+			{
+				data.Build(id);
+				return data.Key;
+			});
 			Skills = _skills.ToDictionary(data =>
 			{
 				data.Build(id);

@@ -90,6 +90,19 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public class BossPassivePhase : BattlePhase
+	{
+		public BossPassivePhase(Battle context) : base(context, BattleState.BossPassive)
+		{
+		}
+
+		public override void Enter()
+		{
+			Context.Boss.TickPassive();
+			base.Enter();
+		}
+	}
+
 	public class BossPerformPhase : BattlePhase
 	{
 		public BossPerformPhase(Battle context) : base(context, BattleState.BossPerform)

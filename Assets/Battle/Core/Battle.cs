@@ -64,7 +64,7 @@ namespace SPRPG.Battle
 			}
 
 			_party = new Party(def.PartyDef);
-			_boss = BossFactory.Create(def.Stage.ToBossId());
+			_boss = BossFactory.Create(this, def.Stage.ToBossId());
 			_bossAi = BossFactory.CreateAi(_boss);
 
 			Clock.OnProceed += OnTick;

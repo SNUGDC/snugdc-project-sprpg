@@ -30,6 +30,7 @@ namespace SPRPG
 			BindEnumAsString<BossId>();
 			BindEnumAsString<SkillKey>();
 			BindEnumAsString<Battle.BossConditionType>();
+			BindEnumAsString<Battle.BossPassiveLocalKey>();
 			BindEnumAsString<Battle.BossSkillLocalKey>();
 		}
 	}

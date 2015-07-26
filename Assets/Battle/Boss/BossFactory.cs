@@ -2,9 +2,9 @@
 {
 	public static class BossFactory
 	{
-		public static Boss Create(BossId id)
+		public static Boss Create(Battle context, BossId id)
 		{
-			return new Boss(BossBalance._.Find(id));
+			return new Boss(context, BossBalance._.Find(id));
 		}
 
 		public static BossAi CreateAi(Boss boss)

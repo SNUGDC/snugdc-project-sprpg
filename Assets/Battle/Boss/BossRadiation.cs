@@ -29,4 +29,23 @@ namespace SPRPG.Battle
 			_stopJob.Cancel();
 		}
 	}
+
+	public sealed class BossRadiationPassiveFactory : BossPassiveFactory
+	{
+		public static readonly BossRadiationPassiveFactory _ = new BossRadiationPassiveFactory();
+
+		public override BossPassive Create(Battle context, Boss boss, BossPassiveBalanceData data)
+		{
+			Debug.Assert(boss.Id == BossId.Radiation);
+			var key = data.Key;	
+			switch (key)
+			{
+				case BossPassiveLocalKey.RadioactiveArea:
+					return new BossRadioactiveAreaPassive(context, boss, data);
+				default:
+					Debug.LogError("boss " + key + "'s skill " + key + " not handled.");
+					return new BossNonePassive(context, boss);
+			}
+		}
+	}
 }

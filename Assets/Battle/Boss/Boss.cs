@@ -6,7 +6,9 @@ namespace SPRPG.Battle
 	public class Boss
 	{
 		public BossId Id { get { return Data.Id; } }
+		private readonly Battle _context;
 		public readonly BossBalanceData Data;
+		private readonly BossPassiveManager _passiveManager;
 
 		public bool IsAlive { get { return Hp > 0; } }
 
@@ -27,10 +29,17 @@ namespace SPRPG.Battle
 
 		public Action<Boss> OnDead;
 
-		public Boss(BossBalanceData data)
+		public Boss(Battle context, BossBalanceData data)
 		{
+			_context = context;
 			Data = data;
 			Hp = _hpMax = Data.Stats.Hp.ToValue();
+			_passiveManager = new BossPassiveManager(context, this);
+		}
+
+		public void TickPassive()
+		{
+			_passiveManager.Tick();
 		}
 
 		public void Hit(Damage val)
