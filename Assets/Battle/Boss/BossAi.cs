@@ -25,7 +25,7 @@ namespace SPRPG.Battle
 			foreach (var kv in skills)
 			{
 				var data = kv.Value;
-				if (data.Condition.Test(context, _boss))
+				if (data.Condition.Test(context))
 					sampler.Add(data.Weight, data);
 			}
 

@@ -24,13 +24,13 @@ namespace SPRPG.Battle
 		public Tick Duration;
 
 		public JsonData _condition;
-		public BossCondition Condition;
+		public Condition Condition;
 
 		public JsonData Arguments;
 
 		public void Build(BossId id)
 		{
-			Condition = BossConditionFactory.Create(_condition);
+			Condition = ConditionFactory.Create(_condition);
 			_condition = null;
 		}
 	}

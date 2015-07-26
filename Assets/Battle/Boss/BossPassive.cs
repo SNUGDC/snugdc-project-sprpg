@@ -17,7 +17,7 @@
 
 		public bool Test()
 		{
-			return Data.Condition.Test(Context, Boss);
+			return Data.Condition.Test(Context);
 		}
 		
 		public void Tick()
