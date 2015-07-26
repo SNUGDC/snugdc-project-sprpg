@@ -8,11 +8,13 @@ namespace SPRPG.Battle
 		public bool IsPerforming { get { return _current != null; } }
 
 		private readonly Boss _boss;
+		private readonly BossSkillFactory _skillFactory;
 		private BossSkillActor _current;
 
 		public BossAi(Boss boss)
 		{
 			_boss = boss;
+			_skillFactory = BossWholeSkillFactory.Map(boss);
 		}
 
 		private BossSkillBalanceData Sample(Battle context)
@@ -39,7 +41,7 @@ namespace SPRPG.Battle
 				return;
 			}
 			var data = Sample(context);
-			_current = BossSkillFactory.Create(context, _boss, data);
+			_current = _skillFactory.Create(context, _boss, data);
 			_current.OnStop += OnStop;
 			_current.Start();	
 		}

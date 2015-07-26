@@ -20,4 +20,16 @@ namespace SPRPG.Battle
 			base.OnStop += skillActor => OnStop.CheckAndCall((BossSkillActor)skillActor);
 		}
 	}
+
+	public sealed class BossNoneSkillActor : BossSkillActor
+	{
+		public BossNoneSkillActor(Battle context, Boss boss)
+			: base(context, boss, new BossSkillBalanceData())
+		{}
+
+		protected override void DoStart()
+		{
+			// do nothing
+		}
+	}
 }

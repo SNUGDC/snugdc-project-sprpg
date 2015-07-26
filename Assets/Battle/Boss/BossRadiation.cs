@@ -81,4 +81,23 @@ namespace SPRPG.Battle
 			}
 		}
 	}
+
+	public sealed class BossRadiationSkillFactory : BossSkillFactory
+	{
+		public static BossRadiationSkillFactory _ = new BossRadiationSkillFactory();
+		 
+		public override BossSkillActor Create(Battle context, Boss boss, BossSkillBalanceData data)
+		{
+			Debug.Assert(boss.Id == BossId.Radiation);
+
+			switch (data.Key)
+			{
+				case BossSkillLocalKey.Attack:
+					return new BossRadiationAttackSkillActor(context, boss, data);
+				default:
+					Debug.LogError(LogMessages.EnumUndefined(data.Key));
+					return new BossNoneSkillActor(context, boss);
+			}
+		}
+	}
 }
