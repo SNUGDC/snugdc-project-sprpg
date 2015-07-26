@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SPRPG
 {
 	public enum Weight { }
+	public enum Percentage { }
 
 	public enum Tick { }
 	public enum Term { _1, _2, _3, _4 }
@@ -88,6 +90,13 @@ namespace SPRPG
 
 	public static partial class ExtensionMethods
 	{
+		public static Random Random = new Random(0);
+
+		public static bool Test(this Percentage thiz)
+		{
+			return Random.Next()%100 < (int)thiz;
+		}
+		
 		public static int ToIndex(this SkillSlot thiz)
 		{
 			return (int) thiz;
