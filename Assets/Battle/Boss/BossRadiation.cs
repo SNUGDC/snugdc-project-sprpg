@@ -26,7 +26,7 @@ namespace SPRPG.Battle
 		private readonly BossDamageArgument _damage;
 
 		public BossRadiationAttackSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
-			: base(context, boss, data, (Tick)3, (Tick)5)
+			: base(context, boss, data, (Tick)3)
 		{
 			Debug.Assert(boss.Id == BossId.Radiation);
 			_damage = new BossDamageArgument(data.Arguments);
