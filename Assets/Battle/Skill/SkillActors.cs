@@ -43,6 +43,13 @@ namespace SPRPG.Battle
 		}
 
 		protected abstract void Perform();
+
+		protected override void DoCancel()
+		{
+			_performJob.Cancel();
+			_stopJob.Cancel();
+			base.DoStop();
+		}
 	}
 
 	public class AttackSkillActor : SingleDelayedPerformSkillActor 
