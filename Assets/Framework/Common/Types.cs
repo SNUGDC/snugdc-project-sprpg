@@ -14,6 +14,11 @@ namespace SPRPG
 		Poison = 1,
 	}
 
+	public enum StatusConditionType
+	{
+		Poison = 1,
+	}
+	
 	public enum PassiveKey
 	{
 		None = 0,
