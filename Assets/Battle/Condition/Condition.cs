@@ -1,4 +1,7 @@
-﻿using Gem;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Gem;
 using LitJson;
 using UnityEngine;
 
@@ -8,6 +11,18 @@ namespace SPRPG.Battle
 	{
 		False, 
 		True, 
+		And,
+		Or,
+		CompareInt,
+	}
+
+	public enum ConditionCompareOperator
+	{
+		Equal,
+		Less,
+		LessEqual,
+		Greater,
+		GreaterEqual,
 	}
 
 	public abstract class Condition
@@ -46,6 +61,60 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public sealed class AndCondition : Condition
+	{
+		private readonly List<Condition> _conditions;
+
+		public AndCondition(List<Condition> conditions)
+			: base(ConditionType.And)
+		{
+			_conditions = conditions;
+		}
+
+		public override bool Test(Battle context)
+		{
+			return _conditions.All(condition => condition.Test(context));
+		}
+	}
+
+	public sealed class OrCondition : Condition
+	{
+		private readonly List<Condition> _conditions;
+
+		public OrCondition(List<Condition> conditions)
+			: base(ConditionType.And)
+		{
+			_conditions = conditions;
+		}
+
+		public override bool Test(Battle context)
+		{
+			return _conditions.Any(condition => !condition.Test(context));
+		}
+	}
+
+	public sealed class CompareIntCondition : Condition
+	{
+		private readonly ConditionCompareOperator _operator;
+		private readonly JsonData _value1;
+		private readonly JsonData _value2;
+
+		public CompareIntCondition(JsonData data) : base(ConditionType.False)
+		{
+			ConditionHelper.TryParse((string) data["Operator"], out _operator);
+			_value1 = data["Value1"];
+			_value2 = data["Value2"];
+		}
+
+		public override bool Test(Battle context)
+		{
+			var binding = context.Binding;
+			var value1 = binding.EvalOrDefault(_value1);
+			var value2 = binding.EvalOrDefault(_value2);
+			return _operator.Do(value1, value2);
+		}
+	}
+
 	public static class ConditionFactory
 	{
 		public static Condition Create(JsonData data)
@@ -58,10 +127,58 @@ namespace SPRPG.Battle
 					return new FalseCondition();
 				case ConditionType.True:
 					return new TrueCondition();
+				case ConditionType.And:
+					return new AndCondition(CreateArray(data["Array"]));
+				case ConditionType.Or:
+					return new OrCondition(CreateArray(data["Array"]));
+				case ConditionType.CompareInt:
+					return new CompareIntCondition(data);
 			}
 
 			Debug.LogError(LogMessages.EnumUndefined(type));
 			return new FalseCondition();
+		}
+
+		public static List<Condition> CreateArray(JsonData data)
+		{
+			var ret = new List<Condition>(data.Count);
+			foreach (var conditionData in data.GetListEnum())
+				ret.Add(Create(conditionData));
+			return ret;
+		}
+	}
+
+	public static class ConditionHelper
+	{
+		public static bool TryParse(string str, out ConditionCompareOperator op)
+		{
+			switch (str)
+			{
+				case "==": op = ConditionCompareOperator.Equal; return true;
+				case "<": op = ConditionCompareOperator.Less; return true;
+				case "<=": op = ConditionCompareOperator.LessEqual; return true;
+				case ">": op = ConditionCompareOperator.Greater; return true;
+				case ">=": op = ConditionCompareOperator.GreaterEqual; return true;
+			}
+
+			Debug.LogError(LogMessages.ParseFailed<ConditionCompareOperator>(str));
+			op = default(ConditionCompareOperator);
+			return false;
+		}
+
+		public static bool Do(this ConditionCompareOperator thiz, int value1, int value2)
+		{
+			switch (thiz)
+			{
+				case ConditionCompareOperator.Equal: return value1 == value2;
+				case ConditionCompareOperator.Less: return value1 < value2;
+				case ConditionCompareOperator.LessEqual: return value1 <= value2;
+				case ConditionCompareOperator.Greater: return value1 > value2;
+				case ConditionCompareOperator.GreaterEqual: return value1 >= value2;
+				default:
+					Debug.LogError(LogMessages.EnumNotHandled(thiz));
+					return false;
+			}
 		}
 	}
 }
