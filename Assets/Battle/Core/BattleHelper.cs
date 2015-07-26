@@ -14,6 +14,11 @@ namespace SPRPG.Battle
 			return new Job(thiz.Fsm.BossPerform.Schedule, delay, callback);
 		}
 
+		public static Job AddBeforeTurn(this Battle thiz, Tick delay, Action callback)
+		{
+			return new Job(thiz.Fsm.BeforeTurn.Schedule, delay, callback);
+		}
+
 		public static Job AddAfterTurn(this Battle thiz, Tick delay, Action callback)
 		{
 			return new Job(thiz.Fsm.AfterTurn.Schedule, delay, callback);

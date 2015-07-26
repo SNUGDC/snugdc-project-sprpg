@@ -89,6 +89,8 @@ namespace SPRPG.Battle
 					return new BossRadiationAttackSkillActor(context, boss, data);
 				case BossSkillLocalKey.MassAttack:
 					return new BossRadiationMassAttackSkillActor(context, boss, data);
+				case BossSkillLocalKey.Radioactivity:
+					return new BossGrantStatusConditionSkillActor(context, boss, data);
 				default:
 					Debug.LogError(LogMessages.EnumUndefined(data.Key));
 					return new BossNoneSkillActor(context, boss);

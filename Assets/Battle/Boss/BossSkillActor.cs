@@ -63,4 +63,20 @@ namespace SPRPG.Battle
 			base.DoStop();
 		}
 	}
+
+	public class BossGrantStatusConditionSkillActor : BossSkillActor
+	{
+		private readonly BossGrantStatusConditionArgument _argument;
+
+		public BossGrantStatusConditionSkillActor(Battle context, Boss boss, BossSkillBalanceData data) : base(context, boss, data)
+		{
+			_argument = data.Arguments.ToObject<BossGrantStatusConditionArgument>();
+		}
+
+		protected override void DoStart()
+		{
+			Context.Party.GetAliveLeaderOrMember().TestAndGrant(_argument.Percentage, _argument.StatusCondition, Data.Duration);
+			Context.AddBeforeTurn(Data.Duration, Stop);
+		}
+	}
 }

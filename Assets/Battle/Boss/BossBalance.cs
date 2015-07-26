@@ -15,6 +15,7 @@ namespace SPRPG.Battle
 	{
 		Attack,
 		MassAttack,
+		Radioactivity,
 	}
 
 	public class BossSkillCommonBalanceData

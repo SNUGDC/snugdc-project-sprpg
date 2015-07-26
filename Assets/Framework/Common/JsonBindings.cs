@@ -20,6 +20,7 @@ namespace SPRPG
 		public static void Setup()
 		{
 			UnityTypeBindings.Register();
+			BindEnumAsNatural<Percentage>();
 			BindEnumAsNatural<Weight>();
 			BindEnumAsNatural<SkillTier>();
 			BindEnumAsNatural<Hp>();
@@ -29,6 +30,7 @@ namespace SPRPG
 			BindEnumAsString<CharacterId>();
 			BindEnumAsString<BossId>();
 			BindEnumAsString<SkillKey>();
+			BindEnumAsString<StatusConditionType>();
 			BindEnumAsString<Battle.BossConditionType>();
 			BindEnumAsString<Battle.BossPassiveLocalKey>();
 			BindEnumAsString<Battle.BossSkillLocalKey>();
