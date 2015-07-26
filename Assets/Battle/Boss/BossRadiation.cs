@@ -38,6 +38,23 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public class BossRadiationMassAttackSkillActor : BossSingleDelayedPerformSkillActor 
+	{
+		private readonly BossDamageArgument _damage;
+
+		public BossRadiationMassAttackSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
+			: base(context, boss, data, (Tick)3)
+		{
+			Debug.Assert(boss.Id == BossId.Radiation);
+			_damage = new BossDamageArgument(data.Arguments);
+		}
+
+		protected override void Perform()
+		{
+			Context.Party.HitParty(_damage);
+		}
+	}
+
 	public sealed class BossRadiationPassiveFactory : BossPassiveFactory
 	{
 		public static readonly BossRadiationPassiveFactory _ = new BossRadiationPassiveFactory();
@@ -69,6 +86,8 @@ namespace SPRPG.Battle
 			{
 				case BossSkillLocalKey.Attack:
 					return new BossRadiationAttackSkillActor(context, boss, data);
+				case BossSkillLocalKey.MassAttack:
+					return new BossRadiationMassAttackSkillActor(context, boss, data);
 				default:
 					Debug.LogError(LogMessages.EnumUndefined(data.Key));
 					return new BossNoneSkillActor(context, boss);

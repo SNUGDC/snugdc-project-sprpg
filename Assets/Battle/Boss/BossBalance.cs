@@ -14,6 +14,7 @@ namespace SPRPG.Battle
 	public enum BossSkillLocalKey
 	{
 		Attack,
+		MassAttack,
 	}
 
 	public class BossSkillCommonBalanceData

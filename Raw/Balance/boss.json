@@ -19,6 +19,13 @@
 				"Duration": 60,
 				"_condition": { "Type": "True" },
 				"Arguments": { "Damage": { "Value": 5 } }
+			},
+			{
+				"Key": "MassAttack",
+				"Weight": 5,
+				"Duration": 60,
+				"_condition": { "Type": "True" },
+				"Arguments": { "Damage": { "Value": 5 } }
 			}
 		]
 	}
