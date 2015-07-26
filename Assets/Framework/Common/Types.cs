@@ -11,6 +11,7 @@ namespace SPRPG
 	public enum Element
 	{
 		Normal = 0,
+		Radiation = 1,
 	}
 
 	public enum PassiveKey

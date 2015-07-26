@@ -4,6 +4,14 @@
 		"_stats": {
 			"Hp": 100
 		},
+		"_passives": [
+			{
+				"Key": "RadioactiveArea",
+				"Duration": 60,
+				"_condition": { "Type": "True" },
+				"Arguments": { "Damage": { "Value": 5, "Element": "Radiation" } }
+			}
+		],
 		"_skills": [
 			{
 				"Key": "Attack",

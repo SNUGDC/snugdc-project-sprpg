@@ -8,6 +8,7 @@ namespace SPRPG.Battle
 	public enum BossPassiveLocalKey
 	{
 		None,
+		RadioactiveArea,
 	}
 	
 	public enum BossSkillLocalKey

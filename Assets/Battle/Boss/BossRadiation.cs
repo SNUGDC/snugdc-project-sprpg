@@ -1,8 +1,41 @@
 ﻿using Gem;
+using LitJson;
 using UnityEngine;
 
 namespace SPRPG.Battle
 {
+	public class BossRadioactiveAreaPassiveArguments
+	{
+		public readonly Damage Damage;
+
+		public BossRadioactiveAreaPassiveArguments(JsonData data)
+		{
+			Damage = data["Damage"].ToObject<Damage>();
+		}
+	}
+
+	public class BossRadioactiveAreaPassive : BossPassive
+	{
+		public const Tick Cooltime = Const.Term;
+
+		private readonly Cooltimer _cooltimer = new Cooltimer(Cooltime);
+		private readonly BossRadioactiveAreaPassiveArguments _arguments;
+
+		public BossRadioactiveAreaPassive(Battle context, Boss boss, BossPassiveBalanceData data) : base(context, boss, data)
+		{
+			_arguments = new BossRadioactiveAreaPassiveArguments(data.Arguments);
+		}
+
+		protected override void DoTick()
+		{
+			if (!_cooltimer.Tick())
+				return;
+
+			foreach (var member in Context.Party)
+				member.Hit(_arguments.Damage);
+		}
+	}
+
 	public class BossRadiationAttackSkillActor : BossSkillActor
 	{
 		private readonly Damage _damage;

@@ -9,6 +9,7 @@ namespace SPRPG.Battle
 		{
 			switch (id)
 			{
+				case BossId.Radiation: return BossRadiationPassiveFactory._;
 				default:
 					Debug.LogError(LogMessages.EnumNotHandled(id));
 					return null;
