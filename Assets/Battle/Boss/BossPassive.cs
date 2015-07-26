@@ -15,11 +15,6 @@
 			Data = data;
 		}
 
-		public bool Test()
-		{
-			return Data.ActivateCondition.Test(Context);
-		}
-		
 		public void Tick()
 		{
 			++TotalElapsed;
