@@ -48,7 +48,7 @@ namespace SPRPG.Battle
 			Debug.Assert(_ == null);
 			_ = this;
 
-			Binding = new SymbolBinding();
+			Binding = BattleSymbolBinding.Create(this); 
 			PlayerClock = new RelativeClock(Clock);
 			Fsm = new BattleFsm(this);
 
