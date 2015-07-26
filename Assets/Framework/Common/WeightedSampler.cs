@@ -23,6 +23,12 @@ namespace SPRPG
 
 		public T Sample(Random random)
 		{
+			if (_totalProportion == 0)
+			{
+				Debug.LogError("total proportion is zero");
+				return default(T);
+			}
+
 			var rnd = random.Next();
 			rnd = rnd% (int)_totalProportion;
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
@@ -32,6 +33,11 @@ namespace SPRPG.Battle
 		public void Perform(Battle context)
 		{
 			Debug.Assert(!IsPerforming);
+			if (_boss.Data.Skills.Empty())
+			{
+				Debug.LogError("has no skill.");
+				return;
+			}
 			var data = Sample(context);
 			_current = BossSkillFactory.Create(context, _boss, data);
 			_current.OnStop += OnStop;
