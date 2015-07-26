@@ -18,5 +18,11 @@ namespace SPRPG.Battle
 		{
 			return new Job(thiz.Fsm.AfterTurn.Schedule, delay, callback);
 		}
+
+		public static void HitParty(this Party thiz, Damage damage)
+		{
+			foreach (var member in thiz)
+				member.Hit(damage);
+		}
 	}
 }

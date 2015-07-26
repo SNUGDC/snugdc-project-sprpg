@@ -1,44 +1,29 @@
 ﻿using Gem;
-using LitJson;
 using UnityEngine;
 
 namespace SPRPG.Battle
 {
-	public class BossRadioactiveAreaPassiveArguments
-	{
-		public readonly Damage Damage;
-
-		public BossRadioactiveAreaPassiveArguments(JsonData data)
-		{
-			Damage = data["Damage"].ToObject<Damage>();
-		}
-	}
-
 	public class BossRadioactiveAreaPassive : BossPassive
 	{
 		public const Tick Cooltime = Const.Term;
-
 		private readonly Cooltimer _cooltimer = new Cooltimer(Cooltime);
-		private readonly BossRadioactiveAreaPassiveArguments _arguments;
+		private readonly BossDamageArgument _arguments;
 
 		public BossRadioactiveAreaPassive(Battle context, Boss boss, BossPassiveBalanceData data) : base(context, boss, data)
 		{
-			_arguments = new BossRadioactiveAreaPassiveArguments(data.Arguments);
+			_arguments = new BossDamageArgument(data.Arguments);
 		}
 
 		protected override void DoTick()
 		{
-			if (!_cooltimer.Tick())
-				return;
-
-			foreach (var member in Context.Party)
-				member.Hit(_arguments.Damage);
+			if (!_cooltimer.Tick()) return;
+			Context.Party.HitParty(_arguments);
 		}
 	}
 
 	public class BossRadiationAttackSkillActor : BossSkillActor
 	{
-		private readonly Damage _damage;
+		private readonly BossDamageArgument _damage;
 
 		private Job _hitJob;
 		private Job _stopJob;
@@ -47,7 +32,7 @@ namespace SPRPG.Battle
 			: base(context, boss, data)
 		{
 			Debug.Assert(boss.Id == BossId.Radiation);
-			_damage = Data.Arguments["Damage"].ToObject<Damage>();
+			_damage = new BossDamageArgument(data.Arguments);
 		}
 
 		protected override void DoStart()
