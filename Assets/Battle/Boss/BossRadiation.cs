@@ -35,7 +35,8 @@ namespace SPRPG.Battle
 
 		protected override void Perform()
 		{
-			Context.Party.HitLeaderOrMemberIfLeaderIsDead(_damage);
+			var damageModified = Boss.ApplyModifier(_damage);
+			Context.Party.HitLeaderOrMemberIfLeaderIsDead(damageModified);
 		}
 	}
 

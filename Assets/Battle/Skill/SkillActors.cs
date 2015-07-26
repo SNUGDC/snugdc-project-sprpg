@@ -64,7 +64,7 @@ namespace SPRPG.Battle
 
 		protected override void Perform()
 		{
-			Battle.Boss.Hit(Arguments.Damage);
+			Owner.Attack(Battle.Boss, Arguments.Damage);
 		}
 	}
 
@@ -154,7 +154,7 @@ namespace SPRPG.Battle
 			}
 			var dmgValue = ((Hp) ((int) Arguments.DamagePerArrow*OwnerPassive.Arrows));
 			var dmg = new Damage(dmgValue);
-			Battle.Boss.Hit(dmg);
+			Owner.Attack(Battle.Boss, dmg);
 			OwnerPassive.RemoveAllArrows();
 		}
 	}

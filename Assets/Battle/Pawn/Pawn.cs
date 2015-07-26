@@ -44,6 +44,17 @@ namespace SPRPG.Battle
 				StatusCondition = null;
 		}
 
+		public Damage ApplyModifier(Damage damage)
+		{
+			return Stats.DamageModifier.Apply(damage);
+		}
+
+		public void Attack(Pawn target, Damage damage)
+		{
+			var damageModified = ApplyModifier(damage);
+			target.Hit(damageModified);
+		}
+
 		public virtual void Hit(Damage dmg)
 		{
 			Hp -= dmg.Value;
