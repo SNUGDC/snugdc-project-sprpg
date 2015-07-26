@@ -59,8 +59,10 @@ namespace SPRPG.Battle
 			if (StatusCondition != null)
 			{
 				if (StatusCondition.Type == type)
-					if (StatusCondition.DurationLeft > duration)
-						return true;
+				{
+					StatusCondition.Reserve(duration);
+					return true;
+				}
 			}
 
 			StatusCondition = StatusConditionFactory.Create(this, type, duration);

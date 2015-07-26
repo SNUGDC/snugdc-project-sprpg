@@ -15,6 +15,14 @@ namespace SPRPG.Battle
 			Duration = duration;
 		}
 
+		public bool Reserve(Tick duration)
+		{
+			if (DurationLeft > duration)
+				return false;
+			Duration = duration;
+			return true;
+		}
+
 		public void Tick()
 		{
 			if (!IsActive)
@@ -50,6 +58,11 @@ namespace SPRPG.Battle
 			_fsm = new StatusConditionFsm(duration);
 		}
 
+		public bool Reserve(Tick duration)
+		{
+			return _fsm.Reserve(duration);
+		}
+
 		public void Tick()
 		{
 			if (!_fsm.IsActive)
@@ -61,6 +74,8 @@ namespace SPRPG.Battle
 			_fsm.Tick();
 			_actor.Tick(_pawn, _fsm.TotalElapsed);
 		}
+
+		public static implicit operator StatusConditionType(StatusCondition thiz) { return thiz.Type; }
 	}
 
 	public sealed class StatusConditionPoisonActor : StatusConditionActor
