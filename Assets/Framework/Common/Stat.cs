@@ -6,9 +6,16 @@ namespace SPRPG
 	public enum StatKey
 	{
 		Hp,
+		DamageModifier,
 	}
 
 	public enum StatHp {}
+	public enum StatDamageModifier { }
+
+	public static class StatConst
+	{
+		public const StatDamageModifier DefaultDamageModifier = (StatDamageModifier) 1000;
+	}
 
 	[Serializable]
 	public class Stats
@@ -20,18 +27,38 @@ namespace SPRPG
 			get { return (StatHp)_hp; }
 			set { _hp = (int) value; }
 		}
+
+		[SerializeField]
+		private int _damageModifier;
+		public StatDamageModifier DamageModifier
+		{
+			get { return (StatDamageModifier)_damageModifier; }
+			set { _damageModifier = (int) value; }
+		}
 	}
 
 	public struct JsonStats
 	{
-		public int Hp;
+		public StatHp Hp;
+		public StatDamageModifier DamageModifier;
 
 		public static implicit operator Stats(JsonStats thiz)
 		{
 			return new Stats
 			{
-				Hp = (StatHp)thiz.Hp,
+				Hp = thiz.Hp,
+				DamageModifier = thiz.DamageModifier,
 			};
+		}
+	}
+
+	public static partial class ExtensionMethods
+	{
+		public static Damage Apply(this StatDamageModifier thiz, Damage value)
+		{
+			var multiplier = 1 + (int) thiz/1000f;
+			var newHp = (Hp)(int)((int) value.Value*multiplier);
+			return new Damage(newHp, value.Element);
 		}
 	}
 }

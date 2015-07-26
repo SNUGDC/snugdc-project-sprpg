@@ -6,8 +6,10 @@ namespace SPRPG.Battle
 	public class Pawn
 	{
 		public bool IsAlive { get { return Hp > 0; } }
+		public Stats Stats { get; private set; }
+
 		private Hp _hp;
-		public readonly Hp HpMax;
+		public Hp HpMax { get { return Stats.Hp.ToValue(); } }
 		public Hp Hp
 		{
 			get { return _hp; }
@@ -25,7 +27,8 @@ namespace SPRPG.Battle
 
 		protected Pawn(Stats stats)
 		{
-			Hp = HpMax = stats.Hp.ToValue();
+			Stats = stats;
+			Hp = HpMax;
 		}
 
 		public virtual void AfterTurn()
