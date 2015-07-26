@@ -7,6 +7,7 @@ namespace SPRPG.Battle
 	{
 		public bool IsAlive { get { return Hp > 0; } }
 		private Hp _hp;
+		public readonly Hp HpMax;
 		public Hp Hp
 		{
 			get { return _hp; }
@@ -19,7 +20,6 @@ namespace SPRPG.Battle
 				AfterHpChanged(oldHp);
 			}
 		}
-		public readonly Hp HpMax;
 
 		protected Pawn(Stats stats)
 		{
