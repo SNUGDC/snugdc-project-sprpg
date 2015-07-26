@@ -49,10 +49,6 @@ namespace SPRPG.Battle
 	{
 		public readonly AttackSkillArguments Arguments;
 
-		private Battle _battle { get { return Battle._; } }
-		private Job _performJob;
-		private Job _stopJob;
-
 		public AttackSkillActor(SkillBalanceData data, Character owner)
 			: base(data, owner, (Tick)3, (Tick)5)
 		{
@@ -61,7 +57,7 @@ namespace SPRPG.Battle
 
 		protected override void Perform()
 		{
-			_battle.Boss.Hit(Arguments.Damage);
+			Battle.Boss.Hit(Arguments.Damage);
 		}
 	}
 
