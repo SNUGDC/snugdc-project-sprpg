@@ -22,9 +22,9 @@ namespace SPRPG.Battle
 			_passiveManager.Tick();
 		}
 
-		protected override void AfterHpChanged()
+		protected override void AfterHpChanged(Hp old)
 		{
-			base.AfterHpChanged();
+			base.AfterHpChanged(old);
 			Events.OnBossHpChanged.CheckAndCall(this, Hp);
 		}
 	}
