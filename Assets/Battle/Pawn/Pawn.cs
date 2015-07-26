@@ -28,7 +28,7 @@ namespace SPRPG.Battle
 			Hp = HpMax = stats.Hp.ToValue();
 		}
 
-		public void Tick()
+		public virtual void AfterTurn()
 		{
 			if (StatusCondition != null)
 				TickStatusCondition();

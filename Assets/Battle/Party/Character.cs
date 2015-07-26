@@ -26,10 +26,6 @@
 				_evadeDurationLeft -= 1;
 		}
 
-		public void AfterTurn()
-		{
-		}
-
 		public bool CheckEvadeDuration()
 		{
 			return _evadeDurationLeft > 0;

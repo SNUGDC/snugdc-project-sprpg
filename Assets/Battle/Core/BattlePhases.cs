@@ -24,6 +24,7 @@ namespace SPRPG.Battle
 		{
 			base.Enter();
 			Context.Party.AfterTurn();
+			Context.Boss.AfterTurn();
 			Events.AfterTurn.CheckAndCall();
 		}
 	}
