@@ -5,7 +5,7 @@
 		public static SymbolBinding Create(Battle context)
 		{
 			var ret = new SymbolBinding();
-			ret.Bind("BossHpPercentage", () => (int) context.Boss.Hp);
+			ret.Bind("BossHpPercentage", () => (int) context.Boss.HpPercentage);
 			return ret;
 		}
 	}
