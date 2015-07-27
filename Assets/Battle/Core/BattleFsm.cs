@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
+	public enum Result { Win, Lose }
+
 	public class BattleFsm
 	{
 		private readonly Battle _context;
@@ -22,6 +24,7 @@ namespace SPRPG.Battle
 
 		public bool IsIdle { get { return Current == Idle; } }
 		public bool IsResult { get { return Current == ResultWon || Current == ResultLost; } }
+		public Result? ForceResultInNextTick;
 
 		public BattleFsm(Battle context)
 		{
@@ -46,14 +49,16 @@ namespace SPRPG.Battle
 		{
 			Debug.Assert(!IsResult, "phase is already result.");
 
-			if (BattleRule.CheckLose(_context))
+			if (ForceResultInNextTick == Result.Lose || BattleRule.CheckLose(_context))
 			{
+				ForceResultInNextTick = null;
 				Transfer(ResultLost);
 				return true;
 			}
 
-			if (BattleRule.CheckWin(_context))
+			if (ForceResultInNextTick == Result.Win || BattleRule.CheckWin(_context))
 			{
+				ForceResultInNextTick = null;
 				Transfer(ResultWon);
 				return true;
 			}

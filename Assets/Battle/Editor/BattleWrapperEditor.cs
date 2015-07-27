@@ -18,6 +18,7 @@ namespace SPRPG.Battle
 
 			RenderClock();
 			RenderInput();
+			RenderResult();
 
 			if (Target.RealtimeEnabled)
 				EditorUtility.SetDirty(Target);
@@ -72,6 +73,16 @@ namespace SPRPG.Battle
 				_battle.InputReceiver.ForceCaptureSkill(_battle.PlayerClock);
 			if (GUILayout.Button("shift"))
 				_battle.InputReceiver.ForceCaptureShift(_battle.PlayerClock);
+			GUILayout.EndHorizontal();
+		}
+
+		private void RenderResult()
+		{
+			GUILayout.BeginHorizontal();
+			if (GUILayout.Button("win"))
+				_battle.Fsm.ForceResultInNextTick = Result.Win;
+			if (GUILayout.Button("lose"))
+				_battle.Fsm.ForceResultInNextTick = Result.Lose;
 			GUILayout.EndHorizontal();
 		}
 	}
