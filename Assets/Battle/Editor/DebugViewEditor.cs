@@ -6,12 +6,15 @@ namespace SPRPG.Battle
 {
 	public static class DebugViewHelper
 	{
+		private static readonly PawnInvincibleKey _invincibleKey = (PawnInvincibleKey)Battle.KeyGen.Next();
+
 		public static void RenderPawn(Pawn pawn)
 		{
 			GUILayout.BeginHorizontal();
 			RenderHp(pawn);
 			if (pawn.StatusCondition != null) RenderStatusCondition(pawn.StatusCondition);
 			GUILayout.EndHorizontal();
+			RenderFlags(pawn);
 		}
 
 		private static void RenderHp(Pawn pawn)
@@ -34,6 +37,16 @@ namespace SPRPG.Battle
 			
 			var style = new GUIStyle { normal = { textColor = color } };
 			GUILayout.Label("O", style);
+		}
+
+		private static void RenderFlags(Pawn pawn)
+		{
+			var wasInvincible = pawn.HasInvincible(_invincibleKey);
+			if (wasInvincible != EditorGUILayout.Toggle("invincible", wasInvincible))
+			{
+				if (wasInvincible) pawn.UnsetInvincible(_invincibleKey);
+				else pawn.SetInvincible(_invincibleKey);
+			}
 		}
 	}
 

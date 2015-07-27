@@ -55,6 +55,7 @@ namespace SPRPG.Battle
 
 		public bool SetInvincible(PawnInvincibleKey key) { return _invincible.Add(key); }
 		public bool UnsetInvincible(PawnInvincibleKey key) { return _invincible.Remove(key); }
+		public bool HasInvincible(PawnInvincibleKey key) { return _invincible.Contains(key); }
 		public PawnInvincibleKey SetInvincible()
 		{
 			var key = (PawnInvincibleKey) Battle.KeyGen.Next();
