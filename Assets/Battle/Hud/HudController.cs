@@ -17,15 +17,13 @@ namespace SPRPG.Battle.View
 		[SerializeField]
 		private HudClock _clock;
 		[SerializeField]
+		private HudHpBar[] _hpBars;
+		[SerializeField]
 		private HudHpBar _bossHpBar;
 
 		[SerializeField]
 		private PartyView _party;
 		private PartyPlacer _partyPlacer;
-
-		[SerializeField]
-		private HudHpBar[] _hpBars;
-
 		
 		void Start()
 		{
@@ -33,11 +31,17 @@ namespace SPRPG.Battle.View
 			_ = this;
 
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
-				_party[idx].SetInitData(Context.Party[idx].Data);
+			{
+				var member = Context.Party[idx];
+				_party[idx].SetInitData(member.Data);
+				_hpBars[idx.ToArrayIndex()].MaxHp = member.HpMax;
+			}
 			_party.gameObject.SetActive(true);
 			
 			_partyPlacer = new PartyPlacer(Context.Party, _party);
 			_partyPlacer.ResetPosition();
+
+			_bossHpBar.MaxHp = Context.Boss.HpMax;
 
 			Events.AfterTurn += AfterTurn;
 			Events.OnBossHpChanged += OnBossHpChanged;
