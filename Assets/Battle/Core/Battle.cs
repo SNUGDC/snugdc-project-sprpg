@@ -24,6 +24,7 @@ namespace SPRPG.Battle
 	public class Battle 
 	{
 		public static Battle _ { get; private set; }
+		public static readonly Random KeyGen = new Random();
 
 		public readonly Random Random = new Random();
 		public readonly SymbolBinding Binding;

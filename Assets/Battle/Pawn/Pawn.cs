@@ -3,6 +3,8 @@ using Gem;
 
 namespace SPRPG.Battle
 {
+	public enum PawnInvincibleKey { }
+
 	public class Pawn
 	{
 		public bool IsAlive { get { return Hp > 0; } }
@@ -24,6 +26,8 @@ namespace SPRPG.Battle
 		public Percentage HpPercentage { get { return (Percentage)((int)Hp/(float) (int) HpMax*100); } }
 
 		public StatusCondition StatusCondition { get; private set; }
+		private readonly SetBool<PawnInvincibleKey> _invincible = new SetBool<PawnInvincibleKey>();
+		public bool IsInvincible { get { return _invincible; } }
 
 		protected Pawn(Stats stats)
 		{
@@ -49,6 +53,15 @@ namespace SPRPG.Battle
 			return Stats.DamageModifier.Apply(damage);
 		}
 
+		public bool SetInvincible(PawnInvincibleKey key) { return _invincible.Add(key); }
+		public bool UnsetInvincible(PawnInvincibleKey key) { return _invincible.Remove(key); }
+		public PawnInvincibleKey SetInvincible()
+		{
+			var key = (PawnInvincibleKey) Battle.KeyGen.Next();
+			SetInvincible(key);
+			return key;
+		}
+
 		public void SetHpForced(Hp val)
 		{
 			var oldHp = _hp;
@@ -64,6 +77,7 @@ namespace SPRPG.Battle
 
 		public virtual void Hit(Damage dmg)
 		{
+			if (_invincible) return;
 			Hp -= dmg.Value;
 		}
 
