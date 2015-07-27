@@ -17,9 +17,7 @@ namespace SPRPG.Battle
 			{
 				value = (Hp)((int)value).Clamp(0, (int)HpMax);
 				if (_hp == value) return;
-				var oldHp = _hp;
-				_hp = value;
-				AfterHpChanged(oldHp);
+				SetHpForced(value);
 			}
 		}
 
@@ -49,6 +47,13 @@ namespace SPRPG.Battle
 		public Damage ApplyModifier(Damage damage)
 		{
 			return Stats.DamageModifier.Apply(damage);
+		}
+
+		public void SetHpForced(Hp val)
+		{
+			var oldHp = _hp;
+			_hp = val;
+			AfterHpChanged(oldHp);
 		}
 
 		public void Attack(Pawn target, Damage damage)

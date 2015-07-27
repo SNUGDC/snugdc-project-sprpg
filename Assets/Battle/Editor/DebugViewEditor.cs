@@ -1,5 +1,4 @@
-﻿using System;
-using Gem;
+﻿using Gem;
 using UnityEditor;
 using UnityEngine;
 
@@ -88,7 +87,11 @@ namespace SPRPG.Battle
 
 		private void RenderStatus()
 		{
-			GUILayout.Label("boss: " + Boss.Hp);
+			GUILayout.Label("boss: " + Boss.Id);
+
+			var hpNew = (Hp)EditorGUILayout.IntField("hp", (int) Boss.Hp);
+			if (hpNew != Boss.Hp)
+				Boss.SetHpForced(hpNew);
 		}
 
 		private void RenderCurrentSkill()
