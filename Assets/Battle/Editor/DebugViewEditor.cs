@@ -4,6 +4,39 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
+	public static class DebugViewHelper
+	{
+		public static void RenderPawn(Pawn pawn)
+		{
+			GUILayout.BeginHorizontal();
+			RenderHp(pawn);
+			if (pawn.StatusCondition != null) RenderStatusCondition(pawn.StatusCondition);
+			GUILayout.EndHorizontal();
+		}
+
+		private static void RenderHp(Pawn pawn)
+		{
+			GUILayout.BeginHorizontal();
+			var hpNew = (Hp)EditorGUILayout.IntField("hp", (int) pawn.Hp);
+			if (hpNew != pawn.Hp) pawn.SetHpForced(hpNew);
+			EditorGUILayout.LabelField("max: " + pawn.HpMax);
+			GUILayout.EndHorizontal();
+		}
+
+		private static void RenderStatusCondition(StatusConditionType type)
+		{
+			var color = Color.gray;
+			switch (type)
+			{
+				case StatusConditionType.Poison: color = Color.magenta; break;
+				default: Debug.LogError(LogMessages.EnumNotHandled(type)); break;
+			}
+			
+			var style = new GUIStyle { normal = { textColor = color } };
+			GUILayout.Label("O", style);
+		}
+	}
+
 	[CustomEditor(typeof(PartyDebugView))]
 	public class PartyDebugViewEditor : ComponentEditor<PartyDebugView>
 	{
@@ -29,31 +62,12 @@ namespace SPRPG.Battle
 		private static void RenderCharacter(Character character)
 		{
 			GUILayout.Label(character.Id.ToString());
-
-			GUILayout.BeginHorizontal();
-			GUILayout.Label(string.Format("hp: {0} ({1})", character.Hp, character.HpMax));
-			if (character.StatusCondition != null) RenderStatusCondition(character.StatusCondition);
-			GUILayout.EndHorizontal();
-				
+			DebugViewHelper.RenderPawn(character);
 			character.Passive.OnInspectorGUI();
-
 			foreach (var actor in character.SkillManager)
 				RenderSkillActor(actor, character.SkillManager.Running == actor);
 		}
 
-		private static void RenderStatusCondition(StatusConditionType type)
-		{
-			var color = Color.gray;
-			switch (type)
-			{
-				case StatusConditionType.Poison: color = Color.magenta; break;
-				default: Debug.LogError(LogMessages.EnumNotHandled(type)); break;
-			}
-			
-			var style = new GUIStyle { normal = { textColor = color } };
-			GUILayout.Label("O", style);
-		}
-		
 		private static void RenderSkillActor(SkillActor actor, bool isPerforming)
 		{
 			GUILayout.BeginHorizontal();
@@ -88,10 +102,7 @@ namespace SPRPG.Battle
 		private void RenderStatus()
 		{
 			GUILayout.Label("boss: " + Boss.Id);
-
-			var hpNew = (Hp)EditorGUILayout.IntField("hp", (int) Boss.Hp);
-			if (hpNew != Boss.Hp)
-				Boss.SetHpForced(hpNew);
+			DebugViewHelper.RenderPawn(Boss);
 		}
 
 		private void RenderCurrentSkill()
