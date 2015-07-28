@@ -4,12 +4,12 @@ namespace SPRPG.Battle
 {
 	public sealed class NullSkillActor : SkillActor
 	{
-		public NullSkillActor(Character owner)
-			: base(new SkillBalanceData(), owner)
+		public NullSkillActor(Battle context, Character owner)
+			: base(new SkillBalanceData(), context, owner)
 		{ }
 
-		public NullSkillActor(SkillBalanceData data, Character owner)
-			: base(data, owner)
+		public NullSkillActor(SkillBalanceData data, Battle context, Character owner)
+			: base(data, context, owner)
 		{ }
 
 		protected override void DoStart()
@@ -24,13 +24,12 @@ namespace SPRPG.Battle
 
 	public abstract class SingleDelayedPerformSkillActor : SkillActor
 	{
-		protected Battle Battle { get { return Battle._; } }
 		private readonly Tick _duration;
 		private readonly Tick _performTick;
 		private Job _performJob;
 		private Job _stopJob;
 
-		public SingleDelayedPerformSkillActor(SkillBalanceData data, Character owner, Tick duration, Tick performTick) : base(data, owner)
+		public SingleDelayedPerformSkillActor(SkillBalanceData data, Battle context, Character owner, Tick duration, Tick performTick) : base(data, context, owner)
 		{
 			_duration = duration;
 			_performTick = performTick;
@@ -38,8 +37,8 @@ namespace SPRPG.Battle
 
 		protected override void DoStart()
 		{
-			_performJob = Battle.AddPlayerPerform(_performTick, Perform);
-			_stopJob = Battle.AddPlayerPerform(_duration, Stop);
+			_performJob = Context.AddPlayerPerform(_performTick, Perform);
+			_stopJob = Context.AddPlayerPerform(_duration, Stop);
 		}
 
 		protected abstract void Perform();
@@ -56,15 +55,15 @@ namespace SPRPG.Battle
 	{
 		public readonly AttackSkillArguments Arguments;
 
-		public AttackSkillActor(SkillBalanceData data, Character owner)
-			: base(data, owner, (Tick)3, (Tick)5)
+		public AttackSkillActor(SkillBalanceData data, Battle context, Character owner)
+			: base(data, context, owner, (Tick)3, (Tick)5)
 		{
 			Arguments = new AttackSkillArguments(data.Arguments);
 		}
 
 		protected override void Perform()
 		{
-			Owner.Attack(Battle.Boss, Arguments.Damage);
+			Owner.Attack(Context.Boss, Arguments.Damage);
 		}
 	}
 
@@ -72,8 +71,8 @@ namespace SPRPG.Battle
 	{
 		public readonly HealSkillArguments Arguments;
 
-		public HealSkillActor(SkillBalanceData data, Character owner)
-			: base(data, owner, (Tick)3, (Tick)7)
+		public HealSkillActor(SkillBalanceData data, Battle context, Character owner)
+			: base(data, context, owner, (Tick)3, (Tick)7)
 		{
 			Arguments = new HealSkillArguments(data.Arguments);
 		}
@@ -88,20 +87,19 @@ namespace SPRPG.Battle
 	{
 		public readonly FiniteSkillArguments Arguments;
 
-		private Battle _battle { get { return Battle._; } }
 		private Job _performJob;
 		private Job _stopJob;
 
-		public EvasionSkillActor(SkillBalanceData data, Character owner)
-			: base(data, owner)
+		public EvasionSkillActor(SkillBalanceData data, Battle context, Character owner)
+			: base(data, context, owner)
 		{
 			Arguments = new FiniteSkillArguments(data.Arguments);
 		}
 
 		protected override void DoStart()
 		{
-			_performJob = _battle.AddPlayerPerform((Tick)3, Perform);
-			_stopJob = _battle.AddPlayerPerform((Tick)7, Stop);
+			_performJob = Context.AddPlayerPerform((Tick)3, Perform);
+			_stopJob = Context.AddPlayerPerform((Tick)7, Stop);
 		}
 
 		private void Perform()
@@ -118,7 +116,7 @@ namespace SPRPG.Battle
 
 	public sealed class ArcherAttackSkillActor : AttackSkillActor
 	{
-		public ArcherAttackSkillActor(SkillBalanceData data, Character owner) : base(data, owner)
+		public ArcherAttackSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
 		{ }
 
 		protected override void Perform()
@@ -140,7 +138,7 @@ namespace SPRPG.Battle
 
 		public readonly ArcherArrowRainArguments Arguments;
 
-		public ArcherArrowRainSkillActor(SkillBalanceData data, Character owner) : base(data, owner, (Tick) 3, (Tick) 7)
+		public ArcherArrowRainSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner, (Tick) 3, (Tick) 7)
 		{
 			Arguments = new ArcherArrowRainArguments(data.Arguments);
 		}
@@ -154,7 +152,7 @@ namespace SPRPG.Battle
 			}
 			var dmgValue = ((Hp) ((int) Arguments.DamagePerArrow*OwnerPassive.Arrows));
 			var dmg = new Damage(dmgValue);
-			Owner.Attack(Battle.Boss, dmg);
+			Owner.Attack(Context.Boss, dmg);
 			OwnerPassive.RemoveAllArrows();
 		}
 	}

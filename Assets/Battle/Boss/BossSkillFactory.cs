@@ -5,7 +5,7 @@ namespace SPRPG.Battle
 {
 	public abstract class BossSkillFactory
 	{
-		public abstract BossSkillActor Create(Battle context, Boss boss, BossSkillBalanceData data);
+		public abstract BossSkillActor Create(BossSkillBalanceData data, Battle context, Boss boss);
 	}
 
 	public static class BossWholeSkillFactory

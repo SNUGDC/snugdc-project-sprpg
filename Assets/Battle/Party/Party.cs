@@ -45,16 +45,16 @@ namespace SPRPG.Battle
 		
 		public Character this[ShiftedPartyIdx idx] { get { return this[ShiftedToOriginalIdx(idx)]; } }
 
-		public Party(PartyDef def)
+		public Party(PartyDef def, Battle context)
 		{
-			InitCharacter(OriginalPartyIdx._1, def._1);
-			InitCharacter(OriginalPartyIdx._2, def._2);
-			InitCharacter(OriginalPartyIdx._3, def._3);
+			InitCharacter(context, OriginalPartyIdx._1, def._1);
+			InitCharacter(context, OriginalPartyIdx._2, def._2);
+			InitCharacter(context, OriginalPartyIdx._3, def._3);
 		}
 
-		private void InitCharacter(OriginalPartyIdx idx, CharacterId id)
+		private void InitCharacter(Battle context, OriginalPartyIdx idx, CharacterId id)
 		{
-			var member = new Character(CharacterDb._.Find(id));
+			var member = new Character(CharacterDb._.Find(id), context);
 			this[idx] = member;
 
 			var onCharacterHpChanged = Events.GetOnCharacterHpChanged(idx);

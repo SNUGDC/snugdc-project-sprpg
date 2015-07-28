@@ -3,21 +3,21 @@
 	public class Character : Pawn<Character>
 	{
 		public CharacterId Id { get { return Data.Id; } }
-		private readonly CharacterData _data;
-		public CharacterData Data { get { return _data; } }
+		private readonly Battle _context;
+		public readonly CharacterData Data;
 
 		public readonly Passive Passive;
-		private readonly SkillManager _skillManager;
-		public SkillManager SkillManager { get { return _skillManager; } }
+		public readonly SkillManager SkillManager;
 
 		private Tick _evadeDurationLeft;
 
-		public Character(CharacterData data)
+		public Character(CharacterData data, Battle context)
 			: base(data.Stats)
 		{
-			_data = data;
+			_context = context;
+			Data = data;
 			Passive = PassiveFactory.Create(data.Passive);
-			_skillManager = new SkillManager(data.SkillSet, this);
+			SkillManager = new SkillManager(data.SkillSet, context, this);
 		}
 
 		public void BeforeTurn()
@@ -45,7 +45,7 @@
 
 		public void PerformSkill(SkillSlot idx)
 		{
-			_skillManager.Perform(idx);
+			SkillManager.Perform(idx);
 		}
 	}
 }

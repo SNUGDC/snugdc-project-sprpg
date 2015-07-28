@@ -1,21 +1,16 @@
-﻿using System;
-using Gem;
-
-namespace SPRPG.Battle
+﻿namespace SPRPG.Battle
 {
-	public abstract class SkillActor : SkillActorBase
+	public abstract class SkillActor : SkillActorBase<SkillActor>
 	{
 		public SkillKey Key { get { return Data.Key; } }
 		public readonly SkillBalanceData Data;
 		public readonly Character Owner;
 
-		public new Action<SkillActor> OnStop;
-
-		protected SkillActor(SkillBalanceData data, Character owner)
+		protected SkillActor(SkillBalanceData data, Battle context, Character owner)
+			: base(context)
 		{
 			Data = data;
 			Owner = owner;
-			base.OnStop += skillActor => OnStop.CheckAndCall((SkillActor)skillActor);
 		}
 	}
 }

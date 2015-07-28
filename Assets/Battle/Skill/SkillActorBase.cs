@@ -4,11 +4,17 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
-	public abstract class SkillActorBase
+	public abstract class SkillActorBase<T> where T : SkillActorBase<T>
 	{
 		public bool IsRunning { get; private set; }
+		public readonly Battle Context;
 
-		public Action<SkillActorBase> OnStop;
+		public Action<T> OnStop;
+
+		protected SkillActorBase(Battle context)
+		{
+			Context = context;
+		}
 
 		public void Start()
 		{
@@ -32,7 +38,7 @@ namespace SPRPG.Battle
 
 			IsRunning = false;
 			DoStop();
-			OnStop.CheckAndCall(this);
+			OnStop.CheckAndCall((T)this);
 		}
 
 		public void Cancel()

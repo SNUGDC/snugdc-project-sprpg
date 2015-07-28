@@ -65,7 +65,7 @@ namespace SPRPG.Battle
 				_inputReceiver = InputReceiverFactory.CreatePlatformPreferred();
 			}
 
-			_party = new Party(def.PartyDef);
+			_party = new Party(def.PartyDef, this);
 			_boss = BossFactory.Create(this, def.Stage.ToBossId());
 			_bossAi = BossFactory.CreateAi(_boss);
 

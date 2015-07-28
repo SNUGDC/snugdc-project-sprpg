@@ -120,7 +120,7 @@ namespace SPRPG.Battle
 	{
 		public static BossRadiationSkillFactory _ = new BossRadiationSkillFactory();
 		 
-		public override BossSkillActor Create(Battle context, Boss boss, BossSkillBalanceData data)
+		public override BossSkillActor Create(BossSkillBalanceData data, Battle context, Boss boss)
 		{
 			Debug.Assert(boss.Id == BossId.Radiation);
 

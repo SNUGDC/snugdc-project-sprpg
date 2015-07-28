@@ -45,7 +45,7 @@ namespace SPRPG.Battle
 			if (data == null)
 				return;
 
-			Current = _skillFactory.Create(context, _boss, data);
+			Current = _skillFactory.Create(data, context, _boss);
 			Current.OnStop += OnStop;
 			Current.Start();
 			Events.OnBossSkillStart.CheckAndCall(_boss, Current);

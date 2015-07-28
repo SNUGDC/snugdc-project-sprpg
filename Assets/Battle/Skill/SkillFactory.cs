@@ -5,11 +5,11 @@ namespace SPRPG.Battle
 {
 	public static class SkillFactory
 	{
-		public static SkillActor Create(SkillKey key, Character owner)
+		public static SkillActor Create(SkillKey key, Battle context, Character owner)
 		{
 			var data = SkillBalance._.Find(key);
 			if (data == null)
-				return new NullSkillActor(owner);
+				return new NullSkillActor(context, owner);
 
 			switch (key)
 			{
@@ -17,24 +17,24 @@ namespace SPRPG.Battle
 				case SkillKey.None2:
 				case SkillKey.None3:
 				case SkillKey.None4:
-					return new NullSkillActor(data, owner);
+					return new NullSkillActor(data, context, owner);
 				case SkillKey.WarriorAttack:
 				case SkillKey.WarriorStrongAttack:
-					return new AttackSkillActor(data, owner);
+					return new AttackSkillActor(data, context, owner);
 				case SkillKey.WarriorHeal:
-					return new HealSkillActor(data, owner);
+					return new HealSkillActor(data, context, owner);
 				case SkillKey.WarriorEvasion:
 				case SkillKey.ArcherEvasion:
-					return new EvasionSkillActor(data, owner);
+					return new EvasionSkillActor(data, context, owner);
 				case SkillKey.ArcherAttack:
 				case SkillKey.ArcherStrongShot:
-					return new ArcherAttackSkillActor(data, owner);
+					return new ArcherAttackSkillActor(data, context, owner);
 				case SkillKey.ArcherArrowRain:
-					return new ArcherArrowRainSkillActor(data, owner);
+					return new ArcherArrowRainSkillActor(data, context, owner);
 			}
 
 			Debug.LogError(LogMessages.EnumNotHandled(key));
-			return new NullSkillActor(data, owner);
+			return new NullSkillActor(data, context, owner);
 		}
 	}
 }

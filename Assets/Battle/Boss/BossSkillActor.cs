@@ -1,25 +1,19 @@
-﻿using System;
-using Gem;
+﻿using Gem;
 using UnityEngine;
 
 namespace SPRPG.Battle
 {
-	public abstract class BossSkillActor : SkillActorBase
+	public abstract class BossSkillActor : SkillActorBase<BossSkillActor>
 	{
 		public BossSkillLocalKey LocalKey { get { return Data.Key; } }
-		protected readonly Battle Context;
 		protected readonly Boss Boss;
 		protected readonly BossSkillBalanceData Data;
 
-		public new Action<BossSkillActor> OnStop;
-
 		protected BossSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
+			: base(context)
 		{
-			Context = context;
 			Boss = boss;
 			Data = data;
-
-			base.OnStop += skillActor => OnStop.CheckAndCall((BossSkillActor)skillActor);
 		}
 	}
 
@@ -37,7 +31,6 @@ namespace SPRPG.Battle
 
 	public abstract class BossSingleDelayedPerformSkillActor : BossSkillActor
 	{
-		protected Battle Battle { get { return Battle._; } }
 		private readonly Tick _performTick;
 		private Job _performJob;
 		private Job _stopJob;
@@ -50,8 +43,8 @@ namespace SPRPG.Battle
 
 		protected override void DoStart()
 		{
-			_performJob = Battle.AddPlayerPerform(_performTick, Perform);
-			_stopJob = Battle.AddPlayerPerform(Data.Duration, Stop);
+			_performJob = Context.AddBossPerform(_performTick, Perform);
+			_stopJob = Context.AddBossPerform(Data.Duration, Stop);
 		}
 
 		protected abstract void Perform();
