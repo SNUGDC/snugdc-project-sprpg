@@ -56,8 +56,7 @@ namespace SPRPG.Battle
 			if (!skill.HasValue) return false;
 
 			var termAndGrade = skill.Value;
-			Debug.Log(termAndGrade);
-			if (termAndGrade.Grade == InputGrade.Bad) return true;
+			if (termAndGrade.IsGradeBad) return true;
 
 			_party.Leader.PerformSkill(termAndGrade.Term.ToSkillSlot());
 			Events.OnInputSkill.CheckAndCall(termAndGrade);
@@ -70,8 +69,7 @@ namespace SPRPG.Battle
 			if (!shift.HasValue) return false;
 
 			var termAndGrade = shift.Value;
-			Debug.Log(termAndGrade);
-			if (termAndGrade.Grade == InputGrade.Bad) return true;
+			if (termAndGrade.IsGradeBad) return true;
 
 			_party.Shift();
 			Events.OnInputShift.CheckAndCall(termAndGrade);

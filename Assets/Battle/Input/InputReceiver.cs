@@ -18,6 +18,7 @@ namespace SPRPG.Battle
 	{
 		public Term Term;
 		public InputGrade Grade;
+		public bool IsGradeBad { get { return Grade == InputGrade.Bad; } }
 
 		public TermAndGrade(Term term, InputGrade grade)
 		{
