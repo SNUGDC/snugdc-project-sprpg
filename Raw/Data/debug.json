@@ -1,5 +1,13 @@
 {
 	"Draw": true,
 	"UseDefaultConfig": true,
-	"ReloadData": true
+	"ReloadData": true,
+	"Battle": {
+		"Log": {
+			"Input": true,
+			"CharacterHpChanged": true,
+			"CharacterDead": true,
+			"BossSkillStart": true
+		}
+	}
 }
