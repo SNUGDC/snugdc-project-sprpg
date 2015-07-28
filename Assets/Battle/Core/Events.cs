@@ -10,7 +10,10 @@ namespace SPRPG.Battle
 
 	public static class Events
 	{
-		public static Action AfterTurn;  
+		public static Action AfterTurn;
+
+		public static Action<TermAndGrade> OnInputSkill;
+		public static Action<TermAndGrade> OnInputShift;
 
 		private static readonly List<OnCharacterHpChanged> OnCharacterHpChanged;
 		private static readonly List<OnCharacterDead> OnCharacterDead;

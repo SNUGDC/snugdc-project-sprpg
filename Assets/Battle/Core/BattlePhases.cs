@@ -60,6 +60,7 @@ namespace SPRPG.Battle
 			if (termAndGrade.Grade == InputGrade.Bad) return true;
 
 			_party.Leader.PerformSkill(termAndGrade.Term.ToSkillSlot());
+			Events.OnInputSkill.CheckAndCall(termAndGrade);
 			return true;
 		}
 
@@ -73,6 +74,7 @@ namespace SPRPG.Battle
 			if (termAndGrade.Grade == InputGrade.Bad) return true;
 
 			_party.Shift();
+			Events.OnInputShift.CheckAndCall(termAndGrade);
 			return true;
 		}
 	}
