@@ -19,6 +19,7 @@ namespace SPRPG.Battle
 
 		public void TickPassive()
 		{
+			if (IsDead) return;
 			_passiveManager.Tick();
 		}
 

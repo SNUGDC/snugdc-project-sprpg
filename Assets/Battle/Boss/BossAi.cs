@@ -32,23 +32,28 @@ namespace SPRPG.Battle
 			return sampler.Sample(context.Random);
 		}
 
-		public void Perform(Battle context)
+		public bool TryPerform(Battle context)
 		{
 			Debug.Assert(!IsPerforming);
+
+			if (_boss.IsDead)
+				return false;
+
 			if (_boss.Data.Skills.Empty())
 			{
 				Debug.LogError("has no skill.");
-				return;
+				return false;
 			}
 
 			var data = Sample(context);
 			if (data == null)
-				return;
+				return false;
 
 			Current = _skillFactory.Create(data, context, _boss);
 			Current.OnStop += OnStop;
 			Current.Start();
 			Events.OnBossSkillStart.CheckAndCall(_boss, Current);
+			return true;
 		}
 
 		private void OnStop(BossSkillActor skill)

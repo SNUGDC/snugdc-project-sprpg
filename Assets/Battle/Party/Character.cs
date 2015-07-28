@@ -26,6 +26,12 @@
 				_evadeDurationLeft -= 1;
 		}
 
+		public void TickPassive()
+		{
+			if (IsDead) return;
+			Passive.Tick();
+		}
+
 		public bool CheckEvadeDuration()
 		{
 			return _evadeDurationLeft > 0;
@@ -43,9 +49,11 @@
 			_evadeDurationLeft = duration;
 		}
 
-		public void PerformSkill(SkillSlot idx)
+		public bool TryPerformSkill(SkillSlot idx)
 		{
+			if (IsDead) return false;
 			SkillManager.Perform(idx);
+			return true;
 		}
 	}
 }

@@ -58,7 +58,7 @@ namespace SPRPG.Battle
 			var termAndGrade = skill.Value;
 			if (termAndGrade.IsGradeBad) return true;
 
-			_party.Leader.PerformSkill(termAndGrade.Term.ToSkillSlot());
+			_party.Leader.TryPerformSkill(termAndGrade.Term.ToSkillSlot());
 			Events.OnInputSkill.CheckAndCall(termAndGrade);
 			return true;
 		}
@@ -86,7 +86,7 @@ namespace SPRPG.Battle
 		public override void Enter()
 		{
 			foreach (var member in Context.Party)
-				member.Passive.Tick();
+				member.TickPassive();
 			base.Enter();
 		}
 	}
@@ -113,7 +113,7 @@ namespace SPRPG.Battle
 		public override void Enter()
 		{
 			if (!Context.BossAi.IsPerforming)
-				Context.BossAi.Perform(Context);
+				Context.BossAi.TryPerform(Context);
 			base.Enter();
 		}
 	}

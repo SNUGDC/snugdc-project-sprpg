@@ -8,6 +8,7 @@ namespace SPRPG.Battle
 	public class Pawn
 	{
 		public bool IsAlive { get { return Hp > 0; } }
+		public bool IsDead { get { return !IsAlive; } }
 		public Stats Stats { get; private set; }
 
 		private Hp _hp;
