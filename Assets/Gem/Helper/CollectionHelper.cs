@@ -225,11 +225,10 @@ namespace Gem
 			return false;
 		}
 
-		public static bool PopLast<T>(this LinkedList<T> c, out T val)
+		public static bool TryPopLast<T>(this LinkedList<T> c, out T val)
 		{
 			if (c.Empty())
 			{
-				Debug.LogError("empty.");
 				val = default(T);
 				return false;
 			}
@@ -239,14 +238,19 @@ namespace Gem
 			return true;
 		}
 
+		public static T PopLast<T>(this LinkedList<T> c)
+		{
+			T ret;
+			if (!c.TryPopLast(out ret))
+				Debug.LogError("empty.");
+			return ret;
+		}
+
 		public static T PopOrDefault<T>(this LinkedList<T> c, T defaultValue)
 		{
 			T ret;
-			if (!c.PopLast(out ret))
-			{
-				Debug.LogError("default value will be returned.");
+			if (!c.TryPopLast(out ret))
 				return defaultValue;	
-			}
 			return ret;
 		}
 
