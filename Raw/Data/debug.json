@@ -3,6 +3,9 @@
 	"UseDefaultConfig": true,
 	"ReloadData": true,
 	"Battle": {
+		"Boss": {
+			// "UseOnlySkill": ""
+		},
 		"Log": {
 			"Input": true,
 			"CharacterHpChanged": true,

@@ -32,6 +32,22 @@ namespace SPRPG.Battle
 			return sampler.Sample(context.Random);
 		}
 
+		private BossSkillBalanceData SampleOrGetDebugSkillData(Battle context)
+		{
+			var useOnlySkill = DebugConfig.Battle.Boss.UseOnlySkill;
+			if (useOnlySkill.HasValue)
+			{
+				BossSkillBalanceData data;
+				if (_boss.Data.Skills.TryGetValue(useOnlySkill.Value, out data))
+				{
+					if (data.SampleCondition.Test(context))
+						return data;
+				}
+			}
+
+			return Sample(context);
+		}
+
 		public bool TryPerform(Battle context)
 		{
 			Debug.Assert(!IsPerforming);
@@ -45,7 +61,7 @@ namespace SPRPG.Battle
 				return false;
 			}
 
-			var data = Sample(context);
+			var data = SampleOrGetDebugSkillData(context);
 			if (data == null)
 				return false;
 

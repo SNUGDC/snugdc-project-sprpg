@@ -1,6 +1,7 @@
 ﻿#if BALANCE
 using Gem;
 #endif
+using SPRPG.Battle;
 
 namespace SPRPG
 {
@@ -27,13 +28,28 @@ namespace SPRPG
 				}
 			}
 
+			public struct Boss_
+			{
+				public BossSkillLocalKey? UseOnlySkill;
+
+				public static Boss_ Default()
+				{
+					return new Boss_
+					{
+						UseOnlySkill = null,
+					};
+				}
+			}
+
 			public Log_ Log;
+			public Boss_ Boss;
 
 			public static Battle_ Default()
 			{
 				return new Battle_
 				{
 					Log = Log_.Default(),
+					Boss = Boss_.Default(),
 				};
 			}
 		}
