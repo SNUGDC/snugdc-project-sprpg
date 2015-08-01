@@ -16,6 +16,12 @@ namespace SPRPG.Battle
 	public enum OriginalPartyIdx { _1 = PartyIdx._1, _2 = PartyIdx._2, _3 = PartyIdx._3, }
 	public enum ShiftedPartyIdx { _1 = PartyIdx._1, _2 = PartyIdx._2, _3 = PartyIdx._3, }
 
+	public struct StatusConditionTest
+	{
+		public StatusConditionType Type;
+		public Percentage Percentage;
+	}
+
 	public static partial class BattleHelper
 	{
 		public static IEnumerable<OriginalPartyIdx> GetOriginalPartyIdxEnumerable()

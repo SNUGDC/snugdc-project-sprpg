@@ -88,7 +88,12 @@ namespace SPRPG.Battle
 			Hp += (int)val;
 		}
 
-		public bool TestAndGrant(Percentage percentage, StatusConditionType type, Tick duration)
+		public bool TestAndGrant(StatusConditionTest test, Tick duration)
+		{
+			return TestAndGrant(test.Type, test.Percentage, duration);
+		}
+
+		public bool TestAndGrant(StatusConditionType type, Percentage percentage, Tick duration)
 		{
 			if (!percentage.Test())
 				return false;

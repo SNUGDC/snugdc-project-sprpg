@@ -59,16 +59,16 @@ namespace SPRPG.Battle
 
 	public class BossGrantStatusConditionSkillActor : BossSkillActor
 	{
-		private readonly BossGrantStatusConditionArgument _argument;
+		private readonly StatusConditionTest _statusConditionTest;
 
 		public BossGrantStatusConditionSkillActor(Battle context, Boss boss, BossSkillBalanceData data) : base(context, boss, data)
 		{
-			_argument = data.Arguments.ToObject<BossGrantStatusConditionArgument>();
+			_statusConditionTest = data.Arguments["StatusConditionTest"].ToObject<StatusConditionTest>();
 		}
 
 		protected override void DoStart()
 		{
-			Context.Party.GetAliveLeaderOrMember().TestAndGrant(_argument.Percentage, _argument.StatusCondition, Data.Duration);
+			Context.Party.GetAliveLeaderOrMember().TestAndGrant(_statusConditionTest, Data.Duration);
 			Context.AddBeforeTurn(Data.Duration, Stop);
 		}
 	}

@@ -44,7 +44,7 @@
 				"Weight": 5,
 				"Duration": 60,
 				"_sampleCondition": { "Type": "True" },
-				"Arguments": { "Percentage": 50, "StatusCondition": "Poison" }
+				"Arguments": { "StatusConditionTest": { "Type": "Poison", "Percentage": 50 } }
 			}
 		]
 	}
