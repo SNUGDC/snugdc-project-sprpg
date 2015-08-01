@@ -53,7 +53,7 @@ namespace SPRPG.Battle
 		{
 			_performJob.Cancel();
 			_stopJob.Cancel();
-			base.DoStop();
+			base.DoCancel();
 		}
 	}
 
