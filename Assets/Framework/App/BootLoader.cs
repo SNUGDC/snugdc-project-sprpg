@@ -17,7 +17,7 @@ namespace SPRPG
 			Destroy(gameObject);
 		}
 
-		private void Load()
+		public void Load()
 		{
 			if (_isLoaded)
 				return;
@@ -33,7 +33,8 @@ namespace SPRPG
 
 			CharacterDb.Init(CharacterDb);
 
-			App.Init();
+			if (Application.isPlaying)
+				App.Init();
 
 			_isLoaded = true;
 		}

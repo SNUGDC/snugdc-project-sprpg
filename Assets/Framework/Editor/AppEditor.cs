@@ -6,6 +6,16 @@ using UnityEngine;
 
 namespace SPRPG
 {
+	[CustomEditor(typeof (BootLoader))]
+	public class BootLoaderEditor : ComponentEditor<BootLoader>
+	{
+		public override void OnInspectorGUI()
+		{
+			base.OnInspectorGUI();
+			Target.Load();
+		}
+	}
+
 	[CustomEditor(typeof (App))]
 	public class AppEditor : ComponentEditor<App>
 	{
