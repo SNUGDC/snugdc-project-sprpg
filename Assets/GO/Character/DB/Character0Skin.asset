@@ -11,18 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc79a058773c1ae4dabd7059d782e09f, type: 3}
   m_Name: Character0Skin
   m_EditorClassIdentifier: 
-  Hip: {fileID: 21300000, guid: 0bb907323fc263e469cce0ca8b8e7b73, type: 3}
-  Chest: {fileID: 21300000, guid: 4912944bb3f17394e840d23b7823ff6a, type: 3}
-  Head: {fileID: 21300000, guid: 41e90311b8368724f8496f10e13e48cb, type: 3}
-  EyeL: {fileID: 21300000, guid: 63cb814e3766a594199cf91dc2566cac, type: 3}
-  EyeR: {fileID: 21300000, guid: 63cb814e3766a594199cf91dc2566cac, type: 3}
-  ArmLU: {fileID: 21300000, guid: cc2bac65324b3414596419ce9ded7e70, type: 3}
-  ArmLL: {fileID: 21300000, guid: 04789d179b6fd4a4eb652181d6143b9a, type: 3}
-  HandL: {fileID: 21300000, guid: c261acb27b0097546a6a98b34aee1d13, type: 3}
-  ArmRU: {fileID: 21300000, guid: cc2bac65324b3414596419ce9ded7e70, type: 3}
-  ArmRL: {fileID: 21300000, guid: 04789d179b6fd4a4eb652181d6143b9a, type: 3}
-  HandR: {fileID: 21300000, guid: c261acb27b0097546a6a98b34aee1d13, type: 3}
-  LegLU: {fileID: 21300000, guid: 9aeaafecc635df04398403a2dac5fc0a, type: 3}
-  LegLL: {fileID: 21300000, guid: c325e0aad070e794ca4c2b4e5acf9759, type: 3}
-  LegRU: {fileID: 21300000, guid: 9aeaafecc635df04398403a2dac5fc0a, type: 3}
-  LegRL: {fileID: 21300000, guid: c325e0aad070e794ca4c2b4e5acf9759, type: 3}
+  Body: {fileID: 21300000, guid: 99e0b7638b2d638468b74d1af83d8e00, type: 3}
+  ArmLU: {fileID: 21300000, guid: 23ebcf4a9cc7b394a857085fcd018677, type: 3}
+  ArmLL: {fileID: 21300000, guid: 23ebcf4a9cc7b394a857085fcd018677, type: 3}
+  ArmRU: {fileID: 21300000, guid: 23ebcf4a9cc7b394a857085fcd018677, type: 3}
+  ArmRL: {fileID: 21300000, guid: 23ebcf4a9cc7b394a857085fcd018677, type: 3}
+  LegLU: {fileID: 21300000, guid: db169f6469763a44bb78b9e6c2d34fa0, type: 3}
+  LegLL: {fileID: 21300000, guid: db169f6469763a44bb78b9e6c2d34fa0, type: 3}
+  LegRU: {fileID: 21300000, guid: db169f6469763a44bb78b9e6c2d34fa0, type: 3}
+  LegRL: {fileID: 21300000, guid: db169f6469763a44bb78b9e6c2d34fa0, type: 3}

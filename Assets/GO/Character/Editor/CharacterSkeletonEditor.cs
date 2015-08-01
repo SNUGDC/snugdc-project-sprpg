@@ -15,7 +15,7 @@ namespace SPRPG
 
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("auto");
-			_id = (CharacterId)EditorGUILayout.IntField((int)_id);
+			_id = (CharacterId)EditorGUILayout.EnumPopup(_id);
 
 			if (GUILayout.Button("apply"))
 				AutoApply(Target, _id);
@@ -28,7 +28,7 @@ namespace SPRPG
 			public Loader(CharacterId id)
 			{
 				var idStr = ((int)id).ToString();
-				_dir = "Assets/R/Character/" + idStr + "/ch_" + idStr + "_";
+				_dir = "Assets/Resources/Character/" + id + "/ch_" + idStr + "_";
 			}
 
 			public Sprite Load(string name)
@@ -55,18 +55,11 @@ namespace SPRPG
 		{
 			var loader = new Loader(id);
 
-			loader.LoadIfNecessary("hip", ref data.Hip);
-			loader.LoadIfNecessary("chest", ref data.Chest);
-			loader.LoadIfNecessary("head", ref data.Head);
-			loader.LoadIfNecessary("eye_l", ref data.EyeL);
-			loader.LoadIfNecessary("eye_r", "eye_l", ref data.EyeR);
-
+			loader.LoadIfNecessary("body", ref data.Body);
 			loader.LoadIfNecessary("arm_l_u", ref data.ArmLU);
 			loader.LoadIfNecessary("arm_l_l", ref data.ArmLL);
-
 			loader.LoadIfNecessary("arm_r_u", "arm_l_u", ref data.ArmRU);
 			loader.LoadIfNecessary("arm_r_l", "arm_l_l", ref data.ArmRL);
-
 			loader.LoadIfNecessary("leg_l_u", ref data.LegLU);
 			loader.LoadIfNecessary("leg_l_l", ref data.LegLL);
 			loader.LoadIfNecessary("leg_r_u", "leg_l_u", ref data.LegRU);
@@ -90,7 +83,7 @@ namespace SPRPG
 
 			GUILayout.BeginHorizontal();
 
-			_id = (CharacterId)EditorGUILayout.IntField((int) _id);
+			_id = (CharacterId)EditorGUILayout.EnumPopup(_id);
 			if (GUILayout.Button("apply"))
 			{
 				var data = CharacterDb._.Find(_id);
