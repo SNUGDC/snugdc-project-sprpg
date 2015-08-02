@@ -9,7 +9,7 @@ namespace SPRPG.Battle
 		private readonly Cooltimer _cooltimer = new Cooltimer(Cooltime);
 		private readonly BossDamageArgument _arguments;
 
-		public BossRadioactiveAreaPassive(Battle context, Boss boss, BossPassiveBalanceData data) : base(context, boss, data)
+		public BossRadioactiveAreaPassive(BossPassiveBalanceData data, Battle context, Boss owner) : base(data, context, owner)
 		{
 			_arguments = new BossDamageArgument(data.Arguments);
 		}
@@ -29,8 +29,8 @@ namespace SPRPG.Battle
 		private readonly Hp _heal;
 		private readonly Cooltimer _cooltimer = new Cooltimer(HealCooltime);
 
-		public BossRadiationStep1MeltDownPassive(Battle context, Boss boss, BossPassiveBalanceData data)
-			: base(context, boss, data)
+		public BossRadiationStep1MeltDownPassive(BossPassiveBalanceData data, Battle context, Boss owner)
+			: base(data, context, owner)
 		{
 			_damageModifier = (StatDamageModifier) (int) data.Arguments["DamageModifier"];
 			_heal = (Hp) (int) data.Arguments["Heal"];
@@ -43,20 +43,20 @@ namespace SPRPG.Battle
 			if (WasActivated)
 			{
 				if (_cooltimer.Tick())
-					Boss.Heal(_heal);
+					Owner.Heal(_heal);
 			}
 		}
 
 		protected override void ToggleOn()
 		{
 			base.ToggleOn();
-			Boss.Stats.AddDamageModifier(_damageModifier);
+			Owner.Stats.AddDamageModifier(_damageModifier);
 		}
 
 		protected override void ToggleOff()
 		{
 			base.ToggleOff();
-			Boss.Stats.RemoveDamageModifier(_damageModifier);
+			Owner.Stats.RemoveDamageModifier(_damageModifier);
 		}
 	}
 
@@ -64,16 +64,16 @@ namespace SPRPG.Battle
 	{
 		private readonly BossDamageArgument _damage;
 
-		public BossRadiationAttackSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
-			: base(context, boss, data, (Tick)3)
+		public BossRadiationAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
+			: base(data, context, owner, (Tick)3)
 		{
-			Debug.Assert(boss.Id == BossId.Radiation);
+			Debug.Assert(owner.Id == BossId.Radiation);
 			_damage = new BossDamageArgument(data.Arguments);
 		}
 
 		protected override void Perform()
 		{
-			var damageModified = Boss.ApplyModifier(_damage);
+			var damageModified = Owner.ApplyModifier(_damage);
 			Context.Party.HitLeaderOrMemberIfLeaderIsDead(damageModified);
 		}
 	}
@@ -82,10 +82,10 @@ namespace SPRPG.Battle
 	{
 		private readonly BossDamageArgument _damage;
 
-		public BossRadiationMassAttackSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
-			: base(context, boss, data, (Tick)3)
+		public BossRadiationMassAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
+			: base(data, context, owner, (Tick)3)
 		{
-			Debug.Assert(boss.Id == BossId.Radiation);
+			Debug.Assert(owner.Id == BossId.Radiation);
 			_damage = new BossDamageArgument(data.Arguments);
 		}
 
@@ -99,19 +99,19 @@ namespace SPRPG.Battle
 	{
 		public static readonly BossRadiationPassiveFactory _ = new BossRadiationPassiveFactory();
 
-		public override BossPassive Create(Battle context, Boss boss, BossPassiveBalanceData data)
+		public override BossPassive Create(BossPassiveBalanceData data, Battle context, Boss owner)
 		{
-			Debug.Assert(boss.Id == BossId.Radiation);
+			Debug.Assert(owner.Id == BossId.Radiation);
 			var key = data.Key;	
 			switch (key)
 			{
 				case BossPassiveLocalKey.RadioactiveArea:
-					return new BossRadioactiveAreaPassive(context, boss, data);
+					return new BossRadioactiveAreaPassive(data, context, owner);
 				case BossPassiveLocalKey.Step1MeltDown:
-					return new BossRadiationStep1MeltDownPassive(context, boss, data);
+					return new BossRadiationStep1MeltDownPassive(data, context, owner);
 				default:
 					Debug.LogError("boss " + key + "'s skill " + key + " not handled.");
-					return new BossNonePassive(context, boss);
+					return new BossNonePassive(context, owner);
 			}
 		}
 	}
@@ -120,21 +120,21 @@ namespace SPRPG.Battle
 	{
 		public static BossRadiationSkillFactory _ = new BossRadiationSkillFactory();
 		 
-		public override BossSkillActor Create(BossSkillBalanceData data, Battle context, Boss boss)
+		public override BossSkillActor Create(BossSkillBalanceData data, Battle context, Boss owner)
 		{
-			Debug.Assert(boss.Id == BossId.Radiation);
+			Debug.Assert(owner.Id == BossId.Radiation);
 
 			switch (data.Key)
 			{
 				case BossSkillLocalKey.Attack:
-					return new BossRadiationAttackSkillActor(context, boss, data);
+					return new BossRadiationAttackSkillActor(data, context, owner);
 				case BossSkillLocalKey.MassAttack:
-					return new BossRadiationMassAttackSkillActor(context, boss, data);
+					return new BossRadiationMassAttackSkillActor(data, context, owner);
 				case BossSkillLocalKey.Radioactivity:
-					return new BossGrantStatusConditionSkillActor(context, boss, data);
+					return new BossGrantStatusConditionSkillActor(data, context, owner);
 				default:
 					Debug.LogError(LogMessages.EnumUndefined(data.Key));
-					return new BossNoneSkillActor(context, boss);
+					return new BossNoneSkillActor(context, owner);
 			}
 		}
 	}

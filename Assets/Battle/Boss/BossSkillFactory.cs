@@ -5,19 +5,19 @@ namespace SPRPG.Battle
 {
 	public abstract class BossSkillFactory
 	{
-		public abstract BossSkillActor Create(BossSkillBalanceData data, Battle context, Boss boss);
+		public abstract BossSkillActor Create(BossSkillBalanceData data, Battle context, Boss owner);
 	}
 
 	public static class BossWholeSkillFactory
 	{
-		public static BossSkillFactory Map(Boss boss)
+		public static BossSkillFactory Map(Boss owner)
 		{
-			switch (boss.Id)
+			switch (owner.Id)
 			{
 				case BossId.Radiation:
 					return BossRadiationSkillFactory._;
 				default:
-					Debug.LogError(LogMessages.EnumUndefined(boss.Id));
+					Debug.LogError(LogMessages.EnumUndefined(owner.Id));
 					return null;
 			}
 		}

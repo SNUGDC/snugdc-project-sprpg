@@ -6,21 +6,21 @@ namespace SPRPG.Battle
 	public abstract class BossSkillActor : SkillActorBase<BossSkillActor>
 	{
 		public BossSkillLocalKey LocalKey { get { return Data.Key; } }
-		protected readonly Boss Boss;
 		protected readonly BossSkillBalanceData Data;
+		protected readonly Boss Owner;
 
-		protected BossSkillActor(Battle context, Boss boss, BossSkillBalanceData data)
+		protected BossSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
 			: base(context)
 		{
-			Boss = boss;
 			Data = data;
+			Owner = owner;
 		}
 	}
 
 	public sealed class BossNoneSkillActor : BossSkillActor
 	{
-		public BossNoneSkillActor(Battle context, Boss boss)
-			: base(context, boss, new BossSkillBalanceData())
+		public BossNoneSkillActor(Battle context, Boss owner)
+			: base(new BossSkillBalanceData(), context, owner)
 		{}
 
 		protected override void DoStart()
@@ -35,7 +35,7 @@ namespace SPRPG.Battle
 		private Job _performJob;
 		private Job _stopJob;
 
-		protected BossSingleDelayedPerformSkillActor(Battle context, Boss owner, BossSkillBalanceData data, Tick performTick) : base(context, owner, data)
+		protected BossSingleDelayedPerformSkillActor(BossSkillBalanceData data, Battle context, Boss owner, Tick performTick) : base(data, context, owner)
 		{
 			Debug.Assert(data.Duration > performTick, "data.Duration > performTick");
 			_performTick = performTick;
@@ -61,7 +61,7 @@ namespace SPRPG.Battle
 	{
 		private readonly StatusConditionTest _statusConditionTest;
 
-		public BossGrantStatusConditionSkillActor(Battle context, Boss boss, BossSkillBalanceData data) : base(context, boss, data)
+		public BossGrantStatusConditionSkillActor(BossSkillBalanceData data, Battle context, Boss owner) : base(data, context, owner)
 		{
 			_statusConditionTest = data.Arguments["StatusConditionTest"].ToObject<StatusConditionTest>();
 		}

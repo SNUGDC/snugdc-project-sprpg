@@ -19,6 +19,6 @@ namespace SPRPG.Battle
 
 	public abstract class BossPassiveFactory
 	{
-		public abstract BossPassive Create(Battle context, Boss boss, BossPassiveBalanceData data);
+		public abstract BossPassive Create(BossPassiveBalanceData data, Battle context, Boss owner);
 	}
 }

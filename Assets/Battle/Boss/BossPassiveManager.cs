@@ -10,7 +10,7 @@ namespace SPRPG.Battle
 		{
 			var factory = BossWholePassiveFactory.Map(boss.Id);
 			foreach (var kv in boss.Data.Passives)
-				_passives.Add(kv.Key, factory.Create(context, boss, kv.Value));
+				_passives.Add(kv.Key, factory.Create(kv.Value, context, boss));
 		}
 
 		public void Tick()
