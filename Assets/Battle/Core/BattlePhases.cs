@@ -56,10 +56,10 @@ namespace SPRPG.Battle
 			if (!skill.HasValue) return false;
 
 			var termAndGrade = skill.Value;
+			Events.OnInputSkill.CheckAndCall(termAndGrade);
 			if (termAndGrade.IsGradeBad) return true;
 
 			_party.Leader.TryPerformSkill(termAndGrade.Term.ToSkillSlot());
-			Events.OnInputSkill.CheckAndCall(termAndGrade);
 			return true;
 		}
 
@@ -69,10 +69,10 @@ namespace SPRPG.Battle
 			if (!shift.HasValue) return false;
 
 			var termAndGrade = shift.Value;
+			Events.OnInputShift.CheckAndCall(termAndGrade);
 			if (termAndGrade.IsGradeBad) return true;
 
 			_party.Shift();
-			Events.OnInputShift.CheckAndCall(termAndGrade);
 			return true;
 		}
 	}
