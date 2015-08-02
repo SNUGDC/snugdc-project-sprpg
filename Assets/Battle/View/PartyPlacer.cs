@@ -58,7 +58,7 @@ namespace SPRPG.Battle.View
 
 				var position = balance.PartyPositions[shiftedIdx.ToArrayIndex()];
 				var orgPosition = entryData.Transform.localPosition;
-				entryData.Transform.localPosition = Vector2.Lerp(orgPosition, position, balance.PartyPlaceLerp);
+				entryData.Transform.localPosition = Vector3.Lerp(orgPosition, position, balance.PartyPlaceLerp);
 			}
 		}
 	}

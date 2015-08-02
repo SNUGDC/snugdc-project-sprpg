@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using LitJson;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
 	public class BattleBalanceData
 	{
 		public float PartyPlaceLerp;
-		public List<Vector2> PartyPositions;
+		public List<Vector3> PartyPositions;
 	}
 
 	public sealed class BattleBalance : Balance<BattleBalanceData>
