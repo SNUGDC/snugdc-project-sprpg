@@ -9,18 +9,12 @@ namespace SPRPG.Battle
 		public bool RealtimeEnabled = true;
 
 		public Battle Battle { get; private set; }
-		private BattleRealtime _realtime;
 
 		void Start()
 		{
 			Debug.Assert(Def != null);
-			if (Def == null)
-				return;
-
+			if (Def == null) return;
 			Battle = new Battle(Def);
-			_realtime = new BattleRealtime(Battle);
-			RealtimeEnabled = Def.RealtimeEnabled;
-
 			Def = null;
 
 #if UNITY_EDITOR
@@ -34,10 +28,8 @@ namespace SPRPG.Battle
 
 		void Update()
 		{
+			Battle.RealtimeEnabled = RealtimeEnabled;
 			Battle.Update(Time.deltaTime);
-
-			if (RealtimeEnabled)
-				_realtime.Update(Time.deltaTime);
 		}
 	}
 }

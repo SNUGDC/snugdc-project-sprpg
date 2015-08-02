@@ -2,13 +2,13 @@
 {
 	public class BattleRealtime
 	{
-		private readonly Battle _battle;
+		private readonly Clock _clock;
 		private readonly float _secondPerTick;
 		private float _elapsed;
 
-		public BattleRealtime(Battle battle)
+		public BattleRealtime(Clock clock)
 		{
-			_battle = battle;
+			_clock = clock;
 			_secondPerTick = 1f / Config.Data.Battle.TickPerSecond;
 		}
 
@@ -18,7 +18,7 @@
 			while (_elapsed >= _secondPerTick)
 			{
 				_elapsed -= _secondPerTick;
-				_battle.Clock.Proceed();
+				_clock.Proceed();
 			}
 		}
 	}
