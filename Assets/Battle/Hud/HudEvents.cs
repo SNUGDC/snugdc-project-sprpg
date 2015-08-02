@@ -2,60 +2,47 @@
 
 namespace SPRPG.Battle.View
 {
-	using OnCharacterHpChanged = Box<DelayedOverrideAction<OriginalPartyIdx, Character, Hp>>;
-	using OnCharacterDead = Box<DelayedOverrideAction<OriginalPartyIdx, Character>>;
+	public class HudCharacterEvents
+	{
+		public DelayedOverrideAction<OriginalPartyIdx, Character, Hp> OnHpChanged;
+		public DelayedOverrideAction<OriginalPartyIdx, Character> OnDead;
+	}
 
 	public static class HudEvents
 	{
-		private static readonly List<OnCharacterHpChanged> OnCharacterHpChanged;
-		private static readonly List<OnCharacterDead> OnCharacterDead;
+		private static readonly List<HudCharacterEvents> Characters;
 
 		static HudEvents()
 		{
 			Events.AfterTurn += AfterTurn;
 
-			// initialize CharacterHpChanged
-			OnCharacterHpChanged = new List<OnCharacterHpChanged>
+			// initialize Character
+			Characters = new List<HudCharacterEvents>
 			{
-				new OnCharacterHpChanged(), new OnCharacterHpChanged(), new OnCharacterHpChanged(),
+				new HudCharacterEvents(), new HudCharacterEvents(), new HudCharacterEvents(),
 			};
 
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
 			{
-				var onCharacterHpChanged = GetOnCharacterHpChanged(idx);
-				Events.GetOnCharacterHpChanged(idx).Value += (idx2, character, hpOld) => onCharacterHpChanged.Value.Reserve(idx2, character, hpOld);
-			}
-
-			// initialize CharacterDead
-			OnCharacterDead = new List<OnCharacterDead>
-			{
-				new OnCharacterDead(), new OnCharacterDead(), new OnCharacterDead(),
-			};
-
-			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
-			{
-				var action = GetOnCharacterDead(idx);
-				Events.GetOnCharacterDead(idx).Value += (idx2, character) => action.Value.Reserve(idx2, character);
+				var globalCharacterEvents = Events.GetCharacter(idx);
+				var hudCharacterEvents = GetCharacter(idx);
+				globalCharacterEvents.OnHpChanged += (idx2, character, hpOld) => hudCharacterEvents.OnHpChanged.Reserve(idx2, character, hpOld);
+				globalCharacterEvents.OnDead += (idx2, character) => hudCharacterEvents.OnDead.Reserve(idx2, character);
 			}
 		}
 
 		private static void AfterTurn()
 		{
-			foreach (var action in OnCharacterHpChanged)
-				action.Value.TryInvoke();
-
-			foreach (var action in OnCharacterHpChanged)
-				action.Value.TryInvoke();
+			foreach (var characterEvents in Characters)
+			{
+				characterEvents.OnHpChanged.TryInvoke();
+				characterEvents.OnDead.TryInvoke();
+			}
 		}
 
-		public static OnCharacterHpChanged GetOnCharacterHpChanged(OriginalPartyIdx idx)
+		public static HudCharacterEvents GetCharacter(OriginalPartyIdx idx)
 		{
-			return OnCharacterHpChanged[idx.ToArrayIndex()];
-		}
-
-		public static OnCharacterDead GetOnCharacterDead(OriginalPartyIdx idx)
-		{
-			return OnCharacterDead[idx.ToArrayIndex()];
+			return Characters[idx.ToArrayIndex()];
 		}
 	}
 }

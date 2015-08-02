@@ -3,10 +3,17 @@ using System.Collections.Generic;
 
 namespace SPRPG.Battle
 {
-	using OnCharacterHpChanged = Box<Action<OriginalPartyIdx, Character, Hp>>;
-	using OnCharacterDead = Box<Action<OriginalPartyIdx, Character>>;
-	using OnBossHpChanged = Action<Boss, Hp>;
-	using OnBossSkillStart = Action<Boss, BossSkillActor>;
+	public class CharacterEvents
+	{
+		public Action<OriginalPartyIdx, Character, Hp> OnHpChanged;
+		public Action<OriginalPartyIdx, Character> OnDead;
+	}
+
+	public class BossEvents
+	{
+		public Action<Boss, Hp> OnHpChanged;
+		public Action<Boss, BossSkillActor> OnSkillStart;
+	}
 
 	public static class Events
 	{
@@ -15,36 +22,23 @@ namespace SPRPG.Battle
 		public static Action<TermAndGrade> OnInputSkill;
 		public static Action<TermAndGrade> OnInputShift;
 
-		private static readonly List<OnCharacterHpChanged> OnCharacterHpChanged;
-		private static readonly List<OnCharacterDead> OnCharacterDead;
-
-		public static OnBossHpChanged OnBossHpChanged;
-		public static OnBossSkillStart OnBossSkillStart;
+		private static readonly List<CharacterEvents> Characters;
+		public static readonly BossEvents Boss = new BossEvents();
 
 		public static Action OnWin;
 		public static Action OnLose;
 
 		static Events()
 		{
-			OnCharacterHpChanged = new List<OnCharacterHpChanged>
+			Characters = new List<CharacterEvents>
 			{
-				new OnCharacterHpChanged(), new OnCharacterHpChanged(), new OnCharacterHpChanged(),
-			};
-
-			OnCharacterDead = new List<OnCharacterDead>
-			{
-				new OnCharacterDead(), new OnCharacterDead(), new OnCharacterDead(),
+				new CharacterEvents(), new CharacterEvents(), new CharacterEvents(),
 			};
 		}
 
-		public static OnCharacterHpChanged GetOnCharacterHpChanged(OriginalPartyIdx idx)
+		public static CharacterEvents GetCharacter(OriginalPartyIdx idx)
 		{
-			return OnCharacterHpChanged[((PartyIdx) idx).ToArrayIndex()];
-		}
-
-		public static OnCharacterDead GetOnCharacterDead(OriginalPartyIdx idx)
-		{
-			return OnCharacterDead[((PartyIdx)idx).ToArrayIndex()];
+			return Characters[((PartyIdx) idx).ToArrayIndex()];
 		}
 	}
 }

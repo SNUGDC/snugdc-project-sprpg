@@ -44,10 +44,10 @@ namespace SPRPG.Battle.View
 			_bossHpBar.MaxHp = Context.Boss.HpMax;
 
 			Events.AfterTurn += AfterTurn;
-			Events.OnBossHpChanged += OnBossHpChanged;
+			Events.Boss.OnHpChanged += OnBossHpChanged;
 
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
-				HudEvents.GetOnCharacterHpChanged(idx).Value.Action += OnSomeCharacterHpChanged;
+				HudEvents.GetCharacter(idx).OnHpChanged.Action += OnSomeCharacterHpChanged;
 
 			Events.OnWin += OnWin;
 			Events.OnLose += OnLose;
@@ -65,10 +65,10 @@ namespace SPRPG.Battle.View
 		void OnDestroy()
 		{
 			Events.AfterTurn -= AfterTurn;
-			Events.OnBossHpChanged -= OnBossHpChanged;
+			Events.Boss.OnHpChanged -= OnBossHpChanged;
 
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
-				HudEvents.GetOnCharacterHpChanged(idx).Value.Action -= OnSomeCharacterHpChanged;
+				HudEvents.GetCharacter(idx).OnHpChanged.Action -= OnSomeCharacterHpChanged;
 
 			Events.OnWin -= OnWin;
 			Events.OnLose -= OnLose;

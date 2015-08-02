@@ -26,7 +26,7 @@ namespace SPRPG.Battle
 		protected override void AfterHpChanged(Hp old)
 		{
 			base.AfterHpChanged(old);
-			Events.OnBossHpChanged.CheckAndCall(this, Hp);
+			Events.Boss.OnHpChanged.CheckAndCall(this, Hp);
 		}
 	}
 
