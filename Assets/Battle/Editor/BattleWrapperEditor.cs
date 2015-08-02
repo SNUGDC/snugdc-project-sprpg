@@ -8,7 +8,7 @@ namespace SPRPG.Battle
 	public class BattleWrapperEditor : ComponentEditor<BattleWrapper>
 	{
 		private Battle _battle { get { return Target.Battle; } }
-
+		
 		public override void OnInspectorGUI()
 		{
 			base.OnInspectorGUI();
@@ -16,12 +16,11 @@ namespace SPRPG.Battle
 			if (!Application.isPlaying)
 				return;
 
+			Target.Battle.RealtimeEnabled = EditorGUILayout.Toggle("realtime", Target.Battle.RealtimeEnabled);
+
 			RenderClock();
 			RenderInput();
 			RenderResult();
-
-			if (Target.RealtimeEnabled)
-				EditorUtility.SetDirty(Target);
 		}
 
 		private void RenderClock()

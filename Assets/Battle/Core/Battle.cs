@@ -29,7 +29,7 @@ namespace SPRPG.Battle
 		public readonly Random Random = new Random();
 		public readonly SymbolBinding Binding;
 
-		public bool RealtimeEnabled = false;
+		public bool RealtimeEnabled;
 		private BattleRealtime _realtime;
 		public readonly Clock Clock = new Clock();
 		public readonly RelativeClock PlayerClock;

@@ -5,9 +5,6 @@ namespace SPRPG.Battle
 	public class BattleWrapper : MonoBehaviour
 	{
 		public static BattleDef Def;
-
-		public bool RealtimeEnabled = true;
-
 		public Battle Battle { get; private set; }
 
 		void Start()
@@ -28,7 +25,6 @@ namespace SPRPG.Battle
 
 		void Update()
 		{
-			Battle.RealtimeEnabled = RealtimeEnabled;
 			Battle.Update(Time.deltaTime);
 		}
 	}
