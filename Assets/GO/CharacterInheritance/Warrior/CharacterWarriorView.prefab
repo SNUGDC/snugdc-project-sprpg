@@ -721,7 +721,7 @@ Animator:
   m_GameObject: {fileID: 111188}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3732e3a895b0b6445bd547a0dff18224, type: 2}
+  m_Controller: {fileID: 22100000, guid: dff8b5bdc1418664583e8aa92b9b8995, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -766,7 +766,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skeleton: {fileID: 11483514}
   _animator: {fileID: 9549154}
-  _sword: {fileID: 0}
 --- !u!212 &21208136
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1037,7 +1036,8 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 3732e3a895b0b6445bd547a0dff18224, type: 2}
+      objectReference: {fileID: 22100000, guid: dff8b5bdc1418664583e8aa92b9b8995,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 111188}
