@@ -10,7 +10,15 @@ namespace SPRPG.Battle.View
 
 		public CharacterView InstantiateAndAssign(OriginalPartyIdx idx, CharacterData data)
 		{
+			var characterViewOld = _members[idx.ToArrayIndex()];
+			if (characterViewOld != null)
+			{
+				Debug.LogError("character view already exist.");
+				return characterViewOld;
+			}
+
 			var characterView = data.CharacterView.Instantiate();
+			characterView.transform.SetParent(transform, false);
 			_members[idx.ToArrayIndex()] = characterView;
 			return characterView;
 		}
