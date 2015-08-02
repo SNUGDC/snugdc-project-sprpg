@@ -9,21 +9,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a3ab9c227552d4c9952d4e5b150ab8, type: 3}
-  m_Name: Character0
+  m_Name: CharacterArcher
   m_EditorClassIdentifier: 
-  Id: 1
-  Detail: Warrior
-  Skin: {fileID: 11400000, guid: bc0db070cd23b0042a2daa5d38c070da, type: 2}
+  Id: 3
+  Detail: Archer
   CharacterView: {fileID: 11492076, guid: 673e6404928fc6b47b397ac1aa38bc1a, type: 2}
   Stats:
     _hp: 100
     _damageModifier: 0
-  Passive: 1
+  Passive: 3
   SkillSet:
-    _1: 5
-    _2: 7
-    _3: 6
-    _4: 8
-  CampEntryIcon: {fileID: 21300000, guid: 3ee5c7cac9d5bd949ade6952dfb9184f, type: 3}
+    _1: 9
+    _2: 10
+    _3: 11
+    _4: 12
+  CampEntryIcon: {fileID: 21300000, guid: d440b20a50d44d741a4eb9b90cee0115, type: 3}
   CampAnimatorController: {fileID: 22100000, guid: 2493ef259e5c60041babb775f229f0ce,
     type: 2}
