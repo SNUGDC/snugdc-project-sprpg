@@ -60,7 +60,7 @@ namespace SPRPG.Camp
 
 		void SetFlip(bool val)
 		{
-			transform.SetLEulerY(val ? 180 : 0);
+			transform.SetLScaleX(val ? -1 : 1);
 		}
 
 		void SetBoundingRect(Rect rect)
