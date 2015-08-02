@@ -59,7 +59,11 @@ namespace SPRPG.Battle
 			Events.OnInputSkill.CheckAndCall(termAndGrade);
 			if (termAndGrade.IsGradeBad) return true;
 
-			_party.Leader.TryPerformSkill(termAndGrade.Term.ToSkillSlot());
+			var skillSlot =	termAndGrade.Term.ToSkillSlot();
+			var skillActor = _party.Leader.TryPerformSkill(skillSlot);
+
+			var leaderIdx = _party.LeaderIdx;
+			Events.GetCharacter(leaderIdx).OnSkillStart.CheckAndCall(leaderIdx, _party.Leader, skillActor);
 			return true;
 		}
 

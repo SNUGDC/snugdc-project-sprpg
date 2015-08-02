@@ -29,17 +29,18 @@ namespace SPRPG.Battle
 			this[SkillSlot._4] = SkillFactory.Create(def._4, context, owner);
 		}
 
-		public void Perform(SkillSlot idx)
+		public SkillActor Perform(SkillSlot idx)
 		{
 			if (IsRunning)
 			{
 				Debug.LogError("run again, performing: " + Running.Key);
-				return;
+				return null;
 			}
 
 			Running = this[idx];
 			Running.OnStop += OnStop;
 			Running.Start();
+			return Running;
 		}
 
 		private void OnStop(SkillActor skillActor)

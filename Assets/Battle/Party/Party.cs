@@ -23,6 +23,7 @@ namespace SPRPG.Battle
 	public class Party : IEnumerable<Character>
 	{
 		public Character Leader { get { return this[ShiftedPartyIdx._1]; } }
+		public OriginalPartyIdx LeaderIdx { get { return ShiftedToOriginalIdx(ShiftedPartyIdx._1); } }
 		public int ShiftCount { get; private set; }
 
 		private readonly Character[] _members = new Character[SPRPG.Party.Size];

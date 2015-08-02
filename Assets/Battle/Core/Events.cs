@@ -7,6 +7,7 @@ namespace SPRPG.Battle
 	{
 		public Action<OriginalPartyIdx, Character, Hp> OnHpChanged;
 		public Action<OriginalPartyIdx, Character> OnDead;
+		public Action<OriginalPartyIdx, Character, SkillActor> OnSkillStart;
 	}
 
 	public class BossEvents

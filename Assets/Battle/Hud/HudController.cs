@@ -50,6 +50,7 @@ namespace SPRPG.Battle.View
 			{
 				var characterEvents = Events.GetCharacter(idx);
 				characterEvents.OnHpChanged += OnCharacterHpChanged;
+				characterEvents.OnSkillStart += OnSomeCharacterSkillStart;
 			}
 
 			Events.OnWin += OnWin;
@@ -69,6 +70,7 @@ namespace SPRPG.Battle.View
 			{
 				var characterEvents = Events.GetCharacter(idx);
 				characterEvents.OnHpChanged -= OnCharacterHpChanged;
+				characterEvents.OnSkillStart -= OnSomeCharacterSkillStart;
 			}
 
 			Events.OnWin -= OnWin;
@@ -92,6 +94,10 @@ namespace SPRPG.Battle.View
 		private void OnCharacterHpChanged(OriginalPartyIdx idx, Character character, Hp oldHp)
 		{
 			_hpBars[idx.ToArrayIndex()].SetHp(character.Hp);
+		}
+
+		private void OnSomeCharacterSkillStart(OriginalPartyIdx idx, Character character, SkillActor skill)
+		{
 		}
 
 		private void OnBossHpChanged(Boss boss, Hp oldHp)
