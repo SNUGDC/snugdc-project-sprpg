@@ -37,8 +37,8 @@ namespace SPRPG.Battle
 
 		protected override void DoStart()
 		{
-			_performJob = Context.AddPlayerPerform(_performTick, Perform);
-			_stopJob = Context.AddPlayerPerform(_duration, Stop);
+			_performJob = Context.AddPlayerSkill(_performTick, Perform);
+			_stopJob = Context.AddPlayerSkill(_duration, Stop);
 		}
 
 		protected abstract void Perform();
@@ -98,8 +98,8 @@ namespace SPRPG.Battle
 
 		protected override void DoStart()
 		{
-			_performJob = Context.AddPlayerPerform((Tick)3, Perform);
-			_stopJob = Context.AddPlayerPerform((Tick)7, Stop);
+			_performJob = Context.AddPlayerSkill((Tick)3, Perform);
+			_stopJob = Context.AddPlayerSkill((Tick)7, Stop);
 		}
 
 		private void Perform()

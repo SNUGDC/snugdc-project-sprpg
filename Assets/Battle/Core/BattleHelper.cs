@@ -4,14 +4,14 @@ namespace SPRPG.Battle
 {
 	public static partial class BattleHelper
 	{
-		public static Job AddPlayerPerform(this Battle thiz, Tick delay, Action callback)
+		public static Job AddPlayerSkill(this Battle thiz, Tick delay, Action callback)
 		{
-			return new Job(thiz.Fsm.PlayerPerform.Schedule, delay, callback);
+			return new Job(thiz.Fsm.PlayerSkill.Schedule, delay, callback);
 		}
 
-		public static Job AddBossPerform(this Battle thiz, Tick delay, Action callback)
+		public static Job AddBossSkill(this Battle thiz, Tick delay, Action callback)
 		{
-			return new Job(thiz.Fsm.BossPerform.Schedule, delay, callback);
+			return new Job(thiz.Fsm.BossSkill.Schedule, delay, callback);
 		}
 
 		public static Job AddBeforeTurn(this Battle thiz, Tick delay, Action callback)

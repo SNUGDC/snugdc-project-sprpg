@@ -5,13 +5,13 @@
 		public Tick TotalElapsed { get; private set; }
 
 		protected readonly Battle Context;
-		protected readonly Boss Boss;
+		protected readonly Boss Owner;
 		protected readonly BossPassiveBalanceData Data;
 
-		protected BossPassive(Battle context, Boss boss, BossPassiveBalanceData data)
+		protected BossPassive(BossPassiveBalanceData data, Battle context, Boss owner)
 		{
 			Context = context;
-			Boss = boss;
+			Owner = owner;
 			Data = data;
 		}
 
@@ -26,7 +26,7 @@
 
 	public class BossNonePassive : BossPassive
 	{
-		public BossNonePassive(Battle context, Boss boss) : base(context, boss, new BossPassiveBalanceData { Key = BossPassiveLocalKey.None, })
+		public BossNonePassive(Battle context, Boss owner) : base(new BossPassiveBalanceData { Key = BossPassiveLocalKey.None, }, context, owner)
 		{ }
 	}
 
@@ -36,7 +36,7 @@
 		public bool? WasToggled { get; private set; }
 		private readonly Condition _activateCondition;
 
-		public BossTogglePassive(Battle context, Boss boss, BossPassiveBalanceData data) : base(context, boss, data)
+		public BossTogglePassive(BossPassiveBalanceData data, Battle context, Boss owner) : base(data, context, owner)
 		{
 			_activateCondition = ConditionFactory.Create(data.Arguments["ActivateCondition"]);
 		}

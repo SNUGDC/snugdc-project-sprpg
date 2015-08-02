@@ -8,8 +8,8 @@
 		Input,
 		PlayerPassive,
 		BossPassive,
-		PlayerPerform,
-		BossPerform,
+		PlayerSkill,
+		BossSkill,
 		ResultWon,
 		ResultLost,
 	}
