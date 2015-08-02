@@ -98,6 +98,7 @@ namespace SPRPG.Battle.View
 
 		private void OnSomeCharacterSkillStart(OriginalPartyIdx idx, Character character, SkillActor skill)
 		{
+			_party[idx].PlaySkillStart(skill.Data);
 		}
 
 		private void OnBossHpChanged(Boss boss, Hp oldHp)
