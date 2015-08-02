@@ -38,6 +38,9 @@
 		"Tier": 3,
 		"MajorUser": "Warrior",
 		"DescriptionFormat": "자신의 체력을 {Amount} 회복한다.",
+		"_viewActs": {
+			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "Buff" }
+		},
 		"Arguments": {
 			"Amount": 50
 		}
