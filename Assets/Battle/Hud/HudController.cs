@@ -47,7 +47,11 @@ namespace SPRPG.Battle.View
 			Events.Boss.OnHpChanged += OnBossHpChanged;
 
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
-				HudEvents.GetCharacter(idx).OnHpChanged.Action += OnSomeCharacterHpChanged;
+			{
+				var characterEvents = Events.GetCharacter(idx);
+				characterEvents.OnHpChanged += OnCharacterHpChanged;
+				characterEvents.OnSkillStart += OnSomeCharacterSkillStart;
+			}
 
 			Events.OnWin += OnWin;
 			Events.OnLose += OnLose;
@@ -57,18 +61,17 @@ namespace SPRPG.Battle.View
 #endif
 		}
 
-		private void OnSomeCharacterHpChanged(OriginalPartyIdx idx, Character character, Hp oldHp)
-		{
-			_hpBars[idx.ToArrayIndex()].SetHp(character.Hp);
-		}
-
 		void OnDestroy()
 		{
 			Events.AfterTurn -= AfterTurn;
 			Events.Boss.OnHpChanged -= OnBossHpChanged;
 
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
-				HudEvents.GetCharacter(idx).OnHpChanged.Action -= OnSomeCharacterHpChanged;
+			{
+				var characterEvents = Events.GetCharacter(idx);
+				characterEvents.OnHpChanged -= OnCharacterHpChanged;
+				characterEvents.OnSkillStart -= OnSomeCharacterSkillStart;
+			}
 
 			Events.OnWin -= OnWin;
 			Events.OnLose -= OnLose;
@@ -86,6 +89,16 @@ namespace SPRPG.Battle.View
 		public void AfterTurn()
 		{
 			_partyPlacer.AfterTurn();
+		}
+
+		private void OnCharacterHpChanged(OriginalPartyIdx idx, Character character, Hp oldHp)
+		{
+			_hpBars[idx.ToArrayIndex()].SetHp(character.Hp);
+		}
+
+		private void OnSomeCharacterSkillStart(OriginalPartyIdx idx, Character character, SkillActor skill)
+		{
+			_party[idx].PlaySkillStart(skill.Data);
 		}
 
 		private void OnBossHpChanged(Boss boss, Hp oldHp)

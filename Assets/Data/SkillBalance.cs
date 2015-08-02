@@ -7,6 +7,21 @@ namespace SPRPG
 {
 	public class SkillBalanceData
 	{
+		public struct ViewActsDef
+		{
+			public Battle.ActData OnStart;
+		}
+
+		public class ViewActs_
+		{
+			public Battle.Act OnStart;
+
+			public ViewActs_(ViewActsDef def) 
+			{
+				OnStart = Battle.ActFactory.Create(def.OnStart);
+			}
+		}
+
 		public SkillKey Key;
 		public string Name;
 		public string Icon;
@@ -14,6 +29,9 @@ namespace SPRPG
 		public CharacterId MajorUser;
 		public string DescriptionFormat;
 		public SkillDescriptor Descriptor;
+		[JsonInclude]
+		private ViewActsDef? _viewActs;
+		public ViewActs_ ViewActs;
 		public JsonData Arguments;
 
 		public string Describe()
@@ -21,6 +39,12 @@ namespace SPRPG
 			if (Descriptor == null)
 				return "undefined descriptor";
 			return Descriptor(this);
+		}
+
+		public void Build()
+		{
+			if (_viewActs.HasValue) ViewActs = new ViewActs_(_viewActs.Value);
+			Descriptor = SkillDescriptorFactory.Create(Key);
 		}
 	}
 
@@ -44,7 +68,7 @@ namespace SPRPG
 			Data.Clear();
 
 			foreach (var kv in _dic)
-				kv.Value.Descriptor = SkillDescriptorFactory.Create(kv.Key);
+				kv.Value.Build();
 		}
 
 		public SkillBalanceData Find(SkillKey key)

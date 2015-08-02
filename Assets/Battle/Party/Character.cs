@@ -49,11 +49,10 @@
 			_evadeDurationLeft = duration;
 		}
 
-		public bool TryPerformSkill(SkillSlot idx)
+		public SkillActor TryPerformSkill(SkillSlot idx)
 		{
-			if (IsDead) return false;
-			SkillManager.Perform(idx);
-			return true;
+			if (IsDead) return null;
+			return SkillManager.Perform(idx);
 		}
 	}
 }
