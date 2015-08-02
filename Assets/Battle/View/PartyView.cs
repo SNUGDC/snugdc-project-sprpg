@@ -20,6 +20,7 @@ namespace SPRPG.Battle.View
 			var characterView = data.CharacterView.Instantiate();
 			characterView.transform.SetParent(transform, false);
 			_members[idx.ToArrayIndex()] = characterView;
+			characterView.transform.SetLEulerY(180);
 			return characterView;
 		}
 	}
