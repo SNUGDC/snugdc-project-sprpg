@@ -52,6 +52,9 @@
 		"Tier": 4,
 		"MajorUser": "Warrior",
 		"DescriptionFormat": "적에게 {Damage}의 데미지를 준다.",
+		"_viewActs": {
+			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "StrongAttack" }
+		},
 		"Arguments": {
 			"Damage": { "Value": 300 }
 		}
