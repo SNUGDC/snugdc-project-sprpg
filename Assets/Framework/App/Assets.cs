@@ -8,13 +8,10 @@ namespace SPRPG
 
 	    public TextAsset WorldDb;
 
-		public CharacterSkeleton CharacterSkeleton;
-
 		public Sprite CampEntryEmptySprite;
 		public Camp.CampCharacter CampCharacter;
 		public Camp.CharacterTool CampCharacterTool;
 
-		public Battle.View.CharacterView CharacterView;
 		public Battle.View.ResultWinPopup ResultWinPopup;
 		public Battle.View.ResultLosePopup ResultLosePopup;
 

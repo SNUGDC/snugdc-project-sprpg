@@ -16,7 +16,7 @@ namespace SPRPG
 	{
 		public CharacterId Id;
 		public string Detail;
-		public CharacterSkinData Skin;
+		public CharacterView CharacterView;
 
 		public Stats Stats;
 		public PassiveKey Passive;

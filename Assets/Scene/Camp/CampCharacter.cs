@@ -12,7 +12,7 @@ namespace SPRPG.Camp
 		private CharacterData _data;
 		public CharacterData Data { get { return _data; } }
 
-		private CharacterSkeleton _skeleton;
+		private CharacterView _characterView;
 
 		[SerializeField]
 		private Animator _animator;
@@ -32,7 +32,7 @@ namespace SPRPG.Camp
 		{
 			Debug.Assert(_data != null);
 
-			SetupRenderer();
+			SetupRenderer(_data);
 
 			if (ForegroundRoot)
 			{
@@ -70,13 +70,12 @@ namespace SPRPG.Camp
 			rectTf.offsetMax = rect.max;
 		}
 
-		void SetupRenderer()
+		void SetupRenderer(CharacterData data)
 		{
-			_skeleton = Assets._.CharacterSkeleton.Instantiate();
-			_skeleton.name = "Skeleton";
-			_skeleton.transform.SetParent(transform, false);
-			_skeleton.transform.localPosition = Vector3.zero;
-			_skeleton.SetSkin(_data.Skin);
+			_characterView = data.CharacterView.Instantiate();
+			_characterView.name = "Skeleton";
+			_characterView.transform.SetParent(transform, false);
+			_characterView.transform.localPosition = Vector3.zero;
 		}
 
 		void Update()

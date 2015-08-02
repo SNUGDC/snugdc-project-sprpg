@@ -14,8 +14,10 @@ MonoBehaviour:
   Id: 2
   Detail: Wizard
   Skin: {fileID: 11400000, guid: bc0db070cd23b0042a2daa5d38c070da, type: 2}
+  CharacterView: {fileID: 11492076, guid: 673e6404928fc6b47b397ac1aa38bc1a, type: 2}
   Stats:
     _hp: 100
+    _damageModifier: 0
   Passive: 2
   SkillSet:
     _1: 1

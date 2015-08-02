@@ -33,7 +33,7 @@ namespace SPRPG.Battle.View
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
 			{
 				var member = Context.Party[idx];
-				_party[idx].SetInitData(member.Data);
+				_party.InstantiateAndAssign(idx, member.Data);
 				_hpBars[idx.ToArrayIndex()].MaxHp = member.HpMax;
 			}
 			_party.gameObject.SetActive(true);

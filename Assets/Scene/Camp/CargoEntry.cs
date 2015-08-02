@@ -5,27 +5,28 @@ namespace SPRPG.Camp
 {
 	public class CargoEntry : MonoBehaviour
 	{
-		private CharacterSkeleton Skeleton;
-
-		void Start()
-		{
-			Skeleton = Assets._.CharacterSkeleton.Instantiate();
-			Skeleton.transform.SetParent(transform, false);
-			Skeleton.transform.localPosition = Vector3.zero;
-			Skeleton.gameObject.SetActive(false);
-		}
+		private CharacterView CharacterView;
 
 		public void SetCharacter(CharacterId id)
 		{
 			var characterData = CharacterDb._.Find(id);
 			if (characterData == null) return;
-			Skeleton.gameObject.SetActive(true);
-			Skeleton.SetSkin(characterData.Skin);
+			if (CharacterView != null) Destroy(CharacterView.gameObject);
+			CharacterView = characterData.CharacterView.Instantiate();
+			CharacterView.transform.SetParent(transform, false);
+			CharacterView.transform.localPosition = Vector3.zero;
 		}
 
 		public void RemoveCharacter()
 		{
-			Skeleton.gameObject.SetActive(false);
+			if (CharacterView == null)
+			{
+				Debug.LogError("view not exist.");
+				return;
+			}
+
+			Destroy(CharacterView.gameObject);
+			CharacterView = null;
 		}
 	}
 }

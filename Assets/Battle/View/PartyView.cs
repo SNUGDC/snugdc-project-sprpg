@@ -1,21 +1,18 @@
-﻿using System.Linq;
+﻿using Gem;
 using UnityEngine;
 
 namespace SPRPG.Battle.View
 {
 	public class PartyView : MonoBehaviour
 	{
-		[SerializeField]
-		private CharacterView[] _members;
+		private readonly CharacterView[] _members = new CharacterView[SPRPG.Party.Size];
+		public CharacterView this[OriginalPartyIdx idx] { get { return _members[idx.ToArrayIndex()]; } }
 
-		public CharacterView this[OriginalPartyIdx idx]
+		public CharacterView InstantiateAndAssign(OriginalPartyIdx idx, CharacterData data)
 		{
-			get { return _members[idx.ToArrayIndex()]; }
-		}
-
-		void Start()
-		{
-			Debug.Assert(_members.Count() == SPRPG.Party.Size);
+			var characterView = data.CharacterView.Instantiate();
+			_members[idx.ToArrayIndex()] = characterView;
+			return characterView;
 		}
 	}
 }

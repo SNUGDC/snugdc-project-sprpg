@@ -4,23 +4,6 @@ using UnityEngine;
 
 namespace SPRPG
 {
-	[CustomEditor(typeof (CharacterData))]
-	public class CharacterDataEditor : ScriptableObjectEditor<CharacterData>
-	{
-		public override void OnInspectorGUI()
-		{
-			base.OnInspectorGUI();
-
-			if ((Target.Skin == null) && GUILayout.Button("create"))
-			{
-				var skinName = "Character" + Target.Id + "Skin";
-				Target.Skin = Gem.ScriptableObjectUtility.CreateAsset<CharacterSkinData>(skinName);
-				CharacterSkinDataEditor.AutoApply(Target.Skin, Target.Id);
-				EditorUtility.SetDirty(Target);
-			}
-		}
-	}
-
 	[CustomEditor(typeof(CharacterDb))]
 	public class CharacterDbEditor : ComponentEditor<CharacterDb>
 	{
@@ -35,7 +18,7 @@ namespace SPRPG
 			{
 				var datas = Target.Edit();
 				var newId = (CharacterId)datas.Count;
-				var data = Gem.ScriptableObjectUtility.CreateAsset<CharacterData>("Character" + newId);
+				var data = ScriptableObjectUtility.CreateAsset<CharacterData>("Character" + newId);
 				data.Id = newId;
 				datas.Add(data);
 			}
