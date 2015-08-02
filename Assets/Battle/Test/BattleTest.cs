@@ -17,9 +17,9 @@ namespace SPRPG.Battle
 #if BALANCE
 				UseDataInput = false,
 #endif
-				RealtimeEnabled = false,
 			};
 
+			def.RealtimeEnabled = false;
 			BattleWrapper.Def = def;
 		}
 	}
