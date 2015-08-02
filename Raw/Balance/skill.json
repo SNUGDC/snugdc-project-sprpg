@@ -24,6 +24,9 @@
 		"Tier": 2,
 		"MajorUser": "Warrior",
 		"DescriptionFormat": "{Duration} Tick동안 적 공격에 피해를 입지 않는다.",
+		"_viewActs": {
+			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "ShakeHorizontal" }
+		},
 		"Arguments": {
 			"Duration": 30
 		}
