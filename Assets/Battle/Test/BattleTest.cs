@@ -5,6 +5,7 @@ namespace SPRPG.Battle
 	public class BattleTest : MonoBehaviour
 	{
 		public StageId Stage;
+		public bool RealtimeEnabled;
 		public PartyDef Party;
 
 		void Awake()
@@ -19,7 +20,7 @@ namespace SPRPG.Battle
 #endif
 			};
 
-			def.RealtimeEnabled = false;
+			def.RealtimeEnabled = RealtimeEnabled;
 			BattleWrapper.Def = def;
 		}
 	}

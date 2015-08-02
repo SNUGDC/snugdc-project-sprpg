@@ -1145,6 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stage: 1
+  RealtimeEnabled: 1
   Party:
     _1: 1
     _2: 2
