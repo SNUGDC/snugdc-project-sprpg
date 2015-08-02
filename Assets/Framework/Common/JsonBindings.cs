@@ -1,4 +1,5 @@
 ﻿using System;
+using Gem;
 using LitJson;
 
 namespace SPRPG
@@ -13,7 +14,13 @@ namespace SPRPG
 
 		private static void BindEnumAsString<T>()
 		{
-			JsonMapper.RegisterImporter<string, T>(v => (T) Enum.Parse(typeof(T), v));
+			JsonMapper.RegisterImporter<string, T>(v =>
+			{
+				T ret;
+				EnumHelper.TryParse(v, out ret);
+				return ret;
+			});
+
 			JsonMapper.RegisterExporter<T>((o, w) => w.Write(o.ToString()));
 		}
 

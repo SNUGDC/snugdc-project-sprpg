@@ -53,7 +53,7 @@ namespace Gem
 			}
 
 			ret = default(T);
-			Debug.Log(LogMessages.ParseFailed<T>(str));
+			Debug.LogWarning(LogMessages.ParseFailed<T>(str));
 			return false;
 		}
 
