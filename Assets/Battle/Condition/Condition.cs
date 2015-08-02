@@ -89,7 +89,7 @@ namespace SPRPG.Battle
 
 		public override bool Test(Battle context)
 		{
-			return _conditions.Any(condition => !condition.Test(context));
+			return _conditions.Any(condition => condition.Test(context));
 		}
 	}
 
