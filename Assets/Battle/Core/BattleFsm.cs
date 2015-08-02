@@ -17,8 +17,8 @@ namespace SPRPG.Battle
 		public readonly InputPhase Input;
 		public readonly PlayerPassivePhase PlayerPassive;
 		public readonly BossPassivePhase BossPassive;
-		public readonly BattlePhase PlayerPerform;
-		public readonly BossPerformPhase BossPerform;
+		public readonly BattlePhase PlayerSkill;
+		public readonly BossSkillPhase BossSkill;
 		public readonly BattlePhase ResultWon;
 		public readonly BattlePhase ResultLost;
 
@@ -36,8 +36,8 @@ namespace SPRPG.Battle
 			Input = new InputPhase(context);
 			PlayerPassive = new PlayerPassivePhase(context);
 			BossPassive = new BossPassivePhase(context);
-			PlayerPerform = new BattlePhase(context, BattleState.PlayerPerform);
-			BossPerform = new BossPerformPhase(context);
+			PlayerSkill = new BattlePhase(context, BattleState.PlayerSkill);
+			BossSkill = new BossSkillPhase(context);
 			ResultWon = new ResultWonPhase(context);
 			ResultLost = new ResultLostPhase(context);
 
@@ -81,9 +81,9 @@ namespace SPRPG.Battle
 				case BattleState.BeforeTurn: return Input;
 				case BattleState.Input: return PlayerPassive;
 				case BattleState.PlayerPassive: return BossPassive;
-				case BattleState.BossPassive: return PlayerPerform;
-				case BattleState.PlayerPerform: return BossPerform;
-				case BattleState.BossPerform: return AfterTurn;
+				case BattleState.BossPassive: return PlayerSkill;
+				case BattleState.PlayerSkill: return BossSkill;
+				case BattleState.BossSkill: return AfterTurn;
 				case BattleState.AfterTurn: return Idle;
 				default:
 					Debug.LogError(LogMessages.EnumUndefined(Current.State));
