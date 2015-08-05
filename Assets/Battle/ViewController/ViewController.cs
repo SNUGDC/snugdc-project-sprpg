@@ -52,6 +52,7 @@ namespace SPRPG.Battle.View
 		private void TransferAfterResult()
 		{
 			Transition.TransferToPreviousScene(SceneType.Battle);
+			Transition.ClearLog();
 		}
 	}
 }

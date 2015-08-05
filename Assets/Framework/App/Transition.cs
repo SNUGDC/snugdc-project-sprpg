@@ -34,6 +34,8 @@ namespace SPRPG
 		{
 			return _stack.PopOrDefault(defaultScene);
 		}
+
+		public void Clear() { _stack.Clear(); }
 	}
 
 	public static class Transition
@@ -45,6 +47,8 @@ namespace SPRPG
 		private const string SettingSceneName = "Setting";
 
 		private static readonly TransitionStack _log = new TransitionStack();
+
+		public static void ClearLog() { _log.Clear(); }
 
 		public static void TransferToCamp()
 		{
