@@ -20,6 +20,7 @@ namespace SPRPG.Battle
 
 			RenderClock();
 			RenderInput();
+			RenderFsm();
 			RenderResult();
 		}
 
@@ -73,6 +74,11 @@ namespace SPRPG.Battle
 			if (GUILayout.Button("shift"))
 				_battle.InputReceiver.ForceCaptureShift(_battle.PlayerClock);
 			GUILayout.EndHorizontal();
+		}
+
+		private void RenderFsm()
+		{
+			_battle.Fsm.SkipBossPhase = EditorGUILayout.Toggle("skip boss phase", _battle.Fsm.SkipBossPhase);
 		}
 
 		private void RenderResult()

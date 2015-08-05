@@ -26,6 +26,12 @@ namespace SPRPG.Battle
 		public bool IsResult { get { return Current == ResultWon || Current == ResultLost; } }
 		public Result? ForceResultInNextTick;
 
+#if UNITY_EDITOR
+		public bool SkipBossPhase { get; set; }
+#else
+		public const bool SkipBossPhase = false;
+#endif
+
 		public BattleFsm(Battle context)
 		{
 			_context = context;
@@ -80,9 +86,9 @@ namespace SPRPG.Battle
 				case BattleState.Idle: return BeforeTurn;
 				case BattleState.BeforeTurn: return Input;
 				case BattleState.Input: return PlayerPassive;
-				case BattleState.PlayerPassive: return BossPassive;
+				case BattleState.PlayerPassive: return SkipBossPhase ? PlayerSkill : BossPassive;
 				case BattleState.BossPassive: return PlayerSkill;
-				case BattleState.PlayerSkill: return BossSkill;
+				case BattleState.PlayerSkill: return SkipBossPhase ? (BattlePhase)AfterTurn : BossSkill;
 				case BattleState.BossSkill: return AfterTurn;
 				case BattleState.AfterTurn: return Idle;
 				default:
