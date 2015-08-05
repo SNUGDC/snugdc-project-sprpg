@@ -1125,6 +1125,8 @@ GameObject:
   - 4: {fileID: 2086338273}
   - 114: {fileID: 2086338272}
   - 114: {fileID: 2086338271}
+  - 114: {fileID: 2086338276}
+  - 114: {fileID: 2086338275}
   - 114: {fileID: 2086338274}
   m_Layer: 0
   m_Name: Battle
@@ -1145,7 +1147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stage: 1
-  RealtimeEnabled: 1
+  RealtimeEnabled: 0
   Party:
     _1: 1
     _2: 2
@@ -1162,6 +1164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b1184a9ca5ef444878e1d0b3cee042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _viewController: {fileID: 2086338276}
+  _hudController: {fileID: 2086338274}
+  _battleController: {fileID: 2086338275}
 --- !u!4 &2086338273
 Transform:
   m_ObjectHideFlags: 0
@@ -1180,17 +1185,43 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2086338270}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1a02f4b79d62644fbd4f9600efcf9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _battleWrapper: {fileID: 2086338272}
-  _overlay: {fileID: 172873735}
   _clock: {fileID: 1034114415}
-  _hpBars:
+  _characterHpBars:
   - {fileID: 194280986}
   - {fileID: 118384496}
   - {fileID: 544982001}
   _bossHpBar: {fileID: 2017610284}
-  _party: {fileID: 341662552}
+--- !u!114 &2086338275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2086338270}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa918b8cb9387dc49bb61e10dcdc4c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battleWrapper: {fileID: 2086338272}
+  _partyView: {fileID: 341662552}
+--- !u!114 &2086338276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2086338270}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd8dd596d21bcd4396076f4637f2fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battleWrapper: {fileID: 2086338272}
+  _overlay: {fileID: 172873735}
+  _hud: {fileID: 2086338274}
+  _battle: {fileID: 2086338275}

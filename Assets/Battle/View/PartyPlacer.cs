@@ -15,7 +15,7 @@ namespace SPRPG.Battle.View
 		private readonly Party _party;
 		private readonly EntryData[] _entries = new EntryData[3];
 
-		public PartyPlacer(Party party, PartyView view)
+		public PartyPlacer(PartyView view, Party party)
 		{
 			_party = party;
 

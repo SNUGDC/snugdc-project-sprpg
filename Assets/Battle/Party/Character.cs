@@ -1,4 +1,7 @@
-﻿namespace SPRPG.Battle
+﻿using System;
+using Gem;
+
+namespace SPRPG.Battle
 {
 	public class Character : Pawn<Character>
 	{
@@ -10,6 +13,8 @@
 		public readonly SkillManager SkillManager;
 
 		private Tick _evadeDurationLeft;
+
+		public Action<Character, SkillSlot, SkillActor> OnSkillStart;
 
 		public Character(CharacterData data, Battle context)
 			: base(data.Stats)
@@ -52,7 +57,9 @@
 		public SkillActor TryPerformSkill(SkillSlot idx)
 		{
 			if (IsDead) return null;
-			return SkillManager.Perform(idx);
+			var ret = SkillManager.TryPerform(idx);
+			if (ret != null) OnSkillStart.CheckAndCall(this, idx, ret);
+			return ret;
 		}
 	}
 }

@@ -29,7 +29,7 @@ namespace SPRPG.Battle
 			this[SkillSlot._4] = SkillFactory.Create(def._4, context, owner);
 		}
 
-		public SkillActor Perform(SkillSlot idx)
+		public SkillActor TryPerform(SkillSlot idx)
 		{
 			if (IsRunning)
 			{

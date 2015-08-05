@@ -23,7 +23,6 @@ namespace SPRPG.Battle
 
 	public class Battle 
 	{
-		public static Battle _ { get; private set; }
 		public static readonly Random KeyGen = new Random();
 
 		public readonly Random Random = new Random();
@@ -48,9 +47,6 @@ namespace SPRPG.Battle
 
 		public Battle(BattleDef def)
 		{
-			Debug.Assert(_ == null);
-			_ = this;
-
 			Binding = BattleSymbolBinding.Create(this); 
 			RealtimeEnabled = def.RealtimeEnabled;
 			_realtime = new BattleRealtime(Clock);
@@ -78,9 +74,6 @@ namespace SPRPG.Battle
 
 		~Battle()
 		{
-			Debug.Assert(_ == this);
-			_ = null;
-
 			Clock.OnProceed -= OnTick;
 		}
 
