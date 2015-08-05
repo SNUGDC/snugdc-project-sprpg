@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace SPRPG
+﻿namespace SPRPG
 {
 	public class CharacterWarriorView : CharacterView
 	{
