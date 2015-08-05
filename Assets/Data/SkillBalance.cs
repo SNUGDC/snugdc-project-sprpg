@@ -12,7 +12,7 @@ namespace SPRPG
 			public Battle.ActData OnStart;
 		}
 
-		public class ViewActs_
+		public struct ViewActs_
 		{
 			public Battle.Act OnStart;
 

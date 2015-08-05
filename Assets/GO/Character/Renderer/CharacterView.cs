@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SPRPG.Battle;
+using UnityEngine;
 
 namespace SPRPG
 {
@@ -29,11 +30,7 @@ namespace SPRPG
 
 		public void PlaySkillStart(SkillBalanceData data)
 		{
-			var viewActs = data.ViewActs;
-			if (viewActs == null) return;
-			var onStart = viewActs.OnStart;
-			if (onStart == null) return;
-			onStart.Do(_actContext);
+			data.ViewActs.OnStart.CheckAndDo(_actContext);
 		}
 	}
 }

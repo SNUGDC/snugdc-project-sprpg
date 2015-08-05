@@ -59,7 +59,7 @@ namespace SPRPG.Battle
 			return null;
 		}
 	}
-	
+
 	public static class ActAnimatorFactory
 	{
 		public static ActAnimatorSetTrigger CreateSetTrigger(string trigger) { return new ActAnimatorSetTrigger(trigger); }
@@ -73,6 +73,16 @@ namespace SPRPG.Battle
 
 			Debug.LogError(LogMessages.EnumNotHandled(action));
 			return null;
+		}
+	}
+
+	public static class ActHelper
+	{
+		public static bool CheckAndDo(this Act thiz, ActContext context)
+		{
+			if (thiz == null) return false;
+			thiz.Do(context);
+			return true;
 		}
 	}
 }
