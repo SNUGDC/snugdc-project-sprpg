@@ -28,6 +28,11 @@ namespace SPRPG
 			_animator.SetTrigger("Attack");
 		}
 
+		public void Dead()
+		{
+			_animator.SetTrigger("Dead");
+		}
+
 		public void PlaySkillStart(SkillBalanceData data)
 		{
 			data.ViewActs.OnStart.CheckAndDo(_actContext);
