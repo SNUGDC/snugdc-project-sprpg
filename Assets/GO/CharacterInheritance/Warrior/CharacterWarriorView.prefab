@@ -89,7 +89,7 @@ GameObject:
   - 4: {fileID: 475020}
   - 212: {fileID: 21288006}
   m_Layer: 0
-  m_Name: ch_0_weapon
+  m_Name: WeaponRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
