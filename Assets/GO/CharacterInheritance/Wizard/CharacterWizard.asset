@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 2
   Detail: Wizard
-  CharacterView: {fileID: 11492076, guid: 673e6404928fc6b47b397ac1aa38bc1a, type: 2}
+  CharacterView: {fileID: 11442142, guid: bbcc9990ba095844db49a042a058c5b6, type: 2}
   Stats:
     _hp: 100
     _damageModifier: 0
