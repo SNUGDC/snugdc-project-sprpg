@@ -37,14 +37,14 @@ namespace SPRPG
 					return data =>
 					{
 						var args = new AttackSkillArguments(data.Arguments);
-						return data.DescriptionFormat.Replace(AttackSkillArguments.DamageKey, args.Damage.Value);
+						return data.DescriptionFormat.Text.Replace(AttackSkillArguments.DamageKey, args.Damage.Value);
 					};
 
 				case SkillKey.WarriorEvasion:
 				case SkillKey.ArcherEvasion:
 				case SkillKey.WarriorHeal:
 				case SkillKey.ArcherArrowRain:
-					return data => data.DescriptionFormat.Replace(data.Arguments);
+					return data => data.DescriptionFormat.Text.Replace(data.Arguments);
 			}
 
 			Debug.LogError(LogMessages.EnumUndefined(key));

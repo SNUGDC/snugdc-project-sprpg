@@ -43,7 +43,15 @@ namespace SPRPG
 			BindEnumAsString<Battle.ActAction>();
 			BindEnumAsString<Battle.BossPassiveLocalKey>();
 			BindEnumAsString<Battle.BossSkillLocalKey>();
+
+			BindStringOrDictionaryText();
 			BindCondition();
+		}
+
+		private static void BindStringOrDictionaryText()
+		{
+			JsonMapper.RegisterImporter<string, StringOrDictionaryText>(v => new StringOrDictionaryText(false, v));
+			JsonMapper.RegisterImporter<JsonData, StringOrDictionaryText>(v => new StringOrDictionaryText(true, (string)v["Key"]));
 		}
 
 		private static void BindCondition()

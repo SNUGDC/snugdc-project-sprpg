@@ -27,7 +27,7 @@ namespace SPRPG
 		public string Icon;
 		public SkillTier Tier;
 		public CharacterId MajorUser;
-		public string DescriptionFormat;
+		public StringOrDictionaryText DescriptionFormat;
 		public SkillDescriptor Descriptor;
 		[JsonInclude]
 		private ViewActsDef? _viewActs;
