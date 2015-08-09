@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Gem;
 using LitJson;
@@ -14,6 +13,7 @@ namespace SPRPG.Battle
 		And,
 		Or,
 		CompareInt,
+		Dictionary,
 	}
 
 	public enum ConditionCompareOperator
@@ -115,6 +115,28 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public sealed class DictionaryCondition : Condition
+	{
+		private readonly Condition _condition;
+
+		public DictionaryCondition(JsonData data) : base(ConditionType.Dictionary)
+		{
+			var key = (string)data["Key"];
+			_condition = ConditionDictionary._.Find(key);
+		}
+
+		public override bool Test(Battle context)
+		{
+			if (_condition == null)
+			{
+				Debug.LogError("condition is null.");
+				return false;
+			}
+
+			return _condition.Test(context);
+		}
+	}
+
 	public static class ConditionFactory
 	{
 		public static Condition Create(JsonData data)
@@ -133,6 +155,8 @@ namespace SPRPG.Battle
 					return new OrCondition(CreateArray(data["Array"]));
 				case ConditionType.CompareInt:
 					return new CompareIntCondition(data);
+				case ConditionType.Dictionary:
+					return new DictionaryCondition(data);
 			}
 
 			Debug.LogError(LogMessages.EnumUndefined(type));
