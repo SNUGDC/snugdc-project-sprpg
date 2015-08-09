@@ -22,6 +22,7 @@ namespace SPRPG.Battle
 	public class BossPassiveBalanceData
 	{
 		public BossPassiveLocalKey Key;
+		public Condition ActivateCondition;
 		public JsonData Arguments;
 	}
 
@@ -30,17 +31,10 @@ namespace SPRPG.Battle
 		public BossSkillLocalKey Key;
 		public Weight Weight;
 		public Tick Duration;
-		[JsonInclude] private JsonData _sampleCondition;
-		[JsonIgnore] public Condition SampleCondition;
+		public Condition SampleCondition;
 		public JsonData Arguments;
-		
-		public void Build(BossId id)
-		{
-			SampleCondition = ConditionFactory.Create(_sampleCondition);
-			_sampleCondition = null;
-		}
 	}
-	
+
 	public class BossBalanceData
 	{
 		[JsonIgnore]
@@ -67,11 +61,7 @@ namespace SPRPG.Battle
 			Id = id;
 			Stats = _stats;
 			Passives = _passives.ToDictionary(data => data.Key);
-			Skills = _skills.ToDictionary(data =>
-			{
-				data.Build(id);
-				return data.Key;
-			});
+			Skills = _skills.ToDictionary(data => data.Key);
 			_skills = null;
 		}
 	}

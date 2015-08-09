@@ -11,8 +11,8 @@
 			},
 			{
 				"Key": "Step1MeltDown",
+				"ActivateCondition": { "Type": "Dictionary", "Key": "RadiationPhase1" },
 				"Arguments": {
-					"ActivateCondition": { "Type": "Dictionary", "Key": "RadiationPhase1" },
 					"DamageModifier": 500, 
 					"Heal": 30 
 				}
@@ -23,21 +23,21 @@
 				"Key": "Attack",
 				"Weight": 5,
 				"Duration": 60,
-				"_sampleCondition": { "Type": "True" },
+				"SampleCondition": { "Type": "True" },
 				"Arguments": { "Damage": { "Value": 5 } }
 			},
 			{
 				"Key": "MassAttack",
 				"Weight": 5,
 				"Duration": 60,
-				"_sampleCondition": { "Type": "True" },
+				"SampleCondition": { "Type": "True" },
 				"Arguments": { "Damage": { "Value": 5 } }
 			},
 			{
 				"Key": "Radioactivity",
 				"Weight": 5,
 				"Duration": 60,
-				"_sampleCondition": { "Type": "True" },
+				"SampleCondition": { "Type": "True" },
 				"Arguments": { "StatusConditionTest": { "Type": "Poison", "Percentage": 50 } }
 			}
 		]

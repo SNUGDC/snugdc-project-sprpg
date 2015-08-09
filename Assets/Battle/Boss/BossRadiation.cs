@@ -21,7 +21,7 @@ namespace SPRPG.Battle
 		}
 	}
 
-	public class BossRadiationStep1MeltDownPassive : BossTogglePassive
+	public class BossRadiationStep1MeltDownPassive : BossPassive 
 	{
 		private const Tick HealCooltime = Const.Term;
 
