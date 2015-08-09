@@ -1,9 +1,18 @@
-﻿using SPRPG.Battle;
-
-namespace SPRPG
+﻿namespace SPRPG
 {
 	public static class DataManager
 	{
+		public static void Load()
+		{
+			DebugConfig.Load();
+			Config.TryLoad();
+			TextDictionary.Load();
+			CampBalance._.Load();
+			SkillBalance._.Load();
+			Battle.BossBalance._.Load();
+			Battle.BattleBalance._.Load();
+		}
+
 #if BALANCE
 		public static void Reload()
 		{
@@ -11,7 +20,9 @@ namespace SPRPG
 			Config.LoadForced();
 			TextDictionary.Load();
 			CampBalance._.LoadForced();
-			BattleBalance._.LoadForced();
+			SkillBalance._.LoadForced();
+			Battle.BossBalance._.Load();
+			Battle.BattleBalance._.LoadForced();
 		}
 #endif
 	}

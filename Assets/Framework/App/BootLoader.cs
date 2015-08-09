@@ -23,14 +23,8 @@ namespace SPRPG
 				return;
 
 			JsonBindings.Setup();
-
 			Assets.Init(Assets);
-
-			Config.TryLoad();
-			CampBalance._.Load();
-			SkillBalance._.Load();
-			Battle.BossBalance._.Load();
-
+			DataManager.Load();
 			CharacterDb.Init(CharacterDb);
 
 			if (Application.isPlaying)
