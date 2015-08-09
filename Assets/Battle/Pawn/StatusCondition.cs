@@ -80,20 +80,22 @@ namespace SPRPG.Battle
 
 	public sealed class StatusConditionPoisonActor : StatusConditionActor
 	{
-		public const Tick Cooltime = Const.Term;
-		public const Hp Damage = (Hp) 30;
+		private readonly StatusConditionPoisonBalanceData _data;
 
-		public StatusConditionPoisonActor() : base(StatusConditionType.Poison) { }
-
-		private static bool IsTriggered(Tick totalElapsed)
+		public StatusConditionPoisonActor() : base(StatusConditionType.Poison)
 		{
-			return (int) totalElapsed%(int) Cooltime == 0;
+			_data = BattleBalance._.Data.GetStatusConditionPoison();
+		}
+
+		private bool IsTriggered(Tick totalElapsed)
+		{
+			return (int) totalElapsed%(int)_data.Cooltime == 0;
 		}
 
 		public override void Tick(Pawn pawn, Tick totalElapsed)
 		{
 			if (!IsTriggered(totalElapsed)) return;
-			pawn.Hit(new Damage(Damage, Element.Poison));
+			pawn.Hit(new Damage(_data.Damage, Element.Poison));
 		}
 	}
 

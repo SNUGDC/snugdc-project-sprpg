@@ -68,7 +68,7 @@ namespace SPRPG.Battle
 
 		protected override void DoStart()
 		{
-			Context.Party.GetAliveLeaderOrMember().TestAndGrant(_statusConditionTest, Data.Duration);
+			Context.Party.GetAliveLeaderOrMember().TestAndGrant(_statusConditionTest);
 			Context.AddBeforeTurn(Data.Duration, Stop);
 		}
 	}

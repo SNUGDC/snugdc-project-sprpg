@@ -2,6 +2,15 @@
 	"TickPerSecond": 30,
 	"InputValidBefore": 3,
 	"InputValidAfter": 3,
+	
+	"_statusConditions": {
+		"Poison": {
+			"DefaultDuration": 60,
+			"Cooltime": 30,
+			"Damage": 30
+		}
+	},
+	
 	"PartyPlaceLerp": 0.2,
 	"PartyPositions": [
 		{ "x": 4, "y": 0.6, "z": 0 },

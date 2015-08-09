@@ -88,6 +88,12 @@ namespace SPRPG.Battle
 			Hp += (int)val;
 		}
 
+		public bool TestAndGrant(StatusConditionTest test)
+		{
+			var statusConditionData = BattleBalance._.Data.StatusConditions[test.Type];
+			return TestAndGrant(test.Type, test.Percentage, statusConditionData.DefaultDuration);
+		}
+
 		public bool TestAndGrant(StatusConditionTest test, Tick duration)
 		{
 			return TestAndGrant(test.Type, test.Percentage, duration);
