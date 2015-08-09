@@ -1,4 +1,7 @@
 {
+	"TickPerSecond": 30,
+	"InputValidBefore": 3,
+	"InputValidAfter": 3,
 	"PartyPlaceLerp": 0.2,
 	"PartyPositions": [
 		{ "x": 4, "y": 0.6, "z": 0 },

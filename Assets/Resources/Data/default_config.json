@@ -1,12 +1,1 @@
-{
-	"Scene": {
-		"Camp": {
-			"DecelerationRate": 0.05
-		}
-	},
-	"Battle": {
-		"TickPerSecond": 30,
-		"InputValidBefore": 3,
-		"InputValidAfter": 3
-	}
-}
+{ }

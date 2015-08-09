@@ -1,4 +1,5 @@
 {
+	"DecelerationRate": 0.05,
 	"Cargo": {
 		"Position": { "X": 14.2, "Y": 1.3 },
 		"Entries": [

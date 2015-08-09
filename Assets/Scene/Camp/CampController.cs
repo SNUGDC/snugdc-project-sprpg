@@ -23,8 +23,7 @@ namespace SPRPG.Camp
 		{
 			CampCharacter.ForegroundRoot = _foregroundRoot;
 
-			var config = Config.Data.Scene.Camp;
-			_scrollRect.decelerationRate = (float)config.DecelerationRate;
+			_scrollRect.decelerationRate = CampBalance._.Data.DecelerationRate;
 
 			foreach (var character in UserCharacters.GetEnumerable())
 				AddCharacter(character);

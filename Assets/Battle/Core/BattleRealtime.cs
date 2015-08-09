@@ -9,7 +9,7 @@
 		public BattleRealtime(Clock clock)
 		{
 			_clock = clock;
-			_secondPerTick = 1f / Config.Data.Battle.TickPerSecond;
+			_secondPerTick = 1f / (float)BattleBalance._.Data.TickPerSecond;
 		}
 
 		public void Update(float dt)

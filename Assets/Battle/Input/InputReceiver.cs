@@ -75,11 +75,10 @@ namespace SPRPG.Battle
 
 		private static InputGrade GradeInput(Tick distance)
 		{
-			var validBefore = Config.Data.Battle.InputValidBefore;
-			var validAfter = Config.Data.Battle.InputValidAfter;
-			var distanceInt = (int)distance;
+			var validBefore = BattleBalance._.Data.InputValidBefore;
+			var validAfter = BattleBalance._.Data.InputValidAfter;
 
-			if (distanceInt < -validBefore || distanceInt > validAfter)
+			if (distance < (Tick)(-(int)validBefore) || distance > validAfter)
 				return InputGrade.Bad;
 			return InputGrade.Good;
 		}

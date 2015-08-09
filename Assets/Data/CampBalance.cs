@@ -24,6 +24,7 @@ namespace SPRPG
 			public IntRect BoundingRect;
 		}
 
+		public float DecelerationRate;
 		public Cargo_ Cargo;
 		public List<Character_> Characters;
 		public Dictionary<CharacterId, Character_> CharacterDic;
