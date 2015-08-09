@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Gem;
 
 namespace SPRPG.Battle
@@ -71,7 +72,12 @@ namespace SPRPG.Battle
 				if (member.IsAlive) return true;
 			return false;
 		}
-		
+
+		public IEnumerable<Character> GetAliveMembers()
+		{
+			return _members.Where(member => member.IsAlive);
+		}
+
 		public Character GetAliveLeaderOrMember()
 		{
 			if (Leader.IsAlive)
@@ -84,6 +90,13 @@ namespace SPRPG.Battle
 			}
 
 			return null;
+		}
+
+		public Character TryGetRandomAliveMember()
+		{
+			var aliveMembers = GetAliveMembers().ToArray();
+			if (aliveMembers.Empty()) return null;
+			return aliveMembers.Rand();
 		}
 
 		public void BeforeTurn()

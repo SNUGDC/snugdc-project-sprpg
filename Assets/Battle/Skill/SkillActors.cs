@@ -29,7 +29,11 @@ namespace SPRPG.Battle
 		private Job _performJob;
 		private Job _stopJob;
 
-		public SingleDelayedPerformSkillActor(SkillBalanceData data, Battle context, Character owner, Tick duration, Tick performTick) : base(data, context, owner)
+		protected SingleDelayedPerformSkillActor(SkillBalanceData data, Battle context, Character owner)
+			: this(data, context, owner, Const.DefaultSkillDuration, Const.DefaultSkillDelay)
+		{ }
+
+		protected SingleDelayedPerformSkillActor(SkillBalanceData data, Battle context, Character owner, Tick duration, Tick performTick) : base(data, context, owner)
 		{
 			_duration = duration;
 			_performTick = performTick;

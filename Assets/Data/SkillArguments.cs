@@ -3,52 +3,61 @@ using LitJson;
 
 namespace SPRPG
 {
-
 	public struct FiniteSkillArguments
 	{
-		public const string DurationKey = "Duration";
-
 		public readonly Tick Duration;
 
 		public FiniteSkillArguments(JsonData args)
 		{
-			Duration = (Tick) args[DurationKey].GetNatural();
+			Duration = (Tick) args["Duration"].GetNatural();
 		}
 	}
 
 	public struct AttackSkillArguments
 	{
-		public const string DamageKey = "Damage";
-
 		public readonly Damage Damage;
 
 		public AttackSkillArguments(JsonData args)
 		{
-			Damage = args[DamageKey].ToObject<Damage>();
+			Damage = args["Damage"].ToObject<Damage>();
+		}
+
+		public string Describe(string format)
+		{
+			return SkillDescriptorHelper.Replace(format, "Damage", Damage.Value);
 		}
 	}
 
 	public struct HealSkillArguments
 	{
-		public const string AmountKey = "Amount";
-
 		public readonly Hp Amount;
 
 		public HealSkillArguments(JsonData args)
 		{
-			Amount = (Hp)args[AmountKey].GetNatural();
+			Amount = (Hp)args["Amount"].GetNatural();
+		}
+	}
+
+	public struct AttackAndGrantStatusConditionArguments
+	{
+		public readonly Damage Damage;
+		public readonly Battle.StatusConditionTest StatusConditionTest;
+
+		public string Describe(string format)
+		{
+			format = SkillDescriptorHelper.Replace(format, "Damage", Damage.Value);
+			format = SkillDescriptorHelper.Replace(format, "Percentage", StatusConditionTest.Percentage);
+			return format;
 		}
 	}
 
 	public struct ArcherArrowRainArguments
 	{
-		public const string DamagePerArrowKey = "DamagePerArrow";
-
 		public readonly Hp DamagePerArrow;
 
 		public ArcherArrowRainArguments(JsonData args)
 		{
-			DamagePerArrow = (Hp)args[DamagePerArrowKey].GetNatural();
+			DamagePerArrow = (Hp)args["DamagePerArrow"].GetNatural();
 		}
 	}
 }

@@ -60,6 +60,72 @@
 		}
 	},
 	{
+		"Key": "WizardFireBolt",
+		"Name": "파이어볼트",
+		"Tier": 1,
+		"MajorUser": "Wizard",
+		"DescriptionFormat": { "Key": "skill-description-damage" },
+		"Arguments": {
+			"Damage": { "Value": 75, "Element": "Fire" }
+		}
+	},
+	{
+		"Key": "WizardIceBolt",
+		"Name": "아이스볼트",
+		"Tier": 1,
+		"MajorUser": "Wizard",
+		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 적에게 {StatusConditionPercentage}% 확률로 빙결을 건다.",
+		"Arguments": {
+			"Damage": { "Value": 50, "Element": "Ice" },
+			"StatusConditionTest": { "Type": "Freeze", "Percentage": 10 }
+		}
+	},
+	{
+		"Key": "WizardLighteningBolt",
+		"Name": "라이트닝볼트",
+		"Tier": 1,
+		"MajorUser": "Wizard",
+		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 임의의 아군에게 {DamageMember} 피해를 준다. 적에게 {StunPercentage}% 확률로 스턴을 건다.",
+		"Arguments": {
+			"Damage": { "Value": 100, "Element": "Electric" },
+			"DamageMember": { "Value": 20, "Element": "Electric" },
+			"StunTest": { "Percentage": 10 }
+		}
+	},
+	{
+		"Key": "WizardFireBall",
+		"Name": "파이어볼",
+		"Tier": 2,
+		"MajorUser": "Wizard",
+		"DescriptionFormat": { "Key": "skill-description-damage" },
+		"Arguments": {
+			"Damage": { "Value": 200, "Element": "Fire" }
+		}
+	},
+	{
+		"Key": "WizardIceSpear",
+		"Name": "아이스스피어",
+		"Tier": 3,
+		"MajorUser": "Wizard",
+		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 적에게 {StatusConditionPercentage}% 확률로 빙결을 건다.",
+		"Arguments": {
+			"Damage": { "Value": 200, "Element": "Ice" },
+			"StatusConditionTest": { "Type": "Freeze", "Percentage": 33 }
+		}
+	},
+	{
+		"Key": "WizardLightening",
+		"Name": "라이트닝",
+		"Tier": 4,
+		"MajorUser": "Wizard",
+		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 임의의 아군에게 {DamageMember} 피해를 준다. 적에게 {StunPercentage}% 확률로 스턴을 건다.",
+		"Arguments": {
+			"Damage": { "Value": 500, "Element": "Electric" },
+			"DamageMember": { "Value": 100, "Element": "Electric" },
+			"StunTest": { "Percentage": 33 }
+		}
+	},
+	{
 		"Key": "ArcherAttack",
 		"Name": "공격",
 		"Tier": 1,

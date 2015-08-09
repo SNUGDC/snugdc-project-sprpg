@@ -10,14 +10,12 @@ namespace SPRPG
 	{
 		private static string Replace(this string thiz, string key, object value)
 		{
-			return thiz.Replace('{' + key + '}', value.ToString());
+			return SkillDescriptorHelper.Replace(thiz, key, value);
 		}
 
 		private static string Replace(this string thiz, JsonData arguments)
 		{
-			foreach (var arg in arguments.GetDictEnum())
-				thiz = thiz.Replace(arg.Key, arg.Value);
-			return thiz;
+			return SkillDescriptorHelper.Replace(thiz, arguments);
 		}
 
 		public static SkillDescriptor Create(SkillKey key)
@@ -32,23 +30,56 @@ namespace SPRPG
 
 				case SkillKey.WarriorAttack:
 				case SkillKey.WarriorStrongAttack:
+				case SkillKey.WizardFireBolt:
+				case SkillKey.WizardFireBall:
 				case SkillKey.ArcherAttack:
 				case SkillKey.ArcherStrongShot:
 					return data =>
 					{
 						var args = new AttackSkillArguments(data.Arguments);
-						return data.DescriptionFormat.Text.Replace(AttackSkillArguments.DamageKey, args.Damage.Value);
+						return args.Describe(data.DescriptionFormat);
+					};
+
+				case SkillKey.WizardIceBolt:
+				case SkillKey.WizardIceSpear:
+					return data =>
+					{
+						var args = data.Arguments.ToObject<AttackAndGrantStatusConditionArguments>();
+						return args.Describe(data.DescriptionFormat);
+					};
+
+				case SkillKey.WizardLighteningBolt:
+				case SkillKey.WizardLightening:
+					return data =>
+					{
+						var args = data.Arguments.ToObject<Battle.WizardLighteningBoltArguments>();
+						return args.Describe(data.DescriptionFormat);
 					};
 
 				case SkillKey.WarriorEvasion:
-				case SkillKey.ArcherEvasion:
 				case SkillKey.WarriorHeal:
+				case SkillKey.ArcherEvasion:
 				case SkillKey.ArcherArrowRain:
 					return data => data.DescriptionFormat.Text.Replace(data.Arguments);
 			}
 
 			Debug.LogError(LogMessages.EnumUndefined(key));
 			return delegate { return "undefined descriptor for " + key; };
+		}
+	}
+
+	public static class SkillDescriptorHelper
+	{
+		public static string Replace(string format, string key, object value)
+		{
+			return format.Replace('{' + key + '}', value.ToString());
+		}
+
+		public static string Replace(string format, JsonData arguments)
+		{
+			foreach (var arg in arguments.GetDictEnum())
+				format = Replace(format, arg.Key, arg.Value);
+			return format;
 		}
 	}
 }

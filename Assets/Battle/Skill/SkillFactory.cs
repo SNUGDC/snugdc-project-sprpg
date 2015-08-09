@@ -20,12 +20,22 @@ namespace SPRPG.Battle
 					return new NullSkillActor(data, context, owner);
 				case SkillKey.WarriorAttack:
 				case SkillKey.WarriorStrongAttack:
+				case SkillKey.WizardFireBolt:
+				case SkillKey.WizardFireBall:
 					return new AttackSkillActor(data, context, owner);
 				case SkillKey.WarriorHeal:
 					return new HealSkillActor(data, context, owner);
 				case SkillKey.WarriorEvasion:
 				case SkillKey.ArcherEvasion:
 					return new EvasionSkillActor(data, context, owner);
+
+				case SkillKey.WizardIceBolt:
+				case SkillKey.WizardIceSpear:
+					return new WizardIceBoltSkillActor(data, context, owner);
+				case SkillKey.WizardLighteningBolt:
+				case SkillKey.WizardLightening:
+					return new WizardLighteningBoltSkillActor(data, context, owner);
+
 				case SkillKey.ArcherAttack:
 				case SkillKey.ArcherStrongShot:
 					return new ArcherAttackSkillActor(data, context, owner);

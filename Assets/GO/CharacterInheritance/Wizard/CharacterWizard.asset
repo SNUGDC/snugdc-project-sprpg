@@ -19,10 +19,10 @@ MonoBehaviour:
     _damageModifier: 0
   Passive: 2
   SkillSet:
-    _1: 1
-    _2: 2
-    _3: 3
-    _4: 4
+    _1: 13
+    _2: 16
+    _3: 17
+    _4: 18
   CampEntryIcon: {fileID: 21300000, guid: 554a8af6267c3db4d89b5a2d8f7b9637, type: 3}
   CampAnimatorController: {fileID: 22100000, guid: 2493ef259e5c60041babb775f229f0ce,
     type: 2}

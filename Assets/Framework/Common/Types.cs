@@ -13,12 +13,16 @@ namespace SPRPG
 	public enum Element
 	{
 		Normal = 0,
-		Poison = 1,
+		Fire = 1,
+		Ice = 2,
+		Electric = 3,
+		Poison = 4,
 	}
 
 	public enum StatusConditionType
 	{
-		Poison = 1,
+		Freeze = 1,
+		Poison = 2,
 	}
 	
 	public enum PassiveKey
@@ -39,6 +43,12 @@ namespace SPRPG
 		WarriorEvasion = 7,
 		WarriorHeal = 6,
 		WarriorStrongAttack = 8,
+		WizardFireBolt = 13,
+		WizardIceBolt = 14,
+		WizardLighteningBolt = 15,
+		WizardFireBall = 16,
+		WizardIceSpear = 17,
+		WizardLightening = 18,
 		ArcherAttack = 9,
 		ArcherEvasion = 10,
 		ArcherStrongShot = 11,
