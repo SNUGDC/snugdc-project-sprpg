@@ -34,7 +34,8 @@ namespace SPRPG.Battle
 
 		protected override void Stun()
 		{
-			// todo: boss ai와 passive를 원래대로 되돌린다.
+			_passiveManager.ResetByStun();
+			_ai.TryCancel();
 		}
 	}
 

@@ -1,6 +1,6 @@
 ﻿namespace SPRPG.Battle 
 {
-	public class BossPassive
+	public abstract class BossPassive
 	{
 		public Tick TotalElapsed { get; private set; }
 
@@ -46,11 +46,15 @@
 
 		protected virtual void ToggleOn() { }
 		protected virtual void ToggleOff() { }
+
+		public abstract void ResetByStun();
 	}
 
-	public class BossNonePassive : BossPassive
+	public sealed class BossNonePassive : BossPassive
 	{
 		public BossNonePassive(Battle context, Boss owner) : base(new BossPassiveBalanceData { Key = BossPassiveLocalKey.None, }, context, owner)
 		{ }
+
+		public override void ResetByStun() { }
 	}
 }

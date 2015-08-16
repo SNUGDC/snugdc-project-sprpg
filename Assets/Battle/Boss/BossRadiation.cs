@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
-	public class BossRadioactiveAreaPassive : BossPassive
+	public sealed class BossRadioactiveAreaPassive : BossPassive
 	{
 		public const Tick Cooltime = Const.Term;
 		private readonly Cooltimer _cooltimer = new Cooltimer(Cooltime);
@@ -19,9 +19,14 @@ namespace SPRPG.Battle
 			if (!_cooltimer.Tick()) return;
 			Context.Party.HitParty(_arguments);
 		}
+
+		public override void ResetByStun()
+		{
+			_cooltimer.Reset();
+		}
 	}
 
-	public class BossRadiationStep1MeltDownPassive : BossPassive 
+	public sealed class BossRadiationStep1MeltDownPassive : BossPassive 
 	{
 		private const Tick HealCooltime = Const.Term;
 
@@ -57,6 +62,11 @@ namespace SPRPG.Battle
 		{
 			base.ToggleOff();
 			Owner.Stats.RemoveDamageModifier(_damageModifier);
+		}
+
+		public override void ResetByStun()
+		{
+			_cooltimer.Reset();
 		}
 	}
 

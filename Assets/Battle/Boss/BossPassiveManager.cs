@@ -18,5 +18,11 @@ namespace SPRPG.Battle
 			foreach (var kv in _passives)
 				kv.Value.Tick();
 		}
+
+		public void ResetByStun()
+		{
+			foreach (var kv in _passives)
+				kv.Value.ResetByStun();
+		}
 	}
 }

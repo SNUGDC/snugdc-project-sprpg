@@ -72,6 +72,12 @@ namespace SPRPG.Battle
 			return true;
 		}
 
+		public void TryCancel()
+		{
+			if (!IsPerforming) return;
+			Current.Cancel();
+		}
+
 		private void OnStop(BossSkillActor skill)
 		{
 			Debug.Assert(Current == skill);
