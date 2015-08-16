@@ -5,7 +5,7 @@ namespace SPRPG.Battle
 {
 	public enum PawnInvincibleKey { }
 
-	public class Pawn
+	public abstract class Pawn
 	{
 		public bool IsAlive { get { return Hp > 0; } }
 		public bool IsDead { get { return !IsAlive; } }
@@ -118,9 +118,18 @@ namespace SPRPG.Battle
 		}
 
 		protected virtual void AfterHpChanged(Hp old) {}
+		public bool TestAndGrant(StunTest stunTest)
+		{
+			if (!stunTest.Percentage.Test())
+				return false;
+			Stun();
+			return true;
+		}
+
+		protected abstract void Stun();
 	}
 
-	public class Pawn<T> : Pawn where T : Pawn<T>
+	public abstract class Pawn<T> : Pawn where T : Pawn<T>
 	{
 		public Action<T, Hp, Hp> OnHpChanged;
 		public Action<T> OnDead;

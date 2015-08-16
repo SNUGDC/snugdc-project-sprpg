@@ -31,6 +31,11 @@ namespace SPRPG.Battle
 			base.AfterHpChanged(old);
 			Events.Boss.OnHpChanged.CheckAndCall(this, Hp);
 		}
+
+		protected override void Stun()
+		{
+			// todo: boss ai와 passive를 원래대로 되돌린다.
+		}
 	}
 
 	public static class BossHelper

@@ -22,14 +22,13 @@ namespace SPRPG.Battle
 	{
 		public Damage Damage;
 		public Damage DamageMember;
-		// todo: stun test
-		// public StunTest StunTest;
+		public StunTest StunTest;
 
 		public string Describe(string format)
 		{
 			format = SkillDescriptorHelper.Replace(format, "Damage", Damage.Value);
 			format = SkillDescriptorHelper.Replace(format, "DamageMember", DamageMember.Value);
-			// format = SkillDescriptorHelper.Replace(format, "StunPercentage", StatusConditionTest.Percentage);
+			format = SkillDescriptorHelper.Replace(format, "StunPercentage", StunTest.Percentage);
 			return format;
 		}
 	}
@@ -47,6 +46,7 @@ namespace SPRPG.Battle
 		protected override void Perform()
 		{
 			Owner.Attack(Context.Boss, _argument.Damage);
+			Context.Boss.TestAndGrant(_argument.StunTest);
 			var aliveMember = Context.Party.TryGetRandomAliveMember();
 			if (aliveMember != null) Owner.Attack(aliveMember, _argument.DamageMember);
 		}

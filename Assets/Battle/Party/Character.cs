@@ -61,5 +61,10 @@ namespace SPRPG.Battle
 			if (ret != null) OnSkillStart.CheckAndCall(this, idx, ret);
 			return ret;
 		}
+
+		protected override void Stun()
+		{
+			// todo: implement stun.
+		}
 	}
 }

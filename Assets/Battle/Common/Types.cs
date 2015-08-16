@@ -22,6 +22,11 @@ namespace SPRPG.Battle
 		public Percentage Percentage;
 	}
 
+	public struct StunTest
+	{
+		public Percentage Percentage;
+	}
+
 	public static partial class BattleHelper
 	{
 		public static IEnumerable<OriginalPartyIdx> GetOriginalPartyIdxEnumerable()
