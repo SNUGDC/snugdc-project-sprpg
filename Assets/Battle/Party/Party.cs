@@ -29,6 +29,8 @@ namespace SPRPG.Battle
 
 		private readonly Character[] _members = new Character[SPRPG.Party.Size];
 
+		public Action<OriginalPartyIdx, Character> StunCallback;
+
 		public ShiftedPartyIdx OriginalToShiftedIdx(OriginalPartyIdx value)
 		{
 			return (ShiftedPartyIdx) ((int)(value + ShiftCount) % SPRPG.Party.Size);
@@ -62,6 +64,7 @@ namespace SPRPG.Battle
 			var characterEvents = Events.GetCharacter(idx);
 			member.OnHpChanged += (member2, cur, old) => characterEvents.OnHpChanged.CheckAndCall(idx, member2, old);
 			member.OnDead += (member2) => characterEvents.OnDead.CheckAndCall(idx, member2);
+			member.OnStun += (member2) => OnStun(idx, member2);
 		}
 
 		public void Shift() { ++ShiftCount; }
@@ -109,6 +112,11 @@ namespace SPRPG.Battle
 		{
 			foreach (var member in this)
 				member.AfterTurn();
+		}
+
+		private void OnStun(OriginalPartyIdx idx, Character character)
+		{
+			StunCallback.CheckAndCall(idx, character);
 		}
 
 		public IEnumerator<Character> GetEnumerator()

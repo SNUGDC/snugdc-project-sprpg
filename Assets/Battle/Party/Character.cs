@@ -15,6 +15,7 @@ namespace SPRPG.Battle
 		private Tick _evadeDurationLeft;
 
 		public Action<Character, SkillSlot, SkillActor> OnSkillStart;
+		public Action<Character> OnStun;
 
 		public Character(CharacterData data, Battle context)
 			: base(data.Stats)
@@ -64,7 +65,7 @@ namespace SPRPG.Battle
 
 		protected override void Stun()
 		{
-			// todo: implement stun.
+			OnStun.CheckAndCall(this);
 		}
 	}
 }

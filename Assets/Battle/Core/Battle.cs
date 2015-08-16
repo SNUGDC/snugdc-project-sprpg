@@ -67,6 +67,8 @@ namespace SPRPG.Battle
 			_boss = BossFactory.Create(this, def.Stage.ToBossId());
 
 			Clock.OnProceed += OnTick;
+
+			BindCallbacks();
 		}
 
 		~Battle()
@@ -87,6 +89,11 @@ namespace SPRPG.Battle
 		{
 			if (Fsm.IsIdle)
 				Fsm.Cycle();
+		}
+
+		private void BindCallbacks()
+		{
+			_party.StunCallback += (idx, character) => { PlayerClock.Rebase(); };
 		}
 	}
 }
