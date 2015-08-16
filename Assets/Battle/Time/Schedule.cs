@@ -76,18 +76,20 @@ namespace SPRPG.Battle
 			return tick;
 		}
 
-		public bool Remove(JobId jobId)
+		public bool TryRemove(JobId jobId)
 		{
 			var tick = FindTick(jobId);
-			if (!tick.HasValue)
-			{
-				Debug.LogError("job " + jobId + " not found.");
-				return false;
-			}
-			
+			if (!tick.HasValue) return false;
 			var result = _jobs[tick.Value].RemoveIf(job => job.Id == jobId);
 			Debug.Assert(result);
 			return true;
+		}
+
+		public bool Remove(JobId jobId)
+		{
+			var ret = TryRemove(jobId);
+			if (!ret) Debug.LogError("job " + jobId + " not found.");
+			return ret;
 		}
 
 		public void Sync()

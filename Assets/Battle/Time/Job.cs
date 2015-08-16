@@ -18,13 +18,13 @@ namespace SPRPG.Battle
 
 		public void Cancel()
 		{
-			if (MustBeDone)
+			if (!MustBeDone)
 			{
-				Debug.LogError("already canceled");
+				Debug.LogWarning("already canceled");
 				return;
 			}
 
-			_schedule.Remove(_jobId);
+			_schedule.TryRemove(_jobId);
 			SetAsDone();
 		}
 
