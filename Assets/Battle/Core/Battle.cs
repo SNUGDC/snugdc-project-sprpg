@@ -42,8 +42,6 @@ namespace SPRPG.Battle
 
 		private readonly Boss _boss;
 		public Boss Boss { get { return _boss; } }
-		private readonly BossAi _bossAi;
-		public BossAi BossAi { get { return _bossAi; } }
 
 		public Battle(BattleDef def)
 		{
@@ -67,7 +65,6 @@ namespace SPRPG.Battle
 
 			_party = new Party(def.PartyDef, this);
 			_boss = BossFactory.Create(this, def.Stage.ToBossId());
-			_bossAi = BossFactory.CreateAi(_boss);
 
 			Clock.OnProceed += OnTick;
 		}

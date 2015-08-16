@@ -110,7 +110,6 @@ namespace SPRPG.Battle
 	{
 		private Battle Battle { get { return Target.Battle; } }
 		private Boss Boss { get { return Battle.Boss; } }
-		private BossAi BossAi { get { return Battle.BossAi; } }
 
 		public override void OnInspectorGUI()
 		{
@@ -129,13 +128,13 @@ namespace SPRPG.Battle
 
 		private void RenderCurrentSkill()
 		{
-			if (BossAi.Current == null)
+			if (Boss.Ai.Current == null)
 			{
 				GUILayout.Label("current: no skill");
 				return;
 			}
 
-			GUILayout.Label("current: " + BossAi.Current.LocalKey);
+			GUILayout.Label("current: " + Boss.Ai.Current.LocalKey);
 		}
 
 		private void RenderAllSkills()

@@ -8,6 +8,8 @@ namespace SPRPG.Battle
 		private readonly Battle _context;
 		public readonly BossBalanceData Data;
 		private readonly BossPassiveManager _passiveManager;
+		private readonly BossAi _ai;
+		public BossAi Ai { get { return _ai; } }
 
 		public Boss(Battle context, BossBalanceData data)
 			: base(data.Stats)
@@ -15,6 +17,7 @@ namespace SPRPG.Battle
 			_context = context;
 			Data = data;
 			_passiveManager = new BossPassiveManager(context, this);
+			_ai = BossFactory.CreateAi(this);
 		}
 
 		public void TickPassive()
