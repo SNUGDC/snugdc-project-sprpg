@@ -71,6 +71,8 @@ namespace SPRPG.Battle
 			AfterHpChanged(oldHp);
 		}
 
+		protected virtual void AfterHpChanged(Hp old) {}
+
 		public void Attack(Pawn target, Damage damage)
 		{
 			var damageModified = ApplyModifier(damage);
@@ -117,7 +119,6 @@ namespace SPRPG.Battle
 			return true;
 		}
 
-		protected virtual void AfterHpChanged(Hp old) {}
 		public bool TestAndGrant(StunTest stunTest)
 		{
 			if (!stunTest.Percentage.Test())
