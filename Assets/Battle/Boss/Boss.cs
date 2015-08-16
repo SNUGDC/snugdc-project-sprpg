@@ -35,7 +35,7 @@ namespace SPRPG.Battle
 		protected override void Stun()
 		{
 			_passiveManager.ResetByStun();
-			_ai.TryCancel();
+			_ai.ResetByStun();
 		}
 	}
 

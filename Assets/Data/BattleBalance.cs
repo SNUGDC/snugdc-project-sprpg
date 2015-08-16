@@ -18,6 +18,11 @@ namespace SPRPG.Battle
 		public Hp Damage;
 	}
 
+	public struct BattleBossBalanceData
+	{
+		public Tick DelayBeforeSkill;
+	}
+
 	public class BattleBalanceData
 	{
 		public Tick TickPerSecond;
@@ -28,6 +33,8 @@ namespace SPRPG.Battle
 		private Dictionary<string, JsonData> _statusConditions;
 		[JsonIgnore]
 		public readonly Dictionary<StatusConditionType, StatusConditionBalanceData> StatusConditions = new Dictionary<StatusConditionType, StatusConditionBalanceData>();
+
+		public BattleBossBalanceData Boss;
 
 		public float PartyPlaceLerp;
 		public List<Vector3> PartyPositions;

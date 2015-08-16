@@ -2,7 +2,6 @@
 	"TickPerSecond": 30,
 	"InputValidBefore": 3,
 	"InputValidAfter": 3,
-	
 	"_statusConditions": {
 		"Poison": {
 			"DefaultDuration": 60,
@@ -10,7 +9,9 @@
 			"Damage": 30
 		}
 	},
-	
+	"Boss": {
+		"DelayBeforeSkill": 10
+	},
 	"PartyPlaceLerp": 0.2,
 	"PartyPositions": [
 		{ "x": 4, "y": 0.6, "z": 0 },

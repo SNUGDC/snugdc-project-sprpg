@@ -6,7 +6,11 @@ namespace SPRPG.Battle
 	public class BossAi
 	{
 		public bool IsRunning { get { return Running != null; } }
-		public BossSkillActor Running;
+		public BossSkillActor Running { get; private set; }
+		public bool IsBeforeDelaying { get { return _beforeDelayingLeft > 0; } }
+		private Tick _beforeDelayingLeft;
+		public bool CanPerform { get { return !IsBeforeDelaying && !IsRunning; } }
+
 		private readonly Boss _boss;
 		private readonly BossSkillFactory _skillFactory;
 
@@ -14,6 +18,12 @@ namespace SPRPG.Battle
 		{
 			_boss = boss;
 			_skillFactory = BossWholeSkillFactory.Map(boss);
+		}
+
+		public void Tick()
+		{
+			if (IsBeforeDelaying)
+				--_beforeDelayingLeft;
 		}
 
 		private BossSkillBalanceData Sample(Battle context)
@@ -51,6 +61,12 @@ namespace SPRPG.Battle
 		{
 			Debug.Assert(!IsRunning);
 
+			if (IsBeforeDelaying)
+			{
+				Debug.LogError("now before delaying.");
+				return false;
+			}
+
 			if (_boss.IsDead)
 				return false;
 
@@ -77,10 +93,22 @@ namespace SPRPG.Battle
 			Running.Cancel();
 		}
 
+		private void ResetDelayTimers()
+		{
+			_beforeDelayingLeft = BattleBalance._.Data.Boss.DelayBeforeSkill;
+		}
+
+		public void ResetByStun()
+		{
+			TryCancel();
+			ResetDelayTimers();
+		}
+
 		private void OnStop(BossSkillActor skill)
 		{
 			Debug.Assert(Running == skill);
 			Running = null;
+			ResetDelayTimers();
 		}
 	}
 }
