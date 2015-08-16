@@ -11,6 +11,7 @@ namespace SPRPG.Battle
 		public static void RenderPawn(Pawn pawn)
 		{
 			RenderHp(pawn);
+			RenderStun(pawn);
 			RenderStatusCondition(pawn);
 			RenderFlags(pawn);
 		}
@@ -46,6 +47,12 @@ namespace SPRPG.Battle
 			var style = new GUIStyle { normal = { textColor = color } };
 			GUILayout.Label("O", style);
 			GUILayout.EndHorizontal();
+		}
+
+		private static void RenderStun(Pawn pawn)
+		{
+			if (GUILayout.Button("stun"))
+				pawn.TestAndGrant(new StunTest(Percentage._100));
 		}
 
 		private static void RenderFlags(Pawn pawn)

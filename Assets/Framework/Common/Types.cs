@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace SPRPG
 {
 	public enum Weight { }
-	public enum Percentage { }
+	public enum Percentage { _0 = 0, _100 = 100 }
 
 	public enum Tick { }
 	public enum Term { _1, _2, _3, _4 }

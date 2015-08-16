@@ -25,6 +25,11 @@ namespace SPRPG.Battle
 	public struct StunTest
 	{
 		public Percentage Percentage;
+
+		public StunTest(Percentage percentage)
+		{
+			Percentage = percentage;
+		}
 	}
 
 	public static partial class BattleHelper
