@@ -116,7 +116,7 @@ namespace SPRPG.Battle
 
 		public override void Enter()
 		{
-			if (!Context.Boss.Ai.IsPerforming)
+			if (!Context.Boss.Ai.IsRunning)
 				Context.Boss.Ai.TryPerform(Context);
 			base.Enter();
 		}

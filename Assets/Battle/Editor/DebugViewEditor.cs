@@ -128,13 +128,13 @@ namespace SPRPG.Battle
 
 		private void RenderCurrentSkill()
 		{
-			if (Boss.Ai.Current == null)
+			if (Boss.Ai.Running == null)
 			{
 				GUILayout.Label("current: no skill");
 				return;
 			}
 
-			GUILayout.Label("current: " + Boss.Ai.Current.LocalKey);
+			GUILayout.Label("current: " + Boss.Ai.Running.LocalKey);
 		}
 
 		private void RenderAllSkills()

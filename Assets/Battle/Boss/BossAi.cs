@@ -5,11 +5,10 @@ namespace SPRPG.Battle
 {
 	public class BossAi
 	{
-		public bool IsPerforming { get { return Current != null; } }
-
+		public bool IsRunning { get { return Running != null; } }
+		public BossSkillActor Running;
 		private readonly Boss _boss;
 		private readonly BossSkillFactory _skillFactory;
-		public BossSkillActor Current;
 
 		public BossAi(Boss boss)
 		{
@@ -50,7 +49,7 @@ namespace SPRPG.Battle
 
 		public bool TryPerform(Battle context)
 		{
-			Debug.Assert(!IsPerforming);
+			Debug.Assert(!IsRunning);
 
 			if (_boss.IsDead)
 				return false;
@@ -65,23 +64,23 @@ namespace SPRPG.Battle
 			if (data == null)
 				return false;
 
-			Current = _skillFactory.Create(data, context, _boss);
-			Current.OnStop += OnStop;
-			Current.Start();
-			Events.Boss.OnSkillStart.CheckAndCall(_boss, Current);
+			Running = _skillFactory.Create(data, context, _boss);
+			Running.OnStop += OnStop;
+			Running.Start();
+			Events.Boss.OnSkillStart.CheckAndCall(_boss, Running);
 			return true;
 		}
 
 		public void TryCancel()
 		{
-			if (!IsPerforming) return;
-			Current.Cancel();
+			if (!IsRunning) return;
+			Running.Cancel();
 		}
 
 		private void OnStop(BossSkillActor skill)
 		{
-			Debug.Assert(Current == skill);
-			Current = null;
+			Debug.Assert(Running == skill);
+			Running = null;
 		}
 	}
 }
