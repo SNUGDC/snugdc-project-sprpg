@@ -5,12 +5,18 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
-	public interface StatusConditionBalanceData
+	public interface IStatusConditionBalanceData
 	{
 		Tick DefaultDuration { get; set; }
 	}
 
-	public class StatusConditionPoisonBalanceData : StatusConditionBalanceData
+	public class StatusConditionBalanceData : IStatusConditionBalanceData
+	{
+		[JsonInclude]
+		public Tick DefaultDuration { get; set; }
+	}
+
+	public class StatusConditionPoisonBalanceData : IStatusConditionBalanceData
 	{
 		[JsonInclude]
 		public Tick DefaultDuration { get; set; }
@@ -32,7 +38,7 @@ namespace SPRPG.Battle
 		[JsonInclude]
 		private Dictionary<string, JsonData> _statusConditions;
 		[JsonIgnore]
-		public readonly Dictionary<StatusConditionType, StatusConditionBalanceData> StatusConditions = new Dictionary<StatusConditionType, StatusConditionBalanceData>();
+		public readonly Dictionary<StatusConditionType, IStatusConditionBalanceData> StatusConditions = new Dictionary<StatusConditionType, IStatusConditionBalanceData>();
 
 		public BattleBossBalanceData Boss;
 
@@ -71,10 +77,11 @@ namespace SPRPG.Battle
 
 	public static class BattleBalanceHelper
 	{
-		public static StatusConditionBalanceData CreateStatusCondition(StatusConditionType type, JsonData value)
+		public static IStatusConditionBalanceData CreateStatusCondition(StatusConditionType type, JsonData value)
 		{
 			switch (type)
 			{
+				case StatusConditionType.Freeze: return value.ToObject<StatusConditionBalanceData>();
 				case StatusConditionType.Poison: return value.ToObject<StatusConditionPoisonBalanceData>();
 				default: Debug.LogError(LogMessages.EnumNotHandled(type)); return null;
 			}
