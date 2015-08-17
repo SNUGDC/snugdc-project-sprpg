@@ -14,6 +14,8 @@
 		"DefaultSkillDuration": 7
 	},
 	"Boss": {
+		"DefaultSkillDelay": 3,
+		"DefaultSkillDuration": 7,
 		"DelayBeforeSkill": 10
 	},
 	"PartyPlaceLerp": 0.2,

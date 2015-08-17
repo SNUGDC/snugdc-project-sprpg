@@ -1,4 +1,5 @@
-﻿using Gem;
+﻿using System;
+using Gem;
 
 namespace SPRPG.Battle
 {
@@ -7,6 +8,10 @@ namespace SPRPG.Battle
 		public BossId Id { get { return Data.Id; } }
 		private readonly Battle _context;
 		public readonly BossBalanceData Data;
+		
+		private readonly Clock _clock = new Clock();
+		private readonly Schedule _skillSchedule;
+		
 		private readonly BossPassiveManager _passiveManager;
 		private readonly BossAi _ai;
 		public BossAi Ai { get { return _ai; } }
@@ -16,22 +21,34 @@ namespace SPRPG.Battle
 		{
 			_context = context;
 			Data = data;
+			_skillSchedule = new Schedule(_clock);
 			_passiveManager = new BossPassiveManager(context, this);
 			_ai = BossFactory.CreateAi(this);
 		}
 
+		public void TickBeforeTurn()
+		{
+			if (IsFreezed) return;
+			_clock.Proceed();
+		}
+
 		public void TickPassive()
 		{
-			if (HasStatusCondition(StatusConditionType.Freeze)) return;
 			if (IsDead) return;
+			if (IsFreezed) return;
 			_passiveManager.Tick();
 		}
 
 		public void TickSkill()
 		{
-			if (HasStatusCondition(StatusConditionType.Freeze)) return;
+			if (IsFreezed) return;
 			if (Ai.CanPerform) Ai.TryPerform(_context);
 			Ai.Tick();
+		}
+
+		public Job ScheduleSkill(Tick delay, Action callback)
+		{
+			return new Job(_skillSchedule, delay, callback);
 		}
 
 		protected override void AfterHpChanged(Hp old)

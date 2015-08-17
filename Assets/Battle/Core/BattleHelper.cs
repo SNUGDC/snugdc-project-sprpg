@@ -9,11 +9,6 @@ namespace SPRPG.Battle
 			return new Job(thiz.Fsm.PlayerSkill.Schedule, delay, callback);
 		}
 
-		public static Job AddBossSkill(this Battle thiz, Tick delay, Action callback)
-		{
-			return new Job(thiz.Fsm.BossSkill.Schedule, delay, callback);
-		}
-
 		public static Job AddBeforeTurn(this Battle thiz, Tick delay, Action callback)
 		{
 			return new Job(thiz.Fsm.BeforeTurn.Schedule, delay, callback);

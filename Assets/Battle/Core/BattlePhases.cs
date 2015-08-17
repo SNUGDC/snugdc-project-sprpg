@@ -11,6 +11,7 @@ namespace SPRPG.Battle
 		public override void Enter()
 		{
 			Context.Party.BeforeTurn();
+			Context.Boss.TickBeforeTurn();
 			base.Enter();
 		}
 	}

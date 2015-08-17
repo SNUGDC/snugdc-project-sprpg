@@ -43,8 +43,8 @@ namespace SPRPG.Battle
 
 		protected override void DoStart()
 		{
-			_performJob = Context.AddBossSkill(_performTick, Perform);
-			_stopJob = Context.AddBossSkill(Data.Duration, Stop);
+			_performJob = Owner.ScheduleSkill(_performTick, Perform);
+			_stopJob = Owner.ScheduleSkill(Data.Duration, Stop);
 		}
 
 		protected abstract void Perform();
