@@ -105,7 +105,7 @@ namespace SPRPG.Battle
 		public void BeforeTurn()
 		{
 			foreach (var member in this)
-				member.BeforeTurn();
+				member.TickBeforeTurn();
 		}
 
 		public void AfterTurn()

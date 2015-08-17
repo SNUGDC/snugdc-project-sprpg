@@ -26,7 +26,7 @@ namespace SPRPG.Battle
 			SkillManager = new SkillManager(data.SkillSet, context, this);
 		}
 
-		public void BeforeTurn()
+		public void TickBeforeTurn()
 		{
 			if (CheckEvadeDuration())
 				_evadeDurationLeft -= 1;
