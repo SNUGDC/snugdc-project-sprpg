@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
@@ -26,7 +28,9 @@ namespace SPRPG.Battle
 
 		public Percentage HpPercentage { get { return (Percentage)((int)Hp/(float) (int) HpMax*100); } }
 
-		public StatusCondition StatusCondition { get; private set; }
+		public readonly Dictionary<StatusConditionType, StatusCondition> StatusConditions = new Dictionary<StatusConditionType, StatusCondition>();
+		public bool HasSomeStatusCondition { get { return StatusConditions.Empty(); } }
+		
 		private readonly SetBool<PawnInvincibleKey> _invincible = new SetBool<PawnInvincibleKey>();
 		public bool IsInvincible { get { return _invincible; } }
 
@@ -38,15 +42,22 @@ namespace SPRPG.Battle
 
 		public virtual void AfterTurn()
 		{
-			if (StatusCondition != null)
-				TickStatusCondition();
+			TickStatusCondition();
 		}
 
 		public void TickStatusCondition()
 		{
-			StatusCondition.Tick();
-			if (!StatusCondition.IsActive)
-				StatusCondition = null;
+			var markForRemove = new List<StatusConditionType>(StatusConditions.Count);
+			foreach (var kv in StatusConditions)
+			{
+				var statusCondition = kv.Value;
+				statusCondition.Tick();
+				if (!statusCondition.IsActive)
+					markForRemove.Add(statusCondition.Type);
+			}
+
+			foreach (var typeToRemove in markForRemove)
+				StatusConditions.Remove(typeToRemove);
 		}
 
 		public Damage ApplyModifier(Damage damage)
@@ -106,16 +117,15 @@ namespace SPRPG.Battle
 			if (!percentage.Test())
 				return false;
 
-			if (StatusCondition != null)
+			StatusCondition statusCondition;
+			if (StatusConditions.TryGetValue(type, out statusCondition))
 			{
-				if (StatusCondition.Type == type)
-				{
-					StatusCondition.Reserve(duration);
-					return true;
-				}
+				statusCondition.Reserve(duration);
+				return true;
 			}
 
-			StatusCondition = StatusConditionFactory.Create(this, type, duration);
+			statusCondition = StatusConditionFactory.Create(this, type, duration);
+			StatusConditions.Add(type, statusCondition);
 			return true;
 		}
 

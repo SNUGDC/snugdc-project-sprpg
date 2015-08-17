@@ -12,7 +12,7 @@ namespace SPRPG.Battle
 		{
 			RenderHp(pawn);
 			RenderStun(pawn);
-			RenderStatusCondition(pawn);
+			RenderAllStatusCondition(pawn);
 			RenderFlags(pawn);
 		}
 
@@ -25,18 +25,25 @@ namespace SPRPG.Battle
 			GUILayout.EndHorizontal();
 		}
 
-		private static void RenderStatusCondition(Pawn pawn)
+		private static void RenderAllStatusCondition(Pawn pawn)
 		{
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("sc: ");
-			if (pawn.StatusCondition == null)
+			if (!pawn.HasSomeStatusCondition)
 			{
 				GUILayout.Label("none");
 				GUILayout.EndHorizontal();
 				return;
 			}
 
-			StatusConditionType type = pawn.StatusCondition;
+			foreach (var kv in pawn.StatusConditions)
+				RenderStatusCondition(kv.Value);
+
+			GUILayout.EndHorizontal();
+		}
+
+		private static void RenderStatusCondition(StatusConditionType type)
+		{
 			var color = Color.gray;
 			switch (type)
 			{
@@ -46,7 +53,6 @@ namespace SPRPG.Battle
 			
 			var style = new GUIStyle { normal = { textColor = color } };
 			GUILayout.Label("O", style);
-			GUILayout.EndHorizontal();
 		}
 
 		private static void RenderStun(Pawn pawn)
