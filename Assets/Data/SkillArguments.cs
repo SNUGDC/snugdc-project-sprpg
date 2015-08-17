@@ -46,7 +46,7 @@ namespace SPRPG
 		public string Describe(string format)
 		{
 			format = SkillDescriptorHelper.Replace(format, "Damage", Damage.Value);
-			format = SkillDescriptorHelper.Replace(format, "Percentage", StatusConditionTest.Percentage);
+			format = SkillDescriptorHelper.Replace(format, "StatusConditionPercentage", StatusConditionTest.Percentage);
 			return format;
 		}
 	}
