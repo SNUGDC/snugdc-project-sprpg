@@ -22,8 +22,16 @@ namespace SPRPG.Battle
 
 		public void TickPassive()
 		{
+			if (HasStatusCondition(StatusConditionType.Freeze)) return;
 			if (IsDead) return;
 			_passiveManager.Tick();
+		}
+
+		public void TickSkill()
+		{
+			if (HasStatusCondition(StatusConditionType.Freeze)) return;
+			if (Ai.CanPerform) Ai.TryPerform(_context);
+			Ai.Tick();
 		}
 
 		protected override void AfterHpChanged(Hp old)

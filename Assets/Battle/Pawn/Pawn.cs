@@ -30,6 +30,7 @@ namespace SPRPG.Battle
 
 		public readonly Dictionary<StatusConditionType, StatusCondition> StatusConditions = new Dictionary<StatusConditionType, StatusCondition>();
 		public bool HasSomeStatusCondition { get { return StatusConditions.Empty(); } }
+		public bool HasStatusCondition(StatusConditionType type) { return StatusConditions.ContainsKey(type); }
 		
 		private readonly SetBool<PawnInvincibleKey> _invincible = new SetBool<PawnInvincibleKey>();
 		public bool IsInvincible { get { return _invincible; } }
