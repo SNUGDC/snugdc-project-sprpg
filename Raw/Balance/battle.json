@@ -3,6 +3,9 @@
 	"InputValidBefore": 3,
 	"InputValidAfter": 3,
 	"_statusConditions": {
+		"Freeze": {
+			"DefaultDuration": 240
+		},
 		"Poison": {
 			"DefaultDuration": 60,
 			"Cooltime": 30,
