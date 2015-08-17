@@ -30,7 +30,7 @@ namespace SPRPG.Battle
 		private Job _stopJob;
 
 		protected SingleDelayedPerformSkillActor(SkillBalanceData data, Battle context, Character owner)
-			: this(data, context, owner, Const.DefaultSkillDuration, Const.DefaultSkillDelay)
+			: this(data, context, owner, BattleBalance._.Data.Character.DefaultSkillDuration, BattleBalance._.Data.Character.DefaultSkillDelay)
 		{ }
 
 		protected SingleDelayedPerformSkillActor(SkillBalanceData data, Battle context, Character owner, Tick duration, Tick performTick) : base(data, context, owner)
@@ -60,7 +60,7 @@ namespace SPRPG.Battle
 		public readonly AttackSkillArguments Arguments;
 
 		public AttackSkillActor(SkillBalanceData data, Battle context, Character owner)
-			: base(data, context, owner, (Tick)3, (Tick)5)
+			: base(data, context, owner)
 		{
 			Arguments = new AttackSkillArguments(data.Arguments);
 		}
@@ -76,7 +76,7 @@ namespace SPRPG.Battle
 		public readonly HealSkillArguments Arguments;
 
 		public HealSkillActor(SkillBalanceData data, Battle context, Character owner)
-			: base(data, context, owner, (Tick)3, (Tick)7)
+			: base(data, context, owner)
 		{
 			Arguments = new HealSkillArguments(data.Arguments);
 		}

@@ -9,6 +9,10 @@
 			"Damage": 30
 		}
 	},
+	"Character": {
+		"DefaultSkillDelay": 3,
+		"DefaultSkillDuration": 7
+	},
 	"Boss": {
 		"DelayBeforeSkill": 10
 	},
