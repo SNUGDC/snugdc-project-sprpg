@@ -106,28 +106,23 @@ namespace SPRPG.Battle
 		public bool TestAndGrant(StatusConditionTest test)
 		{
 			var statusConditionData = BattleBalance._.Data.StatusConditions[test.Type];
-			return TestAndGrant(test.Type, test.Percentage, statusConditionData.DefaultDuration);
+			return TestAndGrant(test, statusConditionData.DefaultDuration);
 		}
 
 		public bool TestAndGrant(StatusConditionTest test, Tick duration)
 		{
-			return TestAndGrant(test.Type, test.Percentage, duration);
-		}
-
-		public bool TestAndGrant(StatusConditionType type, Percentage percentage, Tick duration)
-		{
-			if (!percentage.Test())
+			if (!test.Percentage.Test())
 				return false;
 
 			StatusCondition statusCondition;
-			if (StatusConditions.TryGetValue(type, out statusCondition))
+			if (StatusConditions.TryGetValue(test.Type, out statusCondition))
 			{
 				statusCondition.Reserve(duration);
 				return true;
 			}
 
-			statusCondition = StatusConditionFactory.Create(this, type, duration);
-			StatusConditions.Add(type, statusCondition);
+			statusCondition = StatusConditionFactory.Create(this, test.Type, duration);
+			StatusConditions.Add(test.Type, statusCondition);
 			return true;
 		}
 
