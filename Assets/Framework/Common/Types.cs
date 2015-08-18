@@ -25,7 +25,13 @@ namespace SPRPG
 		Poison = 2,
 		Blind = 3,
 	}
-	
+
+	public enum StatusConditionGroup
+	{
+		Character = 1,
+		Boss = 2,
+	}
+
 	public enum PassiveKey
 	{
 		None = 0,

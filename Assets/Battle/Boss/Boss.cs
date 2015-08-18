@@ -16,6 +16,8 @@ namespace SPRPG.Battle
 		private readonly BossAi _ai;
 		public BossAi Ai { get { return _ai; } }
 
+		public override StatusConditionGroup StatusConditionGroup { get { return StatusConditionGroup.Boss; } }
+
 		public Action<Boss> OnMissed;
 
 		public Boss(Battle context, BossBalanceData data)
@@ -67,7 +69,7 @@ namespace SPRPG.Battle
 
 		public bool TestHitIfBlindAndInvokeEventIfMissed()
 		{
-			var accuracy = BattleBalance._.Data.GetStatusConditionBlind().Accuracy;
+			var accuracy = BattleBalance._.Data.Boss.StatusConditions.GetBlind().Accuracy;
 			var hitSuccess = !IsBlind || accuracy.Test();
 			if (!hitSuccess) OnMissed.CheckAndCall(this);
 			return hitSuccess;

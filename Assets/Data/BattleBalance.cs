@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Gem;
 using LitJson;
 using UnityEngine;
@@ -24,22 +25,76 @@ namespace SPRPG.Battle
 		public Hp Damage;
 	}
 
-	public class StatusConditionBlindBalanceData : IStatusConditionBalanceData
+	public class StatusConditionBossBlindBalanceData : IStatusConditionBalanceData
 	{
 		[JsonInclude]
 		public Tick DefaultDuration { get; set; }
 		public Percentage Accuracy;
 	}
 
-	public struct BattleCharacterBalanceData
+	public class StatusConditionBalanceDatas
+	{
+		private readonly Dictionary<StatusConditionType, IStatusConditionBalanceData> _dict =
+			new Dictionary<StatusConditionType, IStatusConditionBalanceData>();
+
+		public IStatusConditionBalanceData this[StatusConditionType type] { get { return _dict[type]; } }
+
+		public StatusConditionBalanceDatas(Dictionary<string, JsonData> dict, StatusConditionGroup group)
+		{
+			foreach (var kv in dict)
+			{
+				StatusConditionType type;
+				if (EnumHelper.TryParse(kv.Key, out type))
+					_dict[type] = BattleBalanceHelper.CreateStatusCondition(group, type, kv.Value);
+			}
+		}
+	}
+
+	public class CharacterStatusConditionBalanceDatas : StatusConditionBalanceDatas
+	{
+		public CharacterStatusConditionBalanceDatas(Dictionary<string, JsonData> dict) : base(dict, StatusConditionGroup.Character) { }
+		public StatusConditionPoisonBalanceData GetPoison() { return (StatusConditionPoisonBalanceData)this[StatusConditionType.Poison]; }
+	}
+
+	public class BossStatusConditionBalanceDatas : StatusConditionBalanceDatas
+	{
+		public BossStatusConditionBalanceDatas(Dictionary<string, JsonData> dict) : base(dict, StatusConditionGroup.Boss) { }
+		public StatusConditionBalanceData GetFreeze() { return (StatusConditionBalanceData)this[StatusConditionType.Freeze]; }
+		public StatusConditionPoisonBalanceData GetPoison() { return (StatusConditionPoisonBalanceData)this[StatusConditionType.Poison]; }
+		public StatusConditionBossBlindBalanceData GetBlind() { return (StatusConditionBossBlindBalanceData)this[StatusConditionType.Blind]; }
+	}
+
+	public class BattleCharacterBalanceData
 	{
 		public Tick DefaultSkillDuration;
 		public Tick DefaultSkillDelay;
+
+		[JsonInclude]
+		private Dictionary<string, JsonData> _statusConditions;
+		[JsonIgnore]
+		public CharacterStatusConditionBalanceDatas StatusConditions;
+
+		public void Build()
+		{
+			StatusConditions = new CharacterStatusConditionBalanceDatas(_statusConditions);
+			_statusConditions = null;
+		}
 	}
 
-	public struct BattleBossBalanceData
+	public class BattleBossBalanceData
 	{
 		public Tick DelayBeforeSkill;
+
+		[JsonInclude]
+		private Dictionary<string, JsonData> _statusConditions;
+		[JsonIgnore]
+		public BossStatusConditionBalanceDatas StatusConditions;
+
+		public void Build()
+		{
+			StatusConditions = new BossStatusConditionBalanceDatas(_statusConditions);
+			_statusConditions = null;
+		}
 	}
 
 	public class BattleBalanceData
@@ -47,11 +102,6 @@ namespace SPRPG.Battle
 		public Tick TickPerSecond;
 		public Tick InputValidBefore;
 		public Tick InputValidAfter;
-
-		[JsonInclude]
-		private Dictionary<string, JsonData> _statusConditions;
-		[JsonIgnore]
-		public readonly Dictionary<StatusConditionType, IStatusConditionBalanceData> StatusConditions = new Dictionary<StatusConditionType, IStatusConditionBalanceData>();
 
 		public BattleCharacterBalanceData Character;
 		public BattleBossBalanceData Boss;
@@ -61,18 +111,18 @@ namespace SPRPG.Battle
 
 		public void Build()
 		{
-			BuildStatusConditions();
+			Character.Build();
+			Boss.Build();
 		}
 
-		private void BuildStatusConditions()
+		public IStatusConditionBalanceData GetStatusCondition(StatusConditionGroup group, StatusConditionType type)
 		{
-			foreach (var kv in _statusConditions)
+			switch (group)
 			{
-				StatusConditionType type;
-				if (EnumHelper.TryParse(kv.Key, out type))
-					StatusConditions[type] = BattleBalanceHelper.CreateStatusCondition(type, kv.Value);
+				case StatusConditionGroup.Character: return Character.StatusConditions[type];
+				case StatusConditionGroup.Boss: return Boss.StatusConditions[type];
+				default: Debug.LogError(LogMessages.EnumNotHandled(type)); return null;
 			}
-			_statusConditions = null;
 		}
 	}
 
@@ -91,25 +141,24 @@ namespace SPRPG.Battle
 
 	public static class BattleBalanceHelper
 	{
-		public static IStatusConditionBalanceData CreateStatusCondition(StatusConditionType type, JsonData value)
+		public static IStatusConditionBalanceData CreateStatusCondition(StatusConditionGroup group, StatusConditionType type, JsonData value)
 		{
 			switch (type)
 			{
 				case StatusConditionType.Freeze: return value.ToObject<StatusConditionBalanceData>();
 				case StatusConditionType.Poison: return value.ToObject<StatusConditionPoisonBalanceData>();
-				case StatusConditionType.Blind: return value.ToObject<StatusConditionBlindBalanceData>();
+				case StatusConditionType.Blind: return CreateBossStatusCondition(type, value);
 				default: Debug.LogError(LogMessages.EnumNotHandled(type)); return null;
 			}
 		}
 
-		public static StatusConditionBlindBalanceData GetStatusConditionBlind(this BattleBalanceData thiz)
+		public static IStatusConditionBalanceData CreateBossStatusCondition(StatusConditionType type, JsonData value)
 		{
-			return (StatusConditionBlindBalanceData)thiz.StatusConditions[StatusConditionType.Blind];
-		}
-
-		public static StatusConditionPoisonBalanceData GetStatusConditionPoison(this BattleBalanceData thiz)
-		{
-			return (StatusConditionPoisonBalanceData)thiz.StatusConditions[StatusConditionType.Poison];
+			switch (type)
+			{
+				case StatusConditionType.Blind: return value.ToObject<StatusConditionBossBlindBalanceData>();
+				default: Debug.LogError(LogMessages.EnumNotHandled(type)); return null;
+			}
 		}
 	}
 }

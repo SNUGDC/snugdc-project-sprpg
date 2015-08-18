@@ -14,6 +14,8 @@ namespace SPRPG.Battle
 
 		private Tick _evadeDurationLeft;
 
+		public override StatusConditionGroup StatusConditionGroup { get { return StatusConditionGroup.Character; } }
+
 		public Action<Character, SkillSlot, SkillActor> OnSkillStart;
 		public Action<Character> OnStun;
 

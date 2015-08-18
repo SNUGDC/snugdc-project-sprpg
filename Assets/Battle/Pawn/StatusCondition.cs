@@ -82,9 +82,9 @@ namespace SPRPG.Battle
 	{
 		private readonly StatusConditionPoisonBalanceData _data;
 
-		public StatusConditionPoisonActor() : base(StatusConditionType.Poison)
+		public StatusConditionPoisonActor(StatusConditionPoisonBalanceData data) : base(StatusConditionType.Poison)
 		{
-			_data = BattleBalance._.Data.GetStatusConditionPoison();
+			_data = data;
 		}
 
 		private bool IsTriggered(Tick totalElapsed)
@@ -103,17 +103,47 @@ namespace SPRPG.Battle
 	{
 		public static StatusCondition Create(Pawn pawn, StatusConditionType type, Tick duration)
 		{
+			switch (pawn.StatusConditionGroup)
+			{
+				case StatusConditionGroup.Character:
+					return CreateCharacter(pawn, type, duration);
+				case StatusConditionGroup.Boss:
+					return CreateBoss(pawn, type, duration);
+				default:
+					Debug.LogError(LogMessages.EnumNotHandled(type));
+					return null;
+			}
+		}
+
+		public static StatusCondition CreateCharacter(Pawn pawn, StatusConditionType type, Tick duration)
+		{
+			var statusConditions = BattleBalance._.Data.Character.StatusConditions;
+			switch (type)
+			{
+				case StatusConditionType.Poison:
+					var data = statusConditions.GetPoison();
+					return new StatusCondition(pawn, new StatusConditionPoisonActor(data), duration);
+				default:
+					Debug.LogError(LogMessages.EnumNotHandled(type));
+					return null;
+			}
+		}
+
+		public static StatusCondition CreateBoss(Pawn pawn, StatusConditionType type, Tick duration)
+		{
+			var statusConditions = BattleBalance._.Data.Boss.StatusConditions;
 			switch (type)
 			{
 				case StatusConditionType.Freeze:
 				case StatusConditionType.Blind:
 					return new StatusCondition(pawn, new StatusConditionActor(type), duration);
 				case StatusConditionType.Poison:
-					return new StatusCondition(pawn, new StatusConditionPoisonActor(), duration);
+					var data = statusConditions.GetPoison();
+					return new StatusCondition(pawn, new StatusConditionPoisonActor(data), duration);
+				default:
+					Debug.LogError(LogMessages.EnumNotHandled(type));
+					return null;
 			}
-
-			Debug.LogError(LogMessages.EnumNotHandled(type));
-			return null;
 		}
 	}
 }

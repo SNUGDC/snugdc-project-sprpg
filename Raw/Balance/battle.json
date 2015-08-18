@@ -2,28 +2,35 @@
 	"TickPerSecond": 30,
 	"InputValidBefore": 3,
 	"InputValidAfter": 3,
-	"_statusConditions": {
-		"Freeze": {
-			"DefaultDuration": 240
-		},
-		"Poison": {
-			"DefaultDuration": 60,
-			"Cooltime": 30,
-			"Damage": 30
-		},
-		"Blind": {
-			"DefaultDuration": 60,
-			"Accuracy": 50
-		}
-	},
 	"Character": {
 		"DefaultSkillDelay": 3,
-		"DefaultSkillDuration": 7
+		"DefaultSkillDuration": 7,
+		"_statusConditions": {
+			"Poison": {
+				"DefaultDuration": 60,
+				"Cooltime": 30,
+				"Damage": 30
+			}
+		}
 	},
 	"Boss": {
 		"DefaultSkillDelay": 3,
 		"DefaultSkillDuration": 7,
-		"DelayBeforeSkill": 10
+		"DelayBeforeSkill": 10,
+		"_statusConditions": {
+			"Freeze": {
+				"DefaultDuration": 240
+			},
+			"Poison": {
+				"DefaultDuration": 60,
+				"Cooltime": 30,
+				"Damage": 30
+			},
+			"Blind": {
+				"DefaultDuration": 60,
+				"Accuracy": 50
+			}
+		}
 	},
 	"PartyPlaceLerp": 0.2,
 	"PartyPositions": [
