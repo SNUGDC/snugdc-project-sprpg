@@ -23,6 +23,7 @@ namespace SPRPG
 	{
 		Freeze = 1,
 		Poison = 2,
+		Blind = 3,
 	}
 	
 	public enum PassiveKey

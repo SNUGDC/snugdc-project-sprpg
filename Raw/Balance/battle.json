@@ -10,6 +10,10 @@
 			"DefaultDuration": 60,
 			"Cooltime": 30,
 			"Damage": 30
+		},
+		"Blind": {
+			"DefaultDuration": 60,
+			"Accuracy": 50
 		}
 	},
 	"Character": {

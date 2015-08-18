@@ -24,6 +24,13 @@ namespace SPRPG.Battle
 		public Hp Damage;
 	}
 
+	public class StatusConditionBlindBalanceData : IStatusConditionBalanceData
+	{
+		[JsonInclude]
+		public Tick DefaultDuration { get; set; }
+		public Percentage Accuracy;
+	}
+
 	public struct BattleCharacterBalanceData
 	{
 		public Tick DefaultSkillDuration;
@@ -90,8 +97,14 @@ namespace SPRPG.Battle
 			{
 				case StatusConditionType.Freeze: return value.ToObject<StatusConditionBalanceData>();
 				case StatusConditionType.Poison: return value.ToObject<StatusConditionPoisonBalanceData>();
+				case StatusConditionType.Blind: return value.ToObject<StatusConditionBlindBalanceData>();
 				default: Debug.LogError(LogMessages.EnumNotHandled(type)); return null;
 			}
+		}
+
+		public static StatusConditionBlindBalanceData GetStatusConditionBlind(this BattleBalanceData thiz)
+		{
+			return (StatusConditionBlindBalanceData)thiz.StatusConditions[StatusConditionType.Blind];
 		}
 
 		public static StatusConditionPoisonBalanceData GetStatusConditionPoison(this BattleBalanceData thiz)

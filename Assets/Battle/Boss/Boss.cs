@@ -16,6 +16,8 @@ namespace SPRPG.Battle
 		private readonly BossAi _ai;
 		public BossAi Ai { get { return _ai; } }
 
+		public Action<Boss> OnMissed;
+
 		public Boss(Battle context, BossBalanceData data)
 			: base(data.Stats)
 		{
@@ -61,6 +63,14 @@ namespace SPRPG.Battle
 		{
 			_passiveManager.ResetByStun();
 			_ai.ResetByStun();
+		}
+
+		public bool TestHitIfBlindAndInvokeEventIfMissed()
+		{
+			var accuracy = BattleBalance._.Data.GetStatusConditionBlind().Accuracy;
+			var hitSuccess = !IsBlind || accuracy.Test();
+			if (!hitSuccess) OnMissed.CheckAndCall(this);
+			return hitSuccess;
 		}
 	}
 

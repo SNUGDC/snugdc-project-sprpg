@@ -34,11 +34,11 @@ namespace SPRPG.Battle
 		}
 	}
 
-	public abstract class StatusConditionActor
+	public class StatusConditionActor
 	{
 		public readonly StatusConditionType Type;
-		protected StatusConditionActor(StatusConditionType type) { Type = type; }
-		public abstract void Tick(Pawn pawn, Tick totalElapsed);
+		public StatusConditionActor(StatusConditionType type) { Type = type; }
+		public virtual void Tick(Pawn pawn, Tick totalElapsed) { }
 	}
 
 	public class StatusCondition
@@ -78,19 +78,6 @@ namespace SPRPG.Battle
 		public static implicit operator StatusConditionType(StatusCondition thiz) { return thiz.Type; }
 	}
 
-	public sealed class StatusConditionFreezeActor : StatusConditionActor
-	{
-		public StatusConditionFreezeActor() : base(StatusConditionType.Freeze)
-		{
-			// todo: implement.
-			Debug.LogError("implement me.");
-		}
-
-		public override void Tick(Pawn pawn, Tick totalElapsed)
-		{
-		}
-	}
-
 	public sealed class StatusConditionPoisonActor : StatusConditionActor
 	{
 		private readonly StatusConditionPoisonBalanceData _data;
@@ -119,7 +106,8 @@ namespace SPRPG.Battle
 			switch (type)
 			{
 				case StatusConditionType.Freeze:
-					return new StatusCondition(pawn, new StatusConditionFreezeActor(), duration);
+				case StatusConditionType.Blind:
+					return new StatusCondition(pawn, new StatusConditionActor(type), duration);
 				case StatusConditionType.Poison:
 					return new StatusCondition(pawn, new StatusConditionPoisonActor(), duration);
 			}

@@ -17,6 +17,7 @@ namespace SPRPG.Battle
 		protected override void DoTick()
 		{
 			if (!_cooltimer.Tick()) return;
+			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
 			Context.Party.HitParty(_arguments);
 		}
 
@@ -83,6 +84,7 @@ namespace SPRPG.Battle
 
 		protected override void Perform()
 		{
+			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
 			var damageModified = Owner.ApplyModifier(_damage);
 			Context.Party.HitLeaderOrMemberIfLeaderIsDead(damageModified);
 		}
@@ -101,6 +103,7 @@ namespace SPRPG.Battle
 
 		protected override void Perform()
 		{
+			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
 			Context.Party.HitParty(_damage);
 		}
 	}

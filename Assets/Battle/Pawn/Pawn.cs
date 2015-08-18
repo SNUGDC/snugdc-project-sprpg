@@ -32,6 +32,7 @@ namespace SPRPG.Battle
 		public bool HasSomeStatusCondition { get { return StatusConditions.Empty(); } }
 		public bool HasStatusCondition(StatusConditionType type) { return StatusConditions.ContainsKey(type); }
 		public bool IsFreezed { get { return HasStatusCondition(StatusConditionType.Freeze); } }
+		public bool IsBlind { get { return HasStatusCondition(StatusConditionType.Blind); } }
 		
 		private readonly SetBool<PawnInvincibleKey> _invincible = new SetBool<PawnInvincibleKey>();
 		public bool IsInvincible { get { return _invincible; } }
