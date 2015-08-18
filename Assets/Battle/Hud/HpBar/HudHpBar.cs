@@ -45,5 +45,10 @@ namespace SPRPG.Battle
 		{
 			_mark.transform.position = _markAnchor.position;
 		}
+
+		public void SetIcon(Sprite sprite)
+		{
+			_avatar.SetSpriteAsNativeAndAssignPivot(sprite);
+		}
 	}
 }

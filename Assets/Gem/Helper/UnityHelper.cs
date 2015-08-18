@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gem
 {
@@ -17,6 +18,13 @@ namespace Gem
 		public static Vector2 MouseProportionalPosition()
 		{
 			return ((Vector2) Input.mousePosition).ScaleInverse(GetScreenSize());
+		}
+
+		public static void SetSpriteAsNativeAndAssignPivot(this Image thiz, Sprite sprite)
+		{
+			thiz.sprite = sprite;
+			thiz.SetNativeSize();
+			thiz.rectTransform.pivot = sprite.pivot.ScaleInverse(sprite.rect.size);
 		}
 	}
 }

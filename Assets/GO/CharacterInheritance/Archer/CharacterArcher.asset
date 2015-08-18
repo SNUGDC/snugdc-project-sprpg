@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 3
   Detail: Archer
+  Icon: {fileID: 21300000, guid: 6aafe581fe345794488cbd836eca35bc, type: 3}
   CharacterView: {fileID: 11496060, guid: d15d7ff344ee7414eab754e31b52d9b6, type: 2}
   Stats:
     _hp: 100
@@ -23,6 +24,5 @@ MonoBehaviour:
     _2: 10
     _3: 11
     _4: 12
-  CampEntryIcon: {fileID: 21300000, guid: d440b20a50d44d741a4eb9b90cee0115, type: 3}
   CampAnimatorController: {fileID: 22100000, guid: 2493ef259e5c60041babb775f229f0ce,
     type: 2}

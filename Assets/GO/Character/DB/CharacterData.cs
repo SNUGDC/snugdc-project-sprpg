@@ -16,13 +16,13 @@ namespace SPRPG
 	{
 		public CharacterId Id;
 		public string Detail;
+		public Sprite Icon;
 		public CharacterView CharacterView;
 
 		public Stats Stats;
 		public PassiveKey Passive;
 		public SkillSetDef SkillSet;
 
-		public Sprite CampEntryIcon;
 		public AnimatorOverrideController CampAnimatorController;
 	}
 }

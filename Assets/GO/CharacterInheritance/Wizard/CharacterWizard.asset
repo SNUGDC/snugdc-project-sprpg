@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 2
   Detail: Wizard
+  Icon: {fileID: 21300000, guid: 85734b3bd93d76f41a6b4e4e3be69379, type: 3}
   CharacterView: {fileID: 11442142, guid: bbcc9990ba095844db49a042a058c5b6, type: 2}
   Stats:
     _hp: 100
@@ -23,6 +24,5 @@ MonoBehaviour:
     _2: 16
     _3: 17
     _4: 18
-  CampEntryIcon: {fileID: 21300000, guid: 554a8af6267c3db4d89b5a2d8f7b9637, type: 3}
   CampAnimatorController: {fileID: 22100000, guid: 2493ef259e5c60041babb775f229f0ce,
     type: 2}
