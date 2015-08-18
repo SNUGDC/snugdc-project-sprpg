@@ -38,7 +38,7 @@ namespace SPRPG.Battle
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("term: " + playerClock.CloseTerm);
 			GUILayout.Label("period: " + playerClock.Period);
-			GUILayout.Label("distance: " + playerClock.GetCloseTermAndDistance().Distance);
+			GUILayout.Label("distance: " + playerClock.GetCurrentTermAndDistance().Distance);
 			GUILayout.EndHorizontal();
 
 			GUILayout.BeginHorizontal();

@@ -60,26 +60,16 @@ namespace SPRPG.Battle
 		protected void CaptureSkill(RelativeClock clock) { Skill = CaptureInput(clock); }
 		protected void CaptureShift(RelativeClock clock) { Shift = CaptureInput(clock); }
 
-		private static bool CheckInputWasTooEarly(Tick tick)
-		{
-			return (int)tick < (int)Const.Term / 2;
-		}
-
 		private static TermAndGrade CaptureInput(RelativeClock clock)
 		{
-			var termAndDistance = clock.GetCloseTermAndDistance();
-			if (CheckInputWasTooEarly(clock.Relative)) 
-				return new TermAndGrade(termAndDistance.Term, InputGrade.Bad);
+			var termAndDistance = clock.GetCurrentTermAndDistance();
 			return new TermAndGrade(termAndDistance.Term, GradeInput(termAndDistance.Distance));
 		}
 
 		private static InputGrade GradeInput(Tick distance)
 		{
 			var validBefore = BattleBalance._.Data.InputValidBefore;
-			var validAfter = BattleBalance._.Data.InputValidAfter;
-
-			if (distance < (Tick)(-(int)validBefore) || distance > validAfter)
-				return InputGrade.Bad;
+			if (distance < validBefore) return InputGrade.Bad;
 			return InputGrade.Good;
 		}
 	}

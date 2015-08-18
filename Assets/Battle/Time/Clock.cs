@@ -14,6 +14,12 @@ namespace SPRPG.Battle
 			Term = term;
 			Distance = distance;
 		}
+
+		public TermAndDistance(Tick tick)
+		{
+			Distance = (Tick)((int)tick % (int)Const.Term);
+			Term = (Term)(((int)tick / (int)Const.Term) % SPRPG.Const.SkillSlotSize);
+		}
 	}
 
 	public class Clock
@@ -66,11 +72,9 @@ namespace SPRPG.Battle
 			Base = Current;
 		}
 
-		public TermAndDistance GetCloseTermAndDistance()
+		public TermAndDistance GetCurrentTermAndDistance()
 		{
-			const int halfTerm = (int)Const.Term / 2;
-			var distance = ((int)Relative + halfTerm) % (int)Const.Term - halfTerm;
-			return new TermAndDistance(CloseTerm, (Tick) distance);
+			return new TermAndDistance(Relative);
 		}
 	}
 
