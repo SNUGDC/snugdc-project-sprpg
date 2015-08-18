@@ -7,9 +7,16 @@ namespace SPRPG.Battle
 	public class HudHpBar : MonoBehaviour
 	{
 		[SerializeField]
-		private Image _background, _bar, _avatar;
+		private Image _bar, _mark, _avatar;
+		[SerializeField]
+		private Transform _markAnchor;
 
 		public Hp MaxHp { get; set; }
+
+		void Start()
+		{
+			RefreshMark();
+		}
 
 		public void SetHp(Hp hp)
 		{
@@ -25,16 +32,18 @@ namespace SPRPG.Battle
 				return;
 			}
 
-			var length = _background.rectTransform.GetWidth();
-			SetBarLength((int)hp / (float)(int)MaxHp * length);
+			SetBarScale((int) hp/(float) (int) MaxHp);
+			RefreshMark();
 		}
 
-		private void SetBarLength(float length)
+		private void SetBarScale(float scale)
 		{
-			var offsetMax = _bar.rectTransform.offsetMax; //offsetMax = distance in anchor?
-			var offsetMin = _bar.rectTransform.offsetMin;
-			offsetMax.x = length + offsetMin.x;
-			_bar.rectTransform.offsetMax = offsetMax;
+			_bar.transform.SetLScaleX(scale);
+		}
+
+		private void RefreshMark()
+		{
+			_mark.transform.position = _markAnchor.position;
 		}
 	}
 }
