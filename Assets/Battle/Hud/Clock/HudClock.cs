@@ -10,6 +10,8 @@ namespace SPRPG.Battle
 		private Image[] _slots;
 		[SerializeField]
 		private RawImage _glow;
+		[SerializeField]
+		private Image _skillIcon;
 
 		private static float CalculateTiming(float progress)
 		{
@@ -23,6 +25,7 @@ namespace SPRPG.Battle
 			RefreshSlots(slot);
 			RefreshCurrentSlot(slot, timing);
 			RefreshGlow(timing);
+			RefreshSkill(skill, timing);
 		}
 
 		private void RefreshSlots(SkillSlot slot)
@@ -41,6 +44,12 @@ namespace SPRPG.Battle
 		private void RefreshGlow(float timing)
 		{
 			_glow.SetAlpha(timing);
+		}
+
+		private void RefreshSkill(SkillKey skill, float timing)
+		{
+			_skillIcon.transform.localScale = Vector3.one*timing;
+			_skillIcon.sprite = R.Skill.GetIcon(skill);
 		}
 	}
 }

@@ -12,6 +12,11 @@ namespace SPRPG
 			return ret;
 		}
 
+		public static class Skill
+		{
+			public static Sprite GetIcon(SkillKey id) { return Load<Sprite>("SkillIcon/" + id); }
+		}
+
 		public static class Boss
 		{
 			private static string PrependRoot(string path) { return "Boss/" + path; }
