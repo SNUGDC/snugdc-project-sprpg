@@ -12,7 +12,7 @@ GameObject:
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: CFXM4 SmokePuff
+  m_Name: CFXM4 SmokePuff (yellow)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 1.5, z: -0}
+  m_LocalPosition: {x: 1.41313815, y: .114181593, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -196,7 +196,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 1526726655
+        rgba: 1516346281
       minMaxState: 0
     startSize:
       scalar: 1.5
