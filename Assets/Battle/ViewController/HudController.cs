@@ -35,6 +35,8 @@ namespace SPRPG.Battle.View
 				_characterHpBarControllers[idx.ToArrayIndex()] = new HudHpBarController<Character>(hpBar, member);
 			}
 
+			var bossIcon = R.Boss.GetIcon(Context.Boss.Id);
+			if (bossIcon) _bossHpBar.SetIcon(bossIcon);
 			_bossHpBarController = new HudHpBarController<Boss>(_bossHpBar, Context.Boss);
 		}
 

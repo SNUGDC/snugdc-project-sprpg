@@ -26,5 +26,10 @@
 		{
 			return "key " + key + " not exists.";
 		}
+
+		public static string FileNotFound(string path)
+		{
+			return "file " + path + " not found.";
+		}
 	}
 }
