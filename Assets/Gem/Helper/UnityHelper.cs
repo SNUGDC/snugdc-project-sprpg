@@ -26,5 +26,12 @@ namespace Gem
 			thiz.SetNativeSize();
 			thiz.rectTransform.pivot = sprite.pivot.ScaleInverse(sprite.rect.size);
 		}
+
+		public static void SetAlpha(this Graphic thiz, float val)
+		{
+			var newColor = thiz.color;
+			newColor.a = val;
+			thiz.color = newColor;
+		}
 	}
 }
