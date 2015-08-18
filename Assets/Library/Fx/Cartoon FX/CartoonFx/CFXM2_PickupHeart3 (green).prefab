@@ -46,7 +46,7 @@ GameObject:
   - 199: {fileID: 19900004}
   - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: CFXM2_PickupHeart3
+  m_Name: CFXM2_PickupHeart3 (green)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -2.14317489, y: -.0252814293, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -286,7 +286,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 2155247359
+        rgba: 2155347830
       minMaxState: 0
     startSize:
       scalar: 2
@@ -1319,7 +1319,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 2151497215
+        rgba: 2151546716
       minMaxState: 0
     startSize:
       scalar: .400000006
@@ -2342,7 +2342,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4286940671
+        rgba: 4287364997
       minMaxState: 0
     startSize:
       scalar: 1.5
