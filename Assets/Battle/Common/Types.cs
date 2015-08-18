@@ -20,6 +20,12 @@ namespace SPRPG.Battle
 	{
 		public StatusConditionType Type;
 		public Percentage Percentage;
+
+		public StatusConditionTest(StatusConditionType type, Percentage percentage)
+		{
+			Type = type;
+			Percentage = percentage;
+		}
 	}
 
 	public struct StunTest

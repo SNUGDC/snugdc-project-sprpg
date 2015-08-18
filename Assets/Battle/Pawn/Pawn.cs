@@ -29,7 +29,7 @@ namespace SPRPG.Battle
 		public Percentage HpPercentage { get { return (Percentage)((int)Hp/(float) (int) HpMax*100); } }
 
 		public readonly Dictionary<StatusConditionType, StatusCondition> StatusConditions = new Dictionary<StatusConditionType, StatusCondition>();
-		public bool HasSomeStatusCondition { get { return StatusConditions.Empty(); } }
+		public bool HasSomeStatusCondition { get { return !StatusConditions.Empty(); } }
 		public bool HasStatusCondition(StatusConditionType type) { return StatusConditions.ContainsKey(type); }
 		public bool IsFreezed { get { return HasStatusCondition(StatusConditionType.Freeze); } }
 		public bool IsBlind { get { return HasStatusCondition(StatusConditionType.Blind); } }
@@ -125,6 +125,11 @@ namespace SPRPG.Battle
 			statusCondition = StatusConditionFactory.Create(this, test.Type, duration);
 			StatusConditions.Add(test.Type, statusCondition);
 			return true;
+		}
+
+		public bool TryCure(StatusConditionType type)
+		{
+			return StatusConditions.TryRemove(type);
 		}
 
 		public bool TestAndGrant(StunTest stunTest)

@@ -29,30 +29,30 @@ namespace SPRPG.Battle
 		{
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("sc: ");
-			if (!pawn.HasSomeStatusCondition)
-			{
-				GUILayout.Label("none");
-				GUILayout.EndHorizontal();
-				return;
-			}
-
-			foreach (var kv in pawn.StatusConditions)
-				RenderStatusCondition(kv.Value);
-
+			foreach (var statusCondition in EnumHelper.GetValues<StatusConditionType>())
+				RenderStatusCondition(pawn, statusCondition);
 			GUILayout.EndHorizontal();
 		}
 
-		private static void RenderStatusCondition(StatusConditionType type)
+		private static void RenderStatusCondition(Pawn pawn, StatusConditionType type)
 		{
 			var color = Color.gray;
 			switch (type)
 			{
+				case StatusConditionType.Freeze: color = Color.blue; break;
 				case StatusConditionType.Poison: color = Color.magenta; break;
+				case StatusConditionType.Blind: color = Color.black; break;
 				default: Debug.LogError(LogMessages.EnumNotHandled(type)); break;
 			}
 			
+			var isRunning = pawn.HasStatusCondition(type);
+			var buttonLabel = isRunning ? "O" : "X";
 			var style = new GUIStyle { normal = { textColor = color } };
-			GUILayout.Label("O", style);
+			if (GUILayout.Button(buttonLabel, style))
+			{
+				if (isRunning) pawn.TryCure(type);
+				else pawn.TestAndGrant(new StatusConditionTest(type, Percentage._100));
+			}
 		}
 
 		private static void RenderStun(Pawn pawn)
