@@ -133,6 +133,11 @@ namespace SPRPG.Battle
 			return StatusConditions.TryRemove(type);
 		}
 
+		public void CureAll()
+		{
+			StatusConditions.Clear();
+		}
+
 		public bool TestAndGrant(StunTest stunTest)
 		{
 			if (!stunTest.Percentage.Test())

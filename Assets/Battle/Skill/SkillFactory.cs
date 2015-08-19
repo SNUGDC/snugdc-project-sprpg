@@ -28,6 +28,8 @@ namespace SPRPG.Battle
 				case SkillKey.PaladinMassHeal:
 				case SkillKey.PaladinBigMassHeal:
 					return new MassHealSkillActor(data, context, owner);
+				case SkillKey.PaladinPurification:
+					return new MassCureSkillActor(data, context, owner);
 				case SkillKey.WarriorEvasion:
 				case SkillKey.ArcherEvasion:
 					return new EvasionSkillActor(data, context, owner);

@@ -104,6 +104,19 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public sealed class MassCureSkillActor : SingleDelayedPerformSkillActor
+	{
+		public MassCureSkillActor(SkillBalanceData data, Battle context, Character owner)
+			: base(data, context, owner)
+		{ }
+
+		protected override void Perform()
+		{
+			foreach (var member in Context.Party)
+				member.CureAll();
+		}
+	}
+
 	public sealed class EvasionSkillActor : SkillActor
 	{
 		public readonly FiniteSkillArguments Arguments;
