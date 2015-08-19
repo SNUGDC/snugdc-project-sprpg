@@ -20,7 +20,7 @@ MonoBehaviour:
     _damageModifier: 0
   Passive: 0
   SkillSet:
-    _1: 1
+    _1: 19
     _2: 2
     _3: 3
     _4: 4
