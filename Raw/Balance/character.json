@@ -1,6 +1,8 @@
 {
 	"Archer": {
 		"Special": {
+			"ArrowInitial": 5,
+			"ArrowMax": 5,
 			"ArrowRechargeCooltime": 60
 		}
 	}
