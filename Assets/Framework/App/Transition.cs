@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Gem;
+using SPRPG.Profile;
 using UnityEngine;
 
 namespace SPRPG
@@ -85,12 +86,23 @@ namespace SPRPG
 			Application.LoadLevel(BattleSceneName);
 		}
 
-		public static void TransferToProfile()
+		public static void TransferToProfile(CharacterId character)
+		{
+			ProfileController.CharacterToShow = character;
+			JustTransferToProfile();
+		}
+		
+		public static void TransferToProfileWithPreviousCharacter()
+		{
+			JustTransferToProfile();
+		}
+
+		private static void JustTransferToProfile()
 		{
 			_log.Push(SceneType.Profile);
 			Application.LoadLevel(ProfileSceneName);
 		}
-		
+
 		public static void TransferToSetting()
 		{
 			_log.Push(SceneType.Setting);
@@ -114,7 +126,7 @@ namespace SPRPG
 				case SceneType.Camp: TransferToCamp(); break;
 				case SceneType.World: TransferToWorld(); break;
 				case SceneType.Battle: TransferToBattleWithoutDef(); break;
-				case SceneType.Profile: TransferToProfile(); break;
+				case SceneType.Profile: TransferToProfileWithPreviousCharacter(); break;
 				case SceneType.Setting: TransferToSetting(); break;
 				default:
 					// do nothing.

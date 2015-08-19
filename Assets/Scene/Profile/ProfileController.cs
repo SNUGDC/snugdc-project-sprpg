@@ -4,6 +4,8 @@ namespace SPRPG.Profile
 {
 	public class ProfileController : MonoBehaviour
 	{
+		public static CharacterId CharacterToShow;
+
 		[SerializeField]
 		private SkillSlots _slots;
 
