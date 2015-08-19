@@ -14,7 +14,7 @@ MonoBehaviour:
   Id: 4
   Detail: Paladin
   Icon: {fileID: 21300000, guid: ecf26dc885e4571479b02469c9594a6c, type: 3}
-  CharacterView: {fileID: 11492076, guid: 673e6404928fc6b47b397ac1aa38bc1a, type: 2}
+  CharacterView: {fileID: 11483172, guid: ba8f130d4d8ee4945bcad53163916edd, type: 2}
   Stats:
     _hp: 1000
     _damageModifier: 0
