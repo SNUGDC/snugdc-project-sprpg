@@ -160,5 +160,53 @@
 		"Arguments": {
 			"DamagePerArrow": 70
 		}
+	},
+	{
+		"Key": "PaladinMassHeal",
+		"Name": "광역힐",
+		"Tier": 1,
+		"MajorUser": "Paladin",
+		"DescriptionFormat": "아군 전체의 체력을 {Amount} 회복한다.",
+		"Arguments": { "Amount": 50 }
+	},
+	{
+		"Key": "PaladinBash",
+		"Name": "배쉬",
+		"Tier": 1,
+		"MajorUser": "Paladin",
+		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 적에게 {StunPercentage}% 확률로 스턴을 건다.",
+		"Arguments": {
+			"Damage": { "Value": 10 },
+			"StunTest": { "Percentage": 20 }
+		}
+	},
+	{
+		"Key": "PaladinDefense",
+		"Name": "방어",
+		"Tier": 2,
+		"MajorUser": "Paladin",
+		"DescriptionFormat": "자신이 대상이 된 적의 다음 공격을 방어한다."
+	},
+	{
+		"Key": "PaladinPurification",
+		"Name": "정화",
+		"Tier": 3,
+		"MajorUser": "Paladin",
+		"DescriptionFormat": "아군 전체의 상태이상을 해제한다."
+	},
+	{
+		"Key": "PaladinBigMassHeal",
+		"Name": "큰광역힐",
+		"Tier": 4,
+		"MajorUser": "Paladin",
+		"DescriptionFormat": "아군 전체의 체력을 {Amount} 회복한다.",
+		"Arguments": { "Amount": 300 }
+	},
+	{
+		"Key": "PaladinMassDefense",
+		"Name": "광역방어",
+		"Tier": 4,
+		"MajorUser": "Paladin",
+		"DescriptionFormat": "아군이 대상이 된 적의 다음 공격을 방어한다."
 	}
 ]

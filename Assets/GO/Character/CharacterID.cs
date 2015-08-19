@@ -5,6 +5,7 @@
 		Warrior = 1,
 		Wizard = 2,
 		Archer = 3,
+		Paladin = 4,
 	}
 
 	public static class CharacterConst
