@@ -24,7 +24,6 @@ namespace SPRPG
 
 		public SkillKey Key;
 		public string Name;
-		public string Icon;
 		public SkillTier Tier;
 		public CharacterId MajorUser;
 		public StringOrDictionaryText DescriptionFormat;
@@ -76,6 +75,11 @@ namespace SPRPG
 			SkillBalanceData ret;
 			_dic.TryGet(key, out ret);
 			return ret;
+		}
+
+		public List<SkillBalanceData> SelectCharacterSpecifics(CharacterId character)
+		{
+			return _dic.Select(kv => kv.Value).Where(skill => skill.MajorUser == character).ToList();
 		}
 	}
 }

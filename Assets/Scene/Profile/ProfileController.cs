@@ -30,6 +30,7 @@ namespace SPRPG.Profile
 			var data = CharacterDb._.Find(character);
 			_characterDescription.SetDescription(data.Detail);
 			_characterShower.Show(data);
+			_skillSlots.Show(character);
 		}
 
 		public void Back()

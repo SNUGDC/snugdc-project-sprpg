@@ -7,24 +7,30 @@ namespace SPRPG.Profile
 {
 	public class SkillSlot : MonoBehaviour
 	{
-		private SkillKey _key;
+		private SkillKey? _key;
 
 		[SerializeField]
 		private Image _icon;
 
 		public Action<SkillKey> OnClickCallback;
 		
-		public void SetIcon(SkillKey key)
+		public void Set(SkillKey key)
 		{
 			_key = key;
-			var data = SkillBalance._.Find(key);
-			var icon = Resources.Load<Sprite>(data.Icon);
-			_icon.sprite = icon;
+			_icon.enabled = true;
+			_icon.sprite = R.Skill.GetIcon(key);
+		}
+
+		public void Clear()
+		{
+			_key = null;
+			_icon.enabled = false;
 		}
 
 		public void OnClick()
 		{
-			OnClickCallback.CheckAndCall(_key);
+			if (_key == null) return;
+			OnClickCallback.CheckAndCall(_key.Value);
 		}
 	}
 }

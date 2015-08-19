@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Gem;
 using UnityEngine;
 
 namespace SPRPG.Profile
@@ -20,9 +19,16 @@ namespace SPRPG.Profile
 			}
 		}
 
-		public void SetSlot(SPRPG.SkillSlot num, SkillKey key)
+		public void Show(CharacterId character)
 		{
-			_slots[num.ToIndex()].SetIcon(key);  
+			var skills = SkillBalance._.SelectCharacterSpecifics(character);
+
+			var i = 0;
+			for (; i < _slots.Count && i < skills.Count; ++i)
+				_slots[i].Set(skills[i].Key);
+
+			for (; i < _slots.Count; ++i)
+				_slots[i].Clear();
 		}
 	}
 }

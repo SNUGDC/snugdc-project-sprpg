@@ -171,8 +171,8 @@ RectTransform:
   m_LocalScale: {x: .00666666683, y: .00666666683, z: .00666666683}
   m_Children:
   - {fileID: 836938496}
-  - {fileID: 886210044}
   - {fileID: 1708358916}
+  - {fileID: 886210044}
   - {fileID: 1550433504}
   - {fileID: 90967247}
   m_Father: {fileID: 0}
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterDescription: {fileID: 893386356}
   _characterShower: {fileID: 886210045}
-  _slots: {fileID: 90967248}
+  _skillSlots: {fileID: 90967248}
   _skillDescription: {fileID: 2104892953}
 --- !u!1 &90967246
 GameObject:
@@ -1008,7 +1008,7 @@ Transform:
   m_LocalScale: {x: 150, y: 150, z: 150}
   m_Children: []
   m_Father: {fileID: 59824493}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &886210045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1888,7 +1888,7 @@ RectTransform:
   - {fileID: 1552068197}
   - {fileID: 1062664011}
   m_Father: {fileID: 59824493}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 475, y: 189}
