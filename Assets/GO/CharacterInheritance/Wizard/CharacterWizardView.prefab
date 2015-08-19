@@ -777,7 +777,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.69810677, y: -.779826164, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 433042}
@@ -942,6 +942,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f9dd91048f7464a847ec0158e2c05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Body: {fileID: 0}
+  ArmLU: {fileID: 0}
+  ArmLL: {fileID: 0}
+  ArmRU: {fileID: 0}
+  ArmRL: {fileID: 0}
+  LegLU: {fileID: 0}
+  LegLL: {fileID: 0}
+  LegRU: {fileID: 0}
+  LegRL: {fileID: 0}
+  HandL: {fileID: 0}
+  HandR: {fileID: 0}
+  FeetL: {fileID: 0}
+  FeetR: {fileID: 0}
 --- !u!114 &11451430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -953,6 +966,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02f1ba2437006547b75ea1b3337dfd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skeleton: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!212 &21203202
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1375,7 +1390,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 108538}
