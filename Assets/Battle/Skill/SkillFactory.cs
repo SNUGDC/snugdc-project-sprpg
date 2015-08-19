@@ -36,7 +36,7 @@ namespace SPRPG.Battle
 
 				case SkillKey.WizardIceBolt:
 				case SkillKey.WizardIceSpear:
-					return new WizardIceBoltSkillActor(data, context, owner);
+					return new AttackAndGrantStatusConditionSkillActor(data, context, owner);
 				case SkillKey.WizardLighteningBolt:
 				case SkillKey.WizardLightening:
 					return new WizardLighteningBoltSkillActor(data, context, owner);

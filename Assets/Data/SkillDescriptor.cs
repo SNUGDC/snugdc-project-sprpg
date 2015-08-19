@@ -39,6 +39,7 @@ namespace SPRPG
 				case SkillKey.WizardFireBall:
 				case SkillKey.ArcherAttack:
 				case SkillKey.ArcherStrongShot:
+				case SkillKey.ThiefAssassination:
 					return data =>
 					{
 						var args = new AttackSkillArguments(data.Arguments);
@@ -47,24 +48,27 @@ namespace SPRPG
 
 				case SkillKey.WizardIceBolt:
 				case SkillKey.WizardIceSpear:
+				case SkillKey.ThiefSandAttack:
+				case SkillKey.ThiefPoisonAttack:
 					return data =>
 					{
 						var args = data.Arguments.ToObject<AttackAndGrantStatusConditionArguments>();
 						return args.Describe(data.DescriptionFormat);
 					};
 
+				case SkillKey.PaladinBash:
+				case SkillKey.ThiefStab:
+					return data =>
+					{
+						var args = data.Arguments.ToObject<AttackAndTestStunArguments>();
+						return args.Describe(data.DescriptionFormat);
+					};
+					
 				case SkillKey.WizardLighteningBolt:
 				case SkillKey.WizardLightening:
 					return data =>
 					{
 						var args = data.Arguments.ToObject<Battle.WizardLighteningBoltArguments>();
-						return args.Describe(data.DescriptionFormat);
-					};
-
-				case SkillKey.PaladinBash:
-					return data =>
-					{
-						var args = data.Arguments.ToObject<Battle.PaladinBashArguments>();
 						return args.Describe(data.DescriptionFormat);
 					};
 
@@ -74,6 +78,7 @@ namespace SPRPG
 				case SkillKey.ArcherArrowRain:
 				case SkillKey.PaladinMassHeal:
 				case SkillKey.PaladinBigMassHeal:
+				case SkillKey.ThiefEvade:
 					return data => data.DescriptionFormat.Text.Replace(data.Arguments);
 			}
 

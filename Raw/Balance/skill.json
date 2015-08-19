@@ -70,7 +70,7 @@
 		"Name": "아이스볼트",
 		"Tier": 1,
 		"MajorUser": "Wizard",
-		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 적에게 {StatusConditionPercentage}% 확률로 빙결을 건다.",
+		"DescriptionFormat": { "Key": "skill-description-damage_and_status_condition_freeze" },
 		"Arguments": {
 			"Damage": { "Value": 50, "Element": "Ice" },
 			"StatusConditionTest": { "Type": "Freeze", "Percentage": 10 }
@@ -103,7 +103,7 @@
 		"Name": "아이스스피어",
 		"Tier": 3,
 		"MajorUser": "Wizard",
-		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 적에게 {StatusConditionPercentage}% 확률로 빙결을 건다.",
+		"DescriptionFormat": { "Key": "skill-description-damage_and_status_condition_freeze" },
 		"Arguments": {
 			"Damage": { "Value": 200, "Element": "Ice" },
 			"StatusConditionTest": { "Type": "Freeze", "Percentage": 33 }
@@ -174,7 +174,7 @@
 		"Name": "배쉬",
 		"Tier": 1,
 		"MajorUser": "Paladin",
-		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 적에게 {StunPercentage}% 확률로 스턴을 건다.",
+		"DescriptionFormat": { "Key": "skill-description-damage_and_stun" },
 		"Arguments": {
 			"Damage": { "Value": 10 },
 			"StunTest": { "Percentage": 20 }
@@ -208,5 +208,54 @@
 		"Tier": 4,
 		"MajorUser": "Paladin",
 		"DescriptionFormat": "아군이 대상이 된 적의 다음 공격을 방어한다."
+	},
+	{
+		"Key": "ThiefStab",
+		"Name": "찌르기",
+		"Tier": 1,
+		"MajorUser": "Thief",
+		"DescriptionFormat": { "Key": "skill-description-damage_and_stun" },
+		"Arguments": {
+			"Damage": { "Value": 10 },
+			"StunTest": { "Percentage": 20 }
+		}
+	},
+	{
+		"Key": "ThiefEvade",
+		"Name": "회피",
+		"Tier": 2,
+		"MajorUser": "Thief",
+		"DescriptionFormat": { "Key": "skill-description-evade_for_duration" },
+		"Arguments": { "Duration": 30 }
+	},
+	{
+		"Key": "ThiefSandAttack",
+		"Name": "모래뿌리기",
+		"Tier": 3,
+		"MajorUser": "Thief",
+		"DescriptionFormat": { "Key": "skill-description-damage_and_status_condition_blind" },
+		"Arguments": {
+			"Damage": { "Value": 100 },
+			"StatusConditionTest": { "Type": "Blind", "Percentage": 25 }
+		}
+	},
+	{
+		"Key": "ThiefPoisonAttack",
+		"Name": "독뿌리기",
+		"Tier": 3,
+		"MajorUser": "Thief",
+		"DescriptionFormat": { "Key": "skill-description-damage_and_status_condition_poison" },
+		"Arguments": {
+			"Damage": { "Value": 100, "Element": "Poison" },
+			"StatusConditionTest": { "Type": "Poison", "Percentage": 25 }
+		}
+	},
+	{
+		"Key": "ThiefAssassination",
+		"Name": "암살",
+		"Tier": 4,
+		"MajorUser": "Thief",
+		"DescriptionFormat": { "Key": "skill-description-damage" },
+		"Arguments": { "Damage": { "Value": 300 } }
 	}
 ]
