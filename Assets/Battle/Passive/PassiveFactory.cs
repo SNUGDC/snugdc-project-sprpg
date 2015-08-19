@@ -10,8 +10,6 @@ namespace SPRPG.Battle
 			switch (key)
 			{
 				case PassiveKey.None:
-				case PassiveKey.Warrior:
-				case PassiveKey.Wizard:
 					return new Passive();
 				case PassiveKey.Archer:
 					return new ArcherPassive();

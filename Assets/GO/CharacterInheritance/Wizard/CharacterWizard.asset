@@ -18,7 +18,7 @@ MonoBehaviour:
   Stats:
     _hp: 100
     _damageModifier: 0
-  Passive: 2
+  Passive: 0
   SkillSet:
     _1: 13
     _2: 16
