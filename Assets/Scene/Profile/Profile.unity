@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e7c97b71f226a45b7a99f626137c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterDescription: {fileID: 893386356}
   _slots: {fileID: 90967248}
   _skillDescription: {fileID: 2104892953}
 --- !u!1 &90967246
@@ -978,6 +979,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1136, y: 640}
   m_Pivot: {x: .5, y: .5}
+--- !u!114 &893386356 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453682, guid: 7878f3970d8395f469a93c246681f584,
+    type: 2}
+  m_PrefabInternal: {fileID: 373249097}
+  m_Script: {fileID: 11500000, guid: 9a7e77f4c79d4ea4ba415c1605dca71e, type: 3}
 --- !u!1001 &995204932
 Prefab:
   m_ObjectHideFlags: 0

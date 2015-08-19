@@ -4,17 +4,29 @@ namespace SPRPG.Profile
 {
 	public class ProfileController : MonoBehaviour
 	{
-		public static CharacterId CharacterToShow;
+		public static CharacterId? CharacterToShow;
+
+		public CharacterId? Character { get; private set; }
+
+		[SerializeField]
+		private CharacterDescription _characterDescription;
 
 		[SerializeField]
 		private SkillSlots _slots;
-
 		[SerializeField]
 		private SkillDescription _skillDescription;
 
 		void Start()
 		{
+			if (CharacterToShow != null) Show(CharacterToShow.Value);
 			_slots.OnClick += key => _skillDescription.SetDescription(key);
+		}
+
+		public void Show(CharacterId character)
+		{
+			Character = character;
+			var data = CharacterDb._.Find(character);
+			_characterDescription.SetDescription(data.Detail);
 		}
 
 		public void Back()
@@ -25,6 +37,6 @@ namespace SPRPG.Profile
 		public void TransferToSetting()
 		{
 			Transition.TransferToSetting();
-		}		
+		}
 	}
 }
