@@ -6,26 +6,26 @@ namespace SPRPG.Battle
 	public class ArcherPassive : Passive
 	{
 		public int Arrows { get; private set; }
-		
 		public bool IsArrowLeft { get { return Arrows > 0; } }
+		public bool IsArrowMax { get { return Arrows >= _data.ArrowMax; } }
 
-		private readonly Tick RechargeCooltime;
+		private readonly ArcherSpecialBalanceData _data;
+		private readonly Tick _rechargeCooltime;
 		private Tick _rechargeTickLeft;
 
 		public ArcherPassive()
 		{
-			Arrows = 3;
-			var _data = CharacterBalance._.Find(CharacterId.Archer).Special.ToObject<ArcherSpecialBalanceData>();
-			RechargeCooltime = _data.ArrowRechargeCooltime;
-			_rechargeTickLeft = RechargeCooltime;
+			_data = CharacterBalance._.Find(CharacterId.Archer).Special.ToObject<ArcherSpecialBalanceData>();
+			Arrows = _data.ArrowInitial;
+			_rechargeCooltime = _data.ArrowRechargeCooltime;
+			_rechargeTickLeft = _rechargeCooltime;
 		}
 
 		public override void Tick()
 		{
-			if (--_rechargeTickLeft > 0)
-				return;
-
-			_rechargeTickLeft = RechargeCooltime;
+			if (IsArrowMax) return;
+			if (--_rechargeTickLeft > 0) return;
+			_rechargeTickLeft = _rechargeCooltime;
 			++Arrows;
 		}
 

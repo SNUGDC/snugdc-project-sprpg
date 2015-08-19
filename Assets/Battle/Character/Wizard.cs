@@ -2,22 +2,6 @@
 
 namespace SPRPG.Battle
 {
-	public class WizardIceBoltSkillActor : SingleDelayedPerformSkillActor
-	{
-		private readonly AttackAndGrantStatusConditionArguments _arguments;
-
-		public WizardIceBoltSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
-		{
-			_arguments = data.Arguments.ToObject<AttackAndGrantStatusConditionArguments>();
-		}
-
-		protected override void Perform()
-		{
-			Owner.Attack(Context.Boss, _arguments.Damage);
-			Context.Boss.TestAndGrant(_arguments.StatusConditionTest);
-		}
-	}
-
 	public struct WizardLighteningBoltArguments
 	{
 		public Damage Damage;

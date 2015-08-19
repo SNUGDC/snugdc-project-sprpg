@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
@@ -145,6 +146,38 @@ namespace SPRPG.Battle
 		{
 			_performJob.Cancel();
 			_stopJob.Cancel();
+		}
+	}
+
+	public class AttackAndGrantStatusConditionSkillActor : SingleDelayedPerformSkillActor
+	{
+		private readonly AttackAndGrantStatusConditionArguments _arguments;
+
+		public AttackAndGrantStatusConditionSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
+		{
+			_arguments = data.Arguments.ToObject<AttackAndGrantStatusConditionArguments>();
+		}
+
+		protected override void Perform()
+		{
+			Owner.Attack(Context.Boss, _arguments.Damage);
+			Context.Boss.TestAndGrant(_arguments.StatusConditionTest);
+		}
+	}
+
+	public class AttackAndTestStunSkillActor : SingleDelayedPerformSkillActor
+	{
+		private readonly AttackAndTestStunArguments _arguments;
+
+		public AttackAndTestStunSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
+		{
+			_arguments = data.Arguments.ToObject<AttackAndTestStunArguments>();
+		}
+
+		protected override void Perform()
+		{
+			Owner.Attack(Context.Boss, _arguments.Damage);
+			Context.Boss.TestAndGrant(_arguments.StunTest);
 		}
 	}
 

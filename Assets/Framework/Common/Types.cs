@@ -64,6 +64,11 @@ namespace SPRPG
 		PaladinPurification = 22,
 		PaladinBigMassHeal = 23,
 		PaladinMassDefense = 24,
+		ThiefStab = 25,
+		ThiefEvade = 26,
+		ThiefSandAttack = 27,
+		ThiefPoisonAttack = 28,
+		ThiefAssassination = 29,
 	}
 
 	public enum SkillSlot { _1 = 0, _2 = 1, _3 = 2, _4 = 3 }

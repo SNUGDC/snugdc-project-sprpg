@@ -1,5 +1,6 @@
 ﻿using Gem;
 using LitJson;
+using SPRPG.Battle;
 
 namespace SPRPG
 {
@@ -41,12 +42,25 @@ namespace SPRPG
 	public struct AttackAndGrantStatusConditionArguments
 	{
 		public readonly Damage Damage;
-		public readonly Battle.StatusConditionTest StatusConditionTest;
+		public readonly StatusConditionTest StatusConditionTest;
 
 		public string Describe(string format)
 		{
 			format = SkillDescriptorHelper.Replace(format, "Damage", Damage.Value);
 			format = SkillDescriptorHelper.Replace(format, "StatusConditionPercentage", StatusConditionTest.Percentage);
+			return format;
+		}
+	}
+
+	public struct AttackAndTestStunArguments
+	{
+		public Damage Damage;
+		public StunTest StunTest;
+
+		public string Describe(string format)
+		{
+			format = SkillDescriptorHelper.Replace(format, "Damage", Damage.Value);
+			format = SkillDescriptorHelper.Replace(format, "StunPercentage", StunTest.Percentage);
 			return format;
 		}
 	}

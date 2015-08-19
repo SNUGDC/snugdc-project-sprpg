@@ -11,6 +11,8 @@ namespace SPRPG
 
 	public class ArcherSpecialBalanceData
 	{
+		public int ArrowInitial;
+		public int ArrowMax;
 		public Tick ArrowRechargeCooltime;
 	}
 

@@ -5,5 +5,9 @@
 	
 	"skill-description-damage": "적에게 {Damage}의 데미지를 준다.",
 	"skill-description-heal_self": "자신의 체력을 {Amount} 회복한다.",
-	"skill-description-evade_for_duration": "{Duration} tick 동안 적 공격에 피해를 입지 않는다."
+	"skill-description-evade_for_duration": "{Duration} tick 동안 적 공격에 피해를 입지 않는다.",
+	"skill-description-damage_and_stun": "적에게 {Damage} 피해를 준다. 적에게 {StunPercentage}% 확률로 스턴을 건다.",
+	"skill-description-damage_and_status_condition_freeze": "적에게 {Damage} 피해를 준다. 적에게 {StatusConditionPercentage}% 확률로 빙결을 건다.",
+	"skill-description-damage_and_status_condition_poison": "적에게 {Damage} 피해를 준다. 적에게 {StatusConditionPercentage}% 확률로 독을 건다.",
+	"skill-description-damage_and_status_condition_blind": "적에게 {Damage} 피해를 준다. 적에게 {StatusConditionPercentage}% 확률로 실명을 건다."
 }
