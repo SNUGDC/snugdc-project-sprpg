@@ -10,6 +10,8 @@ namespace SPRPG.Profile
 
 		[SerializeField]
 		private CharacterDescription _characterDescription;
+		[SerializeField]
+		private CharacterShower _characterShower;
 
 		[SerializeField]
 		private SkillSlots _slots;
@@ -27,6 +29,7 @@ namespace SPRPG.Profile
 			Character = character;
 			var data = CharacterDb._.Find(character);
 			_characterDescription.SetDescription(data.Detail);
+			_characterShower.Show(data);
 		}
 
 		public void Back()
