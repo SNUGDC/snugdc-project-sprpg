@@ -14,7 +14,7 @@ MonoBehaviour:
   Id: 3
   Detail: Archer
   Icon: {fileID: 21300000, guid: 6aafe581fe345794488cbd836eca35bc, type: 3}
-  CharacterView: {fileID: 11496060, guid: d15d7ff344ee7414eab754e31b52d9b6, type: 2}
+  CharacterView: {fileID: 11432116, guid: a18b181352aeb7e45954bfeaed977235, type: 2}
   Stats:
     _hp: 100
     _damageModifier: 0
