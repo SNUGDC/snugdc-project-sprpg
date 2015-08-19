@@ -8,6 +8,7 @@
 			Config.TryLoad();
 			TextDictionary.Load();
 			CampBalance._.Load();
+			CharacterBalance._.Load();
 			Battle.ConditionDictionary._.Load();
 			SkillBalance._.Load();
 			Battle.BossBalance._.Load();
@@ -21,6 +22,7 @@
 			Config.LoadForced();
 			TextDictionary.Load();
 			CampBalance._.LoadForced();
+			CharacterBalance._.LoadForced();
 			Battle.ConditionDictionary._.LoadForced();
 			SkillBalance._.LoadForced();
 			Battle.BossBalance._.Load();

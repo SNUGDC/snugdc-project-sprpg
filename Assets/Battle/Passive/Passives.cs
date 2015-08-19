@@ -1,16 +1,24 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 
 namespace SPRPG.Battle
 {
 	public class ArcherPassive : Passive
 	{
-		private const Tick RechargeCooltime = Const.Term;
-
 		public int Arrows { get; private set; }
 		
 		public bool IsArrowLeft { get { return Arrows > 0; } }
 
-		private Tick _rechargeTickLeft = RechargeCooltime;
+		private readonly Tick RechargeCooltime;
+		private Tick _rechargeTickLeft;
+
+		public ArcherPassive()
+		{
+			Arrows = 3;
+			var _data = CharacterBalance._.Find(CharacterId.Archer).Special.ToObject<ArcherSpecialBalanceData>();
+			RechargeCooltime = _data.ArrowRechargeCooltime;
+			_rechargeTickLeft = RechargeCooltime;
+		}
 
 		public override void Tick()
 		{
@@ -20,12 +28,6 @@ namespace SPRPG.Battle
 			_rechargeTickLeft = RechargeCooltime;
 			++Arrows;
 		}
-
-		public ArcherPassive()
-		{
-			Arrows = 3;
-		}
-
 
 		public void DecreaseArrow()
 		{
