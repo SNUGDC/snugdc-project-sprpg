@@ -14,7 +14,7 @@ MonoBehaviour:
   Id: 2
   Detail: Wizard
   Icon: {fileID: 21300000, guid: 85734b3bd93d76f41a6b4e4e3be69379, type: 3}
-  CharacterView: {fileID: 11442142, guid: bbcc9990ba095844db49a042a058c5b6, type: 2}
+  CharacterView: {fileID: 11451430, guid: 0cb86b299c341b24880bb7d8d9bf97e8, type: 2}
   Stats:
     _hp: 100
     _damageModifier: 0
