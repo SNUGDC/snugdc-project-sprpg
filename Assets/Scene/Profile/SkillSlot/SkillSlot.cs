@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace SPRPG.Profile
 {
-	public class SkillButton : MonoBehaviour
+	public class SkillSlot : MonoBehaviour
 	{
 		private SkillKey _key;
 

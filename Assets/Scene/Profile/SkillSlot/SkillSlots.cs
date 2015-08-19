@@ -8,7 +8,7 @@ namespace SPRPG.Profile
 	public class SkillSlots : MonoBehaviour
 	{
 		[SerializeField] 
-		private List<SkillButton> _slots;
+		private List<SkillSlot> _slots;
 
 		public Action<SkillKey> OnClick;
 
@@ -20,7 +20,7 @@ namespace SPRPG.Profile
 			}
 		}
 
-		public void SetSlot(SkillSlot num, SkillKey key)
+		public void SetSlot(SPRPG.SkillSlot num, SkillKey key)
 		{
 			_slots[num.ToIndex()].SetIcon(key);  
 		}

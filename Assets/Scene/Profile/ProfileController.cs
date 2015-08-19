@@ -2,7 +2,7 @@
 
 namespace SPRPG.Profile
 {
-	public class ProfileControl : MonoBehaviour
+	public class ProfileController : MonoBehaviour
 	{
 		[SerializeField]
 		private SkillSlots _slots;

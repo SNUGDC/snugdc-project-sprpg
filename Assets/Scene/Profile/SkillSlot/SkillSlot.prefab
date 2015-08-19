@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11407964}
   - 114: {fileID: 11490546}
   m_Layer: 5
-  m_Name: SkillButton
+  m_Name: SkillSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabacadead123474ab74aaa9e8d8fb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _key: 0
   _icon: {fileID: 11421772}
 --- !u!222 &22231714
 CanvasRenderer:
