@@ -96,8 +96,9 @@ namespace SPRPG.Battle
 		public override void Update(RelativeClock clock, float dt)
 		{
 			if (!Input.GetMouseButtonDown(0)) return;
-			var x = UnityHelper.MouseProportionalPosition().x;
-			if (x > 0.5f) CaptureSkill(clock);
+			var proprotionalPosition = UnityHelper.MouseProportionalPosition();
+			if (proprotionalPosition.y > 0.8f) return;
+			if (proprotionalPosition.x > 0.5f) CaptureSkill(clock);
 			else CaptureShift(clock);
 		}
 	}
