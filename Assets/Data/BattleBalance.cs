@@ -42,7 +42,6 @@ namespace SPRPG.Battle
 	{
 		public Tick TickPerSecond;
 		public Tick InputValidBefore;
-		public Tick InputValidAfter;
 
 		public BattleCharacterBalanceData Character;
 		public BattleBossBalanceData Boss;

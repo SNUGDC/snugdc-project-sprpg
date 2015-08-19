@@ -48,7 +48,13 @@ namespace SPRPG.Battle.View
 		void Update()
 		{
 			if (!Context.Fsm.IsResult)
-				_clock.RefreshTime(Context.PlayerClock.Relative);
+			{
+				var termAndDistance = Context.PlayerClock.GetCurrentTermAndDistance();
+				var skillSlot = termAndDistance.Term.ToSkillSlot();
+				var skillActor = Context.Party.Leader.SkillManager[skillSlot];
+				var progress = (int)termAndDistance.Distance / (float)(int)Const.Term;
+				_clock.Refresh(skillActor.Key, skillSlot, progress);
+			}
 		}
 
 		private void TogglePause(bool shouldPause)

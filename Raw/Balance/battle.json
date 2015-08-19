@@ -1,7 +1,6 @@
 {
 	"TickPerSecond": 30,
 	"InputValidBefore": 3,
-	"InputValidAfter": 3,
 	"Character": {
 		"DefaultSkillDelay": 3,
 		"DefaultSkillDuration": 7,
