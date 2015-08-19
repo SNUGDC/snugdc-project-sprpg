@@ -14,14 +14,14 @@ namespace SPRPG.Profile
 		private CharacterShower _characterShower;
 
 		[SerializeField]
-		private SkillSlots _slots;
+		private SkillSlots _skillSlots;
 		[SerializeField]
 		private SkillDescription _skillDescription;
 
 		void Start()
 		{
 			if (CharacterToShow != null) Show(CharacterToShow.Value);
-			_slots.OnClick += key => _skillDescription.SetDescription(key);
+			_skillSlots.OnClick += key => _skillDescription.SetDescription(key);
 		}
 
 		public void Show(CharacterId character)
