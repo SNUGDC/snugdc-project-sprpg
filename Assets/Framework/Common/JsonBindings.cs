@@ -41,8 +41,6 @@ namespace SPRPG
 			BindEnumAsString<SkillKey>();
 			BindEnumAsString<StatusConditionType>();
 			BindEnumAsString<Battle.ConditionType>();
-			BindEnumAsString<Battle.ActTarget>();
-			BindEnumAsString<Battle.ActAction>();
 			BindEnumAsString<Battle.BossPhase>();
 			BindEnumAsString<Battle.BossPassiveLocalKey>();
 			BindEnumAsString<Battle.BossSkillLocalKey>();

@@ -1,41 +1,33 @@
-﻿using SPRPG.Battle;
+﻿using Gem;
 using UnityEngine;
 
 namespace SPRPG
 {
 	public class CharacterView : MonoBehaviour
 	{
-		private class ActContext : Battle.ActContext
-		{
-			private readonly CharacterView _owner;
-			public override Animator Animator { get { return _owner._animator; } }
-			public ActContext(CharacterView owner) { _owner = owner; }
-		}
-
 		[SerializeField]
 		private CharacterSkeleton _skeleton;
 		[SerializeField]
-		private Animator _animator;
-		private ActContext _actContext;
-
-		void Awake()
-		{
-			_actContext = new ActContext(this);
-		}
+		protected Transform FxRoot;
+		[SerializeField]
+		protected Animator Animator;
 
 		public void Attack()
 		{
-			_animator.SetTrigger("Attack");
+			Animator.SetTrigger("Attack");
 		}
 
 		public void Dead()
 		{
-			_animator.SetTrigger("Dead");
+			Animator.SetTrigger("Dead");
 		}
 
-		public void PlaySkillStart(SkillBalanceData data)
+		public virtual void PlaySkillStart(SkillBalanceData data) { }
+				
+		public void InstantiateFx(GameObject fxPrefab)
 		{
-			data.ViewActs.OnStart.CheckAndDo(_actContext);
+			var fx = fxPrefab.Instantiate ();
+			fx.transform.SetParent (FxRoot, false);
 		}
 	}
 }

@@ -296,6 +296,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &166086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 483154}
+  m_Layer: 0
+  m_Name: FxRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &173298
 GameObject:
   m_ObjectHideFlags: 1
@@ -730,10 +745,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.5125446, y: -.548981011, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 491552}
+  - {fileID: 483154}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &468724
@@ -823,6 +839,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 412748}
   m_RootOrder: 0
+--- !u!4 &483154
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468078}
+  m_RootOrder: 1
 --- !u!4 &487110
 Transform:
   m_ObjectHideFlags: 1
@@ -894,7 +922,7 @@ Animator:
   m_GameObject: {fileID: 114414}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3732e3a895b0b6445bd547a0dff18224, type: 2}
+  m_Controller: {fileID: 22100000, guid: b5c98d555606b3945b72f6ccd22db36f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -934,11 +962,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 114414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c02f1ba2437006547b75ea1b3337dfd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 985cb513e257923499b009445bb8562e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _skeleton: {fileID: 11474130}
-  _animator: {fileID: 9501418}
+  FxRoot: {fileID: 483154}
+  Animator: {fileID: 9501418}
+  FxMassHeal: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+  FxBash: {fileID: 100002, guid: 6bbb8ec780b04e14089d5889db90227e, type: 2}
+  FxDefense: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
+  FxPurification: {fileID: 100006, guid: 4b96e0d8d9e130042b36e3d4a2a647d6, type: 2}
+  FxBigMassHeal: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+  FxMassDefense: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
 --- !u!212 &21202696
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1344,6 +1379,34 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FxMassHeal
+      value: 
+      objectReference: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxBash
+      value: 
+      objectReference: {fileID: 100002, guid: 6bbb8ec780b04e14089d5889db90227e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxDefense
+      value: 
+      objectReference: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxPurification
+      value: 
+      objectReference: {fileID: 100006, guid: 4b96e0d8d9e130042b36e3d4a2a647d6, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxBigMassHeal
+      value: 
+      objectReference: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxMassDefense
+      value: 
+      objectReference: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
+    - target: {fileID: 0}
+      propertyPath: View
+      value: 
+      objectReference: {fileID: 11483172}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 114414}
