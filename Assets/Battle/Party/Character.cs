@@ -82,13 +82,13 @@ namespace SPRPG.Battle
 			return _evadeDurationLeft > 0;
 		}
 
-		public override void Hit(Damage dmg)
+		public override void Hit(Damage damage)
 		{
 			if (CheckEvadeDuration())
 				return;
-			if (DamageIntercepter.TryTake(this, dmg))
+			if (DamageIntercepter.TryTake(this, damage))
 				return;
-			base.Hit(dmg);
+			base.Hit(damage);
 		}
 
 		public void Evade(Tick duration)

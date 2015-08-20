@@ -98,11 +98,14 @@ namespace SPRPG.Battle
 
 		protected virtual void AfterAttack(Pawn target) { }
 
-		public virtual void Hit(Damage dmg)
+		public virtual void Hit(Damage damage)
 		{
 			if (_invincible) return;
-			Hp -= dmg.Value;
+			Hp -= damage.Value;
+			AfterHit(damage);
 		}
+
+		protected virtual void AfterHit(Damage damage) { }
 
 		public virtual void Heal(Hp val)
 		{
@@ -162,6 +165,7 @@ namespace SPRPG.Battle
 	{
 		public Action<T, Hp, Hp> OnHpChanged;
 		public Action<T> OnDead;
+		public Action<T, Damage> OnAfterHit;
 		public Action<T, Pawn> OnAfterAttack;
 
 		protected Pawn(Stats stats) : base(stats)
@@ -171,6 +175,11 @@ namespace SPRPG.Battle
 		{
 			OnHpChanged.CheckAndCall((T) this, Hp, old);
 			if (Hp == 0) OnDead.CheckAndCall((T) this);
+		}
+
+		protected override void AfterHit(Damage damage)
+		{
+			OnAfterHit.CheckAndCall((T)this, damage);	
 		}
 
 		protected override void AfterAttack(Pawn target)

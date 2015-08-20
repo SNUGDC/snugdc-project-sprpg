@@ -26,6 +26,9 @@ namespace SPRPG.Battle.View
 		private HudHpBarController<Character>[] _characterHpBarControllers;
 		private HudHpBarController<Boss> _bossHpBarController;
 
+		[SerializeField]
+		private HudDamagePoper _damagePoper;
+
 		void Start()
 		{
 			_pauseButton.ForceSetToggle(!Context.RealtimeEnabled);
@@ -43,11 +46,14 @@ namespace SPRPG.Battle.View
 			var bossIcon = R.Boss.GetIcon(Context.Boss.Id);
 			if (bossIcon) _bossHpBar.SetIcon(bossIcon);
 			_bossHpBarController = new HudHpBarController<Boss>(_bossHpBar, Context.Boss);
+
+			Context.Boss.OnAfterHit += OnBossHit;
 		}
 
 		void OnDestroy()
 		{
 			_pauseButton.OnToggle -= TogglePause;
+			Context.Boss.OnAfterHit -= OnBossHit;
 		}
 
 		void Update()
@@ -81,6 +87,11 @@ namespace SPRPG.Battle.View
 		private void TogglePause(bool shouldPause)
 		{
 			Context.RealtimeEnabled = !shouldPause;
+		}
+
+		private void OnBossHit(Boss boss, Damage damage)
+		{
+			_damagePoper.Pop(damage);
 		}
 	}
 }
