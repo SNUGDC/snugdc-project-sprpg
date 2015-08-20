@@ -19,7 +19,8 @@
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
 			{
 				var member = party[idx];
-				var characterView = _partyView.InstantiateAndAssign(idx, member.Data);
+				var data = CharacterDb._.Find(member.Id);
+				var characterView = _partyView.InstantiateAndAssign(idx, data);
 				_characters[idx.ToArrayIndex()] = new CharacterController(characterView, member);
 			}
 			

@@ -7,7 +7,7 @@ namespace SPRPG.Battle
 	{
 		public CharacterId Id { get { return Data.Id; } }
 		private readonly Battle _context;
-		public readonly CharacterData Data;
+		public readonly CharacterBalanceData Data;
 
 		public readonly Passive Passive;
 		public readonly SkillManager SkillManager;
@@ -19,13 +19,13 @@ namespace SPRPG.Battle
 		public Action<Character, SkillSlot, SkillActor> OnSkillStart;
 		public Action<Character> OnStun;
 
-		public Character(CharacterData data, Battle context)
+		public Character(CharacterBalanceData data, Battle context)
 			: base(data.Stats)
 		{
 			_context = context;
 			Data = data;
 			Passive = PassiveFactory.Create(data.Passive);
-			SkillManager = new SkillManager(data.SkillSet, context, this);
+			SkillManager = new SkillManager(data.SkillSetDefault, context, this);
 		}
 
 		public void TickBeforeTurn()

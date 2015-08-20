@@ -28,7 +28,7 @@ namespace SPRPG.Profile
 		{
 			Character = character;
 			var data = CharacterDb._.Find(character);
-			_characterDescription.SetDescription(data.Detail);
+			_characterDescription.SetDescription(data.Balance.Detail);
 			_characterShower.Show(data);
 			_skillSlots.Show(character);
 		}

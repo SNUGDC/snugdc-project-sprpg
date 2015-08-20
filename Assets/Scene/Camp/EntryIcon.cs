@@ -65,7 +65,7 @@ namespace SPRPG.Camp
 			if (data == null) return;
 
 			Character = id;
-			_characterIcon.sprite = data.Icon;
+			_characterIcon.sprite = R.Character.LoadIcon(id);
 			_characterIcon.SetNativeSize();
 			_standByButton.interactable = true;
 		}

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SPRPG.Battle
@@ -21,12 +22,13 @@ namespace SPRPG.Battle
 			}
 		}
 
-		public SkillManager(SkillSetDef def, Battle context, Character owner)
+		public SkillManager(SkillKey[] def, Battle context, Character owner)
 		{
-			this[SkillSlot._1] = SkillFactory.Create(def._1, context, owner);
-			this[SkillSlot._2] = SkillFactory.Create(def._2, context, owner);
-			this[SkillSlot._3] = SkillFactory.Create(def._3, context, owner);
-			this[SkillSlot._4] = SkillFactory.Create(def._4, context, owner);
+			for (var i = 0; i < _actors.Count(); ++i)
+			{
+				var skill = def[i];
+				_actors[i] = SkillFactory.Create(skill, context, owner);
+			}
 		}
 
 		public SkillActor TryPerform(SkillSlot idx)

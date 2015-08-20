@@ -36,6 +36,7 @@ namespace SPRPG
 			BindEnumAsString<StageId>();
 			BindEnumAsString<CharacterId>();
 			BindEnumAsString<BossId>();
+			BindEnumAsString<PassiveKey>();
 			BindEnumAsString<SkillKey>();
 			BindEnumAsString<StatusConditionType>();
 			BindEnumAsString<Battle.ConditionType>();

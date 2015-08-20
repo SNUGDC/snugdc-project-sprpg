@@ -6,6 +6,12 @@ namespace SPRPG
 {
 	public class CharacterBalanceData
 	{
+		[JsonIgnore]
+		public CharacterId Id;
+		public string Detail;
+		public JsonStats Stats;
+		public PassiveKey Passive;
+		public SkillKey[] SkillSetDefault;
 		public JsonData Special;
 	}
 
@@ -28,6 +34,13 @@ namespace SPRPG
 			CharacterBalanceData ret;
 			Data.TryGet(id.ToString(), out ret);
 			return ret;
+		}
+
+		protected override void AfterLoad(bool success)
+		{
+			if (!success) return;
+			foreach (var kv in Data)
+				EnumHelper.TryParse(kv.Key, out kv.Value.Id);
 		}
 	}
 }

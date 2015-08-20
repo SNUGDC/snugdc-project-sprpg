@@ -58,7 +58,7 @@ namespace SPRPG.Battle
 
 		private void InitCharacter(Battle context, OriginalPartyIdx idx, CharacterId id)
 		{
-			var member = new Character(CharacterDb._.Find(id), context);
+			var member = new Character(CharacterBalance._.Find(id), context);
 			this[idx] = member;
 
 			var characterEvents = Events.GetCharacter(idx);

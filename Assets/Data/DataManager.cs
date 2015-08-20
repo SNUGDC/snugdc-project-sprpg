@@ -27,6 +27,7 @@
 			SkillBalance._.LoadForced();
 			Battle.BossBalance._.Load();
 			Battle.BattleBalance._.LoadForced();
+			CharacterDb._.Build();
 		}
 #endif
 	}
