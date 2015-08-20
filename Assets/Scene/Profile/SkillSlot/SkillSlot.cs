@@ -18,7 +18,8 @@ namespace SPRPG.Profile
 
 		void Start()
 		{
-			ForceDeselect();
+			// deselect again.
+			if (!IsSelected) ForceDeselect();
 		}
 
 		public void Set(SkillKey key)
