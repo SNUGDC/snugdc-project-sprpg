@@ -151,7 +151,12 @@ namespace SPRPG
 
 	public static class SkillHelper
 	{
-		public static IEnumerator<SkillSlot> GetSlotEnumerator()
+		public static SkillSlot MakeSlotWithIndex(int i)
+		{
+			return (SkillSlot) i;
+		}
+
+		public static IEnumerable<SkillSlot> GetSlotEnumerable()
 		{
 			yield return SkillSlot._1;
 			yield return SkillSlot._2;

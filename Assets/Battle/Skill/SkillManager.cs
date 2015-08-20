@@ -22,11 +22,11 @@ namespace SPRPG.Battle
 			}
 		}
 
-		public SkillManager(SkillKey[] def, Battle context, Character owner)
+		public SkillManager(SkillSet def, Battle context, Character owner)
 		{
 			for (var i = 0; i < _actors.Count(); ++i)
 			{
-				var skill = def[i];
+				var skill = def[SkillHelper.MakeSlotWithIndex(i)];
 				_actors[i] = SkillFactory.Create(skill, context, owner);
 			}
 		}

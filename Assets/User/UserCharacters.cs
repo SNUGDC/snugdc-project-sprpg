@@ -7,16 +7,18 @@ namespace SPRPG
 	{
 		public readonly CharacterId Id;
 		public readonly CharacterData Data;
+		public SkillSet SkillSet;
 
 		public UserCharacter(string id, SaveData.Character character)
 		{
 			Id = EnumHelper.ParseOrDefault<CharacterId>(id);
 			Data = CharacterDb._.Find(Id);
+			SkillSet = character.SkillSet ?? CharacterBalance._.Find(Id).SkillSetDefault.Clone();
 		}
 
 		public SaveData.Character ToSaveData()
 		{
-			return new SaveData.Character();
+			return new SaveData.Character(SkillSet);
 		}
 
 		public static implicit operator CharacterId(UserCharacter thiz)
