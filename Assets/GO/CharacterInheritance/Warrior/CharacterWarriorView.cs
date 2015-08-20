@@ -22,6 +22,9 @@ namespace SPRPG
 				case SkillKey.WarriorStrongAttack:
 					PlayStrongAttack();
 					return;
+				case SkillKey.WarriorEvasion:
+					PlayEvasion();
+					return;
 				default:
 					return;
 			}
@@ -29,17 +32,31 @@ namespace SPRPG
 	
 		public void PlayAttack()
 		{
-			InstantiateFx (FxAttck);
+			Animator.SetTrigger ("Attack");
+			var fxAttack = InstantiateFx (FxAttck);
+			fxAttack.transform.Translate (new Vector2 (1, 0.5f));
 		}
 
 		public void PlayHeal()
 		{
-			InstantiateFx (FxHeal);
+			Animator.SetTrigger ("Buff");
+			var fx = InstantiateFx (FxHeal);
+			fx.transform.localPosition = new Vector2 (0, 1.5f);
 		}
 
 		public void PlayStrongAttack()
 		{
-			InstantiateFx (FxStrongAttack);
+			Animator.SetTrigger ("StrongAttack");
+			Invoke ("PlayDelayedStrongAttack", 0.3f);
+		}
+		public void PlayDelayedStrongAttack()
+		{
+			var fx = InstantiateFx (FxStrongAttack);
+			fx.transform.localPosition = new Vector2 (1.8f, 0);
+		}
+		public void PlayEvasion()
+		{
+			Animator.SetTrigger ("ShakeHorizontal");
 		}
 	}
 }

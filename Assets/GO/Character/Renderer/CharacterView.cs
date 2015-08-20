@@ -23,10 +23,11 @@ namespace SPRPG
 
 		public virtual void PlaySkillStart(SkillBalanceData data) { }
 				
-		public void InstantiateFx(GameObject fxPrefab)
+		public GameObject InstantiateFx(GameObject fxPrefab)
 		{
 			var fx = fxPrefab.Instantiate ();
 			fx.transform.SetParent (FxRoot, false);
+			return fx;
 		}
 	}
 }
