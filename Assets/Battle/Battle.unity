@@ -1433,6 +1433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _battleWrapper: {fileID: 2086338272}
+  _overlay: {fileID: 172873734}
+  _battleController: {fileID: 2086338275}
   _clock: {fileID: 1034114415}
   _pauseButton: {fileID: 163983078}
   _characterHpBars:
