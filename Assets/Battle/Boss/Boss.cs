@@ -11,7 +11,8 @@ namespace SPRPG.Battle
 		
 		private readonly Clock _clock = new Clock();
 		private readonly Schedule _skillSchedule;
-		
+
+		public readonly BossPhase Phase;
 		private readonly BossPassiveManager _passiveManager;
 		private readonly BossAi _ai;
 		public BossAi Ai { get { return _ai; } }
@@ -26,14 +27,17 @@ namespace SPRPG.Battle
 			_context = context;
 			Data = data;
 			_skillSchedule = new Schedule(_clock);
-			_passiveManager = new BossPassiveManager(context, this);
+			Phase = new BossPhase(_context, data);
+			_passiveManager = new BossPassiveManager(_context, this);
 			_ai = BossFactory.CreateAi(this);
 		}
 
 		public void TickBeforeTurn()
 		{
 			if (IsFreezed) return;
+			Phase.Update();
 			_clock.Proceed();
+			_skillSchedule.Sync();
 		}
 
 		public void TickPassive()

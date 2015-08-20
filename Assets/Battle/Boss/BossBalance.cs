@@ -8,15 +8,22 @@ namespace SPRPG.Battle
 	public enum BossPassiveLocalKey
 	{
 		None,
-		RadioactiveArea,
-		Step1MeltDown,
+		Poison1,
+		Poison2,
+		Poison3,
+		Recovery,
 	}
 	
 	public enum BossSkillLocalKey
 	{
-		Attack,
-		MassAttack,
-		Radioactivity,
+		Attack1,
+		RangeAttack1,
+		Attack2,
+		RangeAttack2,
+		PoisonExplosion1,
+		Attack3,
+		RangeAttack3,
+		PoisonExplosion2,
 	}
 
 	public class BossPassiveBalanceData
@@ -45,6 +52,8 @@ namespace SPRPG.Battle
 		private JsonStats _stats;
 		[JsonIgnore]
 		public Stats Stats;
+
+		public List<Condition> PhaseProceedCondition;
 
 		[JsonInclude]
 		private List<BossPassiveBalanceData> _passives;

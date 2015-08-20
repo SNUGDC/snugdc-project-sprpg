@@ -1,9 +1,1 @@
-{
-	"RadiationPhase1": {
-		"Type": "And",
-		"Array": [
-			{ "Type": "CompareInt", "Operator": "<", "Value1": "BossHpPercentage", "Value2": 50 },
-			{ "Type": "CompareInt", "Operator": ">=", "Value1": "BossHpPercentage", "Value2": 25 }
-		]
-	}
-}
+{}

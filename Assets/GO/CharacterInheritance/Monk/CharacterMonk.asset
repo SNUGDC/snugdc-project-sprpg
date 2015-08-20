@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: CharacterMonk
   m_EditorClassIdentifier: 
   Id: 5
-  CharacterView: {fileID: 11420304, guid: 673e6404928fc6b47b397ac1aa38bc1a, type: 2}
+  CharacterView: {fileID: 11423924, guid: 3b90d2b002e046c4b86d4ce242943162, type: 2}
   CampAnimatorController: {fileID: 0}

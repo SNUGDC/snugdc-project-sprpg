@@ -24,14 +24,6 @@ namespace SPRPG.Battle
 			thiz.Leader.Hit(damage);
 		}
 
-		public static bool HitLeaderOrMemberIfLeaderIsDead(this Party thiz, Damage damage)
-		{
-			var member = thiz.GetAliveLeaderOrMember();
-			if (member == null) return false;
-			member.Hit(damage);
-			return true;
-		}
-
 		public static void HitParty(this Party thiz, Damage damage)
 		{
 			foreach (var member in thiz)
