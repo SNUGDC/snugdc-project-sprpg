@@ -869,7 +869,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.52147341, y: 2.11090636, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 455256}
@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skeleton: {fileID: 11442948}
   FxRoot: {fileID: 0}
-  Animator: {fileID: 0}
+  Animator: {fileID: 9539322}
 --- !u!212 &21202248
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1562,6 +1562,18 @@ Prefab:
       value: 
       objectReference: {fileID: 22100000, guid: 89a497462b1999d4083a24f6f10edfc0,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 9539322}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151556}
