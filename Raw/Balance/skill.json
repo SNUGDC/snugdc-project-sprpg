@@ -10,9 +10,6 @@
 		"MajorUser": "Warrior",
 		"FlavorText": "검을 휘둘러 적에게 일반공격을 가합니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage" },
-		"_viewActs": {
-			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "Attack" }
-		},
 		"Arguments": {
 			"Damage": { "Value": 50 }
 		}
@@ -24,9 +21,6 @@
 		"MajorUser": "Warrior",
 		"FlavorText": "빠르게 뒤로 이동하여 적의 공격을 피합니다.",
 		"DescriptionFormat": { "Key": "skill-description-evade_for_duration" },
-		"_viewActs": {
-			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "ShakeHorizontal" }
-		},
 		"Arguments": {
 			"Duration": 30
 		}
@@ -38,9 +32,6 @@
 		"MajorUser": "Warrior",
 		"FlavorText": "주문을 사용하여 자신의 체력을 일부 회복합니다.",
 		"DescriptionFormat":  { "Key": "skill-description-heal_self" },
-		"_viewActs": {
-			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "Buff" }
-		},
 		"Arguments": {
 			"Amount": 50
 		}
@@ -52,9 +43,6 @@
 		"MajorUser": "Warrior",
 		"FlavorText": "검을 크게 휘둘러 적에게 치명타을 가합니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage" },
-		"_viewActs": {
-			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "StrongAttack" }
-		},
 		"Arguments": {
 			"Damage": { "Value": 300 }
 		}
