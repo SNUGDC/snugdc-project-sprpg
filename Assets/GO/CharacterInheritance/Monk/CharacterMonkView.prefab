@@ -914,7 +914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skeleton: {fileID: 0}
   FxRoot: {fileID: 447252}
-  Animator: {fileID: 0}
+  Animator: {fileID: 9590600}
   FxHeal: {fileID: 0}
   FxSacrifice: {fileID: 0}
   FxEquility: {fileID: 0}
@@ -1320,6 +1320,10 @@ Prefab:
       value: 
       objectReference: {fileID: 22100000, guid: b06aa84513a891343b7d376c19c704c3,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 9590600}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 148134}

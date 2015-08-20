@@ -939,7 +939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skeleton: {fileID: 11400662}
   FxRoot: {fileID: 0}
-  Animator: {fileID: 0}
+  Animator: {fileID: 9573118}
 --- !u!212 &21214774
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1350,6 +1350,10 @@ Prefab:
       value: 
       objectReference: {fileID: 22100000, guid: dff8b5bdc1418664583e8aa92b9b8995,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 9573118}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191330}
