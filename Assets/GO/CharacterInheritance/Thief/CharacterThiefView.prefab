@@ -979,7 +979,7 @@ Animator:
   m_GameObject: {fileID: 183818}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3732e3a895b0b6445bd547a0dff18224, type: 2}
+  m_Controller: {fileID: 22100000, guid: 45f54b840b57d584e8e70796b83fee23, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -999,7 +999,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skeleton: {fileID: 11458894}
-  _animator: {fileID: 9579430}
+  FxRoot: {fileID: 0}
+  Animator: {fileID: 0}
 --- !u!114 &11458894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1455,6 +1456,11 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 45f54b840b57d584e8e70796b83fee23,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 183818}
