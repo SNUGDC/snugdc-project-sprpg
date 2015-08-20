@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SPRPG.Profile
@@ -8,7 +9,7 @@ namespace SPRPG.Profile
 	{
 		[SerializeField] 
 		private List<SkillSlot> _slots;
-
+		
 		public Action<SkillKey> OnClick;
 
 		void Start()
@@ -23,12 +24,21 @@ namespace SPRPG.Profile
 		{
 			var skills = SkillBalance._.SelectCharacterSpecifics(character);
 
-			var i = 0;
-			for (; i < _slots.Count && i < skills.Count; ++i)
-				_slots[i].Set(skills[i].Key);
+			var userSkillSet = new List<SkillKey>();
+			var userCharacter = UserCharacters.Find(character);
+			if (userCharacter != null) userSkillSet = userCharacter.SkillSet.ToList();
 
-			for (; i < _slots.Count; ++i)
-				_slots[i].Clear();
+			foreach (var slot in _slots)
+				slot.Clear();
+
+			for (var i = 0; i < _slots.Count && i < skills.Count; ++i)
+			{
+				var skillKey = skills[i].Key;
+				var slot = _slots[i];
+				slot.Set(skillKey);
+				if (userSkillSet.Contains(skillKey))
+					slot.Select();
+			}
 		}
 	}
 }

@@ -25,6 +25,17 @@ namespace SPRPG.Profile
 		{
 			_key = null;
 			_icon.enabled = false;
+			Deselect();
+		}
+
+		public void Select()
+		{
+			_icon.color = Color.white;
+		}
+
+		public void Deselect()
+		{
+			_icon.color = Color.grey;
 		}
 
 		public void OnClick()
