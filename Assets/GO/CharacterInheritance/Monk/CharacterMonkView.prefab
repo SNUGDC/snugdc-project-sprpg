@@ -914,12 +914,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skeleton: {fileID: 0}
   FxRoot: {fileID: 447252}
-  Animator: {fileID: 0}
-  FxHeal: {fileID: 0}
-  FxSacrifice: {fileID: 0}
-  FxEquility: {fileID: 0}
-  FxRevenge: {fileID: 0}
-  FxRecovery: {fileID: 0}
+  Animator: {fileID: 9590600}
+  FxHeal: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+  FxSacrifice: {fileID: 100006, guid: e0eea4a20ec2d82478c384ce3a642b3b, type: 2}
+  FxEquility: {fileID: 100006, guid: 71b839c250d6df745a7e10766ca2c79c, type: 2}
+  FxRevenge: {fileID: 100002, guid: be84a851a75478648827edc369c10dd3, type: 2}
+  FxRecovery: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
 --- !u!114 &11482468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1320,6 +1320,30 @@ Prefab:
       value: 
       objectReference: {fileID: 22100000, guid: b06aa84513a891343b7d376c19c704c3,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxHeal
+      value: 
+      objectReference: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 9590600}
+    - target: {fileID: 0}
+      propertyPath: FxSacrifice
+      value: 
+      objectReference: {fileID: 100006, guid: e0eea4a20ec2d82478c384ce3a642b3b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxEquility
+      value: 
+      objectReference: {fileID: 100006, guid: 71b839c250d6df745a7e10766ca2c79c, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxRevenge
+      value: 
+      objectReference: {fileID: 100002, guid: be84a851a75478648827edc369c10dd3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxRecovery
+      value: 
+      objectReference: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 148134}
