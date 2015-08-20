@@ -72,6 +72,7 @@ GameObject:
   - 4: {fileID: 459028}
   - 114: {fileID: 11451430}
   - 95: {fileID: 9505578}
+  - 114: {fileID: 11445268}
   m_Layer: 0
   m_Name: CharacterWizardView
   m_TagString: Untagged
@@ -467,6 +468,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &179236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 450954}
+  m_Layer: 0
+  m_Name: FxRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &180248
 GameObject:
   m_ObjectHideFlags: 1
@@ -740,6 +756,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 418398}
   m_RootOrder: 1
+--- !u!4 &450954
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 459028}
+  m_RootOrder: 1
 --- !u!4 &456362
 Transform:
   m_ObjectHideFlags: 1
@@ -777,10 +805,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.1890001, y: -.667999983, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 433042}
+  - {fileID: 450954}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &470162
@@ -923,7 +952,7 @@ Animator:
   m_GameObject: {fileID: 108538}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3732e3a895b0b6445bd547a0dff18224, type: 2}
+  m_Controller: {fileID: 22100000, guid: 7ae0a641c33c28e468c70f90c9e9ec2a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -955,6 +984,19 @@ MonoBehaviour:
   HandR: {fileID: 0}
   FeetL: {fileID: 0}
   FeetR: {fileID: 0}
+--- !u!114 &11445268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf595bff8f572d428fdef68f3e7d8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  View: {fileID: 11451430}
+  Skill: 0
 --- !u!114 &11451430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -963,11 +1005,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 108538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c02f1ba2437006547b75ea1b3337dfd3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae598d3414f92bf46a66daba09d99da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skeleton: {fileID: 0}
-  _animator: {fileID: 0}
+  _skeleton: {fileID: 11412132}
+  FxRoot: {fileID: 450954}
+  Animator: {fileID: 9505578}
+  FxFireBolt: {fileID: 158722, guid: 6d88a0ab4ffebc941964b59330340d78, type: 2}
 --- !u!212 &21203202
 SpriteRenderer:
   m_ObjectHideFlags: 1
