@@ -3,6 +3,41 @@ using Gem;
 
 namespace SPRPG.Battle
 {
+	public class DamageIntercepter
+	{
+		public enum Key_ { }
+		public delegate void Intercept(Character character, Damage damage);
+
+		private static Key_ _uniqueKey;
+		public static Key_ IssueUniqueKey() { return ++_uniqueKey; }
+
+		public Key_ Key { get; private set; }
+		private Intercept _intercepter;
+
+		public bool HasValue { get { return Key == default(Key_); } }
+
+		public void Set(Key_ key, Intercept intercepter)
+		{
+			Key = key;
+			_intercepter = intercepter;
+		}
+
+		public bool ClearIfKeySame(Key_ key)
+		{
+			if (Key != key) return false;
+			Key = default(Key_);
+			_intercepter = null;
+			return true;
+		}
+
+		public bool TryTake(Character character, Damage damage)
+		{
+			if (_intercepter == null) return false;
+			_intercepter(character, damage);
+			return true;
+		}
+	}
+
 	public class Character : Pawn<Character>
 	{
 		public CharacterId Id { get { return Data.Id; } }
@@ -15,6 +50,8 @@ namespace SPRPG.Battle
 		private Tick _evadeDurationLeft;
 
 		public override StatusConditionGroup StatusConditionGroup { get { return StatusConditionGroup.Character; } }
+
+		public readonly DamageIntercepter DamageIntercepter = new DamageIntercepter();
 
 		public Action<Character, SkillSlot, SkillActor> OnSkillStart;
 		public Action<Character> OnStun;
@@ -48,6 +85,8 @@ namespace SPRPG.Battle
 		public override void Hit(Damage dmg)
 		{
 			if (CheckEvadeDuration())
+				return;
+			if (DamageIntercepter.TryTake(this, dmg))
 				return;
 			base.Hit(dmg);
 		}

@@ -28,6 +28,12 @@
 		"Passive": "None",
 		"SkillSetDefault": [ "PaladinMassHeal", "None2", "PaladinPurification", "PaladinBigMassHeal" ]
 	},
+	"Monk": {
+		"Detail": "todo",
+		"Stats": { "Hp": 1000 },
+		"Passive": "None",
+		"SkillSetDefault": [ "MonkHeal", "MonkSacrifice", "MonkEquility", "MonkRevenge" ]
+	},
 	"Thief": {
 		"Detail": "todo",
 		"Stats": { "Hp": 500 },

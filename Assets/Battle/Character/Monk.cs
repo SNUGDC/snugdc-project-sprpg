@@ -1,4 +1,7 @@
-﻿namespace SPRPG.Battle
+﻿using Gem;
+using UnityEngine;
+
+namespace SPRPG.Battle
 {
 	public struct MonkEquilityArguments
 	{
@@ -10,6 +13,56 @@
 			format = SkillDescriptorHelper.Replace(format, "Damage", Damage.Value);
 			format = SkillDescriptorHelper.Replace(format, "Heal", Heal);
 			return format;
+		}
+	}
+
+	public class MonkSacrificeSkillActor : SkillActor
+	{
+		private DamageIntercepter.Key_? _damageInterceptKey;
+
+		public MonkSacrificeSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
+		{
+		}
+
+		protected override void DoStart()
+		{
+			RegisterIntercepterToParty();
+			var args = Data.Arguments.ToObject<FiniteSkillArguments>();
+			Context.AddBeforeTurn(args.Duration, UnregisterIntercepterToParty);
+			Stop();
+		}
+
+		private void RegisterIntercepterToParty()
+		{
+			if (_damageInterceptKey != null)
+				Debug.LogWarning("register again. continue anyway.");
+			_damageInterceptKey = DamageIntercepter.IssueUniqueKey();
+
+			foreach (var member in Context.Party)
+			{
+				if (member == Owner) continue;
+				member.DamageIntercepter.Set(_damageInterceptKey.Value, InterceptDamage);
+			}
+		}
+
+		private void UnregisterIntercepterToParty()
+		{
+			if (_damageInterceptKey == null)
+			{
+				Debug.LogError("unregister again.");
+				return;
+			}
+
+			foreach (var member in Context.Party)
+			{
+				if (member == Owner) continue;
+				member.DamageIntercepter.ClearIfKeySame(_damageInterceptKey.Value);
+			}
+		}
+
+		private void InterceptDamage(Character character, Damage damage)
+		{
+			Owner.Hit(damage);
 		}
 	}
 }
