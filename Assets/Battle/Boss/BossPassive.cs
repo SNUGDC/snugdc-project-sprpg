@@ -1,4 +1,6 @@
-﻿namespace SPRPG.Battle 
+﻿using UnityEngine;
+
+namespace SPRPG.Battle 
 {
 	public abstract class BossPassive
 	{
@@ -54,6 +56,30 @@
 	{
 		public BossNonePassive(Battle context, Boss owner) : base(new BossPassiveBalanceData { Key = BossPassiveLocalKey.None, }, context, owner)
 		{ }
+
+		public override void ResetByStun() { }
+	}
+
+	public sealed class BossTimescalePassive : BossPassive
+	{
+		private readonly float _timescale;
+
+		public BossTimescalePassive(BossPassiveBalanceData data, Battle context, Boss owner) : base(data, context, owner)
+		{
+			_timescale = (float) data.Arguments["Timescale"];
+		}
+
+		protected override void ToggleOn()
+		{
+			base.ToggleOn();
+			Time.timeScale *= _timescale;
+		}
+
+		protected override void ToggleOff()
+		{
+			base.ToggleOff();
+			Time.timeScale /= _timescale;
+		}
 
 		public override void ResetByStun() { }
 	}
