@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Gem;
 using LitJson;
 
@@ -36,6 +37,7 @@ namespace SPRPG
 			BindEnumAsString<StageId>();
 			BindEnumAsString<CharacterId>();
 			BindEnumAsString<BossId>();
+			BindEnumAsString<PassiveKey>();
 			BindEnumAsString<SkillKey>();
 			BindEnumAsString<StatusConditionType>();
 			BindEnumAsString<Battle.ConditionType>();
@@ -46,6 +48,7 @@ namespace SPRPG
 
 			BindStringOrDictionaryText();
 			BindCondition();
+			BindSkillSet();
 		}
 
 		private static void BindStringOrDictionaryText()
@@ -57,6 +60,18 @@ namespace SPRPG
 		private static void BindCondition()
 		{
 			JsonMapper.RegisterImporter<JsonData, Battle.Condition>(Battle.ConditionFactory.Create);
+		}
+
+		private static void BindSkillSet()
+		{
+			JsonMapper.RegisterImporter<JsonData, SkillSet>(v => new SkillSet(v));
+			JsonMapper.RegisterExporter<SkillSet>((o, w) =>
+			{
+				w.WriteArrayStart();
+				foreach (var skill in o)
+					w.Write(skill.ToString());
+				w.WriteArrayEnd();
+			});
 		}
 	}
 }

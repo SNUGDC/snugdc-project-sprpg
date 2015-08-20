@@ -9,9 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a3ab9c227552d4c9952d4e5b150ab8, type: 3}
-  m_Name: CharacterArcher
+  m_Name: CharacterMonk
   m_EditorClassIdentifier: 
-  Id: 3
-  CharacterView: {fileID: 11485118, guid: a18b181352aeb7e45954bfeaed977235, type: 2}
-  CampAnimatorController: {fileID: 22100000, guid: 2493ef259e5c60041babb775f229f0ce,
-    type: 2}
+  Id: 5
+  CharacterView: {fileID: 11420304, guid: 673e6404928fc6b47b397ac1aa38bc1a, type: 2}
+  CampAnimatorController: {fileID: 0}

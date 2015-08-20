@@ -8,10 +8,9 @@ namespace SPRPG.Profile
 		[SerializeField]
 		private Text _text;
 
-		public void SetDescription(SkillKey key)
+		public void SetDescription(SkillBalanceData data)
 		{
-			var detail = SkillBalance._.Find(key);
-			_text.text = detail.Describe();
+			_text.text = data.Describe();
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace SPRPG.Battle.View
 {
@@ -6,6 +7,10 @@ namespace SPRPG.Battle.View
 	{
 		[SerializeField]
 		private BattleWrapper _battleWrapper;
+		[SerializeField]
+		private Canvas _overlay;
+		[SerializeField]
+		private BattleController _battleController;
 		private Battle Context { get { return _battleWrapper.Battle; } }
 		
 		[SerializeField]
@@ -31,7 +36,7 @@ namespace SPRPG.Battle.View
 			{
 				var member = Context.Party[idx];
 				var hpBar = _characterHpBars[idx.ToArrayIndex()];
-				hpBar.SetIcon(member.Data.Icon);
+				hpBar.SetIcon(R.Character.LoadIcon(member.Id));
 				_characterHpBarControllers[idx.ToArrayIndex()] = new HudHpBarController<Character>(hpBar, member);
 			}
 
@@ -48,12 +53,28 @@ namespace SPRPG.Battle.View
 		void Update()
 		{
 			if (!Context.Fsm.IsResult)
+				UpdateClock();
+			UpdateHpBarPositions();
+		}
+
+		void UpdateClock()
+		{
+			var termAndDistance = Context.PlayerClock.GetCurrentTermAndDistance();
+			var skillSlot = termAndDistance.Term.ToSkillSlot();
+			var skillActor = Context.Party.Leader.SkillManager[skillSlot];
+			var progress = (int)termAndDistance.Distance / (float)(int)Const.Term;
+			_clock.Refresh(skillActor.Key, skillSlot, progress);
+		}
+
+		void UpdateHpBarPositions()
+		{
+			for (var i = 0; i != _characterHpBars.Count(); ++i)
 			{
-				var termAndDistance = Context.PlayerClock.GetCurrentTermAndDistance();
-				var skillSlot = termAndDistance.Term.ToSkillSlot();
-				var skillActor = Context.Party.Leader.SkillManager[skillSlot];
-				var progress = (int)termAndDistance.Distance / (float)(int)Const.Term;
-				_clock.Refresh(skillActor.Key, skillSlot, progress);
+				var hpBar = _characterHpBars[i];
+				var idx = BattleHelper.MakeOriginalPartyIdxFromIndex(i);
+				var characterView = _battleController.PartyView[idx];
+				hpBar.transform.position = characterView.transform.position;
+				hpBar.transform.Translate(new Vector3(-0.4f, 1.2f));
 			}
 		}
 

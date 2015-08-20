@@ -1,9 +1,43 @@
 {
+	"Warrior": {
+		"Detail": "todo",
+		"Stats": { "Hp": 500 },
+		"Passive": "None",
+		"SkillSetDefault": [ "WarriorAttack", "WarriorEvasion", "WarriorHeal", "WarriorStrongAttack" ]
+	},
+	"Wizard": {
+		"Detail": "todo",
+		"Stats": { "Hp": 500 },
+		"Passive": "None",
+		"SkillSetDefault": [ "WizardFireBolt", "WizardFireBall", "WizardIceSpear", "WizardLightening" ]
+	},
 	"Archer": {
+		"Detail": "todo",
+		"Stats": { "Hp": 500 },
+		"Passive": "Archer",
+		"SkillSetDefault": [ "ArcherAttack", "ArcherEvasion", "ArcherStrongShot", "ArcherArrowRain" ],
 		"Special": {
 			"ArrowInitial": 5,
 			"ArrowMax": 5,
 			"ArrowRechargeCooltime": 60
 		}
+	},
+	"Paladin": {
+		"Detail": "todo",
+		"Stats": { "Hp": 1000 },
+		"Passive": "None",
+		"SkillSetDefault": [ "PaladinMassHeal", "None2", "PaladinPurification", "PaladinBigMassHeal" ]
+	},
+	"Monk": {
+		"Detail": "todo",
+		"Stats": { "Hp": 1000 },
+		"Passive": "None",
+		"SkillSetDefault": [ "MonkHeal", "MonkSacrifice", "MonkEquility", "MonkRevenge" ]
+	},
+	"Thief": {
+		"Detail": "todo",
+		"Stats": { "Hp": 500 },
+		"Passive": "None",
+		"SkillSetDefault": [ "ThiefStab", "ThiefEvade", "ThiefSandAttack", "ThiefAssassination" ]
 	}
 }

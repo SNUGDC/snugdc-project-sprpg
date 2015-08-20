@@ -5,10 +5,11 @@ namespace SPRPG
 {
 	public class Balance<T> where T : class, new()
 	{
+		public bool IsLoaded { get { return _data != null; } }
+
 		private readonly string _name;
 
 		private T _data;
-
 		public T Data
 		{
 			get
@@ -46,7 +47,7 @@ namespace SPRPG
 
 		public void Load()
 		{
-			if (_data == null)
+			if (!IsLoaded)
 				LoadForced();
 		}
 

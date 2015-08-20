@@ -19,7 +19,7 @@
 	},
 	{
 		"Key": "WarriorEvasion",
-		"Name": "공격",
+		"Name": "회피",
 		"Tier": 2,
 		"MajorUser": "Warrior",
 		"PlayerDescription": "빠르게 뒤로 이동하여 적의 공격을 피합니다.",
@@ -224,6 +224,53 @@
 		"MajorUser": "Paladin",
 		"PlayerDescription": "방패를 이용하여 아군에 대한 적의 공격을 막아냅니다.",
 		"DescriptionFormat": "아군이 대상이 된 적의 다음 공격을 방어한다."
+	},
+	{
+		"Key": "MonkHeal",
+		"Name": "힐",
+		"Tier": 1,
+		"MajorUser": "Monk",
+		"DescriptionFormat": { "Key": "skill-description-heal_self" },
+		"Arguments": { "Amount": 100 }
+	},
+	{
+		"Key": "MonkSacrifice",
+		"Name": "희생",
+		"Tier": 2,
+		"MajorUser": "Monk",
+		"DescriptionFormat": "{Duration}tick동안 아군이 받는 모든 피해를 자신이 받는다.",
+		"Arguments": { "Duration": 30 }
+	},
+	{
+		"Key": "MonkEquility",
+		"Name": "평등",
+		"Tier": 3,
+		"MajorUser": "Monk",
+		"DescriptionFormat": "자신에게 {Damage} 피해를 주고 다른 아군들의 체력을 각각 {Heal}씩 회복한다.",
+		"Arguments": { 
+			"Damage": { "Value": 300 },
+			"Heal": 150 
+		}
+	},
+	{
+		"Key": "MonkRevenge",
+		"Name": "복수",
+		"Tier": 4,
+		"MajorUser": "Monk",
+		"DescriptionFormat": "적에게 자신이 잃은 체력 비율 X {DamagePerLoseHpPercentage}만큼의 데미지를 준다.",
+		"Arguments": { "DamagePerLoseHpPercentage": 10 }
+	},
+	{
+		"Key": "MonkRecovery",
+		"Name": "재생",
+		"Tier": 4,
+		"MajorUser": "Monk",
+		"DescriptionFormat": "자신의 체력을 {Duration} period 동안 {Period} tick 당 {Amount} 회복한다.",
+		"Arguments": { 
+			"Duration": 120,
+			"Period": 10,
+			"Amount": 30 
+		}
 	},
 	{
 		"Key": "ThiefStab",

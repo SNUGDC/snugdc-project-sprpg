@@ -102,6 +102,11 @@ namespace SPRPG.Battle
 
 		public virtual void Heal(Hp val)
 		{
+			if (IsDead)
+			{
+				Debug.LogWarning("heal but dead.");
+				return;
+			}
 			Hp += (int)val;
 		}
 

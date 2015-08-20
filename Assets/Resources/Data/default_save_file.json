@@ -2,8 +2,9 @@
 	"Characters" : {
 		"Warrior" : {},
 		"Wizard" : {},
-		"Archer" : {}
-
+		"Archer" : {},
+		"Paladin" : {},
+		"Thief" : {}
 	},
 	"Party" : {
 		"_1" : {

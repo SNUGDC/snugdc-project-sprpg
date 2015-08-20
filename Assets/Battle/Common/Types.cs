@@ -59,6 +59,11 @@ namespace SPRPG.Battle
 			return ((PartyIdx)thiz).ToArrayIndex();
 		}
 
+		public static OriginalPartyIdx MakeOriginalPartyIdxFromIndex(int i)
+		{
+			return (OriginalPartyIdx) PartyHelper.MakeIdxFromArrayIndex(i);
+		}
+
 		public static int ToArrayIndex(this ShiftedPartyIdx thiz)
 		{
 			return ((PartyIdx)thiz).ToArrayIndex();

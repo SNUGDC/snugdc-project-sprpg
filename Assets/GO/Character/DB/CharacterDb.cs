@@ -11,10 +11,12 @@ namespace SPRPG
 
 		public static CharacterDb _ { get; private set; }
 
-		public static void Init(CharacterDb obj)
+		public static void Load(CharacterDb obj)
 		{
 			Debug.Assert(_ == null);
+			Debug.Assert(CharacterBalance._.IsLoaded);
 			_ = obj;
+			_.Build();
 		}
 
 #if UNITY_EDITOR
@@ -30,6 +32,15 @@ namespace SPRPG
 			if (ret == null)
 				Debug.LogWarning(LogMessages.KeyNotExists(id));
 			return ret;
+		}
+
+		public void Build()
+		{
+			foreach (var data in _datas)
+			{
+				if (data == null) continue;
+				data.Balance = CharacterBalance._.Find(data.Id);
+			}
 		}
 	}
 }

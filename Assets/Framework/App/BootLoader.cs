@@ -25,7 +25,7 @@ namespace SPRPG
 			JsonBindings.Setup();
 			Assets.Init(Assets);
 			DataManager.Load();
-			CharacterDb.Init(CharacterDb);
+			CharacterDb.Load(CharacterDb);
 
 			if (Application.isPlaying)
 				App.Init();

@@ -33,12 +33,12 @@ namespace SPRPG.Battle
 
 		public ShiftedPartyIdx OriginalToShiftedIdx(OriginalPartyIdx value)
 		{
-			return (ShiftedPartyIdx) ((int)(value + ShiftCount) % SPRPG.Party.Size);
+			return (ShiftedPartyIdx) CSharpHelper.ModPositive((int)value - ShiftCount, SPRPG.Party.Size);
 		}
 
 		public OriginalPartyIdx ShiftedToOriginalIdx(ShiftedPartyIdx value)
 		{
-			return (OriginalPartyIdx)CSharpHelper.ModPositive((int)value - ShiftCount, SPRPG.Party.Size);
+			return (OriginalPartyIdx)((int)(value + ShiftCount) % SPRPG.Party.Size);
 		}
 
 		public Character this[OriginalPartyIdx idx]
@@ -58,7 +58,7 @@ namespace SPRPG.Battle
 
 		private void InitCharacter(Battle context, OriginalPartyIdx idx, CharacterId id)
 		{
-			var member = new Character(CharacterDb._.Find(id), context);
+			var member = new Character(CharacterBalance._.Find(id), context);
 			this[idx] = member;
 
 			var characterEvents = Events.GetCharacter(idx);
