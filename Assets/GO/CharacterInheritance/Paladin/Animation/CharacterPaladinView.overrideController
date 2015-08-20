@@ -5,7 +5,7 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PaladinCharacterView
+  m_Name: CharacterPaladinView
   m_Controller: {fileID: 9100000, guid: 3732e3a895b0b6445bd547a0dff18224, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 006c13fca4a379349912c7167c49e010, type: 2}

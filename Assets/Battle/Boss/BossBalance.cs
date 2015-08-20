@@ -8,6 +8,8 @@ namespace SPRPG.Battle
 	public enum BossPassiveLocalKey
 	{
 		None,
+		Timescale1,
+		Timescale2,
 		Poison1,
 		Poison2,
 		Poison3,
