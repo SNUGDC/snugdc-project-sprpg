@@ -6,6 +6,11 @@ namespace SPRPG
 	public class CharacterWizardView : CharacterView
 	{
 		public GameObject FxFireBolt;
+		public GameObject FxIceBolt;
+		public GameObject FxLigtheningBolt;
+		public GameObject FxFireBall;
+		public GameObject FxIceSpear;
+		public GameObject FxLigthening;
 
 		public override void PlaySkillStart(SkillBalanceData data)
 		{
@@ -14,17 +19,56 @@ namespace SPRPG
 			switch (data.Key)
 			{
 				case SkillKey.WizardFireBolt:
-					PlayFireBoltFx();
+					PlayFireBolt();
+					return;
+				case SkillKey.WizardIceBolt:
+					PlayIceBolt();
+					return;
+				case SkillKey.WizardLighteningBolt:
+					PlayLighteningBolt();
+					return;
+				case SkillKey.WizardFireBall:
+					PlayFireBall();
+					return;
+				case SkillKey.WizardIceSpear:
+					PlayIceSpear();
+					return;
+				case SkillKey.WizardLightening:
+					PlayLightening();
 					return;
 				default:
 					return;
 			}
 		}
 
-		public void PlayFireBoltFx()
+		public void PlayFireBolt()
 		{
-			var fx = FxFireBolt.Instantiate();
-			fx.transform.SetParent(FxRoot, false);
+			InstantiateFx (FxFireBolt);
+		}
+
+		public void PlayIceBolt()
+		{
+			InstantiateFx (FxIceBolt);
+		}
+
+		public void PlayLighteningBolt()
+		{
+			InstantiateFx (FxLigtheningBolt);
+		}
+
+		public void PlayFireBall()
+		{
+			InstantiateFx (FxFireBall);
+		}
+
+		public void PlayIceSpear()
+		{
+			InstantiateFx (FxIceSpear);
+		}
+
+		public void PlayLightening()
+		{
+			InstantiateFx (FxLigthening);
 		}
 	}
 }
