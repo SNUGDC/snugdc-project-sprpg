@@ -1,5 +1,4 @@
-﻿using SPRPG.Battle;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SPRPG
 {
@@ -8,20 +7,20 @@ namespace SPRPG
 		[SerializeField]
 		private CharacterSkeleton _skeleton;
 		[SerializeField]
-		private Animator _animator;
+		protected Transform FxRoot;
+		[SerializeField]
+		protected Animator Animator;
 
 		public void Attack()
 		{
-			_animator.SetTrigger("Attack");
+			Animator.SetTrigger("Attack");
 		}
 
 		public void Dead()
 		{
-			_animator.SetTrigger("Dead");
+			Animator.SetTrigger("Dead");
 		}
 
-		public void PlaySkillStart(SkillBalanceData data)
-		{
-		}
+		public virtual void PlaySkillStart(SkillBalanceData data) { }
 	}
 }
