@@ -72,12 +72,23 @@ namespace SPRPG
 						return args.Describe(data.DescriptionFormat);
 					};
 
+				case SkillKey.MonkEquility:
+					return data =>
+					{
+						var args = data.Arguments.ToObject<Battle.MonkEquilityArguments>();
+						return args.Describe(data.DescriptionFormat);
+					};
+
 				case SkillKey.WarriorEvasion:
 				case SkillKey.WarriorHeal:
 				case SkillKey.ArcherEvasion:
 				case SkillKey.ArcherArrowRain:
 				case SkillKey.PaladinMassHeal:
 				case SkillKey.PaladinBigMassHeal:
+				case SkillKey.MonkHeal:
+				case SkillKey.MonkSacrifice:
+				case SkillKey.MonkRevenge:
+				case SkillKey.MonkRecovery:
 				case SkillKey.ThiefEvade:
 					return data => data.DescriptionFormat.Text.Replace(data.Arguments);
 			}

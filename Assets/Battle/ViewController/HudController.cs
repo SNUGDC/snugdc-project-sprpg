@@ -31,7 +31,7 @@ namespace SPRPG.Battle.View
 			{
 				var member = Context.Party[idx];
 				var hpBar = _characterHpBars[idx.ToArrayIndex()];
-				hpBar.SetIcon(member.Data.Icon);
+				hpBar.SetIcon(R.Character.LoadIcon(member.Id));
 				_characterHpBarControllers[idx.ToArrayIndex()] = new HudHpBarController<Character>(hpBar, member);
 			}
 

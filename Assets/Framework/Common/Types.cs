@@ -40,35 +40,40 @@ namespace SPRPG
 
 	public enum SkillKey
 	{
-		None1 = 1,
-		None2 = 2,
-		None3 = 3,
-		None4 = 4,
-		WarriorAttack = 5,
-		WarriorEvasion = 7,
-		WarriorHeal = 6,
-		WarriorStrongAttack = 8,
-		WizardFireBolt = 13,
-		WizardIceBolt = 14,
-		WizardLighteningBolt = 15,
-		WizardFireBall = 16,
-		WizardIceSpear = 17,
-		WizardLightening = 18,
-		ArcherAttack = 9,
-		ArcherEvasion = 10,
-		ArcherStrongShot = 11,
-		ArcherArrowRain = 12,
-		PaladinMassHeal = 19,
-		PaladinBash = 20,
-		PaladinDefense = 21,
-		PaladinPurification = 22,
-		PaladinBigMassHeal = 23,
-		PaladinMassDefense = 24,
-		ThiefStab = 25,
-		ThiefEvade = 26,
-		ThiefSandAttack = 27,
-		ThiefPoisonAttack = 28,
-		ThiefAssassination = 29,
+		None1,
+		None2,
+		None3,
+		None4,
+		WarriorAttack,
+		WarriorEvasion,
+		WarriorHeal,
+		WarriorStrongAttack,
+		WizardFireBolt,
+		WizardIceBolt,
+		WizardLighteningBolt,
+		WizardFireBall,
+		WizardIceSpear,
+		WizardLightening,
+		ArcherAttack,
+		ArcherEvasion,
+		ArcherStrongShot,
+		ArcherArrowRain,
+		PaladinMassHeal,
+		PaladinBash,
+		PaladinDefense,
+		PaladinPurification,
+		PaladinBigMassHeal,
+		PaladinMassDefense,
+		MonkHeal,
+		MonkSacrifice,
+		MonkEquility,
+		MonkRevenge,
+		MonkRecovery,
+		ThiefStab,
+		ThiefEvade,
+		ThiefSandAttack,
+		ThiefPoisonAttack,
+		ThiefAssassination,
 	}
 
 	public enum SkillSlot { _1 = 0, _2 = 1, _3 = 2, _4 = 3 }
@@ -151,7 +156,12 @@ namespace SPRPG
 
 	public static class SkillHelper
 	{
-		public static IEnumerator<SkillSlot> GetSlotEnumerator()
+		public static SkillSlot MakeSlotWithIndex(int i)
+		{
+			return (SkillSlot) i;
+		}
+
+		public static IEnumerable<SkillSlot> GetSlotEnumerable()
 		{
 			yield return SkillSlot._1;
 			yield return SkillSlot._2;

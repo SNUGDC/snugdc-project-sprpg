@@ -6,8 +6,17 @@ namespace SPRPG
 {
 	public class SaveData
 	{
-		public struct Character
-		{}
+		public class Character
+		{
+			public SkillSet SkillSet;
+
+			public Character() { }
+
+			public Character(SkillSet skillSet)
+			{
+				SkillSet = skillSet;
+			}
+		}
 
 		public class PartyMember
 		{

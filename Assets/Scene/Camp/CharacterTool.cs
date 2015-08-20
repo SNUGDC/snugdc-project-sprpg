@@ -98,8 +98,9 @@ namespace SPRPG.Camp
 			Close();
 		}
 
-		public void OnSelectCharacterWindow()
+		public void OnSelectProfile()
 		{
+			Transition.TransferToProfile(Id);
 		}
 	}
 }

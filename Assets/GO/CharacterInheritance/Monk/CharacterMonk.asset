@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a3ab9c227552d4c9952d4e5b150ab8, type: 3}
+  m_Name: CharacterMonk
+  m_EditorClassIdentifier: 
+  Id: 5
+  CharacterView: {fileID: 11420304, guid: 673e6404928fc6b47b397ac1aa38bc1a, type: 2}
+  CampAnimatorController: {fileID: 0}

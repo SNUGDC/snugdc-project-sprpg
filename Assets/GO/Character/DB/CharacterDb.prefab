@@ -44,7 +44,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fef2df503518eff4997f89e39cdc417f, type: 2}
   - {fileID: 11400000, guid: 7330e13baa8c0174e886191e872790aa, type: 2}
   - {fileID: 11400000, guid: 16dec77a2eaeb37428b42cf1c9651651, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ec53d76dfed2fef45a22e0fe9bac3785, type: 2}
   - {fileID: 11400000, guid: 1680f38a10e4ccd43a1a75ebff4f0649, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -79,6 +79,11 @@ Prefab:
         type: 2}
     - target: {fileID: 0}
       propertyPath: _datas.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: ec53d76dfed2fef45a22e0fe9bac3785,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _datas.Array.data[6]
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []

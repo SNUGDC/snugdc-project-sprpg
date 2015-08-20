@@ -7,13 +7,20 @@ namespace SPRPG.Profile
 {
 	public class SkillSlot : MonoBehaviour
 	{
+		public bool IsSelected { get; private set; }
+
 		private SkillKey? _key;
 
 		[SerializeField]
 		private Image _icon;
 
-		public Action<SkillKey> OnClickCallback;
-		
+		public Action<SkillKey, bool> OnClickCallback;
+
+		void Start()
+		{
+			ForceDeselect();
+		}
+
 		public void Set(SkillKey key)
 		{
 			_key = key;
@@ -25,12 +32,32 @@ namespace SPRPG.Profile
 		{
 			_key = null;
 			_icon.enabled = false;
+			Deselect();
 		}
 
+		public void Select()
+		{
+			if (IsSelected) return;
+			IsSelected = true;
+			_icon.color = Color.white;
+		}
+
+		public void Deselect()
+		{
+			if (!IsSelected) return;
+			ForceDeselect();
+		}
+
+		private void ForceDeselect()
+		{
+			IsSelected = false;
+			_icon.color = Color.grey;
+		}
+			
 		public void OnClick()
 		{
 			if (_key == null) return;
-			OnClickCallback.CheckAndCall(_key.Value);
+			OnClickCallback.CheckAndCall(_key.Value, IsSelected);
 		}
 	}
 }
