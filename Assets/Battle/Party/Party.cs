@@ -33,12 +33,12 @@ namespace SPRPG.Battle
 
 		public ShiftedPartyIdx OriginalToShiftedIdx(OriginalPartyIdx value)
 		{
-			return (ShiftedPartyIdx) ((int)(value + ShiftCount) % SPRPG.Party.Size);
+			return (ShiftedPartyIdx) CSharpHelper.ModPositive((int)value - ShiftCount, SPRPG.Party.Size);
 		}
 
 		public OriginalPartyIdx ShiftedToOriginalIdx(ShiftedPartyIdx value)
 		{
-			return (OriginalPartyIdx)CSharpHelper.ModPositive((int)value - ShiftCount, SPRPG.Party.Size);
+			return (OriginalPartyIdx)((int)(value + ShiftCount) % SPRPG.Party.Size);
 		}
 
 		public Character this[OriginalPartyIdx idx]
