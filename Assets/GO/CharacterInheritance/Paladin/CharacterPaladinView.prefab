@@ -89,7 +89,6 @@ GameObject:
   - 4: {fileID: 468078}
   - 114: {fileID: 11483172}
   - 95: {fileID: 9501418}
-  - 114: {fileID: 11478094}
   m_Layer: 0
   m_Name: CharacterPaladinView
   m_TagString: Untagged
@@ -955,19 +954,6 @@ MonoBehaviour:
   HandR: {fileID: 444288}
   FeetL: {fileID: 460390}
   FeetR: {fileID: 420236}
---- !u!114 &11478094
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaf595bff8f572d428fdef68f3e7d8f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  View: {fileID: 0}
-  Skill: 0
 --- !u!114 &11483172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -982,12 +968,12 @@ MonoBehaviour:
   _skeleton: {fileID: 11474130}
   FxRoot: {fileID: 483154}
   Animator: {fileID: 9501418}
-  FxMassHeal: {fileID: 158722, guid: 6d88a0ab4ffebc941964b59330340d78, type: 2}
-  FxBash: {fileID: 0}
-  FxDefense: {fileID: 0}
-  FxPurification: {fileID: 0}
-  FxBigMassHeal: {fileID: 0}
-  FxMassDefense: {fileID: 0}
+  FxMassHeal: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+  FxBash: {fileID: 100002, guid: 6bbb8ec780b04e14089d5889db90227e, type: 2}
+  FxDefense: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
+  FxPurification: {fileID: 100006, guid: 4b96e0d8d9e130042b36e3d4a2a647d6, type: 2}
+  FxBigMassHeal: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+  FxMassDefense: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
 --- !u!212 &21202696
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1393,6 +1379,34 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FxMassHeal
+      value: 
+      objectReference: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxBash
+      value: 
+      objectReference: {fileID: 100002, guid: 6bbb8ec780b04e14089d5889db90227e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxDefense
+      value: 
+      objectReference: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxPurification
+      value: 
+      objectReference: {fileID: 100006, guid: 4b96e0d8d9e130042b36e3d4a2a647d6, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxBigMassHeal
+      value: 
+      objectReference: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxMassDefense
+      value: 
+      objectReference: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
+    - target: {fileID: 0}
+      propertyPath: View
+      value: 
+      objectReference: {fileID: 11483172}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 114414}

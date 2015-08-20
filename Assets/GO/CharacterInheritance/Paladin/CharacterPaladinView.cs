@@ -40,12 +40,6 @@ namespace SPRPG
 			}
 		}
 
-		public void InstantiateFx(GameObject fxPrefab)
-		{
-			var fx = fxPrefab.Instantiate ();
-			fx.transform.SetParent (FxRoot, false);
-		}
-
 		public void PlayMassHeal()
 		{
 			InstantiateFx (FxMassHeal);
