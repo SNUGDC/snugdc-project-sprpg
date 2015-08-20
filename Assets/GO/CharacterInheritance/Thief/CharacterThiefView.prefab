@@ -871,7 +871,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.64400005, y: 1.03400004, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 442384}
@@ -1054,7 +1054,6 @@ MonoBehaviour:
   FxRoot: {fileID: 413288}
   Animator: {fileID: 9579430}
   FxStab: {fileID: 100002, guid: 6bbb8ec780b04e14089d5889db90227e, type: 2}
-  FxEvade: {fileID: 100006, guid: 71b839c250d6df745a7e10766ca2c79c, type: 2}
   FxSandAttack: {fileID: 100000, guid: 40f59a5c9ded7444fbb6769e02d1b1b9, type: 2}
   FxPoisonAttack: {fileID: 100006, guid: d2df4e4c5a68c0d49a597ff33ac39aa3, type: 2}
   FxAssasination: {fileID: 100002, guid: 631c20d04e242504287b820b5415d1b2, type: 2}
