@@ -31,7 +31,7 @@
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		},
 		{
-			"Position": { "X": 3.0, "Y": 1.0 },
+			"Position": { "X": 4.0, "Y": 1.0 },
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		}
 	]
