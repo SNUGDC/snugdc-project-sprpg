@@ -16,6 +16,18 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public struct MonkRecoveryArguments
+	{
+		public Tick Duration;
+		public Tick Period;
+		public Hp Amount;
+	}
+
+	public struct MonkRevengeArguments
+	{
+		public Hp DamagePerLossHpPercentage;
+	}
+
 	public class MonkSacrificeSkillActor : SkillActor
 	{
 		private DamageIntercepter.Key_? _damageInterceptKey;
@@ -83,6 +95,41 @@ namespace SPRPG.Battle
 				if (Owner == member) continue;
 				member.Heal(_arguments.Heal);
 			}
+			Stop();
+		}
+	}
+
+	public class MonkRevengeSkillActor : SkillActor
+	{
+		private readonly MonkRevengeArguments _arguments;
+
+		public MonkRevengeSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
+		{
+			_arguments = Data.Arguments.ToObject<MonkRevengeArguments>();
+		}
+
+		protected override void DoStart()
+		{
+			var lossHpPercentage = Percentage._100 - Owner.HpPercentage;
+			var damage = (Hp) (lossHpPercentage*(int)_arguments.DamagePerLossHpPercentage);
+			Owner.Hit(new Damage(damage));
+			Stop();
+		}
+	}
+
+	public class MonkRecoverySkillActor : SkillActor
+	{
+		private readonly MonkRecoveryArguments _arguments;
+
+		public MonkRecoverySkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
+		{
+			_arguments = Data.Arguments.ToObject<MonkRecoveryArguments>();
+		}
+
+		protected override void DoStart()
+		{
+			for (var tick = default(Tick); tick <= _arguments.Duration; tick = tick + (int)_arguments.Period)
+				Context.AddPlayerSkill(tick, () => { Owner.Heal(_arguments.Amount); });
 			Stop();
 		}
 	}
