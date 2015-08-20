@@ -12,17 +12,6 @@ MonoBehaviour:
   m_Name: CharacterArcher
   m_EditorClassIdentifier: 
   Id: 3
-  Detail: Archer
-  Icon: {fileID: 21300000, guid: 6aafe581fe345794488cbd836eca35bc, type: 3}
-  CharacterView: {fileID: 11432116, guid: a18b181352aeb7e45954bfeaed977235, type: 2}
-  Stats:
-    _hp: 100
-    _damageModifier: 0
-  Passive: 1
-  SkillSet:
-    _1: 9
-    _2: 10
-    _3: 11
-    _4: 12
+  CharacterView: {fileID: 11485118, guid: a18b181352aeb7e45954bfeaed977235, type: 2}
   CampAnimatorController: {fileID: 22100000, guid: 2493ef259e5c60041babb775f229f0ce,
     type: 2}
