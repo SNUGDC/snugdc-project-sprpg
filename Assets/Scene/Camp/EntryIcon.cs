@@ -1,5 +1,4 @@
-﻿using Gem;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace SPRPG.Camp
@@ -18,13 +17,8 @@ namespace SPRPG.Camp
 		[SerializeField]
 		private Image _characterIcon;
 
-		[SerializeField]
-		private Button _standByButton;
-
 		void Start()
 		{
-			_standByButton.interactable = false;
-
 			RegisterPartyCallback(Idx);
 
 			Refresh();
@@ -67,7 +61,6 @@ namespace SPRPG.Camp
 			Character = id;
 			_characterIcon.sprite = R.Character.LoadIcon(id);
 			_characterIcon.SetNativeSize();
-			_standByButton.interactable = true;
 		}
 
 		public void RemoveCharacter()
@@ -78,7 +71,6 @@ namespace SPRPG.Camp
 			Character = null;
 			_characterIcon.sprite = Assets._.CampEntryEmptySprite;
 			_characterIcon.SetNativeSize();
-			_standByButton.interactable = false;
 			_party.Remove(Idx);
 		}
 		
