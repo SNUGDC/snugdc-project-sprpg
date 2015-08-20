@@ -16,6 +16,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &111458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 489070}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &113320
 GameObject:
   m_ObjectHideFlags: 1
@@ -458,8 +473,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404832}
-  - 114: {fileID: 11420304}
   - 95: {fileID: 9573118}
+  - 114: {fileID: 11490870}
   m_Layer: 0
   m_Name: CharacterWarriorView
   m_TagString: Untagged
@@ -494,6 +509,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 472000}
+  - {fileID: 489070}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &409272
@@ -885,6 +901,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 414364}
   m_RootOrder: 0
+--- !u!4 &489070
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 404832}
+  m_RootOrder: 1
 --- !u!95 &9573118
 Animator:
   serializedVersion: 3
@@ -894,7 +922,7 @@ Animator:
   m_GameObject: {fileID: 191330}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3732e3a895b0b6445bd547a0dff18224, type: 2}
+  m_Controller: {fileID: 22100000, guid: dff8b5bdc1418664583e8aa92b9b8995, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -926,7 +954,7 @@ MonoBehaviour:
   HandR: {fileID: 478956}
   FeetL: {fileID: 432768}
   FeetR: {fileID: 427138}
---- !u!114 &11420304
+--- !u!114 &11490870
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -934,11 +962,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 191330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c02f1ba2437006547b75ea1b3337dfd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 303f35b7adbba1a4d97311b552a37bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _skeleton: {fileID: 11400662}
-  _animator: {fileID: 9573118}
+  FxRoot: {fileID: 489070}
+  Animator: {fileID: 9573118}
+  FxAttck: {fileID: 100002, guid: 6bbb8ec780b04e14089d5889db90227e, type: 2}
+  FxHeal: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+  FxStrongAttack: {fileID: 100008, guid: 15dd46549dc7e014d8e0c169a4b252a5, type: 2}
 --- !u!212 &21214774
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1344,6 +1376,31 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 9573118}
+    - target: {fileID: 0}
+      propertyPath: _skeleton
+      value: 
+      objectReference: {fileID: 11400662}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: dff8b5bdc1418664583e8aa92b9b8995,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxAttck
+      value: 
+      objectReference: {fileID: 100002, guid: 6bbb8ec780b04e14089d5889db90227e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxHeal
+      value: 
+      objectReference: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxStrongAttack
+      value: 
+      objectReference: {fileID: 100008, guid: 15dd46549dc7e014d8e0c169a4b252a5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191330}
