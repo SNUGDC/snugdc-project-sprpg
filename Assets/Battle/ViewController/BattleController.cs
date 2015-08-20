@@ -11,6 +11,7 @@ namespace SPRPG.Battle.View
 
 		[SerializeField]
 		private PartyView _partyView;
+		public PartyView PartyView { get { return _partyView; } }
 		private PartyController _partyController;
 
 		[SerializeField]
