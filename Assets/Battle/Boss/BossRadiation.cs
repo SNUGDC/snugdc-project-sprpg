@@ -3,72 +3,46 @@ using UnityEngine;
 
 namespace SPRPG.Battle
 {
-	public sealed class BossRadioactiveAreaPassive : BossPassive
+	using BossDamageArgument=BossSingleArgument<Damage>;
+	using BossStatusConditionArgument=BossSingleArgument<StatusConditionTest>;
+
+	public sealed class BossPoisonPassive : BossPassive
 	{
-		public const Tick Cooltime = Const.Term;
-		private readonly Cooltimer _cooltimer = new Cooltimer(Cooltime);
-		private readonly BossDamageArgument _arguments;
+		private readonly BossStatusConditionArgument _arguments;
 
-		public BossRadioactiveAreaPassive(BossPassiveBalanceData data, Battle context, Boss owner) : base(data, context, owner)
+		public BossPoisonPassive(BossPassiveBalanceData data, Battle context, Boss owner) : base(data, context, owner)
 		{
-			_arguments = new BossDamageArgument(data.Arguments);
-		}
-
-		protected override void DoTick()
-		{
-			if (!_cooltimer.Tick()) return;
-			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
-			Context.Party.HitParty(_arguments);
-		}
-
-		public override void ResetByStun()
-		{
-			_cooltimer.Reset();
-		}
-	}
-
-	public sealed class BossRadiationStep1MeltDownPassive : BossPassive 
-	{
-		private const Tick HealCooltime = Const.Term;
-
-		private readonly StatDamageModifier _damageModifier;
-		private readonly Hp _heal;
-		private readonly Cooltimer _cooltimer = new Cooltimer(HealCooltime);
-
-		public BossRadiationStep1MeltDownPassive(BossPassiveBalanceData data, Battle context, Boss owner)
-			: base(data, context, owner)
-		{
-			_damageModifier = (StatDamageModifier) (int) data.Arguments["DamageModifier"];
-			_heal = (Hp) (int) data.Arguments["Heal"];
-		}
-
-		protected override void DoTick()
-		{
-			base.DoTick();
-
-			if (WasActivated)
-			{
-				if (_cooltimer.Tick())
-					Owner.Heal(_heal);
-			}
+			_arguments = new BossStatusConditionArgument(data.Arguments, "StatusConditionTest");
 		}
 
 		protected override void ToggleOn()
 		{
 			base.ToggleOn();
-			Owner.Stats.AddDamageModifier(_damageModifier);
+			Owner.OnAfterAttack += TestAndGrantStatusConditionAfterAttack;
 		}
 
 		protected override void ToggleOff()
 		{
 			base.ToggleOff();
-			Owner.Stats.RemoveDamageModifier(_damageModifier);
+			Owner.OnAfterAttack -= TestAndGrantStatusConditionAfterAttack;
 		}
 
-		public override void ResetByStun()
+		public override void ResetByStun() { }
+
+		private void TestAndGrantStatusConditionAfterAttack(Boss owner, Pawn target)
 		{
-			_cooltimer.Reset();
+			target.TestAndGrant(_arguments.Value);
 		}
+	}
+
+	public class BossRecoveryPassive : BossPassive
+	{
+		public BossRecoveryPassive(BossPassiveBalanceData data, Battle context, Boss owner) : base(data, context, owner)
+		{
+			// todo: event boss phase changed.
+		}
+
+		public override void ResetByStun() { }
 	}
 
 	public class BossRadiationAttackSkillActor : BossSingleDelayedPerformSkillActor 
@@ -78,33 +52,79 @@ namespace SPRPG.Battle
 		public BossRadiationAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
 			: base(data, context, owner, (Tick)3)
 		{
-			Debug.Assert(owner.Id == BossId.Radiation);
-			_damage = new BossDamageArgument(data.Arguments);
+			_damage = new BossDamageArgument(data.Arguments, "Damage");
 		}
 
 		protected override void Perform()
 		{
+			var target = Context.Party.GetAliveLeaderOrMember();
+			if (target == null) return;
 			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
-			var damageModified = Owner.ApplyModifier(_damage);
-			Context.Party.HitLeaderOrMemberIfLeaderIsDead(damageModified);
+			Owner.Attack(target, _damage);
 		}
 	}
 
-	public class BossRadiationMassAttackSkillActor : BossSingleDelayedPerformSkillActor 
+	public struct BossRadiationRangeAttackArguments
 	{
-		private readonly BossDamageArgument _damage;
+		public Damage Damage;
+		public int[] TargetNumber;
+	}
 
-		public BossRadiationMassAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
+	public class BossRadiationRangeAttackSkillActor : BossSingleDelayedPerformSkillActor
+	{
+		private readonly BossRadiationRangeAttackArguments _arguments;
+
+		public BossRadiationRangeAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
 			: base(data, context, owner, (Tick)3)
 		{
-			Debug.Assert(owner.Id == BossId.Radiation);
-			_damage = new BossDamageArgument(data.Arguments);
+			_arguments = data.Arguments.ToObject<BossRadiationRangeAttackArguments>();
 		}
 
 		protected override void Perform()
 		{
+			var targetNumber = Random.Range(_arguments.TargetNumber[0], _arguments.TargetNumber[1]);
+			var targets = Context.Party.TryGetRandomAliveMembers(targetNumber);
+			if (targets.Empty()) return;
 			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
-			Context.Party.HitParty(_damage);
+			foreach (var target in targets)
+				Owner.Attack(target, _arguments.Damage);
+		}
+	}
+
+	public class BossRadiationPoisonExplosion1 : BossSingleDelayedPerformSkillActor
+	{
+		private readonly BossDamageArgument _argument;
+
+		public BossRadiationPoisonExplosion1(BossSkillBalanceData data, Battle context, Boss owner) : base(data, context, owner, (Tick)3)
+		{
+			_argument = new BossDamageArgument(data.Arguments, "Damage");
+		}
+
+		protected override void Perform()
+		{
+			foreach (var member in Context.Party)
+			{
+				if (!member.IsPoisoned) continue;
+				Owner.Attack(member, _argument.Value);
+				member.TryCure(StatusConditionType.Poison);
+			}
+		}
+	}
+
+	public class BossRadiationPoisonExplosion2 : BossSingleDelayedPerformSkillActor
+	{
+		public BossRadiationPoisonExplosion2(BossSkillBalanceData data, Battle context, Boss owner) : base(data, context, owner, (Tick)3)
+		{
+		}
+
+		protected override void Perform()
+		{
+			foreach (var member in Context.Party)
+			{
+				if (!member.IsPoisoned) continue;
+				member.SetHpForced((Hp) 1);
+				member.TryCure(StatusConditionType.Poison);
+			}
 		}
 	}
 
@@ -118,10 +138,12 @@ namespace SPRPG.Battle
 			var key = data.Key;	
 			switch (key)
 			{
-				case BossPassiveLocalKey.RadioactiveArea:
-					return new BossRadioactiveAreaPassive(data, context, owner);
-				case BossPassiveLocalKey.Step1MeltDown:
-					return new BossRadiationStep1MeltDownPassive(data, context, owner);
+				case BossPassiveLocalKey.Poison1:
+				case BossPassiveLocalKey.Poison2:
+				case BossPassiveLocalKey.Poison3:
+					return new BossPoisonPassive(data, context, owner);
+				case BossPassiveLocalKey.Recovery:
+					return new BossRecoveryPassive(data, context, owner);
 				default:
 					Debug.LogError("boss " + key + "'s skill " + key + " not handled.");
 					return new BossNonePassive(context, owner);
@@ -139,12 +161,18 @@ namespace SPRPG.Battle
 
 			switch (data.Key)
 			{
-				case BossSkillLocalKey.Attack:
+				case BossSkillLocalKey.Attack1:
+				case BossSkillLocalKey.Attack2:
+				case BossSkillLocalKey.Attack3:
 					return new BossRadiationAttackSkillActor(data, context, owner);
-				case BossSkillLocalKey.MassAttack:
-					return new BossRadiationMassAttackSkillActor(data, context, owner);
-				case BossSkillLocalKey.Radioactivity:
-					return new BossGrantStatusConditionSkillActor(data, context, owner);
+				case BossSkillLocalKey.RangeAttack1:
+				case BossSkillLocalKey.RangeAttack2:
+				case BossSkillLocalKey.RangeAttack3:
+					return new BossRadiationRangeAttackSkillActor(data, context, owner);
+				case BossSkillLocalKey.PoisonExplosion1:
+					return new BossRadiationPoisonExplosion1(data, context, owner);
+				case BossSkillLocalKey.PoisonExplosion2:
+					return new BossRadiationPoisonExplosion2(data, context, owner);
 				default:
 					Debug.LogError(LogMessages.EnumUndefined(data.Key));
 					return new BossNoneSkillActor(context, owner);

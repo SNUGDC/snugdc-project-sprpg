@@ -33,6 +33,7 @@ namespace SPRPG.Battle
 		public bool HasSomeStatusCondition { get { return !StatusConditions.Empty(); } }
 		public bool HasStatusCondition(StatusConditionType type) { return StatusConditions.ContainsKey(type); }
 		public bool IsFreezed { get { return HasStatusCondition(StatusConditionType.Freeze); } }
+		public bool IsPoisoned { get { return HasStatusCondition(StatusConditionType.Poison); } }
 		public bool IsBlind { get { return HasStatusCondition(StatusConditionType.Blind); } }
 		
 		private readonly SetBool<PawnInvincibleKey> _invincible = new SetBool<PawnInvincibleKey>();
@@ -92,7 +93,10 @@ namespace SPRPG.Battle
 		{
 			var damageModified = ApplyModifier(damage);
 			target.Hit(damageModified);
+			AfterAttack(target);
 		}
+
+		protected virtual void AfterAttack(Pawn target) { }
 
 		public virtual void Hit(Damage dmg)
 		{
@@ -158,17 +162,20 @@ namespace SPRPG.Battle
 	{
 		public Action<T, Hp, Hp> OnHpChanged;
 		public Action<T> OnDead;
+		public Action<T, Pawn> OnAfterAttack;
 
 		protected Pawn(Stats stats) : base(stats)
 		{ }
 
 		protected override void AfterHpChanged(Hp old)
 		{
-			if (OnHpChanged != null)
-				OnHpChanged((T) this, Hp, old);
+			OnHpChanged.CheckAndCall((T) this, Hp, old);
+			if (Hp == 0) OnDead.CheckAndCall((T) this);
+		}
 
-			if (Hp == 0 && OnDead != null)
-				OnDead((T) this);
+		protected override void AfterAttack(Pawn target)
+		{
+			OnAfterAttack.CheckAndCall((T) this, target);
 		}
 	}
 }

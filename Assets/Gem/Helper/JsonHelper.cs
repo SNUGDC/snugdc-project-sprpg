@@ -160,6 +160,11 @@ namespace Gem
 			return JsonMapper.ToObject<T>(JsonMapper.ToJson(thiz));
 		}
 
+		public static T ToEnum<T>(this JsonData thiz)
+		{
+			return EnumHelper.ParseOrDefault<T>((string) thiz);
+		}
+
 		public static bool Load<T>(string path, out T data) 
 		{
 			try

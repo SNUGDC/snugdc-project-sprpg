@@ -3,18 +3,18 @@ using LitJson;
 
 namespace SPRPG.Battle
 {
-	public class BossDamageArgument
+	public class BossSingleArgument<T>
 	{
-		public readonly Damage Damage;
+		public readonly T Value;
 
-		public BossDamageArgument(JsonData data)
+		public BossSingleArgument(JsonData data, string key)
 		{
-			Damage = data["Damage"].ToObject<Damage>();
+			Value = data[key].ToObject<T>();
 		}
 
-		public static implicit operator Damage(BossDamageArgument thiz)
+		public static implicit operator T(BossSingleArgument<T> thiz)
 		{
-			return thiz.Damage;
+			return thiz.Value;
 		}
 	}
 }
