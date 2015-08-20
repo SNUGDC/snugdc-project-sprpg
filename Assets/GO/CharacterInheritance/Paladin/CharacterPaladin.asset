@@ -12,16 +12,5 @@ MonoBehaviour:
   m_Name: CharacterPaladin
   m_EditorClassIdentifier: 
   Id: 4
-  Detail: Paladin
-  Icon: {fileID: 21300000, guid: ecf26dc885e4571479b02469c9594a6c, type: 3}
-  CharacterView: {fileID: 11483172, guid: ba8f130d4d8ee4945bcad53163916edd, type: 2}
-  Stats:
-    _hp: 1000
-    _damageModifier: 0
-  Passive: 0
-  SkillSet:
-    _1: 19
-    _2: 2
-    _3: 3
-    _4: 4
+  CharacterView: {fileID: 11483172, guid: 28a1c1e6db23a3842bb10e47434aa80a, type: 2}
   CampAnimatorController: {fileID: 0}

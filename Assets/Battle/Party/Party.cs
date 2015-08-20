@@ -102,6 +102,14 @@ namespace SPRPG.Battle
 			return aliveMembers.Rand();
 		}
 
+		public List<Character> TryGetRandomAliveMembers(int num)
+		{
+			var aliveMembers = GetAliveMembers().ToList();
+			aliveMembers.Shuffle();
+			var numValid = Math.Min(num, aliveMembers.Count);
+			return aliveMembers.GetRange(0, numValid).ToList();
+		}
+
 		public void BeforeTurn()
 		{
 			foreach (var member in this)

@@ -14,6 +14,8 @@ namespace SPRPG.Battle
 		Or,
 		CompareInt,
 		Dictionary,
+		SomeCharacterHasStatusCondition,
+		BossPhase,
 	}
 
 	public enum ConditionCompareOperator
@@ -137,6 +139,36 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public sealed class SomeCharacterHasStatusConditionCondition : Condition
+	{
+		private readonly StatusConditionType _type;
+
+		public SomeCharacterHasStatusConditionCondition(JsonData data) : base(ConditionType.SomeCharacterHasStatusCondition)
+		{
+			_type = data["StatusCondition"].ToEnum<StatusConditionType>();
+		}
+
+		public override bool Test(Battle context)
+		{
+			return context.Party.Any(member => member.HasStatusCondition(_type));
+		}
+	}
+
+	public sealed class BossPhaseCondition : Condition
+	{
+		private readonly BossPhaseState _phase;
+
+		public BossPhaseCondition(JsonData data) : base(ConditionType.BossPhase)
+		{
+			_phase = (BossPhaseState) (int) data["Phase"];
+		}
+
+		public override bool Test(Battle context)
+		{
+			return context.Boss.Phase == _phase;
+		}
+	}
+
 	public static class ConditionFactory
 	{
 		public static Condition Create(JsonData data)
@@ -157,6 +189,10 @@ namespace SPRPG.Battle
 					return new CompareIntCondition(data);
 				case ConditionType.Dictionary:
 					return new DictionaryCondition(data);
+				case ConditionType.SomeCharacterHasStatusCondition:
+					return new SomeCharacterHasStatusConditionCondition(data);
+				case ConditionType.BossPhase:
+					return new BossPhaseCondition(data);
 			}
 
 			Debug.LogError(LogMessages.EnumUndefined(type));
