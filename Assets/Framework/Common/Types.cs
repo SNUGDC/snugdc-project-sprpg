@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Gem;
+using UnityEngine;
+using Random = System.Random;
 
 namespace SPRPG
 {
@@ -127,7 +130,27 @@ namespace SPRPG
 		{
 			return Random.Next()%100 < (int)thiz;
 		}
-		
+
+		public static Color ToColor(this Element thiz)
+		{
+			switch (thiz)
+			{
+				case Element.Normal:
+					return Color.black;
+				case Element.Fire:
+					return Color.red;
+				case Element.Ice:
+					return Color.blue;
+				case Element.Electric:
+					return Color.yellow;
+				case Element.Poison:
+					return Color.magenta;
+				default:
+					Debug.LogError(LogMessages.EnumNotHandled(thiz));
+					return Color.black;
+			}
+		}
+
 		public static int ToIndex(this SkillSlot thiz)
 		{
 			return (int) thiz;
