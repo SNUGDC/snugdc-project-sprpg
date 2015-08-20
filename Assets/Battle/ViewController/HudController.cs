@@ -87,6 +87,8 @@ namespace SPRPG.Battle.View
 		private void TogglePause(bool shouldPause)
 		{
 			Context.RealtimeEnabled = !shouldPause;
+			_battleController.PartyView.SetAnimatorEnabled(!shouldPause);
+			_battleController.BossView.Animator.enabled = !shouldPause;
 		}
 
 		private void OnBossHit(Boss boss, Damage damage)

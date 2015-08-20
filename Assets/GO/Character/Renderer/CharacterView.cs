@@ -9,8 +9,7 @@ namespace SPRPG
 		private CharacterSkeleton _skeleton;
 		[SerializeField]
 		protected Transform FxRoot;
-		[SerializeField]
-		protected Animator Animator;
+		public Animator Animator;
 
 		public void Attack()
 		{

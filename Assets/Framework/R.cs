@@ -31,7 +31,7 @@ namespace SPRPG
 			private static string PrependRoot(BossId id, string path) { return PrependRoot(id + "/" + path); }
 
 			public static Sprite GetIcon(BossId id) { return Load<Sprite>(PrependRoot(id, "boss_" + id + "_icon")); }
-			public static GameObject GetSkeleton(BossId id) { return Load<GameObject>(PrependRoot(id, "Boss" + id)); }
+			public static Battle.View.BossView GetView(BossId id) { return Load<GameObject>(PrependRoot(id, "Boss" + id)).GetComponent<Battle.View.BossView>(); }
 		}
 	}
 }

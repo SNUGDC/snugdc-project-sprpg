@@ -16,13 +16,13 @@ namespace SPRPG.Battle.View
 
 		[SerializeField]
 		private Transform _bossOrigin;
-		private GameObject _bossSkeleton;
+		public BossView BossView;
 
 		void Start()
 		{
 			_partyController = PartyController.CreateWithInstantiatingCharacters(_partyView, Context.Party);
-			_bossSkeleton = R.Boss.GetSkeleton(Context.Boss.Id).Instantiate();
-			_bossSkeleton.transform.SetParent(_bossOrigin, false);
+			BossView = R.Boss.GetView(Context.Boss.Id).Instantiate();
+			BossView.transform.SetParent(_bossOrigin, false);
 		}
 
 		public void AfterTurn()

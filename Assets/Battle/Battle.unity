@@ -1586,6 +1586,7 @@ MonoBehaviour:
   _battleWrapper: {fileID: 2086338272}
   _partyView: {fileID: 341662552}
   _bossOrigin: {fileID: 418585746}
+  BossView: {fileID: 0}
 --- !u!114 &2086338276
 MonoBehaviour:
   m_ObjectHideFlags: 0
