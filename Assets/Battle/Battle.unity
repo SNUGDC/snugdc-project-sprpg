@@ -308,19 +308,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
       propertyPath: m_AnchorMin.x
-      value: .0799999982
+      value: .159999996
       objectReference: {fileID: 0}
     - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
       propertyPath: m_AnchorMin.y
-      value: .899999976
+      value: .850000024
       objectReference: {fileID: 0}
     - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
       propertyPath: m_AnchorMax.x
-      value: .0799999982
+      value: .159999996
       objectReference: {fileID: 0}
     - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
       propertyPath: m_AnchorMax.y
-      value: .899999976
+      value: .850000024
       objectReference: {fileID: 0}
     - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
       propertyPath: m_Pivot.x
