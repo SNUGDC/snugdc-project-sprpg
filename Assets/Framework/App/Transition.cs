@@ -51,16 +51,22 @@ namespace SPRPG
 
 		public static void ClearLog() { _log.Clear(); }
 
+		private static void LoadLevel(string scene)
+		{
+			Time.timeScale = 1;
+			Application.LoadLevel(scene);
+		}
+
 		public static void TransferToCamp()
 		{
 			_log.Push(SceneType.Camp);
-			Application.LoadLevel(CampSceneName);
+			LoadLevel(CampSceneName);
 		}
 
 		public static void TransferToWorld()
 		{
 			_log.Push(SceneType.World);
-			Application.LoadLevel(WorldSceneName);
+			LoadLevel(WorldSceneName);
 		}
 
 		public static void TransferToBattleWithUserBattleDef(StageId stage)
@@ -83,7 +89,7 @@ namespace SPRPG
 		private static void DoTransferToBattle()
 		{
 			_log.Push(SceneType.Battle);
-			Application.LoadLevel(BattleSceneName);
+			LoadLevel(BattleSceneName);
 		}
 
 		public static void TransferToProfile(CharacterId character)
@@ -100,13 +106,13 @@ namespace SPRPG
 		private static void JustTransferToProfile()
 		{
 			_log.Push(SceneType.Profile);
-			Application.LoadLevel(ProfileSceneName);
+			LoadLevel(ProfileSceneName);
 		}
 
 		public static void TransferToSetting()
 		{
 			_log.Push(SceneType.Setting);
-			Application.LoadLevel(SettingSceneName);
+			LoadLevel(SettingSceneName);
 		}
 
 		public static void TransferToPreviousScene(SceneType defaultScene)
