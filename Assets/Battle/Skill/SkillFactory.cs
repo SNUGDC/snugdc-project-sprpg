@@ -57,6 +57,8 @@ namespace SPRPG.Battle
 
 				case SkillKey.MonkSacrifice:
 					return new MonkSacrificeSkillActor(data, context, owner);
+				case SkillKey.MonkEquility:
+					return new MonkEquilitySkillActor(data, context, owner);
 			}
 
 			Debug.LogError(LogMessages.EnumNotHandled(key));

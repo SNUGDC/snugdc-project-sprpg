@@ -65,4 +65,25 @@ namespace SPRPG.Battle
 			Owner.Hit(damage);
 		}
 	}
+
+	public class MonkEquilitySkillActor : SkillActor
+	{
+		private readonly MonkEquilityArguments _arguments;
+
+		public MonkEquilitySkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
+		{
+			_arguments = data.Arguments.ToObject<MonkEquilityArguments>();
+		}
+
+		protected override void DoStart()
+		{
+			Owner.Hit(_arguments.Damage);
+			foreach (var member in Context.Party)
+			{
+				if (Owner == member) continue;
+				member.Heal(_arguments.Heal);
+			}
+			Stop();
+		}
+	}
 }
