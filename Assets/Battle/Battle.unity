@@ -333,6 +333,38 @@ Prefab:
       propertyPath: m_Name
       value: BossHpBar
       objectReference: {fileID: 0}
+    - target: {fileID: 22424278, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
+      propertyPath: m_LocalScale.x
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 22424278, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22476430, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471850, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22476430, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471850, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
   m_IsPrefabParent: 0
