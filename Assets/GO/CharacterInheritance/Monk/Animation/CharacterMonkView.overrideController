@@ -5,13 +5,13 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: CharacterArcherView
+  m_Name: CharacterMonkView
   m_Controller: {fileID: 9100000, guid: 3732e3a895b0b6445bd547a0dff18224, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 006c13fca4a379349912c7167c49e010, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: d714ef91d38c2f74f9af0f76e927c95c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 082db7ca651c48145b8650df0282dcad, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 07e95bcc981482a4f9deea6f26ae71e6, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: bc80cb58f6d29994298391fa8c35004c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bfd7e55ddfdb00c47bd2acc23f193bd5, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 2b9623582ddbfd940b6cc23af0db74c0, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 2b9623582ddbfd940b6cc23af0db74c0, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 5e52d6e5eb172f04f9c096f1a19b85ed, type: 2}
