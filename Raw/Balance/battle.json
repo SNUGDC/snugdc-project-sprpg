@@ -1,5 +1,5 @@
 {
-	"TickPerSecond": 30,
+	"TickPerSecond": 50,
 	"InputValidBefore": 3,
 	"Character": {
 		"DefaultSkillDelay": 3,
