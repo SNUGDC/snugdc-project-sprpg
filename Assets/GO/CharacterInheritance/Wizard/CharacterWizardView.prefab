@@ -997,12 +997,12 @@ MonoBehaviour:
   _skeleton: {fileID: 11412132}
   FxRoot: {fileID: 450954}
   Animator: {fileID: 9505578}
-  FxFireBolt: {fileID: 100004, guid: 3cbc5e57ce812b2499ca293964c1810c, type: 2}
-  FxIceBolt: {fileID: 100006, guid: 241c314d096d7a64aa5c3b20c021dd1b, type: 2}
-  FxLigtheningBolt: {fileID: 100000, guid: 0a8f0138979026948830f1a9dbe60763, type: 2}
-  FxFireBall: {fileID: 100004, guid: 3cbc5e57ce812b2499ca293964c1810c, type: 2}
-  FxIceSpear: {fileID: 100006, guid: a795f8a6f94bc8d4a85c034545846139, type: 2}
-  FxLigthening: {fileID: 100014, guid: 54d0c49d87986664c800de1f55be9587, type: 2}
+  FxFireBolt: {fileID: 133754, guid: d7659c78f97504d2b8c964625c034bf4, type: 2}
+  FxIceBolt: {fileID: 167124, guid: 582cdd28714e9479485ea1eed66abee6, type: 2}
+  FxLigtheningBolt: {fileID: 149206, guid: 9b6292c6b62da47d29dbf1afc7e57c7b, type: 2}
+  FxFireBall: {fileID: 133754, guid: d7659c78f97504d2b8c964625c034bf4, type: 2}
+  FxIceSpear: {fileID: 182836, guid: ce92e361a9e1b415781dc60d79eb7409, type: 2}
+  FxLigthening: {fileID: 149206, guid: 9b6292c6b62da47d29dbf1afc7e57c7b, type: 2}
 --- !u!212 &21203202
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1437,27 +1437,27 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: FxFireBolt
       value: 
-      objectReference: {fileID: 100004, guid: 3cbc5e57ce812b2499ca293964c1810c, type: 2}
+      objectReference: {fileID: 133754, guid: d7659c78f97504d2b8c964625c034bf4, type: 2}
     - target: {fileID: 0}
       propertyPath: FxIceBolt
       value: 
-      objectReference: {fileID: 100006, guid: 241c314d096d7a64aa5c3b20c021dd1b, type: 2}
+      objectReference: {fileID: 167124, guid: 582cdd28714e9479485ea1eed66abee6, type: 2}
     - target: {fileID: 0}
       propertyPath: FxLigtheningBolt
       value: 
-      objectReference: {fileID: 100000, guid: 0a8f0138979026948830f1a9dbe60763, type: 2}
+      objectReference: {fileID: 149206, guid: 9b6292c6b62da47d29dbf1afc7e57c7b, type: 2}
     - target: {fileID: 0}
       propertyPath: FxFireBall
       value: 
-      objectReference: {fileID: 100004, guid: 3cbc5e57ce812b2499ca293964c1810c, type: 2}
+      objectReference: {fileID: 133754, guid: d7659c78f97504d2b8c964625c034bf4, type: 2}
     - target: {fileID: 0}
       propertyPath: FxIceSpear
       value: 
-      objectReference: {fileID: 100006, guid: a795f8a6f94bc8d4a85c034545846139, type: 2}
+      objectReference: {fileID: 182836, guid: ce92e361a9e1b415781dc60d79eb7409, type: 2}
     - target: {fileID: 0}
       propertyPath: FxLigthening
       value: 
-      objectReference: {fileID: 100014, guid: 54d0c49d87986664c800de1f55be9587, type: 2}
+      objectReference: {fileID: 149206, guid: 9b6292c6b62da47d29dbf1afc7e57c7b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 108538}
