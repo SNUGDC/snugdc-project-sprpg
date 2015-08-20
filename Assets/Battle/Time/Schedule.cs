@@ -94,7 +94,7 @@ namespace SPRPG.Battle
 
 		public void Sync()
 		{
-			Debug.Assert(_lastSync == default(Tick) || _lastSync == _clock.Current - 1);
+			Debug.Assert(_lastSync == Clock.InitialTick || _lastSync == _clock.Current - 1);
 			while (_lastSync < _clock.Current)
 				InvokeAndRemove(++_lastSync);
 		}

@@ -62,15 +62,9 @@ namespace SPRPG.Battle
 
 		private static TermAndGrade CaptureInput(RelativeClock clock)
 		{
-			var termAndDistance = clock.GetCurrentTermAndDistance();
-			return new TermAndGrade(termAndDistance.Term, GradeInput(termAndDistance.Distance));
-		}
-
-		private static InputGrade GradeInput(Tick distance)
-		{
-			var validBefore = BattleBalance._.Data.InputValidBefore;
-			if (distance < validBefore) return InputGrade.Bad;
-			return InputGrade.Good;
+			var term = clock.GetCurrentTermAndDistance().Term;
+			var grade = clock.Relative > 0 ? InputGrade.Good : InputGrade.Bad;
+			return new TermAndGrade(term, grade);
 		}
 	}
 

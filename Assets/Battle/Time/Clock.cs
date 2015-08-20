@@ -17,16 +17,31 @@ namespace SPRPG.Battle
 
 		public TermAndDistance(Tick tick)
 		{
-			Distance = (Tick)((int)tick % (int)Const.Term);
-			Term = (Term)(((int)tick / (int)Const.Term) % SPRPG.Const.SkillSlotSize);
+			if (tick < 0)
+			{
+				Distance = tick;
+				Term = Term._1;
+			}
+			else
+			{
+				Distance = (Tick)((int)tick % (int)Const.Term);
+				Term = (Term)(((int)tick / (int)Const.Term) % SPRPG.Const.SkillSlotSize);
+			}
 		}
 	}
 
 	public class Clock
 	{
+		public const Tick InitialTick = (Tick)(-15);
+
 		public Tick Current { get; private set; }
 
 		public Action<Clock> OnProceed;
+
+		public Clock()
+		{
+			Current = InitialTick;
+		}
 
 		public void Proceed()
 		{
@@ -69,7 +84,7 @@ namespace SPRPG.Battle
 
 		public void Rebase()
 		{
-			Base = Current;
+			Base = Current - CSharpHelper.ModPositive((int)Relative, (int)Const.Term) + (int)Const.Term;
 		}
 
 		public TermAndDistance GetCurrentTermAndDistance()

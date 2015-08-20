@@ -21,6 +21,7 @@ namespace SPRPG.Battle
 
 		public void Refresh(SkillKey skill, SkillSlot slot, float progress)
 		{
+			progress = Mathf.Max(0, progress);
 			var timing = CalculateTiming(progress);
 			RefreshSlots(slot);
 			RefreshCurrentSlot(slot, timing);
