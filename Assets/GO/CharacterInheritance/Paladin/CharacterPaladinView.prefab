@@ -89,6 +89,7 @@ GameObject:
   - 4: {fileID: 468078}
   - 114: {fileID: 11483172}
   - 95: {fileID: 9501418}
+  - 114: {fileID: 11478094}
   m_Layer: 0
   m_Name: CharacterPaladinView
   m_TagString: Untagged
@@ -954,6 +955,19 @@ MonoBehaviour:
   HandR: {fileID: 444288}
   FeetL: {fileID: 460390}
   FeetR: {fileID: 420236}
+--- !u!114 &11478094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf595bff8f572d428fdef68f3e7d8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  View: {fileID: 0}
+  Skill: 0
 --- !u!114 &11483172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -969,6 +983,11 @@ MonoBehaviour:
   FxRoot: {fileID: 483154}
   Animator: {fileID: 9501418}
   FxMassHeal: {fileID: 158722, guid: 6d88a0ab4ffebc941964b59330340d78, type: 2}
+  FxBash: {fileID: 0}
+  FxDefense: {fileID: 0}
+  FxPurification: {fileID: 0}
+  FxBigMassHeal: {fileID: 0}
+  FxMassDefense: {fileID: 0}
 --- !u!212 &21202696
 SpriteRenderer:
   m_ObjectHideFlags: 1
