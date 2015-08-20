@@ -21,7 +21,7 @@ namespace SPRPG.Profile
 		void Start()
 		{
 			if (CharacterToShow != null) Show(CharacterToShow.Value);
-			_skillSlots.OnClick += key => _skillDescription.SetDescription(key);
+			_skillSlots.OnClickCallback += OnSkillSlotClicked;
 		}
 
 		public void Show(CharacterId character)
@@ -41,6 +41,20 @@ namespace SPRPG.Profile
 		public void TransferToSetting()
 		{
 			Transition.TransferToSetting();
+		}
+
+		private void OnSkillSlotClicked(SkillKey skill, bool isSelected)
+		{
+			if (Character == null) return;
+			var data = SkillBalance._.Find(skill);
+			_skillDescription.SetDescription(data);
+			
+			var userCharacter = UserCharacters.Find(Character.Value);
+			if (userCharacter != null)
+			{
+				userCharacter.SkillSet[data.Tier.ToSlot()] = skill;
+				_skillSlots.Refresh();
+			}
 		}
 	}
 }
