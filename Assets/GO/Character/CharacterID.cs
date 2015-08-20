@@ -6,6 +6,7 @@
 		Wizard = 2,
 		Archer = 3,
 		Paladin = 4,
+		Monk = 5,
 		Thief = 6,
 	}
 
