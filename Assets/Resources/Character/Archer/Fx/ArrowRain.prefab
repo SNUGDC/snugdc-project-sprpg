@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 474942}
   - 95: {fileID: 9586270}
+  - 114: {fileID: 11470652}
   m_Layer: 0
   m_Name: ArrowRain
   m_TagString: Untagged
@@ -207,6 +208,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 275fc5543f4e43c48a8b9ce3c3b559e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11470652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfadfa5d2b514f4fa66d45a0af43f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11478820

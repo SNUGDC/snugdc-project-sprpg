@@ -45,6 +45,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 409598}
   - 95: {fileID: 9591362}
+  - 114: {fileID: 11471378}
   m_Layer: 0
   m_Name: WeakPointAttack
   m_TagString: Untagged
@@ -246,6 +247,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &11471378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727fb20763a1045ce9dd2c952e1c7b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &19811496
 ParticleSystem:
   m_ObjectHideFlags: 1
