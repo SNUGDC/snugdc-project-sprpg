@@ -31,7 +31,9 @@ namespace SPRPG.Camp
 
 		void LateUpdate()
 		{
-			_foregroundRoot.transform.position = _worldAnchor.position;
+			var position = _worldAnchor.position;
+			position.x *= 1.3f;
+			_foregroundRoot.transform.position = position;
 			_worldRoot.transform.position = _worldAnchor.position;
 		}
 
