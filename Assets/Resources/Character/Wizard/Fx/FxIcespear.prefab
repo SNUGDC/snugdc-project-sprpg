@@ -130,6 +130,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 486890}
   - 95: {fileID: 9536900}
+  - 114: {fileID: 11407306}
   m_Layer: 0
   m_Name: FxIcespear
   m_TagString: Untagged
@@ -359,6 +360,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &11407306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfadfa5d2b514f4fa66d45a0af43f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11481648
 MonoBehaviour:
   m_ObjectHideFlags: 1
