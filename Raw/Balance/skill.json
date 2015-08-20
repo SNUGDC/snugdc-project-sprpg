@@ -8,6 +8,7 @@
 		"Name": "공격",
 		"Tier": 1,
 		"MajorUser": "Warrior",
+		"FlavorText": "검을 휘둘러 적에게 일반공격을 가합니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage" },
 		"_viewActs": {
 			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "Attack" }
@@ -18,9 +19,10 @@
 	},
 	{
 		"Key": "WarriorEvasion",
-		"Name": "회피",
+		"Name": "공격",
 		"Tier": 2,
 		"MajorUser": "Warrior",
+		"FlavorText": "빠르게 뒤로 이동하여 적의 공격을 피합니다.",
 		"DescriptionFormat": { "Key": "skill-description-evade_for_duration" },
 		"_viewActs": {
 			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "ShakeHorizontal" }
@@ -34,6 +36,7 @@
 		"Name": "힐",
 		"Tier": 3,
 		"MajorUser": "Warrior",
+		"FlavorText": "주문을 사용하여 자신의 체력을 일부 회복합니다.",
 		"DescriptionFormat":  { "Key": "skill-description-heal_self" },
 		"_viewActs": {
 			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "Buff" }
@@ -47,6 +50,7 @@
 		"Name": "강공격",
 		"Tier": 4,
 		"MajorUser": "Warrior",
+		"FlavorText": "검을 크게 휘둘러 적에게 치명타을 가합니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage" },
 		"_viewActs": {
 			"OnStart": { "Target": "Animator", "Action": "SetTrigger", "Argument": "StrongAttack" }
@@ -60,6 +64,7 @@
 		"Name": "파이어볼트",
 		"Tier": 1,
 		"MajorUser": "Wizard",
+		"FlavorText": "화염으로 둘러싸인 구체를 소환하여 적에게 피해를 가합니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage" },
 		"Arguments": {
 			"Damage": { "Value": 75, "Element": "Fire" }
@@ -70,6 +75,7 @@
 		"Name": "아이스볼트",
 		"Tier": 1,
 		"MajorUser": "Wizard",
+		"FlavorText": "얼음으로 둘러싸인 구체를 소환하여 적에게 다소 약한 피해를 가하지만 일정확률로 적을 빙결상태에 빠뜨립니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage_and_status_condition_freeze" },
 		"Arguments": {
 			"Damage": { "Value": 50, "Element": "Ice" },
@@ -81,6 +87,7 @@
 		"Name": "라이트닝볼트",
 		"Tier": 1,
 		"MajorUser": "Wizard",
+		"FlavorText": "전기로 둘러싸인 구체를 소환하여 적에게 다소 큰 피해를 가하지만 근처의 아군에게도 약간의 피해를 줍니다. 일정확률로 적을 마비상태에 빠뜨립니다.",
 		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 임의의 아군에게 {DamageMember} 피해를 준다. 적에게 {StunPercentage}% 확률로 스턴을 건다.",
 		"Arguments": {
 			"Damage": { "Value": 100, "Element": "Electric" },
@@ -93,6 +100,7 @@
 		"Name": "파이어볼",
 		"Tier": 2,
 		"MajorUser": "Wizard",
+		"FlavorText": "거대한 화염덩어리를 소환하여 적에게 큰 피해를 가합니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage" },
 		"Arguments": {
 			"Damage": { "Value": 200, "Element": "Fire" }
@@ -103,6 +111,7 @@
 		"Name": "아이스스피어",
 		"Tier": 3,
 		"MajorUser": "Wizard",
+		"FlavorText": "얼음으로 만들어진 거대한 창을 소환하여 적에게 큰 피해를 가하며 높은 확률로 적을 빙결상태에 빠뜨립니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage_and_status_condition_freeze" },
 		"Arguments": {
 			"Damage": { "Value": 200, "Element": "Ice" },
@@ -114,6 +123,7 @@
 		"Name": "라이트닝",
 		"Tier": 4,
 		"MajorUser": "Wizard",
+		"FlavorText": "번개를 소환하여 적에게 매우 큰 피해를 가하지만 근처의 아군에게도 피해를 줍니다. 높은 확률로 마비상태에 빠뜨립니다.",
 		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 임의의 아군에게 {DamageMember} 피해를 준다. 적에게 {StunPercentage}% 확률로 스턴을 건다.",
 		"Arguments": {
 			"Damage": { "Value": 500, "Element": "Electric" },
@@ -166,6 +176,7 @@
 		"Name": "광역힐",
 		"Tier": 1,
 		"MajorUser": "Paladin",
+		"FlavorText": "아군 전체의 체력을 일부 회복합니다.",
 		"DescriptionFormat": "아군 전체의 체력을 {Amount} 회복한다.",
 		"Arguments": { "Amount": 50 }
 	},
@@ -174,6 +185,7 @@
 		"Name": "배쉬",
 		"Tier": 1,
 		"MajorUser": "Paladin",
+		"FlavorText": "적에게 충격을 가해 일정 확률로 적을 스턴상태에 빠뜨립니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage_and_stun" },
 		"Arguments": {
 			"Damage": { "Value": 10 },
@@ -185,6 +197,7 @@
 		"Name": "방어",
 		"Tier": 2,
 		"MajorUser": "Paladin",
+		"FlavorText": "방패를 이용하여 자신에 대한 적의 공격을 막아냅니다.",
 		"DescriptionFormat": "자신이 대상이 된 적의 다음 공격을 방어한다."
 	},
 	{
@@ -192,6 +205,7 @@
 		"Name": "정화",
 		"Tier": 3,
 		"MajorUser": "Paladin",
+		"FlavorText": "아군 전체의 상태이상을 전부 회복합니다.",
 		"DescriptionFormat": "아군 전체의 상태이상을 해제한다."
 	},
 	{
@@ -199,6 +213,7 @@
 		"Name": "큰광역힐",
 		"Tier": 4,
 		"MajorUser": "Paladin",
+		"FlavorText": "아군 전체의 체력을 크게 회복합니다.",
 		"DescriptionFormat": "아군 전체의 체력을 {Amount} 회복한다.",
 		"Arguments": { "Amount": 300 }
 	},
@@ -207,60 +222,15 @@
 		"Name": "광역방어",
 		"Tier": 4,
 		"MajorUser": "Paladin",
+		"FlavorText": "방패를 이용하여 아군에 대한 적의 공격을 막아냅니다.",
 		"DescriptionFormat": "아군이 대상이 된 적의 다음 공격을 방어한다."
-	},
-	{
-		"Key": "MonkHeal",
-		"Name": "힐",
-		"Tier": 1,
-		"MajorUser": "Monk",
-		"DescriptionFormat": { "Key": "skill-description-heal_self" },
-		"Arguments": { "Amount": 100 }
-	},
-	{
-		"Key": "MonkSacrifice",
-		"Name": "희생",
-		"Tier": 2,
-		"MajorUser": "Monk",
-		"DescriptionFormat": "{Duration}tick동안 아군이 받는 모든 피해를 자신이 받는다.",
-		"Arguments": { "Duration": 30 }
-	},
-	{
-		"Key": "MonkEquility",
-		"Name": "평등",
-		"Tier": 3,
-		"MajorUser": "Monk",
-		"DescriptionFormat": "자신에게 {Damage} 피해를 주고 다른 아군들의 체력을 각각 {Heal}씩 회복한다.",
-		"Arguments": { 
-			"Damage": { "Value": 300 },
-			"Heal": 150 
-		}
-	},
-	{
-		"Key": "MonkRevenge",
-		"Name": "복수",
-		"Tier": 4,
-		"MajorUser": "Monk",
-		"DescriptionFormat": "적에게 자신이 잃은 체력 비율 X {DamagePerLoseHpPercentage}만큼의 데미지를 준다.",
-		"Arguments": { "DamagePerLoseHpPercentage": 10 }
-	},
-	{
-		"Key": "MonkRecovery",
-		"Name": "재생",
-		"Tier": 4,
-		"MajorUser": "Monk",
-		"DescriptionFormat": "자신의 체력을 {Duration} period 동안 {Period} tick 당 {Amount} 회복한다.",
-		"Arguments": { 
-			"Duration": 120,
-			"Period": 10,
-			"Amount": 30 
-		}
 	},
 	{
 		"Key": "ThiefStab",
 		"Name": "찌르기",
 		"Tier": 1,
 		"MajorUser": "Thief",
+		"FlavorText": "적을 찔러 충격을 줘서 일정 확률로 적을 스턴상태에 빠뜨립니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage_and_stun" },
 		"Arguments": {
 			"Damage": { "Value": 10 },
@@ -272,6 +242,7 @@
 		"Name": "회피",
 		"Tier": 2,
 		"MajorUser": "Thief",
+		"FlavorText": "빠르게 뒤로 움직여 적의 공격을 피합니다.",
 		"DescriptionFormat": { "Key": "skill-description-evade_for_duration" },
 		"Arguments": { "Duration": 30 }
 	},
@@ -280,6 +251,7 @@
 		"Name": "모래뿌리기",
 		"Tier": 3,
 		"MajorUser": "Thief",
+		"FlavorText": "모레를 뿌려 적에게 다소 큰 피해를 주고 일정 확률로 적을 실명상태에 빠뜨립니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage_and_status_condition_blind" },
 		"Arguments": {
 			"Damage": { "Value": 100 },
@@ -291,6 +263,7 @@
 		"Name": "독뿌리기",
 		"Tier": 3,
 		"MajorUser": "Thief",
+		"FlavorText": "독을 뿌려 적에게 다소 큰 피해를 주고 일정 확률로 적을 중독상태에 빠뜨립니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage_and_status_condition_poison" },
 		"Arguments": {
 			"Damage": { "Value": 100, "Element": "Poison" },
@@ -302,6 +275,7 @@
 		"Name": "암살",
 		"Tier": 4,
 		"MajorUser": "Thief",
+		"FlavorText": "적에게 빠르게 접근하여 순식간에 무방비한 적의 급소를 노려 치명타를 가합니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage" },
 		"Arguments": { "Damage": { "Value": 300 } }
 	}

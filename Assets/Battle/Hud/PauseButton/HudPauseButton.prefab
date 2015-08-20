@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseSprite: {fileID: 21300000, guid: d927637be7c8bb84492f76e425068248, type: 3}
-  _resumeSprite: {fileID: 21300000, guid: e64e38fb691763d4db262a575535cd41, type: 3}
+  _resumeSprite: {fileID: 21300000, guid: aa48071d09d46d946b171b98f2338584, type: 3}
   _image: {fileID: 11495334}
 --- !u!114 &11495334
 MonoBehaviour:
@@ -174,7 +174,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _resumeSprite
       value: 
-      objectReference: {fileID: 21300000, guid: e64e38fb691763d4db262a575535cd41,
+      objectReference: {fileID: 21300000, guid: aa48071d09d46d946b171b98f2338584,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
