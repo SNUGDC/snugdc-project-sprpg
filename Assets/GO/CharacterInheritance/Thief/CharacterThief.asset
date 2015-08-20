@@ -12,16 +12,5 @@ MonoBehaviour:
   m_Name: CharacterThief
   m_EditorClassIdentifier: 
   Id: 6
-  Detail: Thief
-  Icon: {fileID: 21300000, guid: 8dc47c78bdeeed44ca0d88444aefeba5, type: 3}
-  CharacterView: {fileID: 11454876, guid: 0a760f97a1d786744af55910d93ea1bf, type: 2}
-  Stats:
-    _hp: 500
-    _damageModifier: 0
-  Passive: 0
-  SkillSet:
-    _1: 25
-    _2: 26
-    _3: 27
-    _4: 29
+  CharacterView: {fileID: 11459964, guid: 0a760f97a1d786744af55910d93ea1bf, type: 2}
   CampAnimatorController: {fileID: 0}
