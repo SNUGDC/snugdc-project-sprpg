@@ -142,6 +142,9 @@ namespace SPRPG.Battle
 				case BossPassiveLocalKey.Poison2:
 				case BossPassiveLocalKey.Poison3:
 					return new BossPoisonPassive(data, context, owner);
+				case BossPassiveLocalKey.Timescale1:
+				case BossPassiveLocalKey.Timescale2:
+					return new BossTimescalePassive(data, context, owner);
 				case BossPassiveLocalKey.Recovery:
 					return new BossRecoveryPassive(data, context, owner);
 				default:

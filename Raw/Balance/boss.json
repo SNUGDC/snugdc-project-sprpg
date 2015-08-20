@@ -20,9 +20,19 @@
 				"Arguments": { "StatusConditionTest": { "Type": "Poison", "Percentage": 20 } }
 			},
 			{
+				"Key": "Timescale1",
+				"ActivateCondition": { "Type": "BossPhase", "Phase": 2 },
+				"Arguments": { "Timescale": 1.5 }
+			},
+			{
 				"Key": "Poison3",
 				"ActivateCondition": { "Type": "BossPhase", "Phase": 3 },
 				"Arguments": { "StatusConditionTest": { "Type": "Poison", "Percentage": 33 } }
+			},
+			{
+				"Key": "Timescale2",
+				"ActivateCondition": { "Type": "BossPhase", "Phase": 3 },
+				"Arguments": { "Timescale": 2 }
 			},
 			{
 				"Key": "Recovery",
