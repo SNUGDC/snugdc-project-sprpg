@@ -8,6 +8,8 @@ namespace SPRPG
 		[SerializeField]
 		private Transform _center;
 		[SerializeField]
+		private Transform _bottom;
+		[SerializeField]
 		private Transform _aim;
 		[SerializeField]
 		private Transform _buffTop;
@@ -26,6 +28,16 @@ namespace SPRPG
 			}
 
 			return go;
+		}
+
+		public GameObject InstantiateOnCenter(GameObject prefab)
+		{
+			return Instantiate(prefab, _center);
+		}
+
+		public GameObject InstantiateOnBottom(GameObject prefab)
+		{
+			return Instantiate(prefab, _bottom);
 		}
 
 		public GameObject InstantiateOnAim(GameObject prefab)

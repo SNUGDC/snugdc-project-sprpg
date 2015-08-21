@@ -28,32 +28,37 @@ namespace SPRPG
 
 		public void PlayMassHeal()
 		{
-			Points.InstantiateOnAim(FxMassHeal);
+			Buff();
+			Points.InstantiateOnBuffTop(FxMassHeal);
 		}
 
 		public void PlayBash()
 		{
+			Attack();
 			Points.InstantiateOnAim(FxBash);		
 		}
 
 		public void PlayDefense()
 		{
-			Points.InstantiateOnAim(FxDefense);		
+			// todo: guard animation
+			Points.InstantiateOnCenter(FxDefense);		
 		}
 
 		public void PlayPurification()
 		{
-			Points.InstantiateOnAim(FxPurification);
+			Points.InstantiateOnBottom(FxPurification);
 		}
 
 		public void PlayBigMassHeal()
 		{
-			Points.InstantiateOnAim(FxBigMassHeal);
+			Buff();
+			Points.InstantiateOnBuffTop(FxBigMassHeal);
 		}
 
 		public void PlayMassDefense()
 		{
-			Points.InstantiateOnAim(FxMassDefense);
+			// todo: guard animation
+			Points.InstantiateOnCenter(FxMassDefense);
 		}
 	}
 }
