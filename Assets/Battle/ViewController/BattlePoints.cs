@@ -3,39 +3,44 @@ using UnityEngine;
 
 namespace SPRPG.Battle.View
 {
-	public class Points : MonoBehaviour
+	public class BattlePoints : MonoBehaviour
 	{
+		public static BattlePoints _ { get; private set; }
+
 		public Transform LeaderFront;
 		public Transform LeaderBack;
 		public Transform BossFront;
 		public Transform BossBack;
 
+		void Start()
+		{
+			_ = this;
+		}
+
+		void OnDestroy()
+		{
+			if (_ == this)
+				_ = null;
+		}
+
 		public GameObject InstantiateOnLeaderFront(GameObject prefab)
 		{
-			var go = prefab.Instantiate();
-			go.transform.SetParent(LeaderFront, false);
-			return go;
+			return prefab.InstantiateToParentAndToggleActive(LeaderFront);
 		}
 
 		public GameObject InstantiateOnLeaderBack(GameObject prefab)
 		{
-			var go = prefab.Instantiate();
-			go.transform.SetParent(LeaderBack, false);
-			return go;
+			return prefab.InstantiateToParentAndToggleActive(LeaderBack);
 		}
 
 		public GameObject InstantiateOnBossFront(GameObject prefab)
 		{
-			var go = prefab.Instantiate();
-			go.transform.SetParent(BossFront, false);
-			return go;
+			return prefab.InstantiateToParentAndToggleActive(BossFront);
 		}
 	
 		public GameObject InstantiateOnBossBack(GameObject prefab)
 		{
-			var go = prefab.Instantiate();
-			go.transform.SetParent(BossBack, false);
-			return go;
+			return prefab.InstantiateToParentAndToggleActive(BossBack);
 		}
 	}
 }

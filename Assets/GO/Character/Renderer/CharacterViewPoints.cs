@@ -14,40 +14,24 @@ namespace SPRPG
 		[SerializeField]
 		private Transform _buffTop;
 
-		private static GameObject Instantiate(GameObject prefab, Transform parent)
-		{
-			var go = prefab.Instantiate();
-			go.transform.SetParent(parent, false);
-			
-			// prevent mysterious initial particle curve.
-			var activeOrg = go.activeSelf;
-			if (activeOrg)
-			{
-				go.SetActive(false);
-				go.SetActive(true);
-			}
-
-			return go;
-		}
-
 		public GameObject InstantiateOnCenter(GameObject prefab)
 		{
-			return Instantiate(prefab, _center);
+			return prefab.InstantiateToParentAndToggleActive(_center);
 		}
 
 		public GameObject InstantiateOnBottom(GameObject prefab)
 		{
-			return Instantiate(prefab, _bottom);
+			return prefab.InstantiateToParentAndToggleActive(_bottom);
 		}
 
 		public GameObject InstantiateOnAim(GameObject prefab)
 		{
-			return Instantiate(prefab, _aim);
+			return prefab.InstantiateToParentAndToggleActive(_aim);
 		}
 
 		public GameObject InstantiateOnBuffTop(GameObject prefab)
 		{
-			return Instantiate(prefab, _buffTop);
+			return prefab.InstantiateToParentAndToggleActive(_buffTop);
 		}
 	}
 }

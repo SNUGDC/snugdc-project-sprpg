@@ -9,6 +9,22 @@ namespace Gem
 			return Object.Instantiate(thiz);
 		}
 
+		public static GameObject InstantiateToParentAndToggleActive(this GameObject thiz, Transform parent)
+		{
+			var go = thiz.Instantiate();
+			go.transform.SetParent(parent, false);
+
+			// prevent mysterious initial particle curve.
+			var activeOrg = go.activeSelf;
+			if (activeOrg)
+			{
+				go.SetActive(false);
+				go.SetActive(true);
+			}
+
+			return go;
+		}
+
 		public static T Instantiate<T>(this T thiz) where T : Component
 		{
 			return thiz.gameObject.Instantiate().GetComponent<T>();
