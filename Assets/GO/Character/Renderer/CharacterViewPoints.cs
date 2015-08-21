@@ -7,11 +7,13 @@ namespace SPRPG
 	{
 		[SerializeField]
 		private Transform Aim;
+		[SerializeField]
+		private Transform BuffTop;
 
-		public GameObject InstantiateOnAim(GameObject prefab)
+		private static GameObject Instantiate(GameObject prefab, Transform parent)
 		{
 			var go = prefab.Instantiate();
-			go.transform.SetParent(Aim, false);
+			go.transform.SetParent(parent, false);
 			
 			// prevent mysterious initial particle curve.
 			var activeOrg = go.activeSelf;
@@ -22,6 +24,16 @@ namespace SPRPG
 			}
 
 			return go;
+		}
+
+		public GameObject InstantiateOnAim(GameObject prefab)
+		{
+			return Instantiate(prefab, Aim);
+		}
+
+		public GameObject InstantiateOnBuffTop(GameObject prefab)
+		{
+			return Instantiate(prefab, BuffTop);
 		}
 	}
 }

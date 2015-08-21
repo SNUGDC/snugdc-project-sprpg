@@ -23,31 +23,32 @@ namespace SPRPG
 	
 		public void PlayAttack()
 		{
-			Animator.SetTrigger ("Attack");
-			var fx = Points.InstantiateOnAim(FxAttck);
-			fx.transform.Translate (new Vector2 (1, 0.5f));
+			Attack();
+			Points.InstantiateOnAim(FxAttck);
 		}
 
 		public void PlayHeal()
 		{
-			Animator.SetTrigger ("Buff");
-			var fx = Points.InstantiateOnAim(FxHeal);
-			fx.transform.localPosition = new Vector2 (0, 1.5f);
+			Buff();
+			Points.InstantiateOnBuffTop(FxHeal);
 		}
 
 		public void PlayStrongAttack()
 		{
-			Animator.SetTrigger ("StrongAttack");
+			StrongAttack();
 			Invoke ("PlayDelayedStrongAttack", 0.3f);
 		}
+
 		public void PlayDelayedStrongAttack()
 		{
+			// todo: instantiate on world.
 			var fx = Points.InstantiateOnAim(FxStrongAttack);
-			fx.transform.localPosition = new Vector2 (1.8f, 0);
+			fx.transform.localPosition = new Vector2 (1.8f, -0.7f);
 		}
+
 		public void PlayEvasion()
 		{
-			Animator.SetTrigger ("ShakeHorizontal");
+			ShakeHorizontal();
 		}
 	}
 }
