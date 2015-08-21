@@ -24,6 +24,7 @@ namespace SPRPG
 		public void StrongAttack() { Animator.SetTrigger("StrongAttack"); }
 		public void Dead() { Animator.SetTrigger("Dead"); }
 		public void Buff() { Animator.SetTrigger("Buff"); }
+		public void Jump() { Animator.SetTrigger("Jump"); }
 		public void ShakeHorizontal() { Animator.SetTrigger("ShakeHorizontal"); }
 
 		public virtual void PlaySkillStart(SkillBalanceData data) { }

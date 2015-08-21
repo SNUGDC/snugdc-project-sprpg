@@ -86,7 +86,11 @@ GameObject:
   m_Layer: 0
   m_Name: BossBottom
   m_TagString: Untagged
+<<<<<<< HEAD
   m_Icon: {fileID: 0}
+=======
+  m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
+>>>>>>> 2f297d64d5208dfd9664e433ffc72a1b6bb7aeaa
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
@@ -211,7 +215,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 1.5, y: 1, z: 0}
+=======
+  m_LocalPosition: {x: 1.5, y: .800000012, z: 0}
+>>>>>>> 2f297d64d5208dfd9664e433ffc72a1b6bb7aeaa
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 414044}

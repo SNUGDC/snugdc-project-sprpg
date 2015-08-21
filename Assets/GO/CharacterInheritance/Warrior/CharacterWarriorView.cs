@@ -1,4 +1,5 @@
 ﻿using Gem;
+using SPRPG.Battle.View;
 using UnityEngine;
 
 namespace SPRPG
@@ -24,6 +25,7 @@ namespace SPRPG
 		public void PlayAttack()
 		{
 			Attack();
+			Jump();
 			Points.InstantiateOnAim(FxAttck);
 		}
 
@@ -36,14 +38,13 @@ namespace SPRPG
 		public void PlayStrongAttack()
 		{
 			StrongAttack();
-			Invoke ("PlayDelayedStrongAttack", 0.3f);
+			Jump();
+			Invoke("PlayDelayedStrongAttack", 0.3f);
 		}
 
 		public void PlayDelayedStrongAttack()
 		{
-			// todo: instantiate on world.
-			var fx = Points.InstantiateOnAim(FxStrongAttack);
-			fx.transform.localPosition = new Vector2 (1.8f, -0.7f);
+			BattlePoints._.InstantiateOnBossBottom(FxStrongAttack);
 		}
 
 		public void PlayEvasion()
