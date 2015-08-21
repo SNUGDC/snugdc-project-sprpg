@@ -61,7 +61,7 @@ namespace SPRPG.Battle
 		{
 			_context = context;
 			Data = data;
-			Passive = PassiveFactory.Create(data.Passive);
+			Passive = PassiveFactory.Create(data.Passive, context, this);
 			SkillManager = new SkillManager(data.SkillSetDefault, context, this);
 		}
 
@@ -93,6 +93,7 @@ namespace SPRPG.Battle
 
 		public void Evade(Tick duration)
 		{
+			if (_evadeDurationLeft > duration) return;
 			_evadeDurationLeft = duration;
 		}
 

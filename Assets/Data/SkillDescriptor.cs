@@ -28,6 +28,7 @@ namespace SPRPG
 				case SkillKey.None4:
 					return delegate { return "invalid skill: " + key; };
 
+				case SkillKey.ArcherReload:
 				case SkillKey.PaladinDefense:
 				case SkillKey.PaladinPurification:
 				case SkillKey.PaladinMassDefense:
@@ -37,8 +38,7 @@ namespace SPRPG
 				case SkillKey.WarriorStrongAttack:
 				case SkillKey.WizardFireBolt:
 				case SkillKey.WizardFireBall:
-				case SkillKey.ArcherAttack:
-				case SkillKey.ArcherStrongShot:
+				case SkillKey.ArcherSnipe:
 				case SkillKey.ThiefAssassination:
 					return data =>
 					{
@@ -72,6 +72,20 @@ namespace SPRPG
 						return args.Describe(data.DescriptionFormat);
 					};
 
+				case SkillKey.ArcherEvadeShot:
+					return data =>
+					{
+						var args = data.Arguments.ToObject<Battle.ArcherEvadeShotArguments>();
+						return args.Describe(data.DescriptionFormat);
+					};
+
+				case SkillKey.ArcherWeakPointAttack:
+					return data =>
+					{
+						var args = data.Arguments.ToObject<Battle.ArcherWeakPointArguments>();
+						return args.Describe(data.DescriptionFormat);
+					};
+
 				case SkillKey.MonkEquility:
 					return data =>
 					{
@@ -81,7 +95,6 @@ namespace SPRPG
 
 				case SkillKey.WarriorEvasion:
 				case SkillKey.WarriorHeal:
-				case SkillKey.ArcherEvasion:
 				case SkillKey.ArcherArrowRain:
 				case SkillKey.PaladinMassHeal:
 				case SkillKey.PaladinBigMassHeal:

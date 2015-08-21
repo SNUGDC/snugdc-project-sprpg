@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Gem;
 using UnityEngine;
 using Random = System.Random;
@@ -57,9 +56,10 @@ namespace SPRPG
 		WizardFireBall,
 		WizardIceSpear,
 		WizardLightening,
-		ArcherAttack,
-		ArcherEvasion,
-		ArcherStrongShot,
+		ArcherReload,
+		ArcherEvadeShot,
+		ArcherSnipe,
+		ArcherWeakPointAttack,
 		ArcherArrowRain,
 		PaladinMassHeal,
 		PaladinBash,

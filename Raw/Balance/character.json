@@ -13,9 +13,9 @@
 	},
 	"Archer": {
 		"FlavorText": "씨앗마을을 지키는 수비대 대장, 옥수수씨앗의 수호자 코온콩의 딸인 팝콩은 평소 사냥을 즐기는 명사수. 어리다는 이유로 수비대에 들어가지 못하고있던 팝콩은 자신의 실력을 인정받기위해 딱콩의 지구수호대 원정에 합류하게 된다./n팝콩은 활을 이용하는 헌터로 빠른 회피와 강력하고 화려한 화살공격이 가능합니다./n스킬에 화살을 사용합니다. 요구 화살수가 충족되지 않으면 스킬을 발동할 수 없습니다. 화살은 최초에 5개가 주어지면 5개가 최대 소지할 수 있는 화살수입니다. 캐릭터가 대기중일 때, 반턴당 화살1개가 충전됩니다.",
-		"Stats": { "Hp": 500 },
+		"Stats": { "Hp": 300 },
 		"Passive": "Archer",
-		"SkillSetDefault": [ "ArcherAttack", "ArcherEvasion", "ArcherStrongShot", "ArcherArrowRain" ],
+		"SkillSetDefault": [ "ArcherReload", "ArcherEvadeShot", "ArcherSnipe", "ArcherArrowRain" ],
 		"Special": {
 			"ArrowInitial": 5,
 			"ArrowMax": 5,

@@ -120,34 +120,35 @@
 		}
 	},
 	{
-		"Key": "ArcherAttack",
-		"Name": "공격",
+		"Key": "ArcherReload",
+		"Name": "장전",
 		"Tier": 1,
 		"MajorUser": "Archer",
-		"DescriptionFormat": { "Key": "skill-description-damage" },
-		"Arguments": {
-			"Damage": { "Value": 70 }
-		}
+		"DescriptionFormat": "화살을 1개 추가한다."
 	},
 	{
-		"Key": "ArcherEvasion",
+		"Key": "ArcherEvadeShot",
 		"Name": "회피",
 		"Tier": 2,
 		"MajorUser": "Archer",
-		"DescriptionFormat": { "Key": "skill-description-evade_for_duration" },
-		"Arguments": {
-			"Duration": 30
-		}
+		"DescriptionFormat": "(1) 30tick 동안 적 공격에 피해를 입지 않는다. 적에게 {Damage} 피해를 준다.",
+		"Arguments": { "Duration": 30, "Damage": { "Value": 100 } }
 	},
 	{
-		"Key": "ArcherStrongShot",
-		"Name": "세게쏜다",
+		"Key": "ArcherSnipe",
+		"Name": "저격",
 		"Tier": 3,
 		"MajorUser": "Archer",
-		"DescriptionFormat": { "Key": "skill-description-damage" },
-		"Arguments": {
-			"Damage": { "Value": 210 }
-		}
+		"DescriptionFormat": "(1) 적에게 {Damage} 대미지를 준다.",
+		"Arguments": { "Damage": { "Value": 350 } }
+	},
+	{
+		"Key": "ArcherWeakPointAttack",
+		"Name": "약점공격",
+		"Tier": 3,
+		"MajorUser": "Archer",
+		"DescriptionFormat": "(1) 적에게 {Damage} 대미지를 준다. 적이 상태이상에 걸려있을 경우 {DamageOnStatusCondition} 피해를 준다.",
+		"Arguments": { "Damage": { "Value": 100 }, "DamageOnStatusCondition": { "Value": 500 } }
 	},
 	{
 		"Key": "ArcherArrowRain",
@@ -156,7 +157,7 @@
 		"MajorUser": "Archer",
 		"DescriptionFormat": "적에게 화살개수*{DamagePerArrow}의 데미지를 준다.",
 		"Arguments": {
-			"DamagePerArrow": 70
+			"DamagePerArrow": 150
 		}
 	},
 	{

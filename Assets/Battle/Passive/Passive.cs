@@ -2,6 +2,15 @@
 {
 	public class Passive
 	{
+		public readonly Battle Context;
+		public readonly Character Owner;
+
+		public Passive(Battle context, Character owner)
+		{
+			Context = context;
+			Owner = owner;
+		}
+
 		public virtual void Tick()
 		{
 			// do nothing.

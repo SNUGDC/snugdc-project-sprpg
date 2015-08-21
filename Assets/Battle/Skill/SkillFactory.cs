@@ -33,7 +33,6 @@ namespace SPRPG.Battle
 				case SkillKey.PaladinPurification:
 					return new MassCureSkillActor(data, context, owner);
 				case SkillKey.WarriorEvasion:
-				case SkillKey.ArcherEvasion:
 				case SkillKey.ThiefEvade:
 					return new EvasionSkillActor(data, context, owner);
 				case SkillKey.WizardIceBolt:
@@ -49,9 +48,14 @@ namespace SPRPG.Battle
 				case SkillKey.WizardLightening:
 					return new WizardLighteningBoltSkillActor(data, context, owner);
 
-				case SkillKey.ArcherAttack:
-				case SkillKey.ArcherStrongShot:
+				case SkillKey.ArcherReload:
+					return new ArcherReloadSkillActor(data, context, owner);
+				case SkillKey.ArcherEvadeShot:
+					return new ArcherEvadeShotSkillActor(data, context, owner);
+				case SkillKey.ArcherSnipe:
 					return new ArcherAttackSkillActor(data, context, owner);
+				case SkillKey.ArcherWeakPointAttack:
+					return new ArcherWeakPointAttackActor(data, context, owner);
 				case SkillKey.ArcherArrowRain:
 					return new ArcherArrowRainSkillActor(data, context, owner);
 
