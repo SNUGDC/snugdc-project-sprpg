@@ -15,49 +15,38 @@ namespace SPRPG
 		{
 			switch (data.Key) 
 			{
-				case(SkillKey.MonkHeal):
-					PlayHeal();
-					return;
-				case(SkillKey.MonkSacrifice):
-					PlaySacrifice();
-					return;
-				case(SkillKey.MonkEquility):
-					PlayEquility();
-					return;
-				case(SkillKey.MonkRevenge):
-					PlayRevenge();
-					return;
-				case(SkillKey.MonkRecovery):
-					PlayRecovery();
-					return;
-				default:
-					return;
+				case(SkillKey.MonkHeal): PlayHeal(); return;
+				case(SkillKey.MonkSacrifice): PlaySacrifice(); return;
+				case(SkillKey.MonkEquility): PlayEquility(); return;
+				case(SkillKey.MonkRevenge): PlayRevenge(); return;
+				case(SkillKey.MonkRecovery): PlayRecovery(); return;
+				default: Debug.LogError(LogMessages.EnumNotHandled(data.Key)); return;
 			}
 		}
 
 		public void PlayHeal()
 		{
-			InstantiateFx (FxHeal);
+			Points.InstantiateOnAim(FxHeal);
 		}
 
 		public void PlaySacrifice()
 		{
-			InstantiateFx (FxSacrifice);
+			Points.InstantiateOnAim(FxSacrifice);
 		}
 
 		public void PlayEquility()
 		{
-			InstantiateFx (FxEquility);
+			Points.InstantiateOnAim(FxEquility);
 		}
 
 		public void PlayRevenge()
 		{
-			InstantiateFx (FxRevenge);
+			Points.InstantiateOnAim(FxRevenge);
 		}
 
 		public void PlayRecovery()
 		{
-			InstantiateFx (FxRecovery);
+			Points.InstantiateOnAim(FxRecovery);
 		}
 	}
 }

@@ -16,58 +16,44 @@ namespace SPRPG
 		{
 			switch (data.Key)
 			{
-				case SkillKey.PaladinMassHeal:
-					PlayMassHeal();
-					return;
-				case SkillKey.PaladinBash:
-					PlayBash();
-					return;
-				case SkillKey.PaladinDefense:
-					PlayDefense();
-					return;
-				case SkillKey.PaladinPurification:
-					PlayPurification();
-					return;
-				case SkillKey.PaladinBigMassHeal:
-					PlayBigMassHeal();
-					return;
-				case SkillKey.PaladinMassDefense:
-					PlayMassDefense();
-					return;
-
-				default:
-					return;
+				case SkillKey.PaladinMassHeal: PlayMassHeal(); return;
+				case SkillKey.PaladinBash: PlayBash(); return;
+				case SkillKey.PaladinDefense: PlayDefense(); return;
+				case SkillKey.PaladinPurification: PlayPurification(); return;
+				case SkillKey.PaladinBigMassHeal: PlayBigMassHeal(); return;
+				case SkillKey.PaladinMassDefense: PlayMassDefense(); return;
+				default: Debug.LogError(LogMessages.EnumNotHandled(data.Key)); return;
 			}
 		}
 
 		public void PlayMassHeal()
 		{
-			InstantiateFx (FxMassHeal);
+			Points.InstantiateOnAim(FxMassHeal);
 		}
 
 		public void PlayBash()
 		{
-			InstantiateFx (FxBash);		
+			Points.InstantiateOnAim(FxBash);		
 		}
 
 		public void PlayDefense()
 		{
-			InstantiateFx (FxDefense);		
+			Points.InstantiateOnAim(FxDefense);		
 		}
 
 		public void PlayPurification()
 		{
-			InstantiateFx (FxPurification);
+			Points.InstantiateOnAim(FxPurification);
 		}
 
 		public void PlayBigMassHeal()
 		{
-			InstantiateFx (FxBigMassHeal);
+			Points.InstantiateOnAim(FxBigMassHeal);
 		}
 
 		public void PlayMassDefense()
 		{
-			InstantiateFx (FxMassDefense);
+			Points.InstantiateOnAim(FxMassDefense);
 		}
 	}
 }

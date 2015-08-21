@@ -18,57 +18,44 @@ namespace SPRPG
 
 			switch (data.Key)
 			{
-				case SkillKey.WizardFireBolt:
-					PlayFireBolt();
-					return;
-				case SkillKey.WizardIceBolt:
-					PlayIceBolt();
-					return;
-				case SkillKey.WizardLighteningBolt:
-					PlayLighteningBolt();
-					return;
-				case SkillKey.WizardFireBall:
-					PlayFireBall();
-					return;
-				case SkillKey.WizardIceSpear:
-					PlayIceSpear();
-					return;
-				case SkillKey.WizardLightening:
-					PlayLightening();
-					return;
-				default:
-					return;
+				case SkillKey.WizardFireBolt: PlayFireBolt(); return;
+				case SkillKey.WizardIceBolt: PlayIceBolt(); return;
+				case SkillKey.WizardLighteningBolt: PlayLighteningBolt(); return;
+				case SkillKey.WizardFireBall: PlayFireBall(); return;
+				case SkillKey.WizardIceSpear: PlayIceSpear(); return;
+				case SkillKey.WizardLightening: PlayLightening(); return;
+				default: Debug.LogError(LogMessages.EnumNotHandled(data.Key)); return;
 			}
 		}
 
 		public void PlayFireBolt()
 		{
-			InstantiateFx (FxFireBolt);
+			Points.InstantiateOnAim(FxFireBolt);
 		}
 
 		public void PlayIceBolt()
 		{
-			InstantiateFx (FxIceBolt);
+			Points.InstantiateOnAim(FxIceBolt);
 		}
 
 		public void PlayLighteningBolt()
 		{
-			InstantiateFx (FxLigtheningBolt);
+			Points.InstantiateOnAim(FxLigtheningBolt);
 		}
 
 		public void PlayFireBall()
 		{
-			InstantiateFx (FxFireBall);
+			Points.InstantiateOnAim(FxFireBall);
 		}
 
 		public void PlayIceSpear()
 		{
-			InstantiateFx (FxIceSpear);
+			Points.InstantiateOnAim(FxIceSpear);
 		}
 
 		public void PlayLightening()
 		{
-			InstantiateFx (FxLigthening);
+			Points.InstantiateOnAim(FxLigthening);
 		}
 	}
 }

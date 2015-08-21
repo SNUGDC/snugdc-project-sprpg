@@ -8,26 +8,12 @@ namespace SPRPG
 		[SerializeField]
 		private CharacterSkeleton _skeleton;
 		[SerializeField]
-		protected Transform FxRoot;
+		protected CharacterViewPoints Points; 
 		public Animator Animator;
 
-		public void Attack()
-		{
-			Animator.SetTrigger("Attack");
-		}
-
-		public void Dead()
-		{
-			Animator.SetTrigger("Dead");
-		}
+		public void Attack() { Animator.SetTrigger("Attack"); }
+		public void Dead() { Animator.SetTrigger("Dead"); }
 
 		public virtual void PlaySkillStart(SkillBalanceData data) { }
-				
-		public GameObject InstantiateFx(GameObject fxPrefab)
-		{
-			var fx = fxPrefab.Instantiate ();
-			fx.transform.SetParent (FxRoot, false);
-			return fx;
-		}
 	}
 }

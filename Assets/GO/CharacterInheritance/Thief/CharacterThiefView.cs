@@ -14,42 +14,33 @@ namespace SPRPG
 		{
 			switch (data.Key) 
 			{
-				case SkillKey.ThiefStab:
-					PlayStab();
-					return;
-				case SkillKey.ThiefSandAttack:
-					PlaySandAttack();
-					return;
-				case SkillKey.ThiefPoisonAttack:
-					PlayPoisonAttack();
-					return;
-				case SkillKey.ThiefAssassination:
-					PlayAssasination();
-					return;
-				default : 
-					return;
+				case SkillKey.ThiefStab: PlayStab(); return;
+				case SkillKey.ThiefSandAttack: PlaySandAttack(); return;
+				case SkillKey.ThiefPoisonAttack: PlayPoisonAttack(); return;
+				case SkillKey.ThiefAssassination: PlayAssasination(); return;
+				default: Debug.LogError(LogMessages.EnumNotHandled(data.Key)); return;
 			}
 
 		}
 
 		public void PlayStab()
 		{
-			InstantiateFx(FxStab);
+			Points.InstantiateOnAim(FxStab);
 		}
 
 		public void PlaySandAttack()
 		{
-			InstantiateFx (FxSandAttack);
+			Points.InstantiateOnAim(FxSandAttack);
 		}
 
 		public void PlayPoisonAttack()
 		{
-			InstantiateFx (FxPoisonAttack);
+			Points.InstantiateOnAim(FxPoisonAttack);
 		}
 
 		public void PlayAssasination()
 		{
-			InstantiateFx (FxAssasination);
+			Points.InstantiateOnAim(FxAssasination);
 		}
 	}
 }

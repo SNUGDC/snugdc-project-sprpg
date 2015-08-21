@@ -13,34 +13,25 @@ namespace SPRPG
 		{
 			switch (data.Key) 
 			{
-				case SkillKey.WarriorAttack:
-					PlayAttack();
-					return;
-				case SkillKey.WarriorHeal:
-					PlayHeal();
-					return;
-				case SkillKey.WarriorStrongAttack:
-					PlayStrongAttack();
-					return;
-				case SkillKey.WarriorEvasion:
-					PlayEvasion();
-					return;
-				default:
-					return;
+				case SkillKey.WarriorAttack: PlayAttack(); return;
+				case SkillKey.WarriorHeal: PlayHeal(); return;
+				case SkillKey.WarriorStrongAttack: PlayStrongAttack(); return;
+				case SkillKey.WarriorEvasion: PlayEvasion(); return;
+				default: Debug.LogError(LogMessages.EnumNotHandled(data.Key)); return;
 			}
 		}
 	
 		public void PlayAttack()
 		{
 			Animator.SetTrigger ("Attack");
-			var fxAttack = InstantiateFx (FxAttck);
-			fxAttack.transform.Translate (new Vector2 (1, 0.5f));
+			var fx = Points.InstantiateOnAim(FxAttck);
+			fx.transform.Translate (new Vector2 (1, 0.5f));
 		}
 
 		public void PlayHeal()
 		{
 			Animator.SetTrigger ("Buff");
-			var fx = InstantiateFx (FxHeal);
+			var fx = Points.InstantiateOnAim(FxHeal);
 			fx.transform.localPosition = new Vector2 (0, 1.5f);
 		}
 
@@ -51,7 +42,7 @@ namespace SPRPG
 		}
 		public void PlayDelayedStrongAttack()
 		{
-			var fx = InstantiateFx (FxStrongAttack);
+			var fx = Points.InstantiateOnAim(FxStrongAttack);
 			fx.transform.localPosition = new Vector2 (1.8f, 0);
 		}
 		public void PlayEvasion()

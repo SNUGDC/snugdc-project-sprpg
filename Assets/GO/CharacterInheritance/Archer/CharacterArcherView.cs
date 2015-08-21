@@ -1,5 +1,4 @@
-﻿using Gem;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SPRPG
 {
@@ -13,34 +12,32 @@ namespace SPRPG
 
 		public override void PlaySkillStart(SkillBalanceData data)
 		{
-			switch (data.Key) 
-			{
-			}
+			// todo
 		}
 
 		public void PlayReload()
 		{
-			InstantiateFx (FxReload);
+			Points.InstantiateOnAim(FxReload);
 		}
 
 		public void PlayEvadeShot()
 		{
-			InstantiateFx (FxEvadeShot);
+			Points.InstantiateOnAim(FxEvadeShot);
 		}
 
 		public void PlaySnipe()
 		{
-			InstantiateFx (FxSnipe);
+			Points.InstantiateOnAim(FxSnipe);
 		}
 
 		public void PlayWeakPointAttack()
 		{
-			InstantiateFx (FxWeakPointAttack);
+			Points.InstantiateOnAim(FxWeakPointAttack);
 		}
 
 		public void PlayArrowRain()
 		{
-			InstantiateFx (FxArrowRain);
+			Points.InstantiateOnAim(FxArrowRain);
 		}
 	}
 }
