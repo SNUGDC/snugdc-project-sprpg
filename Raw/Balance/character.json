@@ -26,7 +26,7 @@
 		"FlavorText": "씨앗마을의 신 'God of TheBillonLeaf(떡잎신)'의 신전을 지키던 팥의 수호자 파트콩은 어느날 갑자기 자신을 오염되어가는 지구를 구할 용사라며 '시-드 칼리버'를 들고 신전에 찾아온 딱콩으로부터 운명적 사명을 느끼고 신전을 나와 딱콩의 지구수호대 원정에 합류하게 된다./n파트콩은 큰 방패를 들고있는 성기사로 팀원들에 대한 힐과 방어, 적 공격이 모두 가능한 캐릭터입니다.",
 		"Stats": { "Hp": 1000 },
 		"Passive": "None",
-		"SkillSetDefault": [ "PaladinMassHeal", "None2", "PaladinPurification", "PaladinBigMassHeal" ]
+		"SkillSetDefault": [ "PaladinMassHeal", "PaladinDefense", "PaladinPurification", "PaladinBigMassHeal" ]
 	},
 	"Monk": {
 		"FlavorText": "씨앗섬의 산 꼭대기에서 수련을 하던 수도승이자 대추(인도대추사진 참고)씨의 수호자인 마하콩은 어느날 스승으로부터 하산하여 속세수행을 할 것을 명받는다. 자신의 힘을 세상에 도움이 되는 곳에 쓰고자 했지만 어디로 향할지 망설이던 마하콩은 마침 길을 떠나던 딱콩일행을 만나고 수행을 위해 길을 나선다./n마하콩은 수도승으로서 수련을 통해 익힌 깨달음을 바탕으로 기를 조절하여 파티원의 체력을 회복시키거나 적의 체력을 빼앗는 다양한 기술이 가능한 캐릭터입니다.",
