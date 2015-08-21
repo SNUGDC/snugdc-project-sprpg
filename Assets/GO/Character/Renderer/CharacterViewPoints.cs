@@ -6,9 +6,11 @@ namespace SPRPG
 	public class CharacterViewPoints : MonoBehaviour
 	{
 		[SerializeField]
-		private Transform Aim;
+		private Transform _center;
 		[SerializeField]
-		private Transform BuffTop;
+		private Transform _aim;
+		[SerializeField]
+		private Transform _buffTop;
 
 		private static GameObject Instantiate(GameObject prefab, Transform parent)
 		{
@@ -28,12 +30,12 @@ namespace SPRPG
 
 		public GameObject InstantiateOnAim(GameObject prefab)
 		{
-			return Instantiate(prefab, Aim);
+			return Instantiate(prefab, _aim);
 		}
 
 		public GameObject InstantiateOnBuffTop(GameObject prefab)
 		{
-			return Instantiate(prefab, BuffTop);
+			return Instantiate(prefab, _buffTop);
 		}
 	}
 }

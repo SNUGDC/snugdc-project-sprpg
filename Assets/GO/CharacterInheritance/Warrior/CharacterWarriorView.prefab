@@ -1040,8 +1040,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98618e82629af6a439a68ddd9f7b9496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Aim: {fileID: 417174}
-  BuffTop: {fileID: 411456}
+  _center: {fileID: 0}
+  _aim: {fileID: 417174}
+  _buffTop: {fileID: 411456}
 --- !u!212 &21214774
 SpriteRenderer:
   m_ObjectHideFlags: 1
