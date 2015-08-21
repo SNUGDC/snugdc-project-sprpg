@@ -30,6 +30,7 @@ namespace SPRPG
 
 		public void PlayReload()
 		{
+			Animator.SetTrigger("ArcherReload");
 			Points.InstantiateOnBuffTop(FxReload);
 		}
 
