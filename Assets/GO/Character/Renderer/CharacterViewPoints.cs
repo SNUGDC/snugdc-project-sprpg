@@ -12,6 +12,15 @@ namespace SPRPG
 		{
 			var go = prefab.Instantiate();
 			go.transform.SetParent(Aim, false);
+			
+			// prevent mysterious initial particle curve.
+			var activeOrg = go.activeSelf;
+			if (activeOrg)
+			{
+				go.SetActive(false);
+				go.SetActive(true);
+			}
+
 			return go;
 		}
 	}
