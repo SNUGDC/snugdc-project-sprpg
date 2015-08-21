@@ -43,6 +43,7 @@ namespace SPRPG.Camp
 			if (CampBalance._.Data.CharacterDic.TryGet(_data.Id, out campData))
 			{
 				transform.localPosition = campData.Position;
+				transform.localScale = new Vector3((float)campData.Scale.X, (float)campData.Scale.Y, 1);
 				SetFlip(campData.Flip);
 				SetBoundingRect(campData.BoundingRect);
 			}
@@ -55,7 +56,8 @@ namespace SPRPG.Camp
 
 		void SetFlip(bool val)
 		{
-			transform.SetLScaleX(val ? -1 : 1);
+			var scaleX = Mathf.Abs(transform.GetLScaleX());
+			transform.SetLScaleX(val ? -scaleX : scaleX);
 		}
 
 		void SetBoundingRect(Rect rect)
