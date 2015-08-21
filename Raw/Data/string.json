@@ -1,7 +1,6 @@
 {
 	"start-press_to_start": "모험을 시작합니다.",
 	"camp-goto_world": "스테이지 선택",
-	"world-goto_battle": "배틀 시작",
 	
 	"skill-description-damage": "적에게 {Damage}의 데미지를 준다.",
 	"skill-description-heal_self": "자신의 체력을 {Amount} 회복한다.",
