@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae598d3414f92bf46a66daba09d99da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0
+  _id: 2
   _skeleton: {fileID: 11412132}
   Points: {fileID: 11480324}
   Animator: {fileID: 9505578}
