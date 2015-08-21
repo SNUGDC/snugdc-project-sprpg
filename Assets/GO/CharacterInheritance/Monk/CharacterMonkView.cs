@@ -26,27 +26,33 @@ namespace SPRPG
 
 		public void PlayHeal()
 		{
-			Points.InstantiateOnAim(FxHeal);
+			Buff();
+			Points.InstantiateOnBuffTop(FxHeal);
 		}
 
 		public void PlaySacrifice()
 		{
-			Points.InstantiateOnAim(FxSacrifice);
+			Buff();
+			Points.InstantiateOnCenter(FxSacrifice);
 		}
 
 		public void PlayEquility()
 		{
-			Points.InstantiateOnAim(FxEquility);
+			Buff();
+			Points.InstantiateOnCenter(FxEquility);
 		}
 
 		public void PlayRevenge()
 		{
+			// todo: instantiate on boss
+			Attack();
 			Points.InstantiateOnAim(FxRevenge);
 		}
 
 		public void PlayRecovery()
 		{
-			Points.InstantiateOnAim(FxRecovery);
+			Buff();
+			Points.InstantiateOnBuffTop(FxRecovery);
 		}
 	}
 }
