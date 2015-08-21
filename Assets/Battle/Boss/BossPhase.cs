@@ -38,4 +38,17 @@ namespace SPRPG.Battle
 			return thiz.State;
 		}
 	}
+
+	public static partial class BossHelper
+	{
+		public static int ToIndex(this BossPhaseState thiz)
+		{
+			return (int)thiz - 1;
+		}
+
+		public static BossPhaseState MakeBossPhaseFromIndex(int i)
+		{
+			return (BossPhaseState)(i + 1);
+		}
+	}
 }

@@ -80,7 +80,7 @@ namespace SPRPG.Battle
 		}
 	}
 
-	public static class BossHelper
+	public static partial class BossHelper
 	{
 		public static BossSkillBalanceData Find(this Boss thiz, BossSkillLocalKey key)
 		{
