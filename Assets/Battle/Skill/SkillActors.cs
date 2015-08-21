@@ -180,47 +180,4 @@ namespace SPRPG.Battle
 			Context.Boss.TestAndGrant(_arguments.StunTest);
 		}
 	}
-
-	public sealed class ArcherAttackSkillActor : AttackSkillActor
-	{
-		public ArcherAttackSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
-		{ }
-
-		protected override void Perform()
-		{
-			var archerPassive = ((ArcherPassive)Owner.Passive);
-			if (!archerPassive.IsArrowLeft)
-			{
-				Debug.LogError("No Arrows Left.");
-				return;
-			}
-			base.Perform();
-			archerPassive.DecreaseArrow();
-		}
-	}
-
-	public sealed class ArcherArrowRainSkillActor : SingleDelayedPerformSkillActor
-	{
-		private ArcherPassive OwnerPassive { get { return (ArcherPassive) Owner.Passive; } }
-
-		public readonly ArcherArrowRainArguments Arguments;
-
-		public ArcherArrowRainSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner, (Tick) 3, (Tick) 7)
-		{
-			Arguments = new ArcherArrowRainArguments(data.Arguments);
-		}
-
-		protected override void Perform()
-		{
-			if (!OwnerPassive.IsArrowLeft)
-			{
-				Debug.LogError("No Arrows Left.");
-				return;
-			}
-			var dmgValue = ((Hp) ((int) Arguments.DamagePerArrow*OwnerPassive.Arrows));
-			var dmg = new Damage(dmgValue);
-			Owner.Attack(Context.Boss, dmg);
-			OwnerPassive.RemoveAllArrows();
-		}
-	}
 }

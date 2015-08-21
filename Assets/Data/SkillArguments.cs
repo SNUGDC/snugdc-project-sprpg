@@ -64,14 +64,4 @@ namespace SPRPG
 			return format;
 		}
 	}
-
-	public struct ArcherArrowRainArguments
-	{
-		public readonly Hp DamagePerArrow;
-
-		public ArcherArrowRainArguments(JsonData args)
-		{
-			DamagePerArrow = (Hp)args["DamagePerArrow"].GetNatural();
-		}
-	}
 }
