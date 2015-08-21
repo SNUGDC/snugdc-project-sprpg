@@ -9,6 +9,5 @@ namespace SPRPG
 		[NonSerialized]
 		public CharacterBalanceData Balance;
 		public CharacterView CharacterView;
-		public AnimatorOverrideController CampAnimatorController;
 	}
 }

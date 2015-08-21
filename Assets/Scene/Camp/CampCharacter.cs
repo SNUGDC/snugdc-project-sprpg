@@ -14,9 +14,6 @@ namespace SPRPG.Camp
 
 		private CharacterView _characterView;
 
-		[SerializeField]
-		private Animator _animator;
-
 		private Transform _foregroundParent;
 		[SerializeField]
 		private Button _boundingButton;
@@ -49,8 +46,6 @@ namespace SPRPG.Camp
 				SetFlip(campData.Flip);
 				SetBoundingRect(campData.BoundingRect);
 			}
-
-			_animator.runtimeAnimatorController = _data.CampAnimatorController;
 
 			if (DebugConfig.Draw)
 			{
