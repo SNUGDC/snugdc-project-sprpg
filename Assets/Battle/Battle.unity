@@ -308,7 +308,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
       propertyPath: m_AnchorMin.x
-      value: .159999996
+      value: .119999997
       objectReference: {fileID: 0}
     - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
       propertyPath: m_AnchorMin.y
@@ -316,7 +316,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
       propertyPath: m_AnchorMax.x
-      value: .159999996
+      value: .119999997
       objectReference: {fileID: 0}
     - target: {fileID: 22423642, guid: b65d0574e1b50d443b9b0bb5a7266ef8, type: 2}
       propertyPath: m_AnchorMax.y
@@ -442,7 +442,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 418585745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 1, z: 0}
+  m_LocalPosition: {x: 1.5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461725012}
@@ -1571,7 +1571,7 @@ MonoBehaviour:
   Stage: 1
   RealtimeEnabled: 0
   Party:
-    _1: 1
+    _1: 2
     _2: 2
     _3: 3
 --- !u!114 &2086338272
