@@ -98,9 +98,24 @@ namespace SPRPG.Battle
 		{
 			GUILayout.Label(character.Id.ToString());
 			DebugViewHelper.RenderPawn(character);
+			RenderGuard(character);
 			character.Passive.OnInspectorGUI();
 			foreach (var actor in character.SkillManager)
 				RenderSkillActor(actor, character.SkillManager.Running == actor);
+		}
+
+		private static void RenderGuard(Character character)
+		{
+			GUILayout.BeginHorizontal();
+			GUILayout.Label("guard");
+			if (GUILayout.Button(character.Guard.IsEnabled ? "disable" : "enable"))
+			{
+				if (character.Guard.IsEnabled)
+					character.Guard.TryRelease();
+				else
+					character.Guard.Enable();
+			}
+			GUILayout.EndHorizontal();
 		}
 
 		private static void RenderSkillActor(SkillActor actor, bool isPerforming)

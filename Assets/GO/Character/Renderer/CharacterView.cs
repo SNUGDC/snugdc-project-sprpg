@@ -13,6 +13,8 @@ namespace SPRPG
 		protected CharacterViewPoints Points; 
 		public Animator Animator;
 
+		private GameObject _guardAura;
+
 		void Start()
 		{
 #if UNITY_EDITOR
@@ -29,7 +31,24 @@ namespace SPRPG
 
 		public void PlayGuardAura()
 		{
-			Points.InstantiateOnCenter(Assets._.FxCharacterGuardAura);
+			if (_guardAura != null)
+			{
+				Debug.LogError("already has guard aura.");
+				return;
+			}
+
+			_guardAura = Points.InstantiateOnCenter(Assets._.FxCharacterGuardAura);
+		}
+
+		public void StopGuardAura()
+		{
+			if (_guardAura == null)
+			{
+				Debug.LogError("no guard one.");
+				return;
+			}
+
+			Destroy(_guardAura.gameObject);
 		}
 
 		public virtual void PlaySkillStart(SkillBalanceData data) { }

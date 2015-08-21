@@ -3,6 +3,27 @@ using Gem;
 
 namespace SPRPG.Battle
 {
+	public class CharacterGuard
+	{
+		public bool IsEnabled { get; private set; }
+		public Action<bool> OnChanged;
+
+		public void Enable()
+		{
+			if (IsEnabled) return;
+			IsEnabled = true;
+			OnChanged.CheckAndCall(true);
+		}
+
+		public bool TryRelease()
+		{
+			if (!IsEnabled) return false;
+			IsEnabled = false;
+			OnChanged.CheckAndCall(false);
+			return true;
+		}
+	}
+
 	public class DamageIntercepter
 	{
 		public enum Key_ { }
@@ -51,6 +72,7 @@ namespace SPRPG.Battle
 
 		public override StatusConditionGroup StatusConditionGroup { get { return StatusConditionGroup.Character; } }
 
+		public readonly CharacterGuard Guard = new CharacterGuard();
 		public readonly DamageIntercepter DamageIntercepter = new DamageIntercepter();
 
 		public Action<Character, SkillSlot, SkillActor> OnSkillStart;
@@ -84,10 +106,9 @@ namespace SPRPG.Battle
 
 		public override void Hit(Damage damage)
 		{
-			if (CheckEvadeDuration())
-				return;
-			if (DamageIntercepter.TryTake(this, damage))
-				return;
+			if (CheckEvadeDuration()) return;
+			if (Guard.TryRelease()) return;
+			if (DamageIntercepter.TryTake(this, damage)) return;
 			base.Hit(damage);
 		}
 
@@ -100,6 +121,7 @@ namespace SPRPG.Battle
 		public SkillActor TryPerformSkill(SkillSlot idx)
 		{
 			if (IsDead) return null;
+			Guard.TryRelease();
 			var ret = SkillManager.TryPerform(idx);
 			if (ret != null) OnSkillStart.CheckAndCall(this, idx, ret);
 			return ret;
