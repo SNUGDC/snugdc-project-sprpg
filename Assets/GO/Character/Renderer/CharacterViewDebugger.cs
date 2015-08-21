@@ -4,8 +4,12 @@ namespace SPRPG
 {
 	public class CharacterViewDebugger : MonoBehaviour
 	{
-		public CharacterView View;
 		[HideInInspector]
-		public SkillKey Skill;
+		public CharacterView View;
+
+		void Start()
+		{
+			View = GetComponent<CharacterView>();
+		}
 	}
 }

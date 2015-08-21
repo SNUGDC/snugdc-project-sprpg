@@ -1,4 +1,5 @@
-﻿using Gem;
+﻿using System.Collections.Generic;
+using Gem;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,16 +8,26 @@ namespace SPRPG
 	[CustomEditor(typeof(CharacterViewDebugger))]
 	public class CharacterViewDebuggerEditor : ComponentEditor<CharacterViewDebugger>
 	{
+		private List<SkillBalanceData> _skillSet;
+
+		protected override void OnEnable()
+		{
+			base.OnEnable();
+			_skillSet = SkillBalance._.SelectCharacterSpecifics(Target.View.Id);
+		}
+
 		public override void OnInspectorGUI()
 		{
 			base.OnInspectorGUI();
+			foreach (var skill in _skillSet)
+				RenderPlayButton(skill);
+		}
+
+		private void RenderPlayButton(SkillBalanceData data)
+		{
 			GUILayout.BeginHorizontal();
-			Target.Skill = (SkillKey)EditorGUILayout.EnumPopup(Target.Skill);
-			if (GUILayout.Button("play"))
-			{
-				var data = SkillBalance._.Find(Target.Skill);
-				if (data != null) Target.View.PlaySkillStart(data);
-			}
+			if (GUILayout.Button(data.Key.ToString()))
+				Target.View.PlaySkillStart(data);
 			GUILayout.EndHorizontal();
 		}
 	}
