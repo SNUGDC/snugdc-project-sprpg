@@ -7,10 +7,8 @@ namespace SPRPG
 	{
 		public GameObject FxMassHeal;
 		public GameObject FxBash;
-		public GameObject FxDefense;
 		public GameObject FxPurification;
 		public GameObject FxBigMassHeal;
-		public GameObject FxMassDefense;
 
 		public override void PlaySkillStart(SkillBalanceData data)
 		{
@@ -24,6 +22,16 @@ namespace SPRPG
 				case SkillKey.PaladinMassDefense: PlayMassDefense(); return;
 				default: Debug.LogError(LogMessages.EnumNotHandled(data.Key)); return;
 			}
+		}
+
+		private void PlayAnimationDefense()
+		{
+			Animator.SetTrigger("PaladinDefense");
+		}
+
+		public void PlayAnimationDefenseRelease()
+		{
+			Animator.SetTrigger("PaladinDefenseRelease");
 		}
 
 		public void PlayMassHeal()
@@ -40,8 +48,7 @@ namespace SPRPG
 
 		public void PlayDefense()
 		{
-			// todo: guard animation
-			Points.InstantiateOnCenter(FxDefense);		
+			PlayAnimationDefense();
 		}
 
 		public void PlayPurification()
@@ -57,8 +64,7 @@ namespace SPRPG
 
 		public void PlayMassDefense()
 		{
-			// todo: guard animation
-			Points.InstantiateOnCenter(FxMassDefense);
+			PlayAnimationDefense();
 		}
 	}
 }

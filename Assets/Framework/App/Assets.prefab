@@ -40,12 +40,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldDb: {fileID: 4900000, guid: 0ddaf0cfc4281f34fa559e10cd81dec3, type: 3}
-  CharacterSkeleton: {fileID: 11488980, guid: 5195aad12081c6746849918a504f26b6, type: 2}
+  FxCharacterGuardAura: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
   CampEntryEmptySprite: {fileID: 21300000, guid: ea987810f26e4e344a7efc806ec22fc2,
     type: 3}
   CampCharacter: {fileID: 11465436, guid: d7f6a4cb5fb668a4e91bc050d7987b5a, type: 2}
   CampCharacterTool: {fileID: 11490254, guid: 701ee7e24b50a1f4aa5ed79b01bfec8e, type: 2}
-  CharacterView: {fileID: 11423162, guid: e4895639e98ed2d4d96e2acf9067ca07, type: 2}
   ResultWinPopup: {fileID: 11407324, guid: a9eb00b06ce9d8c4fa608eeedb9605cc, type: 2}
   ResultLosePopup: {fileID: 11467858, guid: aeb3306841b0ae34685b8bcc1652a99b, type: 2}
 --- !u!1001 &100100000
@@ -92,6 +91,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11423162, guid: e4895639e98ed2d4d96e2acf9067ca07,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxCharacterGuardAura
+      value: 
+      objectReference: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120712}

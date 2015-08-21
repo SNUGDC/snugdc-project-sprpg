@@ -1099,10 +1099,8 @@ MonoBehaviour:
   Animator: {fileID: 9501418}
   FxMassHeal: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
   FxBash: {fileID: 100002, guid: 6bbb8ec780b04e14089d5889db90227e, type: 2}
-  FxDefense: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
   FxPurification: {fileID: 100006, guid: 4b96e0d8d9e130042b36e3d4a2a647d6, type: 2}
   FxBigMassHeal: {fileID: 100004, guid: e116059325ae3e640a98f7a1b89d797b, type: 2}
-  FxMassDefense: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
 --- !u!212 &21202696
 SpriteRenderer:
   m_ObjectHideFlags: 1

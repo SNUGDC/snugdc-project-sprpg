@@ -8,6 +8,8 @@ namespace SPRPG
 
 	    public TextAsset WorldDb;
 
+		public GameObject FxCharacterGuardAura;
+
 		public Sprite CampEntryEmptySprite;
 		public Camp.CampCharacter CampCharacter;
 		public Camp.CharacterTool CampCharacterTool;

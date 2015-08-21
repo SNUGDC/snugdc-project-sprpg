@@ -27,6 +27,11 @@ namespace SPRPG
 		public void Jump() { Animator.SetTrigger("Jump"); }
 		public void ShakeHorizontal() { Animator.SetTrigger("ShakeHorizontal"); }
 
+		public void PlayGuardAura()
+		{
+			Points.InstantiateOnCenter(Assets._.FxCharacterGuardAura);
+		}
+
 		public virtual void PlaySkillStart(SkillBalanceData data) { }
 	}
 }
