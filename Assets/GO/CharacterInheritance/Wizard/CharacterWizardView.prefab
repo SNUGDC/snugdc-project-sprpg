@@ -1000,7 +1000,7 @@ MonoBehaviour:
   FxFireBolt: {fileID: 133754, guid: d7659c78f97504d2b8c964625c034bf4, type: 2}
   FxIceBolt: {fileID: 167124, guid: 582cdd28714e9479485ea1eed66abee6, type: 2}
   FxLigtheningBolt: {fileID: 149206, guid: 9b6292c6b62da47d29dbf1afc7e57c7b, type: 2}
-  FxFireBall: {fileID: 133754, guid: d7659c78f97504d2b8c964625c034bf4, type: 2}
+  FxFireBall: {fileID: 150916, guid: 22affbf386e734d41836a76d2e0a76cb, type: 2}
   FxIceSpear: {fileID: 182836, guid: ce92e361a9e1b415781dc60d79eb7409, type: 2}
   FxLigthening: {fileID: 149206, guid: 9b6292c6b62da47d29dbf1afc7e57c7b, type: 2}
 --- !u!212 &21203202
