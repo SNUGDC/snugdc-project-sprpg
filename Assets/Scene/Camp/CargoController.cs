@@ -18,8 +18,6 @@ namespace SPRPG.Camp
 		void Start()
 		{
 			var cargoData = CampBalance._.Data.Cargo;
-			transform.localPosition = cargoData.Position;
-
 			var entries = cargoData.Entries;
 			for (var i = 0; i != Party.Size; ++i)
 			{

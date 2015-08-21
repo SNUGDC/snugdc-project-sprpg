@@ -659,6 +659,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 545312e26b4475c45a4a8940cb4a1183, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &785805194 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11432898, guid: 545312e26b4475c45a4a8940cb4a1183,
+    type: 2}
+  m_PrefabInternal: {fileID: 785805193}
+  m_Script: {fileID: 11500000, guid: 163ab5f6e399e6146b818bb7b03cc1dd, type: 3}
 --- !u!114 &884098280 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11404750, guid: e3411371ab2e0a04a8e11c7446895624,
@@ -1147,6 +1153,7 @@ MonoBehaviour:
   _worldRoot: {fileID: 1527621106}
   _scrollRect: {fileID: 708664824}
   _worldAnchor: {fileID: 912541766}
+  _cargo: {fileID: 785805194}
 --- !u!114 &1527621108
 MonoBehaviour:
   m_ObjectHideFlags: 0

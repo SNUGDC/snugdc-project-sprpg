@@ -17,13 +17,18 @@ namespace SPRPG.Camp
 		[SerializeField]
 		private Transform _worldAnchor;
 
+		[SerializeField]
+		private CargoController _cargo;
+
 		private readonly Dictionary<CharacterId, CampCharacter> _characters = new Dictionary<CharacterId, CampCharacter>();
 
 		void Start()
 		{
 			CampCharacter.ForegroundRoot = _foregroundRoot;
 
-			_scrollRect.decelerationRate = CampBalance._.Data.DecelerationRate;
+			var campBalance = CampBalance._.Data;
+			_scrollRect.decelerationRate = campBalance.DecelerationRate;
+			_cargo.transform.localPosition = campBalance.Cargo.Position;
 
 			foreach (var character in UserCharacters.GetEnumerable())
 				AddCharacter(character);
