@@ -79,6 +79,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &122786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 472582}
+  m_Layer: 0
+  m_Name: Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &123170
 GameObject:
   m_ObjectHideFlags: 1
@@ -276,6 +291,7 @@ GameObject:
   - 4: {fileID: 475568}
   - 114: {fileID: 11485118}
   - 95: {fileID: 9539322}
+  - 114: {fileID: 11479604}
   m_Layer: 0
   m_Name: CharacterArcherView
   m_TagString: Untagged
@@ -849,6 +865,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 405020}
   m_RootOrder: 0
+--- !u!4 &472582
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 475568}
+  m_RootOrder: 1
 --- !u!4 &473260
 Transform:
   m_ObjectHideFlags: 1
@@ -873,6 +901,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 455256}
+  - {fileID: 472582}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &475792
@@ -1042,6 +1071,21 @@ MonoBehaviour:
   HandR: {fileID: 468222}
   FeetL: {fileID: 496830}
   FeetR: {fileID: 453138}
+--- !u!114 &11479604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98618e82629af6a439a68ddd9f7b9496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _center: {fileID: 0}
+  _bottom: {fileID: 0}
+  _aim: {fileID: 0}
+  _buffTop: {fileID: 0}
 --- !u!114 &11485118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1053,8 +1097,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02f1ba2437006547b75ea1b3337dfd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 3
   _skeleton: {fileID: 11442948}
-  FxRoot: {fileID: 0}
+  Points: {fileID: 11479604}
   Animator: {fileID: 9539322}
 --- !u!212 &21202248
 SpriteRenderer:
