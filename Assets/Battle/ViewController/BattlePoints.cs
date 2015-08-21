@@ -7,8 +7,13 @@ namespace SPRPG.Battle.View
 	{
 		public static BattlePoints _ { get; private set; }
 
+		public Transform LeaderCenter;
+		public Transform LeaderBottom;
 		public Transform LeaderFront;
 		public Transform LeaderBack;
+
+		public Transform BossCenter;
+		public Transform BossBottom;
 		public Transform BossFront;
 		public Transform BossBack;
 
@@ -23,24 +28,14 @@ namespace SPRPG.Battle.View
 				_ = null;
 		}
 
-		public GameObject InstantiateOnLeaderFront(GameObject prefab)
-		{
-			return prefab.InstantiateToParentAndToggleActive(LeaderFront);
-		}
+		public GameObject InstantiateOnLeaderCenter(GameObject prefab) { return prefab.InstantiateToParentAndToggleActive(LeaderCenter); }
+		public GameObject InstantiateOnLeaderBottom(GameObject prefab) { return prefab.InstantiateToParentAndToggleActive(LeaderBottom); }
+		public GameObject InstantiateOnLeaderFront(GameObject prefab) { return prefab.InstantiateToParentAndToggleActive(LeaderFront); }
+		public GameObject InstantiateOnLeaderBack(GameObject prefab) { return prefab.InstantiateToParentAndToggleActive(LeaderBack); }
 
-		public GameObject InstantiateOnLeaderBack(GameObject prefab)
-		{
-			return prefab.InstantiateToParentAndToggleActive(LeaderBack);
-		}
-
-		public GameObject InstantiateOnBossFront(GameObject prefab)
-		{
-			return prefab.InstantiateToParentAndToggleActive(BossFront);
-		}
-	
-		public GameObject InstantiateOnBossBack(GameObject prefab)
-		{
-			return prefab.InstantiateToParentAndToggleActive(BossBack);
-		}
+		public GameObject InstantiateOnBossCenter(GameObject prefab) { return prefab.InstantiateToParentAndToggleActive(BossCenter); }
+		public GameObject InstantiateOnBossBottom(GameObject prefab) { return prefab.InstantiateToParentAndToggleActive(BossBottom); }
+		public GameObject InstantiateOnBossFront(GameObject prefab) { return prefab.InstantiateToParentAndToggleActive(BossFront); }
+		public GameObject InstantiateOnBossBack(GameObject prefab) { return prefab.InstantiateToParentAndToggleActive(BossBack); }
 	}
 }
