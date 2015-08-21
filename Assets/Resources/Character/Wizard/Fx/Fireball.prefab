@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421848}
   - 95: {fileID: 9592972}
+  - 114: {fileID: 11429238}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -113,6 +114,7 @@ GameObject:
   - 4: {fileID: 414450}
   - 198: {fileID: 19850654}
   - 199: {fileID: 19983592}
+  - 114: {fileID: 11493770}
   m_Layer: 0
   m_Name: CFXM3_Fireball_A
   m_TagString: Untagged
@@ -366,6 +368,17 @@ MonoBehaviour:
   delay: .100000001
   finalIntensity: 0
   autodestruct: 1
+--- !u!114 &11429238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeafe347c69d67e41b5deb895305e834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11432342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -401,6 +414,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &11493770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164456}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3eb2e7c6511c8428a1cb63b65588be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExecuteOnStart: 1
 --- !u!114 &11497148
 MonoBehaviour:
   m_ObjectHideFlags: 1
