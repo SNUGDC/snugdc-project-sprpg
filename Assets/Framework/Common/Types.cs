@@ -95,11 +95,6 @@ namespace SPRPG
 	public enum BossId
 	{
 		Radiation = 1,
-		Noise,
-		Water,
-		Atmosphere,
-		Dessert,
-		PoisonForest,
 	}
 
 	public enum Hp { }
