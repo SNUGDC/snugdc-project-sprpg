@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using LitJson;
+using UnityEngine;
+using Vector2 = LitJson.Vector2;
 
 namespace SPRPG
 {
@@ -10,7 +12,7 @@ namespace SPRPG
 		{
 			public class Entry
 			{
-				public Vector2 Position;
+				public Vector3 Position;
 			}
 
 			public Vector2 Position;

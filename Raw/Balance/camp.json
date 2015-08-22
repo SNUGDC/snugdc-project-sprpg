@@ -3,9 +3,9 @@
 	"Cargo": {
 		"Position": { "X": 14, "Y": 1.15 },
 		"Entries": [
-			{ "Position": { "X": 0.8, "Y": 0.3 } },
-			{ "Position": { "X": -0.1, "Y": -0.1 } },
-			{ "Position": { "X": -1, "Y": 0 } }
+			{ "Position": { "x": 0.8, "y": 0.3 } },
+			{ "Position": { "x": -0.1, "y": -0.1, "z": -1 } },
+			{ "Position": { "x": -1, "y": 0, "z": 1 } }
 		]
 	},
 	"Characters": [
