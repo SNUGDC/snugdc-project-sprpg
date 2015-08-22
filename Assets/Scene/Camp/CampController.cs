@@ -11,14 +11,17 @@ namespace SPRPG.Camp
 		private Transform _foregroundRoot;
 		[SerializeField]
 		private Transform _worldRoot;
-
 		[SerializeField]
 		private ScrollRect _scrollRect;
 		[SerializeField]
 		private Transform _worldAnchor;
+		[SerializeField]
+		private Animator _animator;
 
 		[SerializeField]
 		private CargoController _cargo;
+		[SerializeField]
+		private GameObject _skyray;
 
 		private readonly Dictionary<CharacterId, CampCharacter> _characters = new Dictionary<CharacterId, CampCharacter>();
 
@@ -46,6 +49,7 @@ namespace SPRPG.Camp
 		{
 			var character = CampCharacter.Instantiate(userCharacter);
 			character.transform.SetParent(_worldRoot, false);
+			character.OnSelectCallback += OnSelectCharacter;
 			_characters[userCharacter.Id] = character;
 		}
 
@@ -58,6 +62,29 @@ namespace SPRPG.Camp
 		public void GotoWorld()
 		{
 			Transition.TransferToWorld();
+		}
+
+		private void SetAllCharacterColor(Color color)
+		{
+			foreach (var kv in _characters)
+				kv.Value.CharacterView.Skeleton.SetColorRecursive(color);
+		}
+
+		private void OnSelectCharacter(CampCharacter character, bool isSelected)
+		{
+			_skyray.SetActive(isSelected);
+			if (isSelected)
+			{
+				_animator.SetTrigger("SelectCharacter");
+				_skyray.transform.position = character.transform.position;
+				SetAllCharacterColor(Color.grey);
+				character.CharacterView.Skeleton.SetColorRecursive(Color.white);
+			}
+			else
+			{
+				_animator.SetTrigger("DeselectCharacter");
+				SetAllCharacterColor(Color.white);
+			}
 		}
 	}
 }

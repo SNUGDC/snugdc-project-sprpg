@@ -1,4 +1,5 @@
-﻿using Gem;
+﻿using System;
+using Gem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +13,13 @@ namespace SPRPG.Camp
 		private CharacterData _data;
 		public CharacterData Data { get { return _data; } }
 
-		private CharacterView _characterView;
+		public CharacterView CharacterView { get; private set; }
 
 		private Transform _foregroundParent;
 		[SerializeField]
 		private Button _boundingButton;
+
+		public Action<CampCharacter, bool> OnSelectCallback;
 
 		public static CampCharacter Instantiate(UserCharacter character)
 		{
@@ -69,10 +72,10 @@ namespace SPRPG.Camp
 
 		void SetupRenderer(CharacterData data)
 		{
-			_characterView = data.CharacterView.Instantiate();
-			_characterView.name = "Skeleton";
-			_characterView.transform.SetParent(transform, false);
-			_characterView.transform.localPosition = Vector3.zero;
+			CharacterView = data.CharacterView.Instantiate();
+			CharacterView.name = "Skeleton";
+			CharacterView.transform.SetParent(transform, false);
+			CharacterView.transform.localPosition = Vector3.zero;
 		}
 
 		public void SyncPosition()
@@ -88,6 +91,9 @@ namespace SPRPG.Camp
 			var height = ((RectTransform) _boundingButton.transform).offsetMax.y;
 			tool.transform.position = transform.position;
 			tool.transform.Translate(new Vector3(0, height/100.0f));
+
+			tool.OnBeforeClose += characterTool => OnSelectCallback.CheckAndCall(this, false);
+			OnSelectCallback.CheckAndCall(this, true);
 		}
 	}
 }

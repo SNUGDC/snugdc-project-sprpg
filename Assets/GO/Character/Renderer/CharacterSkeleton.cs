@@ -18,5 +18,11 @@ namespace SPRPG
 		public Transform HandR;
 		public Transform FeetL;
 		public Transform FeetR;
+
+		public void SetColorRecursive(Color color)
+		{
+			foreach (var renderer in GetComponentsInChildren<SpriteRenderer>())
+				renderer.color = color;
+		}
 	}
 }

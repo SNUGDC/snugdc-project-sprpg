@@ -1,4 +1,5 @@
-﻿using Gem;
+﻿using System;
+using Gem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,8 @@ namespace SPRPG.Camp
 		private Button _entryButton;
 		[SerializeField]
 		private Text _entryText;
+
+		public Action<CharacterTool> OnBeforeClose;
 
 		public static CharacterTool Open(CharacterId id)
 		{
@@ -55,6 +58,7 @@ namespace SPRPG.Camp
 		public void Close()
 		{
 			Debug.Assert(Current == this);
+			OnBeforeClose.CheckAndCall(this);
 			if (Current == this)
 				Current = null;
 			Destroy(gameObject);
