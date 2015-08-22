@@ -1638,8 +1638,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viewController: {fileID: 2086338276}
-  _hudController: {fileID: 2086338274}
   _battleController: {fileID: 2086338275}
+  _hudController: {fileID: 2086338274}
 --- !u!4 &2086338273
 Transform:
   m_ObjectHideFlags: 0
