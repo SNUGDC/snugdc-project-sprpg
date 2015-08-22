@@ -23,6 +23,8 @@ namespace SPRPG.Camp
 		[SerializeField]
 		private GameObject _skyray;
 
+		private bool _goingToWorld;
+
 		private readonly Dictionary<CharacterId, CampCharacter> _characters = new Dictionary<CharacterId, CampCharacter>();
 
 		void Start()
@@ -60,6 +62,14 @@ namespace SPRPG.Camp
 		}
 
 		public void GotoWorld()
+		{
+			if (_goingToWorld) return;
+			_goingToWorld = true;
+			_animator.SetTrigger("GotoWorld");
+			Invoke("GotoWorldWithoutAnimation", 1);
+		}
+
+		private void GotoWorldWithoutAnimation()
 		{
 			Transition.TransferToWorld();
 		}
