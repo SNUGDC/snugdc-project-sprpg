@@ -10,9 +10,9 @@ namespace SPRPG.Battle
 		[SerializeField]
 		private View.ViewController _viewController;
 		[SerializeField]
-		private View.HudController _hudController;
-		[SerializeField]
 		private View.BattleController _battleController;
+		[SerializeField]
+		private View.HudController _hudController;
 
 		void Start()
 		{
@@ -22,8 +22,8 @@ namespace SPRPG.Battle
 			Def = null;
 
 			_viewController.enabled = true;
-			_hudController.enabled = true;
 			_battleController.enabled = true;
+			_hudController.enabled = true;
 
 #if UNITY_EDITOR
 			var partyDebugView = gameObject.AddComponent<PartyDebugView>();
