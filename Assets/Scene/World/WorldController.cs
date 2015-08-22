@@ -4,15 +4,33 @@ namespace SPRPG.World
 {
 	public class WorldController : MonoBehaviour
 	{
-		public void Back()
+		[SerializeField]
+		private BossButton _bossButton;
+		[SerializeField]
+		private BossDescription _bossDescription;
+
+		void Start()
 		{
-			Transition.TransferToCamp();
+			_bossButton.OnClickCallback += OnBossSelected;
 		}
 
 		public void TransferToBattle()
 		{
-			// todo: pass stage.
 			Transition.TransferToBattleWithUserBattleDef(StageId.Radiation);
+		}
+
+		private void OnBossSelected(BossButton button, bool isSelected)
+		{
+			if (isSelected)
+			{
+				var data = Battle.BossBalance._.Find(BossId.Radiation);
+				_bossDescription.gameObject.SetActive(true);
+				_bossDescription.Show(data);
+			}
+			else
+			{
+				_bossDescription.gameObject.SetActive(false);
+			}
 		}
 	}
 }

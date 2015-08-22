@@ -1,6 +1,7 @@
 {
 	"Radiation": {
 		"Name": "방사능",
+		"FlavorText": "Radiation FlavorText",
 		"_stats": {
 			"Hp": 10000
 		},

@@ -49,6 +49,7 @@ namespace SPRPG.Battle
 		[JsonIgnore]
 		public BossId Id;
 		public string Name;
+		public string FlavorText;
 
 		[JsonInclude]
 		private JsonStats _stats;
