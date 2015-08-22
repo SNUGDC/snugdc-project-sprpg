@@ -75,7 +75,7 @@ namespace SPRPG.Camp
 			_characterView.transform.localPosition = Vector3.zero;
 		}
 
-		void Update()
+		public void SyncPosition()
 		{
 			_foregroundParent.transform.position = transform.position;
 		}

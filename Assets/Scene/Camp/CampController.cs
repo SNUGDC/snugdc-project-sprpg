@@ -32,14 +32,14 @@ namespace SPRPG.Camp
 
 			foreach (var character in UserCharacters.GetEnumerable())
 				AddCharacter(character);
+			Invoke("SyncCharacterPositions", 0);
 		}
 
 		void LateUpdate()
 		{
 			var position = _worldAnchor.position;
-			position.x *= 1.3f;
 			_foregroundRoot.transform.position = position;
-			_worldRoot.transform.position = _worldAnchor.position;
+			_worldRoot.transform.position = position;
 		}
 
 		void AddCharacter(UserCharacter userCharacter)
@@ -47,6 +47,12 @@ namespace SPRPG.Camp
 			var character = CampCharacter.Instantiate(userCharacter);
 			character.transform.SetParent(_worldRoot, false);
 			_characters[userCharacter.Id] = character;
+		}
+
+		void SyncCharacterPositions()
+		{
+			foreach (var kv in _characters)
+				kv.Value.SyncPosition();
 		}
 
 		public void GotoWorld()
