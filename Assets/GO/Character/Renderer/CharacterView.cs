@@ -33,7 +33,7 @@ namespace SPRPG
 		{
 			if (_guardAura != null)
 			{
-				Debug.LogError("already has guard aura.");
+				Debug.LogWarning("already has guard aura.");
 				return;
 			}
 
