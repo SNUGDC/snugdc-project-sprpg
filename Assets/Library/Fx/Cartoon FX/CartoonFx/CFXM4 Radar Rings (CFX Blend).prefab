@@ -11,6 +11,7 @@ GameObject:
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11444478}
   m_Layer: 0
   m_Name: CFXM4 Radar Rings (CFX Blend)
   m_TagString: Untagged
@@ -42,6 +43,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &11444478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4dc9304a1abb042bc17fec8d2fdf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExecuteOnStart: 1
+  DestroyComponentAfterExecute: 1
+  AudioClip: {fileID: 0}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

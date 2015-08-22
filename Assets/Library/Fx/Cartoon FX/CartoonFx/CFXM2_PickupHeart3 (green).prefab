@@ -45,6 +45,7 @@ GameObject:
   - 198: {fileID: 19800004}
   - 199: {fileID: 19900004}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11495084}
   m_Layer: 0
   m_Name: CFXM2_PickupHeart3 (green)
   m_TagString: Untagged
@@ -132,6 +133,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &11495084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4dc9304a1abb042bc17fec8d2fdf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExecuteOnStart: 1
+  DestroyComponentAfterExecute: 1
+  AudioClip: {fileID: 8300000, guid: 7adc13c2d2554fe49a1fd8e6e537c36c, type: 3}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -4413,6 +4428,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7adc13c2d2554fe49a1fd8e6e537c36c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100004}

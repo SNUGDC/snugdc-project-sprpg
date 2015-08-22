@@ -97,6 +97,7 @@ GameObject:
   - 4: {fileID: 499554}
   - 198: {fileID: 19855406}
   - 199: {fileID: 19929174}
+  - 114: {fileID: 11422644}
   m_Layer: 0
   m_Name: CFXM3_IceBall_A
   m_TagString: Untagged
@@ -331,6 +332,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &11422644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4dc9304a1abb042bc17fec8d2fdf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExecuteOnStart: 1
+  DestroyComponentAfterExecute: 1
+  AudioClip: {fileID: 8300000, guid: 09ee9334a3687e34c9cd0a27ffaf73d8, type: 3}
 --- !u!114 &11446222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9549,6 +9564,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 09ee9334a3687e34c9cd0a27ffaf73d8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167124}

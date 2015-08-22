@@ -1032,7 +1032,7 @@ MonoBehaviour:
   FxLigtheningBolt: {fileID: 149206, guid: 9b6292c6b62da47d29dbf1afc7e57c7b, type: 2}
   FxFireBall: {fileID: 150916, guid: 22affbf386e734d41836a76d2e0a76cb, type: 2}
   FxIceSpear: {fileID: 182836, guid: ce92e361a9e1b415781dc60d79eb7409, type: 2}
-  FxLigthening: {fileID: 149206, guid: 9b6292c6b62da47d29dbf1afc7e57c7b, type: 2}
+  FxLigthening: {fileID: 100014, guid: 54d0c49d87986664c800de1f55be9587, type: 2}
 --- !u!114 &11480324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,6 +1045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 0}
+  _bottom: {fileID: 0}
   _aim: {fileID: 432740}
   _buffTop: {fileID: 0}
 --- !u!212 &21203202
@@ -1501,7 +1502,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: FxLigthening
       value: 
-      objectReference: {fileID: 149206, guid: 9b6292c6b62da47d29dbf1afc7e57c7b, type: 2}
+      objectReference: {fileID: 100014, guid: 54d0c49d87986664c800de1f55be9587, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 108538}

@@ -114,6 +114,7 @@ GameObject:
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11470334}
   m_Layer: 0
   m_Name: CFXM2_GroundRockHit Gray
   m_TagString: FxTemporaire
@@ -238,6 +239,20 @@ MonoBehaviour:
   Title: 5041525449434c455320434f4c4c4953494f4e
   HelpText: 596f75206d75737420656469742074686520436f6c6c6973696f6e20746162206f6e20746865206368696c6472656e2773205061727469636c652053797374656d20496e73706563746f72206f662074686973206f626a65637420746f206d616b652074686520636f6c6c6973696f6e7320776f726b2070726f7065726c792e0a52656c6576616e74206368696c6472656e20746f206564697420686176652074686520434f4c20707265666978206f6e207468656972206e616d652e
   MsgType: 2
+--- !u!114 &11470334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4dc9304a1abb042bc17fec8d2fdf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExecuteOnStart: 1
+  DestroyComponentAfterExecute: 1
+  AudioClip: {fileID: 8300000, guid: 0df66bcc270b39449a71b818481a4281, type: 3}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -7397,7 +7412,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0df66bcc270b39449a71b818481a4281, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100012}

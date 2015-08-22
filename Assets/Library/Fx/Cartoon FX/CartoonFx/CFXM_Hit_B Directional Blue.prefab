@@ -29,6 +29,7 @@ GameObject:
   - 198: {fileID: 19800002}
   - 199: {fileID: 19900002}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11410922}
   m_Layer: 0
   m_Name: CFXM_Hit_B Directional Blue
   m_TagString: FxTemporaire
@@ -85,6 +86,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &11410922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4dc9304a1abb042bc17fec8d2fdf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExecuteOnStart: 1
+  DestroyComponentAfterExecute: 1
+  AudioClip: {fileID: 8300000, guid: bfe5319ffb17c594d9158658e60cb7ca, type: 3}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2179,6 +2194,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bfe5319ffb17c594d9158658e60cb7ca, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100002}
