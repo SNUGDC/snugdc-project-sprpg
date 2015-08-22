@@ -9,11 +9,11 @@ namespace SPRPG.Battle
 	[Serializable]
 	public struct PartyDef
 	{
-		public CharacterId _1;
-		public CharacterId _2;
-		public CharacterId _3;
+		public CharacterDef _1;
+		public CharacterDef _2;
+		public CharacterDef _3;
 
-		public PartyDef(CharacterId character1, CharacterId character2, CharacterId character3)
+		public PartyDef(CharacterDef character1, CharacterDef character2, CharacterDef character3)
 		{
 			_1 = character1;
 			_2 = character2;
@@ -56,9 +56,9 @@ namespace SPRPG.Battle
 			InitCharacter(context, OriginalPartyIdx._3, def._3);
 		}
 
-		private void InitCharacter(Battle context, OriginalPartyIdx idx, CharacterId id)
+		private void InitCharacter(Battle context, OriginalPartyIdx idx, CharacterDef def)
 		{
-			var member = new Character(CharacterBalance._.Find(id), context);
+			var member = new Character(def, context);
 			this[idx] = member;
 
 			var characterEvents = Events.GetCharacter(idx);

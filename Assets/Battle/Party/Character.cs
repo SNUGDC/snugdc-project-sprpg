@@ -3,6 +3,25 @@ using Gem;
 
 namespace SPRPG.Battle
 {
+	[Serializable]
+	public struct CharacterDef
+	{
+		public CharacterId Id { get { return Data.Id; } }
+		public CharacterBalanceData Data;
+		public SkillSet SkillSet;
+
+		public CharacterDef(CharacterBalanceData data, SkillSet skillSet)
+		{
+			Data = data;
+			SkillSet = skillSet;
+		}
+
+		public SkillSet GetSkillSetOrDefault()
+		{
+			return SkillSet ?? Data.SkillSetDefault;
+		}
+	}
+
 	public class CharacterGuard
 	{
 		public bool IsEnabled { get; private set; }
@@ -78,13 +97,13 @@ namespace SPRPG.Battle
 		public Action<Character, SkillSlot, SkillActor> OnSkillStart;
 		public Action<Character> OnStun;
 
-		public Character(CharacterBalanceData data, Battle context)
-			: base(data.Stats)
+		public Character(CharacterDef def, Battle context)
+			: base(def.Data.Stats)
 		{
 			_context = context;
-			Data = data;
-			Passive = PassiveFactory.Create(data.Passive, context, this);
-			SkillManager = new SkillManager(data.SkillSetDefault, context, this);
+			Data = def.Data;
+			Passive = PassiveFactory.Create(Data.Passive, context, this);
+			SkillManager = new SkillManager(def.SkillSet, context, this);
 		}
 
 		public void TickBeforeTurn()
