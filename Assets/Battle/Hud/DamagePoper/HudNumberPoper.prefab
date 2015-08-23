@@ -27,6 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22eda11d7d44520418fb384d2158bad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healPrefab: {fileID: 11473706, guid: b9bff75b2ce6f834aa82337f0a4884d6, type: 2}
   _damagePrefab: {fileID: 11481516, guid: 77190d168db7920488b18f56bfa1922e, type: 2}
 --- !u!224 &22416570
 RectTransform:
@@ -65,6 +66,11 @@ Prefab:
       propertyPath: _damagePrefab
       value: 
       objectReference: {fileID: 11481516, guid: 77190d168db7920488b18f56bfa1922e,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _healPrefab
+      value: 
+      objectReference: {fileID: 11473706, guid: b9bff75b2ce6f834aa82337f0a4884d6,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -53,6 +53,7 @@ namespace SPRPG.Battle.View
 				_characterNumberPopers[idx.ToArrayIndex()] = numberPoper;
 
 				var idxCpy = idx;
+				Context.Party[idx].OnAfterHeal += (character, hp) => OnCharacterHeal(idxCpy, character, hp);
 				Context.Party[idx].OnAfterHit += (character, damage) => OnCharacterHit(idxCpy, character, damage);
 			}
 
@@ -60,6 +61,7 @@ namespace SPRPG.Battle.View
 			if (bossIcon) _bossHpBar.SetIcon(bossIcon);
 			_bossHpBarController = new HudHpBarController<Boss>(_bossHpBar, Context.Boss);
 
+			Context.Boss.OnAfterHeal += OnBossHeal;
 			Context.Boss.OnAfterHit += OnBossHit;
 		}
 
@@ -109,9 +111,19 @@ namespace SPRPG.Battle.View
 			_battleController.BossView.Animator.enabled = !shouldPause;
 		}
 
+		private void OnCharacterHeal(OriginalPartyIdx idx, Character character, Hp hp)
+		{
+			_characterNumberPopers[idx.ToArrayIndex()].PopHeal(hp);
+		}
+
 		private void OnCharacterHit(OriginalPartyIdx idx, Character character, Damage damage)
 		{
 			_characterNumberPopers[idx.ToArrayIndex()].PopDamage(damage);
+		}
+
+		private void OnBossHeal(Boss boss, Hp hp)
+		{
+			_bossNumberPoper.PopHeal(hp);
 		}
 
 		private void OnBossHit(Boss boss, Damage damage)

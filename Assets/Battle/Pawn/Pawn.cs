@@ -115,7 +115,10 @@ namespace SPRPG.Battle
 				return;
 			}
 			Hp += (int)val;
+			AfterHeal(val);
 		}
+
+		protected virtual void AfterHeal(Hp val) { }
 
 		public bool TestAndGrant(StatusConditionTest test)
 		{
@@ -165,6 +168,7 @@ namespace SPRPG.Battle
 	{
 		public Action<T, Hp, Hp> OnHpChanged;
 		public Action<T> OnDead;
+		public Action<T, Hp> OnAfterHeal;
 		public Action<T, Damage> OnAfterHit;
 		public Action<T, Pawn> OnAfterAttack;
 
@@ -175,6 +179,11 @@ namespace SPRPG.Battle
 		{
 			OnHpChanged.CheckAndCall((T) this, Hp, old);
 			if (Hp == 0) OnDead.CheckAndCall((T) this);
+		}
+
+		protected override void AfterHeal(Hp val)
+		{
+			OnAfterHeal.CheckAndCall((T)this, val);
 		}
 
 		protected override void AfterHit(Damage damage)

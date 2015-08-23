@@ -15,10 +15,11 @@ namespace SPRPG.Battle.View
 			Destroy(gameObject, TimeToDestroy);
 		}
 
-		public void Show(Damage damage)
+		public void Show(int num)
 		{
-			_text.text = (-(int)damage.Value).ToString();
-			//_text.color = damage.Element.ToColor();
+			var message = num.ToString();
+			if (num > 0) message = '+' + message;
+			_text.text = message;
 		}
 	}
 }
