@@ -28,7 +28,7 @@ namespace SPRPG.Battle
 		public Hp DamagePerLossHpPercentage;
 	}
 
-	public class MonkSacrificeSkillActor : SkillActor
+	public class MonkSacrificeSkillActor : SingleDelayedPerformSkillActor
 	{
 		private DamageIntercepter.Key_? _damageInterceptKey;
 
@@ -36,12 +36,11 @@ namespace SPRPG.Battle
 		{
 		}
 
-		protected override void DoStart()
+		protected override void Perform()
 		{
 			RegisterIntercepterToParty();
 			var args = Data.Arguments.ToObject<FiniteSkillArguments>();
 			Context.AddBeforeTurn(args.Duration, UnregisterIntercepterToParty);
-			Stop();
 		}
 
 		private void RegisterIntercepterToParty()
@@ -78,7 +77,7 @@ namespace SPRPG.Battle
 		}
 	}
 
-	public class MonkEquilitySkillActor : SkillActor
+	public class MonkEquilitySkillActor : SingleDelayedPerformSkillActor
 	{
 		private readonly MonkEquilityArguments _arguments;
 
@@ -87,7 +86,7 @@ namespace SPRPG.Battle
 			_arguments = data.Arguments.ToObject<MonkEquilityArguments>();
 		}
 
-		protected override void DoStart()
+		protected override void Perform()
 		{
 			Owner.Hit(_arguments.Damage);
 			foreach (var member in Context.Party)
@@ -95,11 +94,10 @@ namespace SPRPG.Battle
 				if (Owner == member) continue;
 				member.Heal(_arguments.Heal);
 			}
-			Stop();
 		}
 	}
 
-	public class MonkRevengeSkillActor : SkillActor
+	public class MonkRevengeSkillActor : SingleDelayedPerformSkillActor
 	{
 		private readonly MonkRevengeArguments _arguments;
 
@@ -108,16 +106,15 @@ namespace SPRPG.Battle
 			_arguments = Data.Arguments.ToObject<MonkRevengeArguments>();
 		}
 
-		protected override void DoStart()
+		protected override void Perform()
 		{
 			var lossHpPercentage = Percentage._100 - Owner.HpPercentage;
 			var damage = (Hp) (lossHpPercentage*(int)_arguments.DamagePerLossHpPercentage);
 			Owner.Hit(new Damage(damage));
-			Stop();
 		}
 	}
 
-	public class MonkRecoverySkillActor : SkillActor
+	public class MonkRecoverySkillActor : SingleDelayedPerformSkillActor
 	{
 		private readonly MonkRecoveryArguments _arguments;
 
@@ -126,11 +123,10 @@ namespace SPRPG.Battle
 			_arguments = Data.Arguments.ToObject<MonkRecoveryArguments>();
 		}
 
-		protected override void DoStart()
+		protected override void Perform()
 		{
 			for (var tick = default(Tick); tick <= _arguments.Duration; tick = tick + (int)_arguments.Period)
 				Context.AddPlayerSkill(tick, () => { Owner.Heal(_arguments.Amount); });
-			Stop();
 		}
 	}
 }
