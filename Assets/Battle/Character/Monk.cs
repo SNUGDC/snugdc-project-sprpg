@@ -25,7 +25,7 @@ namespace SPRPG.Battle
 
 	public struct MonkRevengeArguments
 	{
-		public Hp DamagePerLossHpPercentage;
+		public Hp DamagePerLoseHpPercentage;
 	}
 
 	public class MonkSacrificeSkillActor : SingleDelayedPerformSkillActor
@@ -109,7 +109,7 @@ namespace SPRPG.Battle
 		protected override void Perform()
 		{
 			var lossHpPercentage = Percentage._100 - Owner.HpPercentage;
-			var damage = (Hp) (lossHpPercentage*(int)_arguments.DamagePerLossHpPercentage);
+			var damage = (Hp) (lossHpPercentage*(int)_arguments.DamagePerLoseHpPercentage);
 			Owner.Hit(new Damage(damage));
 		}
 	}
