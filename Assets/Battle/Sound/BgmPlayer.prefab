@@ -112,7 +112,7 @@ MonoBehaviour:
   _battleWrapper: {fileID: 0}
   _player: {fileID: 8206188}
   _bgms:
-  - {fileID: 8300000, guid: fc38f37a76e7be047854c1d841f5ea6c, type: 3}
+  - {fileID: 8300000, guid: 6b0a19d611e8721418fa72e1892e0df6, type: 3}
   - {fileID: 8300000, guid: 1a58e326a2779874eb97c6a415418461, type: 3}
   - {fileID: 8300000, guid: 70f93f0305e1f9a4f94dfb6771fb142c, type: 3}
 --- !u!1001 &100100000
@@ -126,6 +126,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _bgms.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b0a19d611e8721418fa72e1892e0df6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 162052}
