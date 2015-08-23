@@ -28,6 +28,7 @@ GameObject:
   - 198: {fileID: 19871622}
   - 199: {fileID: 19904018}
   - 114: {fileID: 11459570}
+  - 114: {fileID: 11472954}
   m_Layer: 0
   m_Name: CFXM_GroundHit
   m_TagString: FxTemporaire
@@ -69,7 +70,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &179956
 GameObject:
   m_ObjectHideFlags: 1
@@ -245,6 +246,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &11472954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4dc9304a1abb042bc17fec8d2fdf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExecuteOnStart: 1
+  DestroyComponentAfterExecute: 1
+  AudioClip: {fileID: 8300000, guid: be0b8ad16ce3b93499c13b49ac943293, type: 3}
 --- !u!198 &19814998
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -5386,7 +5401,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: be0b8ad16ce3b93499c13b49ac943293, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150474}

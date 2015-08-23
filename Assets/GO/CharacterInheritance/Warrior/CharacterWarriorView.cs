@@ -10,7 +10,7 @@ namespace SPRPG
 		public GameObject FxHeal;
 		public GameObject FxStrongAttack;
 
-		public override void PlaySkillStart(SkillBalanceData data)
+		public override void PlaySkillStart(SkillBalanceData data, object argument)
 		{
 			switch (data.Key) 
 			{
@@ -44,7 +44,7 @@ namespace SPRPG
 
 		public void PlayDelayedStrongAttack()
 		{
-			BattlePoints._.InstantiateOnBossBottom(FxStrongAttack);
+			BattlePoints._.Boss.InstantiateOnBottom(FxStrongAttack);
 		}
 
 		public void PlayEvasion()

@@ -1,4 +1,5 @@
 ﻿using Gem;
+using SPRPG.Battle;
 using UnityEngine;
 
 namespace SPRPG
@@ -12,7 +13,7 @@ namespace SPRPG
 		public GameObject FxIceSpear;
 		public GameObject FxLigthening;
 
-		public override void PlaySkillStart(SkillBalanceData data)
+		public override void PlaySkillStart(SkillBalanceData data, object argument)
 		{
 			Attack();
 
@@ -23,7 +24,7 @@ namespace SPRPG
 				case SkillKey.WizardLighteningBolt: PlayLighteningBolt(); return;
 				case SkillKey.WizardFireBall: PlayFireBall(); return;
 				case SkillKey.WizardIceSpear: PlayIceSpear(); return;
-				case SkillKey.WizardLightening: PlayLightening(); return;
+				case SkillKey.WizardLightening: PlayLightening((Character)argument); return;
 				default: Debug.LogError(LogMessages.EnumNotHandled(data.Key)); return;
 			}
 		}
@@ -53,9 +54,12 @@ namespace SPRPG
 			Points.InstantiateOnAim(FxIceSpear);
 		}
 
-		public void PlayLightening()
+		public void PlayLightening(Battle.Character character)
 		{
-			Points.InstantiateOnAim(FxLigthening);
+			if (Context == null) return;
+			Context.BossView.Points.InstantiateOnBottom(FxLigthening);
+			if (character != null)
+				Context.FindCharacterView(character).Points.InstantiateOnBottom(FxLigthening);
 		}
 	}
 }

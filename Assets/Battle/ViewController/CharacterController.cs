@@ -3,6 +3,7 @@
 	public class CharacterController
 	{
 		private readonly CharacterView _view;
+		public CharacterView View { get { return _view; } }
 		private readonly Character _character;
 
 		public CharacterController(CharacterView view, Character character)
@@ -28,7 +29,7 @@
 
 		private void OnSkillStart(Character character, SkillSlot skillSlot, SkillActor skillActor)
 		{
-			_view.PlaySkillStart(skillActor.Data);
+			_view.PlaySkillStart(skillActor.Data, skillActor.MakeViewArgument());
 		}
 
 		private void OnGuardChanged(bool enabled)

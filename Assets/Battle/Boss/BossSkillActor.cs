@@ -6,7 +6,7 @@ namespace SPRPG.Battle
 	public abstract class BossSkillActor : SkillActorBase<BossSkillActor>
 	{
 		public BossSkillLocalKey LocalKey { get { return Data.Key; } }
-		protected readonly BossSkillBalanceData Data;
+		public readonly BossSkillBalanceData Data;
 		protected readonly Boss Owner;
 
 		protected BossSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
@@ -14,6 +14,11 @@ namespace SPRPG.Battle
 		{
 			Data = data;
 			Owner = owner;
+		}
+
+		public virtual object MakeViewArgument()
+		{
+			return null;
 		}
 	}
 

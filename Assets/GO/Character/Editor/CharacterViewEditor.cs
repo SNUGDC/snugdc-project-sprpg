@@ -27,7 +27,7 @@ namespace SPRPG
 		{
 			GUILayout.BeginHorizontal();
 			if (GUILayout.Button(data.Key.ToString()))
-				Target.View.PlaySkillStart(data);
+				Target.View.PlaySkillStart(data, null);
 			GUILayout.EndHorizontal();
 		}
 	}

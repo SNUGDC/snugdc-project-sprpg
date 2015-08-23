@@ -21,6 +21,18 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public struct CharacterAndIdx
+	{
+		public OriginalPartyIdx Idx;
+		public Character Character;
+
+		public CharacterAndIdx(OriginalPartyIdx idx, Character character)
+		{
+			Idx = idx;
+			Character = character;
+		}
+	}
+
 	public class Party : IEnumerable<Character>
 	{
 		public Character Leader { get { return this[ShiftedPartyIdx._1]; } }
@@ -76,9 +88,22 @@ namespace SPRPG.Battle
 			return false;
 		}
 
-		public IEnumerable<Character> GetAliveMembers()
+		public OriginalPartyIdx? FindMemberIdx(Character character)
 		{
-			return _members.Where(member => member.IsAlive);
+			var i = 0;
+			foreach (var member in this)
+			{
+				if (member == character)
+					return (OriginalPartyIdx)(++i);
+			}
+			return null;
+		}
+
+		public IEnumerable<CharacterAndIdx> GetAliveMembers()
+		{
+			var i = 0;
+			foreach (var member in _members)
+				yield return new CharacterAndIdx(BattleHelper.MakeOriginalPartyIdxFromIndex(i++), member);
 		}
 
 		public Character GetAliveLeaderOrMember()
@@ -95,14 +120,14 @@ namespace SPRPG.Battle
 			return null;
 		}
 
-		public Character TryGetRandomAliveMember()
+		public CharacterAndIdx? TryGetRandomAliveMember()
 		{
 			var aliveMembers = GetAliveMembers().ToArray();
 			if (aliveMembers.Empty()) return null;
 			return aliveMembers.Rand();
 		}
 
-		public List<Character> TryGetRandomAliveMembers(int num)
+		public List<CharacterAndIdx> TryGetRandomAliveMembers(int num)
 		{
 			var aliveMembers = GetAliveMembers().ToList();
 			aliveMembers.Shuffle();

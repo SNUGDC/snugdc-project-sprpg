@@ -11,7 +11,7 @@ namespace SPRPG
 		public GameObject FxRevenge;
 		public GameObject FxRecovery;
 
-		public override void PlaySkillStart(SkillBalanceData data)
+		public override void PlaySkillStart(SkillBalanceData data, object argument)
 		{
 			switch (data.Key) 
 			{

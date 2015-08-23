@@ -28,6 +28,12 @@
 			_partyPlacer.ResetPosition();
 		}
 
+		public void SetContext(BattleController context)
+		{
+			foreach (var character in _characters)
+				character.View.Context = context;
+		}
+
 		public void AfterTurn()
 		{
 			_partyPlacer.AfterTurn();

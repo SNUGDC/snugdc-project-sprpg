@@ -4,14 +4,15 @@ namespace SPRPG
 {
 	public class CharacterView : MonoBehaviour
 	{
+		public Battle.View.BattleController Context;
+
 		[SerializeField]
 		private CharacterId _id;
 		public CharacterId Id { get { return _id; } }
 		[SerializeField]
 		private CharacterSkeleton _skeleton;
 		public CharacterSkeleton Skeleton { get { return _skeleton; } }
-		[SerializeField]
-		protected CharacterViewPoints Points; 
+		public CharacterViewPoints Points; 
 		public Animator Animator;
 
 		private GameObject _guardAura;
@@ -52,6 +53,6 @@ namespace SPRPG
 			Destroy(_guardAura.gameObject);
 		}
 
-		public virtual void PlaySkillStart(SkillBalanceData data) { }
+		public virtual void PlaySkillStart(SkillBalanceData data, object argument) { }
 	}
 }

@@ -21,13 +21,34 @@ namespace SPRPG.Battle.View
 		void Start()
 		{
 			_partyController = PartyController.CreateWithInstantiatingCharacters(_partyView, Context.Party);
+			_partyController.SetContext(this);
+
 			BossView = R.Boss.GetView(Context.Boss.Id).Instantiate();
 			BossView.transform.SetParent(_bossOrigin, false);
+			BossView.Context = this;
+
+			Events.Boss.OnSkillStart += OnBossSkillStart;
+		}
+
+		void OnDestroy()
+		{
+			Events.Boss.OnSkillStart -= OnBossSkillStart;
 		}
 
 		public void AfterTurn()
 		{
 			_partyController.AfterTurn();
+		}
+
+		public CharacterView FindCharacterView(Character character)
+		{
+			var idx = Context.Party.FindMemberIdx(character);
+			return idx.HasValue ? _partyView[idx.Value] : null;
+		}
+
+		private void OnBossSkillStart(Boss boss, BossSkillActor skillActor)
+		{
+			BossView.PlaySkillStart(skillActor.Data, skillActor.MakeViewArgument());
 		}
 	}
 }

@@ -1,5 +1,9 @@
-﻿using Gem;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Gem;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SPRPG.Battle
 {
@@ -50,7 +54,7 @@ namespace SPRPG.Battle
 		private readonly BossDamageArgument _damage;
 
 		public BossRadiationAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
-			: base(data, context, owner, (Tick)3)
+			: base(data, context, owner, (Tick)35)
 		{
 			_damage = new BossDamageArgument(data.Arguments, "Damage");
 		}
@@ -74,25 +78,48 @@ namespace SPRPG.Battle
 	{
 		private readonly BossRadiationRangeAttackArguments _arguments;
 
+		public readonly List<OriginalPartyIdx> Targets = new List<OriginalPartyIdx>(3);
+
 		public BossRadiationRangeAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
-			: base(data, context, owner, (Tick)3)
+			: base(data, context, owner, (Tick)55)
 		{
 			_arguments = data.Arguments.ToObject<BossRadiationRangeAttackArguments>();
 		}
 
+		protected override void DoStart()
+		{
+			base.DoStart();
+
+			Targets.Clear();
+
+			var targets = Context.Party.GetAliveMembers().ToList();
+			targets.Shuffle();
+
+			var targetNumber = Random.Range(_arguments.TargetNumber[0], _arguments.TargetNumber[1] + 1);
+			targetNumber = Math.Min(targetNumber, targets.Count);
+			Targets.AddRange(targets.GetRange(0, targetNumber).Select(target => target.Idx));
+		}
+
 		protected override void Perform()
 		{
-			var targetNumber = Random.Range(_arguments.TargetNumber[0], _arguments.TargetNumber[1]);
-			var targets = Context.Party.TryGetRandomAliveMembers(targetNumber);
-			if (targets.Empty()) return;
-			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
-			foreach (var target in targets)
-				Owner.Attack(target, _arguments.Damage);
+			foreach (var target in Targets)
+			{
+				var character = Context.Party[target];
+				if (character.IsDead) continue;
+				if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) continue;
+				Owner.Attack(character, _arguments.Damage);
+			}
+		}
+
+		public override object MakeViewArgument()
+		{
+			return Targets;
 		}
 	}
 
 	public class BossRadiationPoisonExplosion1 : BossSingleDelayedPerformSkillActor
 	{
+		private readonly List<Character> _targets = new List<Character>(3);
 		private readonly BossDamageArgument _argument;
 
 		public BossRadiationPoisonExplosion1(BossSkillBalanceData data, Battle context, Boss owner) : base(data, context, owner, (Tick)3)
@@ -100,14 +127,28 @@ namespace SPRPG.Battle
 			_argument = new BossDamageArgument(data.Arguments, "Damage");
 		}
 
+		protected override void DoStart()
+		{
+			base.DoStart();
+			foreach (var member in Context.Party.GetAliveMembers())
+			{
+				if (!member.Character.IsPoisoned) continue;
+				_targets.Add(member.Character);
+			}
+		}
+
 		protected override void Perform()
 		{
-			foreach (var member in Context.Party)
+			foreach (var target in _targets)
 			{
-				if (!member.IsPoisoned) continue;
-				Owner.Attack(member, _argument.Value);
-				member.TryCure(StatusConditionType.Poison);
+				Owner.Attack(target, _argument.Value);
+				target.TryCure(StatusConditionType.Poison);
 			}
+		}
+
+		public override object MakeViewArgument()
+		{
+			return _targets;
 		}
 	}
 

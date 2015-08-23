@@ -51,6 +51,7 @@ namespace SPRPG
 	{
 		[JsonIgnore]
 		public CharacterId Id;
+		public string Name;
 		public string FlavorText;
 		public JsonStats Stats;
 		public PassiveKey Passive;

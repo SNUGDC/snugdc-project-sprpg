@@ -10,7 +10,7 @@ namespace SPRPG
 		public GameObject FxPoisonAttack;
 		public GameObject FxAssasination;
 
-		public override void PlaySkillStart(SkillBalanceData data)
+		public override void PlaySkillStart(SkillBalanceData data, object argument)
 		{
 			switch (data.Key) 
 			{

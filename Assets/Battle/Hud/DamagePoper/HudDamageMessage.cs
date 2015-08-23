@@ -5,7 +5,7 @@ namespace SPRPG.Battle.View
 {
 	public class HudDamageMessage : MonoBehaviour
 	{
-		private const float TimeToDestroy = 2;
+		private const float TimeToDestroy = 0.5f;
 
 		[SerializeField]
 		private Text _text;
@@ -18,7 +18,7 @@ namespace SPRPG.Battle.View
 		public void Show(Damage damage)
 		{
 			_text.text = (-(int)damage.Value).ToString();
-			_text.color = damage.Element.ToColor();
+			//_text.color = damage.Element.ToColor();
 		}
 	}
 }
