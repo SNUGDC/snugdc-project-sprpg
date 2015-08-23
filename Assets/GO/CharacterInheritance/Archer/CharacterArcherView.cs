@@ -37,6 +37,7 @@ namespace SPRPG
 		public void PlayEvadeShot()
 		{
 			Attack();
+			ShakeHorizontal();
 			Points.InstantiateOnAim(FxEvadeShot);
 		}
 
