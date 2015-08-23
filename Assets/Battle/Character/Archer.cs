@@ -104,16 +104,15 @@ namespace SPRPG.Battle
 #endif
 	}
 
-	public sealed class ArcherReloadSkillActor : SkillActor 
+	public sealed class ArcherReloadSkillActor : SingleDelayedPerformSkillActor 
 	{
 		public ArcherReloadSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
 		{ }
 
-		protected override void DoStart()
+		protected override void Perform()
 		{
 			var archerPassive = ((ArcherPassive)Owner.Passive);
 			archerPassive.TryChargeArrow();
-			Stop();
 		}
 	}
 
