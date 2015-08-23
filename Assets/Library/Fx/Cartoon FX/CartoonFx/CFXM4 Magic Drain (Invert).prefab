@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExecuteOnStart: 1
   DestroyComponentAfterExecute: 1
-  AudioClip: {fileID: 0}
+  AudioClip: {fileID: 8300000, guid: bc020a8d5cd4d4d47a2402c852989ded, type: 3}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -4058,6 +4058,10 @@ Prefab:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bc020a8d5cd4d4d47a2402c852989ded, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100006}
