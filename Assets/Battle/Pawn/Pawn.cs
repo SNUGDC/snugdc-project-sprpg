@@ -62,7 +62,7 @@ namespace SPRPG.Battle
 			}
 
 			foreach (var typeToRemove in markForRemove)
-				StatusConditions.Remove(typeToRemove);
+				StopStatusCondition(typeToRemove);
 		}
 
 		public Damage ApplyModifier(Damage damage)
@@ -140,18 +140,32 @@ namespace SPRPG.Battle
 
 			statusCondition = StatusConditionFactory.Create(this, test.Type, duration);
 			StatusConditions.Add(test.Type, statusCondition);
+			AfterGrantStatusCondition(test.Type);
 			return true;
 		}
 
+		protected virtual void AfterGrantStatusCondition(StatusConditionType type) { }
+
 		public bool TryCure(StatusConditionType type)
 		{
-			return StatusConditions.TryRemove(type);
+			return StopStatusCondition(type);
 		}
 
 		public void CureAll()
 		{
-			StatusConditions.Clear();
+			var statusConditions = new Dictionary<StatusConditionType, StatusCondition>(StatusConditions);
+			foreach (var kv in StatusConditions)
+				StopStatusCondition(kv.Key);
 		}
+
+		private bool StopStatusCondition(StatusConditionType type)
+		{
+			var ret = StatusConditions.TryRemove(type);
+			AfterStopStatusCondition(type);
+			return ret;
+		}
+
+		protected virtual void AfterStopStatusCondition(StatusConditionType type) { }
 
 		public bool TestAndGrant(StunTest stunTest)
 		{
@@ -171,6 +185,8 @@ namespace SPRPG.Battle
 		public Action<T, Hp> OnAfterHeal;
 		public Action<T, Damage> OnAfterHit;
 		public Action<T, Pawn> OnAfterAttack;
+		public Action<T, StatusConditionType> OnGrantStatusCondition;
+		public Action<T, StatusConditionType> OnStopStatusCondition;
 
 		protected Pawn(Stats stats) : base(stats)
 		{ }
@@ -194,6 +210,16 @@ namespace SPRPG.Battle
 		protected override void AfterAttack(Pawn target)
 		{
 			OnAfterAttack.CheckAndCall((T) this, target);
+		}
+
+		protected override void AfterGrantStatusCondition(StatusConditionType type)
+		{
+			OnGrantStatusCondition.CheckAndCall((T) this, type);
+		}
+
+		protected override void AfterStopStatusCondition(StatusConditionType type)
+		{
+			OnStopStatusCondition.CheckAndCall((T) this, type);
 		}
 	}
 }

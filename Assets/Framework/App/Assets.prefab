@@ -39,7 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff6dff071d7035478eeff62cbeaf29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldDb: {fileID: 4900000, guid: 0ddaf0cfc4281f34fa559e10cd81dec3, type: 3}
+  FxStatusConditionPoison: {fileID: 162186, guid: 2999327ec9e379646ad5f91fbecdd1cc,
+    type: 2}
   FxCharacterGuardAura: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
   CampEntryEmptySprite: {fileID: 21300000, guid: ea987810f26e4e344a7efc806ec22fc2,
     type: 3}
@@ -95,6 +96,10 @@ Prefab:
       propertyPath: FxCharacterGuardAura
       value: 
       objectReference: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FxStatusConditionPoison
+      value: 
+      objectReference: {fileID: 162186, guid: 2999327ec9e379646ad5f91fbecdd1cc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120712}

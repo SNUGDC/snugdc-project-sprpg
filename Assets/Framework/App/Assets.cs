@@ -6,8 +6,7 @@ namespace SPRPG
 	{
 		public static Assets _ { get; private set; }
 
-	    public TextAsset WorldDb;
-
+		public GameObject FxStatusConditionPoison;
 		public GameObject FxCharacterGuardAura;
 
 		public Sprite CampEntryEmptySprite;

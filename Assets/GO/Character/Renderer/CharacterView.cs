@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 
 namespace SPRPG
 {
@@ -15,7 +16,8 @@ namespace SPRPG
 		public CharacterViewPoints Points; 
 		public Animator Animator;
 
-		private GameObject _guardAura;
+		private GameObject _fxGuardAura;
+		private GameObject _fxStatusConditionPoison;
 
 		void Start()
 		{
@@ -34,24 +36,48 @@ namespace SPRPG
 
 		public void PlayGuardAura()
 		{
-			if (_guardAura != null)
+			if (_fxGuardAura != null)
 			{
 				Debug.LogWarning("already has guard aura.");
 				return;
 			}
 
-			_guardAura = Points.InstantiateOnCenter(Assets._.FxCharacterGuardAura);
+			_fxGuardAura = Points.InstantiateOnCenter(Assets._.FxCharacterGuardAura);
 		}
 
 		public void StopGuardAura()
 		{
-			if (_guardAura == null)
+			if (_fxGuardAura == null)
 			{
 				Debug.LogError("no guard one.");
 				return;
 			}
 
-			Destroy(_guardAura.gameObject);
+			Destroy(_fxGuardAura.gameObject);
+		}
+
+		public void PlayStatusConditionPoison()
+		{
+			if (_fxStatusConditionPoison != null)
+			{
+				Debug.LogError("already has fx poison.");
+				return;
+			}
+
+			_fxStatusConditionPoison = Assets._.FxStatusConditionPoison.Instantiate();
+			_fxStatusConditionPoison.transform.SetParent(transform, false);
+			_fxStatusConditionPoison.transform.localPosition = Vector3.one;
+		}
+
+		public void StopStatusConditionPoison()
+		{
+			if (_fxStatusConditionPoison == null)
+			{
+				Debug.LogError("no fx poison.");
+				return;
+			}
+
+			Destroy(_fxStatusConditionPoison.gameObject);
 		}
 
 		public virtual void PlaySkillStart(SkillBalanceData data, object argument) { }

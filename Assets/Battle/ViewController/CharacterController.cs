@@ -1,4 +1,7 @@
-﻿namespace SPRPG.Battle.View
+﻿using Gem;
+using UnityEngine;
+
+namespace SPRPG.Battle.View
 {
 	public class CharacterController
 	{
@@ -14,13 +17,18 @@
 			_character.OnDead += OnDead;
 			_character.OnSkillStart += OnSkillStart;
 			_character.Guard.OnChanged += OnGuardChanged;
+			_character.OnGrantStatusCondition += OnGrantStatusCondition;
+			_character.OnStopStatusCondition += OnStopStatusCondition;
 		}
 
 		~CharacterController()
 		{
+			_character.OnAfterHit -= OnAfterHit;
 			_character.OnDead -= OnDead;
 			_character.OnSkillStart -= OnSkillStart;
 			_character.Guard.OnChanged -= OnGuardChanged;
+			_character.OnGrantStatusCondition -= OnGrantStatusCondition;
+			_character.OnStopStatusCondition -= OnStopStatusCondition;
 		}
 
 		private void OnAfterHit(Character character, Damage damage)
@@ -44,6 +52,22 @@
 				_view.PlayGuardAura();
 			else
 				_view.StopGuardAura();
+		}
+
+		private void OnGrantStatusCondition(Character character, StatusConditionType type)
+		{
+			if (type == StatusConditionType.Poison)
+				View.PlayStatusConditionPoison();
+			else
+				Debug.LogError(LogMessages.EnumNotHandled(type));
+		}
+
+		private void OnStopStatusCondition(Character character, StatusConditionType type)
+		{
+			if (type == StatusConditionType.Poison)
+				View.StopStatusConditionPoison();
+			else
+				Debug.LogError(LogMessages.EnumNotHandled(type));
 		}
 	}
 }
