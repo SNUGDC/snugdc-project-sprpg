@@ -10,6 +10,7 @@ namespace SPRPG.Battle.View
 		public GameObject FxRangeAttackLockOn;
 		public GameObject FxRangeAttackShoot;
 		public GameObject FxRangeAttackHit;
+		public GameObject FxPoisonExplosion;
 
 		private readonly List<OriginalPartyIdx> _rangeAttackTargets = new List<OriginalPartyIdx>(3);
 		private readonly List<GameObject> _rangeAttackLockOns = new List<GameObject>(3);
@@ -28,6 +29,11 @@ namespace SPRPG.Battle.View
 				case BossSkillLocalKey.RangeAttack2:
 				case BossSkillLocalKey.RangeAttack3:
 					PlayRangeAttack((List<OriginalPartyIdx>)arguments);
+					return;
+
+				case BossSkillLocalKey.PoisonExplosion1:
+				case BossSkillLocalKey.PoisonExplosion2:
+					PlayPoisonExplosion((List<Character>)arguments);
 					return;
 
 				default:
@@ -91,6 +97,26 @@ namespace SPRPG.Battle.View
 			foreach (var lockOn in _rangeAttackLockOns)
 				Destroy(lockOn);
 			_rangeAttackLockOns.Clear();
+		}
+
+		private void PlayPoisonExplosion(List<Character> targets)
+		{
+			if (targets == null)
+				return;
+
+			foreach (var target in targets)
+			{
+				Transform parent = null;
+				if (Context != null)
+				{
+					var characterView = Context.FindCharacterView(target);
+					if (characterView != null) parent = characterView.Points.Center;
+				}
+
+				var fx = FxPoisonExplosion.Instantiate();
+				fx.transform.SetParent(parent, false);
+				fx.transform.localPosition = Vector3.zero;
+			}
 		}
 	}
 }

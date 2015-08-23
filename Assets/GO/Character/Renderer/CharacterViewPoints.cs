@@ -7,6 +7,7 @@ namespace SPRPG
 	{
 		[SerializeField]
 		private Transform _center;
+		public Transform Center { get { return _center; } }
 		[SerializeField]
 		private Transform _bottom;
 		[SerializeField]

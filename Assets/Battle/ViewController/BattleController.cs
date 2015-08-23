@@ -23,6 +23,7 @@ namespace SPRPG.Battle.View
 			_partyController = PartyController.CreateWithInstantiatingCharacters(_partyView, Context.Party);
 			BossView = R.Boss.GetView(Context.Boss.Id).Instantiate();
 			BossView.transform.SetParent(_bossOrigin, false);
+			BossView.Context = this;
 
 			Events.Boss.OnSkillStart += OnBossSkillStart;
 		}
@@ -35,6 +36,12 @@ namespace SPRPG.Battle.View
 		public void AfterTurn()
 		{
 			_partyController.AfterTurn();
+		}
+
+		public CharacterView FindCharacterView(Character character)
+		{
+			var idx = Context.Party.FindMemberIdx(character);
+			return idx.HasValue ? _partyView[idx.Value] : null;
 		}
 
 		private void OnBossSkillStart(Boss boss, BossSkillActor skillActor)

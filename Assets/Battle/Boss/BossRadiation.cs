@@ -119,6 +119,7 @@ namespace SPRPG.Battle
 
 	public class BossRadiationPoisonExplosion1 : BossSingleDelayedPerformSkillActor
 	{
+		private readonly List<Character> _targets = new List<Character>(3);
 		private readonly BossDamageArgument _argument;
 
 		public BossRadiationPoisonExplosion1(BossSkillBalanceData data, Battle context, Boss owner) : base(data, context, owner, (Tick)3)
@@ -126,14 +127,28 @@ namespace SPRPG.Battle
 			_argument = new BossDamageArgument(data.Arguments, "Damage");
 		}
 
+		protected override void DoStart()
+		{
+			base.DoStart();
+			foreach (var member in Context.Party.GetAliveMembers())
+			{
+				if (!member.Character.IsPoisoned) continue;
+				_targets.Add(member.Character);
+			}
+		}
+
 		protected override void Perform()
 		{
-			foreach (var member in Context.Party)
+			foreach (var target in _targets)
 			{
-				if (!member.IsPoisoned) continue;
-				Owner.Attack(member, _argument.Value);
-				member.TryCure(StatusConditionType.Poison);
+				Owner.Attack(target, _argument.Value);
+				target.TryCure(StatusConditionType.Poison);
 			}
+		}
+
+		public override object MakeViewArgument()
+		{
+			return _targets;
 		}
 	}
 

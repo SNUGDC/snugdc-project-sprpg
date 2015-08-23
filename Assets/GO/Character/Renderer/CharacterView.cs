@@ -10,8 +10,7 @@ namespace SPRPG
 		[SerializeField]
 		private CharacterSkeleton _skeleton;
 		public CharacterSkeleton Skeleton { get { return _skeleton; } }
-		[SerializeField]
-		protected CharacterViewPoints Points; 
+		public CharacterViewPoints Points; 
 		public Animator Animator;
 
 		private GameObject _guardAura;

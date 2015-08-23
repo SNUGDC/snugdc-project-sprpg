@@ -88,6 +88,17 @@ namespace SPRPG.Battle
 			return false;
 		}
 
+		public OriginalPartyIdx? FindMemberIdx(Character character)
+		{
+			var i = 0;
+			foreach (var member in this)
+			{
+				if (member == character)
+					return (OriginalPartyIdx)(++i);
+			}
+			return null;
+		}
+
 		public IEnumerable<CharacterAndIdx> GetAliveMembers()
 		{
 			var i = 0;

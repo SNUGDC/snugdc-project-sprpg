@@ -4,6 +4,8 @@ namespace SPRPG.Battle.View
 {
 	public class BossView : MonoBehaviour
 	{
+		public BattleController Context;
+
 		[SerializeField]
 		private BossId _id;
 		public BossId Id { get { return _id; } }
