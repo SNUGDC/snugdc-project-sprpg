@@ -10,6 +10,9 @@ namespace SPRPG.Battle.View
 		[SerializeField]
 		private Animator _animator;
 		public Animator Animator { get { return _animator; } }
+		[SerializeField]
+		private BossViewPoints _points;
+		public BossViewPoints Points { get { return _points; } }
 
 		void Start()
 		{
