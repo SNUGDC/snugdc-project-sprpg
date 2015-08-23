@@ -12,7 +12,7 @@ namespace SPRPG.Battle.View
 		public GameObject FxRangeAttackHit;
 		public GameObject FxPoisonExplosion;
 
-		private readonly List<OriginalPartyIdx> _rangeAttackTargets = new List<OriginalPartyIdx>(3);
+		private readonly List<ShiftedPartyIdx> _rangeAttackTargets = new List<ShiftedPartyIdx>(3);
 		private readonly List<GameObject> _rangeAttackLockOns = new List<GameObject>(3);
 
 		public override void PlaySkillStart(BossSkillBalanceData data, object arguments)
@@ -28,7 +28,7 @@ namespace SPRPG.Battle.View
 				case BossSkillLocalKey.RangeAttack1:
 				case BossSkillLocalKey.RangeAttack2:
 				case BossSkillLocalKey.RangeAttack3:
-					PlayRangeAttack((List<OriginalPartyIdx>)arguments);
+					PlayRangeAttack((List<ShiftedPartyIdx>)arguments);
 					return;
 
 				case BossSkillLocalKey.PoisonExplosion1:
@@ -52,14 +52,14 @@ namespace SPRPG.Battle.View
 			Points.InstantiateOnFrontGround(FxAttack);
 		}
 
-		public void PlayRangeAttack(List<OriginalPartyIdx> targets)
+		public void PlayRangeAttack(List<ShiftedPartyIdx> targets)
 		{
 			Animator.SetTrigger("RangeAttack");
 
 			if (targets == null)
 			{
 				Debug.LogError("no targets specified.");
-				targets = new List<OriginalPartyIdx>(3) { OriginalPartyIdx._1, OriginalPartyIdx._2, OriginalPartyIdx._3 };
+				targets = new List<ShiftedPartyIdx>(3) { ShiftedPartyIdx._1, ShiftedPartyIdx._2, ShiftedPartyIdx._3 };
 			}
 
 			_rangeAttackTargets.Clear();
