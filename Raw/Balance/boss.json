@@ -43,14 +43,16 @@
 				"Key": "Timescale2",
 				"ActivateCondition": { "Type": "BossPhase", "Phase": 3 },
 				"Arguments": { "Timescale": 2 }
-			},
-			{
-				"Key": "Recovery",
-				"ActivateCondition": { "Type": "True" },
-				"Arguments": { "Duration": 360, "Period": 10, "Heal": 50 }
 			}
 		],
 		"_skills": [
+			{
+				"Key": "Recovery",
+				"Weight": 10000,
+				"Duration": 360,
+				"SampleCondition": { "Type": "BossWasAiPhaseChanged" },
+				"Arguments": { "Period": 10, "Heal": 50 }
+			},
 			{
 				"Key": "Attack1",
 				"Weight": 5,

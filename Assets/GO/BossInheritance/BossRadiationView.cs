@@ -19,6 +19,10 @@ namespace SPRPG.Battle.View
 		{
 			switch (data.Key)
 			{
+				case BossSkillLocalKey.Recovery:
+					PlayRecovery();
+					return;
+
 				case BossSkillLocalKey.Attack1:
 				case BossSkillLocalKey.Attack2:
 				case BossSkillLocalKey.Attack3:
@@ -40,6 +44,11 @@ namespace SPRPG.Battle.View
 					Debug.LogWarning(LogMessages.EnumNotHandled(data.Key));
 					return;
 			}
+		}
+
+		public void PlayRecovery()
+		{
+			Animator.SetTrigger("Recovery");
 		}
 
 		public void PlayAttackStart()

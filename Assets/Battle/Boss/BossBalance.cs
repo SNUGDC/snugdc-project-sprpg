@@ -13,11 +13,11 @@ namespace SPRPG.Battle
 		Poison1,
 		Poison2,
 		Poison3,
-		Recovery,
 	}
 	
 	public enum BossSkillLocalKey
 	{
+		Recovery,
 		Attack1,
 		RangeAttack1,
 		Attack2,

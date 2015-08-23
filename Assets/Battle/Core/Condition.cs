@@ -16,6 +16,7 @@ namespace SPRPG.Battle
 		Dictionary,
 		SomeCharacterHasStatusCondition,
 		BossPhase,
+		BossWasAiPhaseChanged,
 	}
 
 	public enum ConditionCompareOperator
@@ -169,6 +170,17 @@ namespace SPRPG.Battle
 		}
 	}
 
+	public sealed class BossWasAiPhaseChangedCondition : Condition
+	{
+		public BossWasAiPhaseChangedCondition() : base(ConditionType.BossWasAiPhaseChanged)
+		{ }
+
+		public override bool Test(Battle context)
+		{
+			return context.Boss.Ai.WasPhaseChanged;
+		}
+	}
+
 	public static class ConditionFactory
 	{
 		public static Condition Create(JsonData data)
@@ -193,6 +205,8 @@ namespace SPRPG.Battle
 					return new SomeCharacterHasStatusConditionCondition(data);
 				case ConditionType.BossPhase:
 					return new BossPhaseCondition(data);
+				case ConditionType.BossWasAiPhaseChanged:
+					return new BossWasAiPhaseChangedCondition();
 			}
 
 			Debug.LogError(LogMessages.EnumUndefined(type));

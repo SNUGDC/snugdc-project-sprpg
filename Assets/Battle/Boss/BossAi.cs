@@ -14,10 +14,14 @@ namespace SPRPG.Battle
 		private readonly Boss _boss;
 		private readonly BossSkillFactory _skillFactory;
 
+		public BossPhaseState PreviousPerformPhase { get; private set; }
+		public bool WasPhaseChanged { get { return _boss.Phase != PreviousPerformPhase; } }
+
 		public BossAi(Boss boss)
 		{
 			_boss = boss;
 			_skillFactory = BossWholeSkillFactory.Map(boss);
+			PreviousPerformPhase = (BossPhaseState) 1;
 		}
 
 		public void Tick()
@@ -80,9 +84,12 @@ namespace SPRPG.Battle
 			if (data == null)
 				return false;
 
+			PreviousPerformPhase = _boss.Phase;
+
 			Running = _skillFactory.Create(data, context, _boss);
 			Running.OnStop += OnStop;
 			Running.Start();
+
 			Events.Boss.OnSkillStart.CheckAndCall(_boss, Running);
 			return true;
 		}

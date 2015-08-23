@@ -39,14 +39,33 @@ namespace SPRPG.Battle
 		}
 	}
 
-	public class BossRecoveryPassive : BossPassive
+	public class BossRecoveryArguments
 	{
-		public BossRecoveryPassive(BossPassiveBalanceData data, Battle context, Boss owner) : base(data, context, owner)
+		public Tick Period;
+		public Hp Heal;
+	}
+
+	public class BossRecoverySkillActor : BossSingleDelayedPerformSkillActor
+	{
+		private readonly BossRecoveryArguments _argument;
+
+		public BossRecoverySkillActor(BossSkillBalanceData data, Battle context, Boss owner)
+			: base(data, context, owner, (Tick) 10)
 		{
-			// todo: event boss phase changed.
+			_argument = data.Arguments.ToObject<BossRecoveryArguments>();
 		}
 
-		public override void ResetByStun() { }
+		protected override void Perform()
+		{
+			var periodInt = (int)_argument.Period;
+			for (var i = periodInt; i <= (int)Data.Duration - periodInt; i += periodInt)
+			{
+				Owner.ScheduleSkill((Tick)i, () =>
+				{
+					Owner.Heal(_argument.Heal);
+				});
+			}
+		}
 	}
 
 	public class BossRadiationAttackSkillActor : BossSingleDelayedPerformSkillActor 
@@ -187,8 +206,6 @@ namespace SPRPG.Battle
 				case BossPassiveLocalKey.Timescale1:
 				case BossPassiveLocalKey.Timescale2:
 					return new BossTimescalePassive(data, context, owner);
-				case BossPassiveLocalKey.Recovery:
-					return new BossRecoveryPassive(data, context, owner);
 				default:
 					Debug.LogError("boss " + key + "'s skill " + key + " not handled.");
 					return new BossNonePassive(context, owner);
@@ -206,6 +223,8 @@ namespace SPRPG.Battle
 
 			switch (data.Key)
 			{
+				case BossSkillLocalKey.Recovery:
+					return new BossRecoverySkillActor(data, context, owner);
 				case BossSkillLocalKey.Attack1:
 				case BossSkillLocalKey.Attack2:
 				case BossSkillLocalKey.Attack3:
