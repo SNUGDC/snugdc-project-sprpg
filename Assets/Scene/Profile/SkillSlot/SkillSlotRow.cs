@@ -18,7 +18,7 @@ namespace SPRPG.Profile
 			var slot = _slotPrefab.Instantiate();
 			slot.transform.SetParent(transform, false);
 			slot.Set(skill);
-			slot.OnClickCallback += OnClickCallback;
+			slot.OnClickCallback += OnClick;
 			_slots.Add(slot);
 			return slot;
 		}
@@ -39,6 +39,11 @@ namespace SPRPG.Profile
 			foreach (var slot in _slots)
 				Destroy(slot.gameObject);
 			_slots.Clear();
+		}
+
+		private void OnClick(SkillKey skill, bool isSelected)
+		{
+			OnClickCallback.CheckAndCall(skill, isSelected);
 		}
 	}
 }
