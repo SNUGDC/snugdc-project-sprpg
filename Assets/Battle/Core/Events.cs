@@ -21,6 +21,7 @@ namespace SPRPG.Battle
 	{
 		public static Action AfterTurn;
 
+		public static Action OnClockPerfectTerm;
 		public static Action<TermAndGrade> OnInputSkill;
 		public static Action<TermAndGrade> OnInputShift;
 

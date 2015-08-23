@@ -1605,6 +1605,7 @@ GameObject:
   - 114: {fileID: 2086338276}
   - 114: {fileID: 2086338275}
   - 114: {fileID: 2086338274}
+  - 82: {fileID: 2086338277}
   m_Layer: 0
   m_Name: Battle
   m_TagString: Untagged
@@ -1694,6 +1695,7 @@ MonoBehaviour:
   _partyView: {fileID: 341662552}
   _bossOrigin: {fileID: 418585746}
   BossView: {fileID: 0}
+  DrumSe: {fileID: 2086338277}
 --- !u!114 &2086338276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1709,3 +1711,72 @@ MonoBehaviour:
   _overlay: {fileID: 172873735}
   _hud: {fileID: 2086338274}
   _battle: {fileID: 2086338275}
+--- !u!82 &2086338277
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2086338270}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8fb41b5ee31b3b948b73b3945c75824a, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2

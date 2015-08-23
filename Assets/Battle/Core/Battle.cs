@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gem;
+using UnityEngine;
 using Random = System.Random;
 
 namespace SPRPG.Battle
@@ -89,6 +90,8 @@ namespace SPRPG.Battle
 		{
 			if (Fsm.IsIdle)
 				Fsm.Cycle();
+			if (PlayerClock.IsPerfectTerm)
+				Events.OnClockPerfectTerm.CheckAndCall();
 		}
 
 		private void BindCallbacks()
