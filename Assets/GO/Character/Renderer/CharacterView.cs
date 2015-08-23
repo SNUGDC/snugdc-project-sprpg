@@ -26,6 +26,7 @@ namespace SPRPG
 
 		public void Attack() { Animator.SetTrigger("Attack"); }
 		public void StrongAttack() { Animator.SetTrigger("StrongAttack"); }
+		public void Hit() { Animator.SetTrigger("Hit"); }
 		public void Dead() { Animator.SetTrigger("Dead"); }
 		public void Buff() { Animator.SetTrigger("Buff"); }
 		public void Jump() { Animator.SetTrigger("Jump"); }

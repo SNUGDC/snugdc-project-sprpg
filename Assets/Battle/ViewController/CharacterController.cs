@@ -10,6 +10,7 @@
 		{
 			_view = view;
 			_character = character;
+			_character.OnAfterHit += OnAfterHit;
 			_character.OnDead += OnDead;
 			_character.OnSkillStart += OnSkillStart;
 			_character.Guard.OnChanged += OnGuardChanged;
@@ -20,6 +21,11 @@
 			_character.OnDead -= OnDead;
 			_character.OnSkillStart -= OnSkillStart;
 			_character.Guard.OnChanged -= OnGuardChanged;
+		}
+
+		private void OnAfterHit(Character character, Damage damage)
+		{
+			View.Hit();
 		}
 
 		private void OnDead(Character character)
