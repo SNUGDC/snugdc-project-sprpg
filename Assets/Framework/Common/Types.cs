@@ -156,6 +156,11 @@ namespace SPRPG
 			return (SkillTier)((int)thiz + 1);
 		}
 
+		public static int ToIndex(this SkillTier thiz)
+		{
+			return ((int) thiz) - 1;
+		}
+
 		public static SkillSlot ToSlot(this SkillTier thiz)
 		{
 			return (SkillSlot) ((int) thiz - 1);
