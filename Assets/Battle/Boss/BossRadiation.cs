@@ -54,7 +54,7 @@ namespace SPRPG.Battle
 		private readonly BossDamageArgument _damage;
 
 		public BossRadiationAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
-			: base(data, context, owner, (Tick)3)
+			: base(data, context, owner, (Tick)35)
 		{
 			_damage = new BossDamageArgument(data.Arguments, "Damage");
 		}
@@ -81,7 +81,7 @@ namespace SPRPG.Battle
 		public readonly List<OriginalPartyIdx> Targets = new List<OriginalPartyIdx>(3);
 
 		public BossRadiationRangeAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
-			: base(data, context, owner, (Tick)3)
+			: base(data, context, owner, (Tick)55)
 		{
 			_arguments = data.Arguments.ToObject<BossRadiationRangeAttackArguments>();
 		}
