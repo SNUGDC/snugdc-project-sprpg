@@ -206,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExecuteOnStart: 1
   DestroyComponentAfterExecute: 1
-  AudioClip: {fileID: 8300000, guid: bfe5319ffb17c594d9158658e60cb7ca, type: 3}
+  AudioClip: {fileID: 8300000, guid: 141274e3d0d0a434bb4ac7e9a18df909, type: 3}
 --- !u!114 &11480320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4403,7 +4403,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: AudioClip
       value: 
-      objectReference: {fileID: 8300000, guid: bfe5319ffb17c594d9158658e60cb7ca, type: 3}
+      objectReference: {fileID: 8300000, guid: 141274e3d0d0a434bb4ac7e9a18df909, type: 3}
     - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.maxCurve.m_Curve.Array.data[0].value
       value: 1

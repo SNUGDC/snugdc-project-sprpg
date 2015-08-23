@@ -1209,6 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e517f916af5243442bc8c179c0e4fee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Context: {fileID: 0}
   _id: 3
   _skeleton: {fileID: 11442948}
   Points: {fileID: 11479604}
@@ -1217,7 +1218,7 @@ MonoBehaviour:
   FxEvadeShot: {fileID: 168296, guid: e391a5663d1f0474b99669b81d6fdff4, type: 2}
   FxSnipe: {fileID: 130248, guid: 9dccb3b634c45304083c584887e5fb3d, type: 2}
   FxWeakPointAttack: {fileID: 125140, guid: 18c6ba6b319b7214e982e859f1c10c51, type: 2}
-  FxArrowRain: {fileID: 101790, guid: a2c7b5f5771d875409d75e149ab4b2a9, type: 2}
+  FxArrowRain: {fileID: 162788, guid: a2c7b5f5771d875409d75e149ab4b2a9, type: 2}
 --- !u!212 &21202248
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1736,6 +1737,10 @@ Prefab:
       propertyPath: Animator
       value: 
       objectReference: {fileID: 9539322}
+    - target: {fileID: 0}
+      propertyPath: FxArrowRain
+      value: 
+      objectReference: {fileID: 162788, guid: a2c7b5f5771d875409d75e149ab4b2a9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151556}

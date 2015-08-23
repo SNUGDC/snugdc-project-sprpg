@@ -78,7 +78,7 @@ namespace SPRPG.Battle
 	{
 		private readonly BossRadiationRangeAttackArguments _arguments;
 
-		public readonly List<OriginalPartyIdx> Targets = new List<OriginalPartyIdx>(3);
+		public readonly List<ShiftedPartyIdx> Targets = new List<ShiftedPartyIdx>(3);
 
 		public BossRadiationRangeAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
 			: base(data, context, owner, (Tick)55)
@@ -97,7 +97,8 @@ namespace SPRPG.Battle
 
 			var targetNumber = Random.Range(_arguments.TargetNumber[0], _arguments.TargetNumber[1] + 1);
 			targetNumber = Math.Min(targetNumber, targets.Count);
-			Targets.AddRange(targets.GetRange(0, targetNumber).Select(target => target.Idx));
+			foreach (var target in targets.GetRange(0, targetNumber))
+				Targets.Add(Context.Party.OriginalToShiftedIdx(target.Idx));
 		}
 
 		protected override void Perform()
