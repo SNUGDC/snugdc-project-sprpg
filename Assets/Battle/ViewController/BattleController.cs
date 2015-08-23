@@ -27,11 +27,13 @@ namespace SPRPG.Battle.View
 			BossView.transform.SetParent(_bossOrigin, false);
 			BossView.Context = this;
 
+			Events.Boss.OnHit += OnBossHit;
 			Events.Boss.OnSkillStart += OnBossSkillStart;
 		}
 
 		void OnDestroy()
 		{
+			Events.Boss.OnHit -= OnBossHit;
 			Events.Boss.OnSkillStart -= OnBossSkillStart;
 		}
 
@@ -44,6 +46,11 @@ namespace SPRPG.Battle.View
 		{
 			var idx = Context.Party.FindMemberIdx(character);
 			return idx.HasValue ? _partyView[idx.Value] : null;
+		}
+
+		private void OnBossHit(Boss boss, Damage damage)
+		{
+			BossView.PlayHit();
 		}
 
 		private void OnBossSkillStart(Boss boss, BossSkillActor skillActor)

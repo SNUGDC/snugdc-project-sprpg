@@ -13,6 +13,7 @@ namespace SPRPG.Battle
 	public class BossEvents
 	{
 		public Action<Boss, Hp> OnHpChanged;
+		public Action<Boss, Damage> OnHit;
 		public Action<Boss, BossSkillActor> OnSkillStart;
 	}
 

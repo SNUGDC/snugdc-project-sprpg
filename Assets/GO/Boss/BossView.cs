@@ -23,6 +23,11 @@ namespace SPRPG.Battle.View
 #endif
 		}
 
+		public void PlayHit()
+		{
+			Animator.SetTrigger("Hit");
+		}
+
 		public virtual void PlaySkillStart(BossSkillBalanceData data, object arguments) { }
 	}
 }

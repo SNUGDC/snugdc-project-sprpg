@@ -59,6 +59,12 @@ namespace SPRPG.Battle
 			return new Job(_skillSchedule, delay, callback);
 		}
 
+		protected override void AfterHit(Damage damage)
+		{
+			base.AfterHit(damage);
+			Events.Boss.OnHit.CheckAndCall(this, damage);
+		}
+
 		protected override void AfterHpChanged(Hp old)
 		{
 			base.AfterHpChanged(old);

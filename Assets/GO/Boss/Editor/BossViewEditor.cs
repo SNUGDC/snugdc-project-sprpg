@@ -20,6 +20,8 @@ namespace SPRPG.Battle.View
 		{
 			base.OnInspectorGUI();
 			if (!Application.isPlaying) return;
+			if (GUILayout.Button("hit"))
+				Target.View.PlayHit();
 			foreach (var kv in _data.Skills)
 				RenderSkillButton(kv.Value, null);
 		}
