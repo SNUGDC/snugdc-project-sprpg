@@ -1067,19 +1067,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 448044, guid: ee67c75b317d19941a6f1036ee862a78, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.17999995
+      value: .810000002
       objectReference: {fileID: 0}
     - target: {fileID: 448044, guid: ee67c75b317d19941a6f1036ee862a78, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.400000006
+      value: -.540000021
       objectReference: {fileID: 0}
     - target: {fileID: 465054, guid: ee67c75b317d19941a6f1036ee862a78, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .779999971
+      value: .25999999
       objectReference: {fileID: 0}
     - target: {fileID: 465054, guid: ee67c75b317d19941a6f1036ee862a78, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.980000019
+      value: -.479999989
       objectReference: {fileID: 0}
     - target: {fileID: 442314, guid: ee67c75b317d19941a6f1036ee862a78, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1131,7 +1131,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 886210043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.540000021, y: 0, z: 0}
+  m_LocalPosition: {x: -.0199999996, y: -.550000012, z: 0}
   m_LocalScale: {x: -1, y: 1, z: .00666666683}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Texture: {fileID: 2800000, guid: d8aa960f9b804234ab44f2dbb4e43191, type: 3}
+  m_Texture: {fileID: 2800000, guid: fa8506d07bcf5bb41a3e9a0e0440c210, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

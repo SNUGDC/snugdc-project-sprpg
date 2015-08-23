@@ -10,7 +10,7 @@ GameObject:
   - 224: {fileID: 22416570}
   - 114: {fileID: 11451522}
   m_Layer: 5
-  m_Name: HudDamagePoper
+  m_Name: HudNumberPoper
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22eda11d7d44520418fb384d2158bad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _messagePrefab: {fileID: 11481516, guid: 77190d168db7920488b18f56bfa1922e, type: 2}
+  _damagePrefab: {fileID: 11481516, guid: 77190d168db7920488b18f56bfa1922e, type: 2}
 --- !u!224 &22416570
 RectTransform:
   m_ObjectHideFlags: 1
@@ -58,6 +58,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _messagePrefab
+      value: 
+      objectReference: {fileID: 11481516, guid: 77190d168db7920488b18f56bfa1922e,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _damagePrefab
       value: 
       objectReference: {fileID: 11481516, guid: 77190d168db7920488b18f56bfa1922e,
         type: 2}

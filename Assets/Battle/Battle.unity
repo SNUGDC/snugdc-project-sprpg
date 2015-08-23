@@ -1239,6 +1239,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 112888, guid: 886a33db6e7b46a4a87b22c4e1db49d7, type: 2}
+      propertyPath: m_Name
+      value: HudBossNumberPoper
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 886a33db6e7b46a4a87b22c4e1db49d7, type: 2}
   m_IsPrefabParent: 0
@@ -1673,7 +1677,8 @@ MonoBehaviour:
   - {fileID: 118384496}
   - {fileID: 544982001}
   _bossHpBar: {fileID: 2017610284}
-  _damagePoper: {fileID: 709277400}
+  _numberPoperPrefab: {fileID: 11451522, guid: 886a33db6e7b46a4a87b22c4e1db49d7, type: 2}
+  _bossNumberPoper: {fileID: 709277400}
 --- !u!114 &2086338275
 MonoBehaviour:
   m_ObjectHideFlags: 0
