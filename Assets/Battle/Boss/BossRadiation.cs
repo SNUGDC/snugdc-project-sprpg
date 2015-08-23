@@ -1,4 +1,6 @@
-﻿using Gem;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Gem;
 using UnityEngine;
 
 namespace SPRPG.Battle
@@ -74,20 +76,35 @@ namespace SPRPG.Battle
 	{
 		private readonly BossRadiationRangeAttackArguments _arguments;
 
+		public readonly List<OriginalPartyIdx> Targets = new List<OriginalPartyIdx>(3);
+
 		public BossRadiationRangeAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
 			: base(data, context, owner, (Tick)3)
 		{
 			_arguments = data.Arguments.ToObject<BossRadiationRangeAttackArguments>();
 		}
 
+		protected override void DoStart()
+		{
+			base.DoStart();
+
+			var targets = EnumHelper.GetValues<OriginalPartyIdx>().ToList();
+			targets.Shuffle();
+
+			Targets.Clear();
+			var targetNumber = Random.Range(_arguments.TargetNumber[0], _arguments.TargetNumber[1] + 1);
+			Targets.AddRange(targets.GetRange(0, targetNumber));
+		}
+
 		protected override void Perform()
 		{
-			var targetNumber = Random.Range(_arguments.TargetNumber[0], _arguments.TargetNumber[1]);
-			var targets = Context.Party.TryGetRandomAliveMembers(targetNumber);
-			if (targets.Empty()) return;
-			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
-			foreach (var target in targets)
-				Owner.Attack(target, _arguments.Damage);
+			foreach (var target in Targets)
+			{
+				var character = Context.Party[target];
+				if (character.IsDead) continue;
+				if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) continue;
+				Owner.Attack(character, _arguments.Damage);
+			}
 		}
 	}
 

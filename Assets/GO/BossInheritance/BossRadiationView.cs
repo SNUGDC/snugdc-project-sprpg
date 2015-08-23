@@ -6,6 +6,7 @@ namespace SPRPG.Battle.View
 	public class BossRadiationView : BossView
 	{
 		public GameObject FxAttack;
+		public GameObject FxRangeAttackShoot;
 
 		public override void PlaySkillStart(BossSkillBalanceData data, object arguments)
 		{
@@ -42,6 +43,7 @@ namespace SPRPG.Battle.View
 		public void PlayRangeAttack()
 		{
 			Animator.SetTrigger("RangeAttack");
+			Points.InstantiateOnAboveHead(FxRangeAttackShoot);
 		}
 	}
 }
