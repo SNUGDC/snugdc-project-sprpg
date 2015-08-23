@@ -32,7 +32,7 @@ namespace SPRPG.Battle
 			Owner.Attack(Context.Boss, _argument.Damage);
 			Context.Boss.TestAndGrant(_argument.StunTest);
 			var aliveMember = Context.Party.TryGetRandomAliveMember();
-			if (aliveMember != null) Owner.Attack(aliveMember, _argument.DamageMember);
+			if (aliveMember.HasValue) Owner.Attack(aliveMember.Value.Character, _argument.DamageMember);
 		}
 	}
 }

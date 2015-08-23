@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Gem;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SPRPG.Battle
 {
@@ -88,12 +90,14 @@ namespace SPRPG.Battle
 		{
 			base.DoStart();
 
-			var targets = EnumHelper.GetValues<OriginalPartyIdx>().ToList();
+			Targets.Clear();
+
+			var targets = Context.Party.GetAliveMembers().ToList();
 			targets.Shuffle();
 
-			Targets.Clear();
 			var targetNumber = Random.Range(_arguments.TargetNumber[0], _arguments.TargetNumber[1] + 1);
-			Targets.AddRange(targets.GetRange(0, targetNumber));
+			targetNumber = Math.Min(targetNumber, targets.Count);
+			Targets.AddRange(targets.GetRange(0, targetNumber).Select(target => target.Idx));
 		}
 
 		protected override void Perform()
