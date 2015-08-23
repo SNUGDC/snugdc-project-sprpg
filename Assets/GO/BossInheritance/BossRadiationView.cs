@@ -43,6 +43,10 @@ namespace SPRPG.Battle.View
 		public void PlayRangeAttack()
 		{
 			Animator.SetTrigger("RangeAttack");
+		}
+
+		public void PlayRangeAttackFxShoot()
+		{
 			Points.InstantiateOnAboveHead(FxRangeAttackShoot);
 		}
 	}

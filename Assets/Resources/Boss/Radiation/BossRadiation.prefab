@@ -754,6 +754,7 @@ MonoBehaviour:
   _animator: {fileID: 9502472}
   _points: {fileID: 11440836}
   FxAttack: {fileID: 100002, guid: 27a4fc2d8038d41439665d1004032672, type: 2}
+  FxRangeAttackShoot: {fileID: 0}
 --- !u!114 &11440836
 MonoBehaviour:
   m_ObjectHideFlags: 1
