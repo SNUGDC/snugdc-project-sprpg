@@ -10,7 +10,7 @@ namespace SPRPG
 		public GameObject FxPurification;
 		public GameObject FxBigMassHeal;
 
-		public override void PlaySkillStart(SkillBalanceData data)
+		public override void PlaySkillStart(SkillBalanceData data, object argument)
 		{
 			switch (data.Key)
 			{

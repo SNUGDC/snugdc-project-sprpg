@@ -12,5 +12,7 @@
 			Data = data;
 			Owner = owner;
 		}
+
+		public virtual object MakeViewArgument() { return null; }
 	}
 }

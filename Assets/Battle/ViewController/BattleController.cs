@@ -21,6 +21,8 @@ namespace SPRPG.Battle.View
 		void Start()
 		{
 			_partyController = PartyController.CreateWithInstantiatingCharacters(_partyView, Context.Party);
+			_partyController.SetContext(this);
+
 			BossView = R.Boss.GetView(Context.Boss.Id).Instantiate();
 			BossView.transform.SetParent(_bossOrigin, false);
 			BossView.Context = this;
