@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace SPRPG.Battle.View
 {
-	public class HudDamageMessage : MonoBehaviour
+	public class HudNumberMessage : MonoBehaviour
 	{
 		private const float TimeToDestroy = 0.5f;
 
@@ -15,10 +15,11 @@ namespace SPRPG.Battle.View
 			Destroy(gameObject, TimeToDestroy);
 		}
 
-		public void Show(Damage damage)
+		public void Show(int num)
 		{
-			_text.text = (-(int)damage.Value).ToString();
-			//_text.color = damage.Element.ToColor();
+			var message = num.ToString();
+			if (num > 0) message = '+' + message;
+			_text.text = message;
 		}
 	}
 }

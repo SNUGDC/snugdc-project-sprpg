@@ -16,6 +16,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &104478
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 437290}
+  m_Layer: 0
+  m_Name: BuffTop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &114848
 GameObject:
   m_ObjectHideFlags: 1
@@ -73,6 +88,21 @@ GameObject:
   - 212: {fileID: 21204480}
   m_Layer: 0
   m_Name: WeaponRRenderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &125858
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 465458}
+  m_Layer: 0
+  m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,6 +304,21 @@ GameObject:
   m_Name: HandR
   m_TagString: Untagged
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &157644
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 489776}
+  m_Layer: 0
+  m_Name: Bottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -608,7 +653,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 465458}
+  - {fileID: 489776}
   - {fileID: 436574}
+  - {fileID: 437290}
   m_Father: {fileID: 469306}
   m_RootOrder: 1
 --- !u!4 &420972
@@ -738,7 +786,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 413288}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!4 &436938
 Transform:
   m_ObjectHideFlags: 1
@@ -753,6 +801,18 @@ Transform:
   - {fileID: 478338}
   m_Father: {fileID: 473386}
   m_RootOrder: 1
+--- !u!4 &437290
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104478}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.29999995, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 413288}
+  m_RootOrder: 3
 --- !u!4 &438886
 Transform:
   m_ObjectHideFlags: 1
@@ -893,6 +953,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 431884}
   m_RootOrder: 0
+--- !u!4 &465458
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 413288}
+  m_RootOrder: 0
 --- !u!4 &469306
 Transform:
   m_ObjectHideFlags: 1
@@ -1015,6 +1087,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 420972}
   m_RootOrder: 0
+--- !u!4 &489776
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 413288}
+  m_RootOrder: 1
 --- !u!4 &492858
 Transform:
   m_ObjectHideFlags: 1
@@ -1079,6 +1163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f7919b50bc58d4682753565a1a8d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Context: {fileID: 0}
   _id: 6
   _skeleton: {fileID: 11458894}
   Points: {fileID: 11462128}
@@ -1098,10 +1183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98618e82629af6a439a68ddd9f7b9496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _center: {fileID: 0}
-  _bottom: {fileID: 0}
+  _center: {fileID: 465458}
+  _bottom: {fileID: 489776}
   _aim: {fileID: 436574}
-  _buffTop: {fileID: 0}
+  _buffTop: {fileID: 437290}
 --- !u!212 &21200960
 SpriteRenderer:
   m_ObjectHideFlags: 1

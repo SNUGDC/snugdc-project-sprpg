@@ -15,7 +15,6 @@
 	"Boss": {
 		"DefaultSkillDelay": 3,
 		"DefaultSkillDuration": 7,
-		"DelayBeforeSkill": 10,
 		"_statusConditions": {
 			"Freeze": {
 				"DefaultDuration": 240

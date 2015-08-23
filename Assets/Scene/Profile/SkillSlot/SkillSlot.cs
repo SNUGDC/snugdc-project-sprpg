@@ -36,6 +36,14 @@ namespace SPRPG.Profile
 			Deselect();
 		}
 
+		public void Select(bool isSelected)
+		{
+			if (isSelected)
+				Select();
+			else 
+				Deselect();
+		}
+
 		public void Select()
 		{
 			if (IsSelected) return;

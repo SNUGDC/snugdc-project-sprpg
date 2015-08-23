@@ -4,8 +4,8 @@ using UnityEditor;
 
 namespace SPRPG.Battle.View
 {
-	[CustomEditor(typeof(HudDamagePoper))]
-	public class HudDamagePoperEditor : ComponentEditor<HudDamagePoper> 
+	[CustomEditor(typeof(HudNumberPoper))]
+	public class HudNumberPoperEditor : ComponentEditor<HudNumberPoper> 
 	{
 		public int Hp = 100;
 		public Element Element;
@@ -15,7 +15,7 @@ namespace SPRPG.Battle.View
 			base.OnInspectorGUI();
 			Hp = EditorGUILayout.IntField("hp", Hp);
 			Element = (Element)EditorGUILayout.EnumPopup("element", Element);
-			if (GUILayout.Button("pop")) Target.Pop(new Damage((Hp)Hp, Element));
+			if (GUILayout.Button("pop")) Target.PopDamage(new Damage((Hp)Hp, Element));
 		}
 	}
 }

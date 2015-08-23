@@ -13,5 +13,10 @@ namespace SPRPG.Profile
 			_characterView = data.CharacterView.Instantiate();
 			_characterView.transform.SetParent(transform, false);
 		}
+
+		public void PlaySkillStart(SkillBalanceData data)
+		{
+			_characterView.PlaySkillStart(data, null);
+		}
 	}
 }

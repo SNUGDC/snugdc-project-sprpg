@@ -95,7 +95,8 @@ namespace SPRPG.Battle
 
 		private void ResetDelayTimers()
 		{
-			_beforeDelayingLeft = BattleBalance._.Data.Boss.DelayBeforeSkill;
+			var phaseData = _boss.Data.Phases[(int) _boss.Phase.State - 1];
+			_beforeDelayingLeft = (Tick)Random.Range((int)phaseData.DelayBeforeSkill[0], (int)phaseData.DelayBeforeSkill[1]);
 		}
 
 		public void ResetByStun()

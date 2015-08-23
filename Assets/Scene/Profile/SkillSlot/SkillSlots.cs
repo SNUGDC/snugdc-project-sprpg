@@ -9,42 +9,44 @@ namespace SPRPG.Profile
 	public class SkillSlots : MonoBehaviour
 	{
 		private CharacterId? _character;
+		[SerializeField]
+		private List<SkillSlotRow> _slots;
 
-		[SerializeField] 
-		private List<SkillSlot> _slots;
-		
 		public Action<SkillKey, bool> OnClickCallback;
 
 		void Start()
 		{
-			foreach (var slot in _slots)
-				slot.OnClickCallback += OnClick;
+			foreach (var slotRow in _slots)
+				slotRow.OnClickCallback += OnClick;
 		}
 
 		public void Show(CharacterId character)
 		{
+			Clear();
+
 			_character = character;
-
 			var skills = SkillBalance._.SelectCharacterSpecifics(character);
-
 			var userSkillSet = new List<SkillKey>();
 			var userCharacter = UserCharacters.Find(character);
 			if (userCharacter != null) userSkillSet = userCharacter.SkillSet.ToList();
 
-			var i = 0;
-			for (; i < _slots.Count && i < skills.Count; ++i)
+			for (var i = 0; i < skills.Count; ++i)
 			{
 				var skillKey = skills[i].Key;
-				var slot = _slots[i];
-				slot.Set(skillKey);
-				if (userSkillSet.Contains(skillKey))
-					slot.Select();
-				else 
-					slot.Deselect();
+				var skillData = SkillBalance._.Find(skillKey);
+				var slotRow = _slots[skillData.Tier.ToIndex()];
+				var slot = slotRow.Add(skillKey);
+				slot.Select(userSkillSet.Contains(skillKey));
 			}
 
-			for (; i < _slots.Count; ++i)
-				_slots[i].Clear();
+			foreach (var slotRow in _slots)
+				slotRow.Align();
+		}
+
+		public void Clear()
+		{
+			foreach (var slotRow in _slots)
+				slotRow.Clear();
 		}
 
 		public void Refresh()
