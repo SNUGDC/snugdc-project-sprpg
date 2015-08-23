@@ -39,7 +39,7 @@ namespace SPRPG.Battle.View
 
 		private void OnBossSkillStart(Boss boss, BossSkillActor skillActor)
 		{
-			BossView.PlaySkillStart(skillActor.Data, null);
+			BossView.PlaySkillStart(skillActor.Data, skillActor.MakeViewArgument());
 		}
 	}
 }
