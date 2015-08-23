@@ -56,9 +56,8 @@ namespace SPRPG
 
 		public void PlayLightening(Battle.Character character)
 		{
-			if (Context == null) return;
-			Context.BossView.Points.InstantiateOnBottom(FxLigthening);
-			if (character != null)
+			Battle.View.BattlePoints._.Boss.InstantiateOnBottom(FxLigthening);
+			if (Context != null && character != null)
 				Context.FindCharacterView(character).Points.InstantiateOnBottom(FxLigthening);
 		}
 	}
