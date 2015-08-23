@@ -5,7 +5,7 @@ using UnityEditor;
 namespace SPRPG.Battle.View
 {
 	[CustomEditor(typeof(HudNumberPoper))]
-	public class HudDamagePoperEditor : ComponentEditor<HudNumberPoper> 
+	public class HudNumberPoperEditor : ComponentEditor<HudNumberPoper> 
 	{
 		public int Hp = 100;
 		public Element Element;
