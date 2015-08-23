@@ -17,7 +17,7 @@ namespace SPRPG.Profile
 		void Start()
 		{
 			foreach (var slotRow in _slots)
-				OnClickCallback += slotRow.OnClickCallback;
+				slotRow.OnClickCallback += OnClick;
 		}
 
 		public void Show(CharacterId character)
