@@ -110,6 +110,11 @@ namespace SPRPG.Battle
 				Owner.Attack(character, _arguments.Damage);
 			}
 		}
+
+		public override object MakeViewArgument()
+		{
+			return Targets;
+		}
 	}
 
 	public class BossRadiationPoisonExplosion1 : BossSingleDelayedPerformSkillActor

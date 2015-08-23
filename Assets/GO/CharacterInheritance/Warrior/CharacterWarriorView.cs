@@ -44,7 +44,7 @@ namespace SPRPG
 
 		public void PlayDelayedStrongAttack()
 		{
-			BattlePoints._.InstantiateOnBossBottom(FxStrongAttack);
+			BattlePoints._.Boss.InstantiateOnBottom(FxStrongAttack);
 		}
 
 		public void PlayEvasion()

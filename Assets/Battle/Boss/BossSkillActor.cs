@@ -15,6 +15,11 @@ namespace SPRPG.Battle
 			Data = data;
 			Owner = owner;
 		}
+
+		public virtual object MakeViewArgument()
+		{
+			return null;
+		}
 	}
 
 	public sealed class BossNoneSkillActor : BossSkillActor
