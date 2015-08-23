@@ -48,6 +48,7 @@ namespace SPRPG.Profile
 			if (Character == null) return;
 			var data = SkillBalance._.Find(skill);
 			_skillDescription.Refresh(data);
+			_characterShower.PlaySkillStart(data);
 			
 			var userCharacter = UserCharacters.Find(Character.Value);
 			if (userCharacter != null)
