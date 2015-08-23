@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Gem;
 using UnityEngine;
 
 namespace SPRPG.Battle.View
@@ -27,7 +28,10 @@ namespace SPRPG.Battle.View
 		private HudHpBarController<Boss> _bossHpBarController;
 
 		[SerializeField]
-		private HudDamagePoper _damagePoper;
+		private HudNumberPoper _numberPoperPrefab;
+		private HudNumberPoper[] _characterNumberPopers;
+		[SerializeField]
+		private HudNumberPoper _bossNumberPoper;
 
 		void Start()
 		{
@@ -35,12 +39,21 @@ namespace SPRPG.Battle.View
 			_pauseButton.OnToggle += TogglePause;
 
 			_characterHpBarControllers = new HudHpBarController<Character>[SPRPG.Party.Size];
+			_characterNumberPopers = new HudNumberPoper[SPRPG.Party.Size];
 			foreach (var idx in BattleHelper.GetOriginalPartyIdxEnumerable())
 			{
 				var member = Context.Party[idx];
+
 				var hpBar = _characterHpBars[idx.ToArrayIndex()];
 				hpBar.SetIcon(R.Character.LoadIcon(member.Id));
 				_characterHpBarControllers[idx.ToArrayIndex()] = new HudHpBarController<Character>(hpBar, member);
+
+				var numberPoper = _numberPoperPrefab.Instantiate();
+				numberPoper.transform.SetParent(_overlay.transform, false);
+				_characterNumberPopers[idx.ToArrayIndex()] = numberPoper;
+
+				var idxCpy = idx;
+				Context.Party[idx].OnAfterHit += (character, damage) => OnCharacterHit(idxCpy, character, damage);
 			}
 
 			var bossIcon = R.Boss.GetIcon(Context.Boss.Id);
@@ -60,7 +73,7 @@ namespace SPRPG.Battle.View
 		{
 			if (!Context.Fsm.IsResult)
 				UpdateClock();
-			UpdateHpBarPositions();
+			UpdatePositions();
 		}
 
 		void UpdateClock()
@@ -72,15 +85,20 @@ namespace SPRPG.Battle.View
 			_clock.Refresh(skillActor.Key, skillSlot, progress);
 		}
 
-		void UpdateHpBarPositions()
+		void UpdatePositions()
 		{
 			for (var i = 0; i != _characterHpBars.Count(); ++i)
 			{
-				var hpBar = _characterHpBars[i];
 				var idx = BattleHelper.MakeOriginalPartyIdxFromIndex(i);
 				var characterView = _battleController.PartyView[idx];
+
+				var hpBar = _characterHpBars[i];
 				hpBar.transform.position = characterView.transform.position;
 				hpBar.transform.Translate(new Vector3(-0.4f, 1.2f));
+
+				var poper = _characterNumberPopers[i];
+				poper.transform.position = characterView.transform.position;
+				poper.transform.Translate(new Vector3(0, 0.6f));
 			}
 		}
 
@@ -91,9 +109,14 @@ namespace SPRPG.Battle.View
 			_battleController.BossView.Animator.enabled = !shouldPause;
 		}
 
+		private void OnCharacterHit(OriginalPartyIdx idx, Character character, Damage damage)
+		{
+			_characterNumberPopers[idx.ToArrayIndex()].PopDamage(damage);
+		}
+
 		private void OnBossHit(Boss boss, Damage damage)
 		{
-			_damagePoper.Pop(damage);
+			_bossNumberPoper.PopDamage(damage);
 		}
 	}
 }
