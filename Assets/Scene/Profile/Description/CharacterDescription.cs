@@ -6,11 +6,24 @@ namespace SPRPG.Profile
 	public class CharacterDescription : MonoBehaviour
 	{
 		[SerializeField]
-		private Text _text;
+		private Text _name;
+		[SerializeField]
+		private Text _description;
 
-		public void SetDescription(string value)
+		public void Refresh(CharacterBalanceData data)
 		{
-			_text.text = value;
+			SetName(data.Name);
+			SetDescription(data.FlavorText);
+		}
+
+		private void SetName(string value)
+		{
+			_name.text = value;
+		}
+
+		private void SetDescription(string value)
+		{
+			_description.text = value;
 		}
 	}
 }
