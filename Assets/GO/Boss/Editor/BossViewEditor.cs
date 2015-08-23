@@ -4,8 +4,8 @@ using UnityEditor;
 
 namespace SPRPG.Battle.View
 {
-	[CustomEditor(typeof(BossView))]
-	public class BossViewEditor : ComponentEditor<BossView>
+	[CustomEditor(typeof(BossViewDebugger))]
+	public class BossViewDebuggerEditor : ComponentEditor<BossViewDebugger>
 	{
 		private BossBalanceData _data;
 
@@ -13,7 +13,7 @@ namespace SPRPG.Battle.View
 		{
 			base.OnEnable();
 			if (!Application.isPlaying) return;
-			_data = BossBalance._.Find(Target.Id);
+			_data = BossBalance._.Find(Target.View.Id);
 		}
 
 		public override void OnInspectorGUI()
@@ -27,7 +27,7 @@ namespace SPRPG.Battle.View
 		private void RenderSkillButton(BossSkillBalanceData data, object arguments)
 		{
 			if (GUILayout.Button(data.Key.ToString()))
-				Target.PlaySkillStart(data, null);
+				Target.View.PlaySkillStart(data, null);
 		}
 	}
 }

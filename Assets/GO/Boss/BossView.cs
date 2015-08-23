@@ -11,6 +11,13 @@ namespace SPRPG.Battle.View
 		private Animator _animator;
 		public Animator Animator { get { return _animator; } }
 
+		void Start()
+		{
+#if UNITY_EDITOR
+			gameObject.AddComponent<BossViewDebugger>();
+#endif
+		}
+
 		public virtual void PlaySkillStart(BossSkillBalanceData data, object arguments) { }
 	}
 }
