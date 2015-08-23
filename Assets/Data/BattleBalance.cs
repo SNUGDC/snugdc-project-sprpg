@@ -24,8 +24,6 @@ namespace SPRPG.Battle
 
 	public class BattleBossBalanceData
 	{
-		public Tick DelayBeforeSkill;
-
 		[JsonInclude]
 		private Dictionary<string, JsonData> _statusConditions;
 		[JsonIgnore]

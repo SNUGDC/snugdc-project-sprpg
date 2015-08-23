@@ -21,8 +21,8 @@ namespace SPRPG.Battle
 
 		public void Update()
 		{
-			if ((int) State > _data.PhaseProceedCondition.Count) return;
-			var proceedCondition = _data.PhaseProceedCondition[(int) State - 1];
+			if ((int) State >= _data.Phases.Count) return;
+			var proceedCondition = _data.Phases[(int) State].ProceedCondition;
 			if (!proceedCondition.Test(_context)) return;
 			Proceed();
 		}

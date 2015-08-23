@@ -44,6 +44,12 @@ namespace SPRPG.Battle
 		public JsonData Arguments;
 	}
 
+	public class BossPhaseBalanceData
+	{
+		public List<Tick> DelayBeforeSkill;
+		public Condition ProceedCondition;
+	}
+
 	public class BossBalanceData
 	{
 		[JsonIgnore]
@@ -56,8 +62,8 @@ namespace SPRPG.Battle
 		[JsonIgnore]
 		public Stats Stats;
 
-		public List<Condition> PhaseProceedCondition;
-
+		public List<BossPhaseBalanceData> Phases;
+			
 		[JsonInclude]
 		private List<BossPassiveBalanceData> _passives;
 		[JsonIgnore]

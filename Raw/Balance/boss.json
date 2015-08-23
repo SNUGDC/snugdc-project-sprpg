@@ -5,9 +5,18 @@
 		"_stats": {
 			"Hp": 10000
 		},
-		"PhaseProceedCondition": [
-			{ "Type": "CompareInt", "Operator": "<", "Value1": "BossHpPercentage", "Value2": 50 },
-			{ "Type": "CompareInt", "Operator": "<", "Value1": "BossHpPercentage", "Value2": 25 }
+		"Phases": [
+			{
+				"DelayBeforeSkill": [90, 150]
+			},
+			{
+				"DelayBeforeSkill": [90, 150],	
+				"ProceedCondition": { "Type": "CompareInt", "Operator": "<", "Value1": "BossHpPercentage", "Value2": 50 }
+			},
+			{
+				"DelayBeforeSkill": [0, 0],	
+				"ProceedCondition": { "Type": "CompareInt", "Operator": "<", "Value1": "BossHpPercentage", "Value2": 25 }
+			}
 		],
 		"_passives": [
 			{
