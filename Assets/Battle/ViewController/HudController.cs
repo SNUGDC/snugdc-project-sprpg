@@ -35,7 +35,7 @@ namespace SPRPG.Battle.View
 
 		void Start()
 		{
-			_pauseButton.ForceSetToggle(!Context.RealtimeEnabled);
+			_pauseButton.ForceSetToggle(!Context.IsPlaying);
 			_pauseButton.OnToggle += TogglePause;
 
 			_characterHpBarControllers = new HudHpBarController<Character>[SPRPG.Party.Size];
@@ -106,7 +106,7 @@ namespace SPRPG.Battle.View
 
 		private void TogglePause(bool shouldPause)
 		{
-			Context.RealtimeEnabled = !shouldPause;
+			Context.SetPlaying(!shouldPause);
 			_battleController.PartyView.SetAnimatorEnabled(!shouldPause);
 			_battleController.BossView.Animator.enabled = !shouldPause;
 		}

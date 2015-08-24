@@ -20,6 +20,7 @@ namespace SPRPG.Battle
 	public static class Events
 	{
 		public static Action AfterTurn;
+		public static Action<bool> OnPlayingChanged;
 
 		public static Action OnClockPerfectTerm;
 		public static Action<TermAndGrade> OnInputSkill;

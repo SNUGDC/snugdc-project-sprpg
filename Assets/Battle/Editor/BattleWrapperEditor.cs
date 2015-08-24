@@ -16,7 +16,7 @@ namespace SPRPG.Battle
 			if (!Application.isPlaying)
 				return;
 
-			Target.Battle.RealtimeEnabled = EditorGUILayout.Toggle("realtime", Target.Battle.RealtimeEnabled);
+			Target.Battle.SetPlaying(EditorGUILayout.Toggle("pause", Target.Battle.IsPlaying));
 
 			RenderClock();
 			RenderInput();

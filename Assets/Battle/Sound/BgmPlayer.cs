@@ -15,13 +15,18 @@ namespace SPRPG.Battle
 
 		void Start()
 		{
+			_player.Pause();
 			Play(BossHelper.MakeBossPhaseFromIndex(0));
+			OnPlayingChanged(_context.IsPlaying);
+
 			_context.Boss.Phase.OnChanged += Play;
+			Events.OnPlayingChanged += OnPlayingChanged;
 		}
 
 		void OnDestroy()
 		{
 			_context.Boss.Phase.OnChanged -= Play;
+			Events.OnPlayingChanged -= OnPlayingChanged;
 		}
 
 		private void Play(BossPhaseState state)
@@ -34,6 +39,14 @@ namespace SPRPG.Battle
 
 			_player.clip = _bgms[state.ToIndex()];
 			_player.Play();
+		}
+
+		private void OnPlayingChanged(bool isPlaying)
+		{
+			if (isPlaying)
+				_player.UnPause();
+			else
+				_player.Pause();
 		}
 	}
 }

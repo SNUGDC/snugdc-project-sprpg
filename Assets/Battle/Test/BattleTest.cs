@@ -28,7 +28,7 @@ namespace SPRPG.Battle
 	public class BattleTest : MonoBehaviour
 	{
 		public StageId Stage;
-		public bool RealtimeEnabled;
+		public bool PlayImmediate;
 		public TestPartyDef Party;
 
 		void Start()
@@ -43,7 +43,7 @@ namespace SPRPG.Battle
 #endif
 			};
 
-			def.RealtimeEnabled = RealtimeEnabled;
+			def.PlayImmediate = PlayImmediate;
 			BattleWrapper.Def = def;
 		}
 	}

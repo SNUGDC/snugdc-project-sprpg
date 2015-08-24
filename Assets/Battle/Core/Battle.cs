@@ -13,7 +13,7 @@ namespace SPRPG.Battle
 		public readonly StageId Stage;
 		public readonly PartyDef PartyDef;
 
-		public bool RealtimeEnabled = true;
+		public bool PlayImmediate = true;
 
 		public BattleDef(StageId stage, PartyDef party)
 		{
@@ -29,7 +29,7 @@ namespace SPRPG.Battle
 		public readonly Random Random = new Random();
 		public readonly SymbolBinding Binding;
 
-		public bool RealtimeEnabled;
+		public bool IsPlaying { get; private set; }
 		private BattleRealtime _realtime;
 		public readonly Clock Clock = new Clock();
 		public readonly RelativeClock PlayerClock;
@@ -47,7 +47,7 @@ namespace SPRPG.Battle
 		public Battle(BattleDef def)
 		{
 			Binding = BattleSymbolBinding.Create(this); 
-			RealtimeEnabled = def.RealtimeEnabled;
+			IsPlaying = def.PlayImmediate;
 			_realtime = new BattleRealtime(Clock);
 			PlayerClock = new RelativeClock(Clock);
 			Fsm = new BattleFsm(this);
@@ -79,11 +79,17 @@ namespace SPRPG.Battle
 
 		public void Update(float dt)
 		{
-			if (RealtimeEnabled)
+			if (IsPlaying)
 				_realtime.Update(Time.deltaTime);
 
 			if (!Fsm.IsResult && _inputReceiver != null)
 				_inputReceiver.Update(PlayerClock, dt);
+		}
+
+		public void SetPlaying(bool playing)
+		{
+			IsPlaying = playing;
+			Events.OnPlayingChanged.CheckAndCall(playing);
 		}
 
 		private void OnTick(Clock clock)
