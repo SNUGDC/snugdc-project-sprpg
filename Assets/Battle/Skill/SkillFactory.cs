@@ -62,7 +62,7 @@ namespace SPRPG.Battle
 				case SkillKey.PaladinDefense:
 					return new PaladinDefenseSkillActor(data, context, owner);
 				case SkillKey.PaladinMassDefense:
-					return new PaladinDefenseSkillActor(data, context, owner);
+					return new PaladinMassDefenceSkillActor(data, context, owner);
 
 				case SkillKey.MonkSacrifice:
 					return new MonkSacrificeSkillActor(data, context, owner);
