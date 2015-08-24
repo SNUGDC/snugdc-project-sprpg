@@ -677,10 +677,6 @@ Prefab:
       propertyPath: _battleWrapper
       value: 
       objectReference: {fileID: 2086338272}
-    - target: {fileID: 162052, guid: 53548db6ebe814948a8094e4cf64685f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53548db6ebe814948a8094e4cf64685f, type: 2}
   m_IsPrefabParent: 0
