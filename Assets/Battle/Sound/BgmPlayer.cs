@@ -5,7 +5,7 @@ namespace SPRPG.Battle
 {
 	public class BgmPlayer : MonoBehaviour
 	{
-		private const float Delay = 0.8f;
+		private const float Delay = 1f;
 
 		[SerializeField]
 		private BattleWrapper _battleWrapper;
@@ -40,7 +40,7 @@ namespace SPRPG.Battle
 			}
 
 			_player.clip = _bgms[state.ToIndex()];
-			_player.Play((ulong)(_player.clip.frequency * Delay));
+			_player.PlayDelayed(Delay);
 		}
 
 		private void OnPlayingChanged(bool isPlaying)
