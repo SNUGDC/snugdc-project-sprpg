@@ -58,6 +58,8 @@ namespace SPRPG
 
 		public void PlayStatusConditionPoison()
 		{
+			Animator.SetTrigger("StatusConditionPoisonStart");
+
 			if (_fxStatusConditionPoison != null)
 			{
 				Debug.LogError("already has fx poison.");
@@ -71,6 +73,8 @@ namespace SPRPG
 
 		public void StopStatusConditionPoison()
 		{
+			Animator.SetTrigger("StatusConditionPoisonStop");
+
 			if (_fxStatusConditionPoison == null)
 			{
 				Debug.LogError("no fx poison.");
