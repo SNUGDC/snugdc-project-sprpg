@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+﻿// #if UNITY_EDITOR
 
 using UnityEngine;
 
@@ -24,4 +24,4 @@ namespace SPRPG
 	}
 }
 
-#endif
+// #endif
