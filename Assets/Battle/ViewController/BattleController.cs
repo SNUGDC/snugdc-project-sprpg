@@ -22,7 +22,7 @@ namespace SPRPG.Battle.View
 
 		void Start()
 		{
-			SPRPG.BgmPlayer.Instance.Stop ();
+			SPRPG.BgmPlayer._.Stop();
 
 			_partyController = PartyController.CreateWithInstantiatingCharacters(_partyView, Context.Party);
 			_partyController.SetContext(this);

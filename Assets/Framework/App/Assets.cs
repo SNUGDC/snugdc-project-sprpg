@@ -6,6 +6,8 @@ namespace SPRPG
 	{
 		public static Assets _ { get; private set; }
 
+		public AudioClip BgmUi;
+
 		public GameObject FxStatusConditionPoison;
 		public GameObject FxCharacterGuardAura;
 

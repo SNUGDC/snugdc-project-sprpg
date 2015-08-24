@@ -11,6 +11,7 @@ namespace SPRPG.World
 
 		void Start()
 		{
+			BgmPlayer._.PlayUiBgm();
 			_bossButton.OnClickCallback += OnBossSelected;
 		}
 

@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff6dff071d7035478eeff62cbeaf29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BgmUi: {fileID: 8300000, guid: 91e8e8fb8f8eee14684eba8a3ff345d7, type: 3}
   FxStatusConditionPoison: {fileID: 162186, guid: 2999327ec9e379646ad5f91fbecdd1cc,
     type: 2}
   FxCharacterGuardAura: {fileID: 100002, guid: f1ea0320a5aa0a84580d05d563233c25, type: 2}
@@ -100,6 +101,10 @@ Prefab:
       propertyPath: FxStatusConditionPoison
       value: 
       objectReference: {fileID: 162186, guid: 2999327ec9e379646ad5f91fbecdd1cc, type: 2}
+    - target: {fileID: 0}
+      propertyPath: BgmUi
+      value: 
+      objectReference: {fileID: 8300000, guid: 91e8e8fb8f8eee14684eba8a3ff345d7, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120712}

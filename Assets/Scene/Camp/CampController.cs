@@ -29,6 +29,7 @@ namespace SPRPG.Camp
 
 		void Start()
 		{
+			BgmPlayer._.PlayUiBgm();
 			CampCharacter.ForegroundRoot = _foregroundRoot;
 
 			var campBalance = CampBalance._.Data;

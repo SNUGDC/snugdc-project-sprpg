@@ -28,7 +28,10 @@ namespace SPRPG
 			CharacterDb.Load(CharacterDb);
 
 			if (Application.isPlaying)
+			{
 				App.Init();
+				BgmPlayer.Init();
+			}
 
 			_isLoaded = true;
 		}
