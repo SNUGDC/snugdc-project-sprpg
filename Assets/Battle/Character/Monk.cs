@@ -125,7 +125,7 @@ namespace SPRPG.Battle
 
 		protected override void Perform()
 		{
-			for (var tick = default(Tick); tick <= _arguments.Duration; tick = tick + (int)_arguments.Period)
+			for (var tick = _arguments.Period; tick <= _arguments.Duration; tick = tick + (int)_arguments.Period)
 				Context.AddPlayerSkill(tick, () => { Owner.Heal(_arguments.Amount); });
 		}
 	}
