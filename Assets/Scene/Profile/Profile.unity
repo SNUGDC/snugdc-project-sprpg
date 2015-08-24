@@ -343,8 +343,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 609971016}
   - 20: {fileID: 609971015}
-  - 92: {fileID: 609971014}
-  - 124: {fileID: 609971013}
   - 81: {fileID: 609971012}
   m_Layer: 0
   m_Name: Main Camera
@@ -355,20 +353,6 @@ GameObject:
   m_IsActive: 1
 --- !u!81 &609971012
 AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 609971011}
-  m_Enabled: 1
---- !u!124 &609971013
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 609971011}
-  m_Enabled: 1
---- !u!92 &609971014
-Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -387,7 +371,7 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: .119999997
+    y: 0
     width: 1
     height: 1
   near clip plane: .300000012
