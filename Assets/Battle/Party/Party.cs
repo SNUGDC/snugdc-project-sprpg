@@ -94,7 +94,8 @@ namespace SPRPG.Battle
 			foreach (var member in this)
 			{
 				if (member == character)
-					return (OriginalPartyIdx)(++i);
+					return (OriginalPartyIdx)(i);
+				i++;
 			}
 			return null;
 		}
