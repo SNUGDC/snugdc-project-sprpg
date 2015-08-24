@@ -6,12 +6,14 @@ namespace SPRPG
 	public class BgmPlayer : MonoBehaviour 
 	{
 		private static BgmPlayer _instance = null;
+
+		public AudioSource Bgm;
 		
 		public static BgmPlayer Instance
 		{
 			get { return _instance; }
 		}
-		
+
 		void Awake()
 		{
 			if (_instance != null && _instance != this) 
@@ -26,9 +28,9 @@ namespace SPRPG
 			DontDestroyOnLoad (this.gameObject);
 		}
 
-		public void StopBgm()
+		public void Stop()
 		{
-			Destroy (this.gameObject);
+			Bgm.Stop ();
 		}
 	}
 }
