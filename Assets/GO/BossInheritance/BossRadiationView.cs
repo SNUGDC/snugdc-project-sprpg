@@ -110,21 +110,13 @@ namespace SPRPG.Battle.View
 
 		private void PlayPoisonExplosion(List<Character> targets)
 		{
-			if (targets == null)
-				return;
+			if (Context == null) return;
+			if (targets == null) return;
 
 			foreach (var target in targets)
 			{
-				Transform parent = null;
-				if (Context != null)
-				{
-					var characterView = Context.FindCharacterView(target);
-					if (characterView != null) parent = characterView.Points.Center;
-				}
-
-				var fx = FxPoisonExplosion.Instantiate();
-				fx.transform.SetParent(parent, false);
-				fx.transform.localPosition = Vector3.zero;
+				var characterView = Context.FindCharacterView(target);
+				characterView.Points.InstantiateOnCenter(FxPoisonExplosion);
 			}
 		}
 	}
