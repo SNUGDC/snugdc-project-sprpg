@@ -26,10 +26,9 @@ namespace SPRPG.Camp
 
 			Drag.OnDragStay += (entryIconDrag, pointerEventData) =>
 			{
-				// todo: remove hard coded values.
-				var screenSize = new Vector2(1136, 640);
-				var pointerOffseted = pointerEventData.position - screenSize/4;
-				transform.position = pointerOffseted.ScaleInverse(new Vector2(75, 75));
+				var worldPointer = pointerEventData.pressEventCamera.ScreenToWorldPoint(pointerEventData.position);
+				var localPointer = (Vector2)transform.parent.worldToLocalMatrix.MultiplyPoint(worldPointer);
+				transform.localPosition = localPointer;
 			};
 		}
 
