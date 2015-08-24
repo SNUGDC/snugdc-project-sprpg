@@ -91,7 +91,7 @@ namespace SPRPG.Battle
 		public OriginalPartyIdx? FindMemberIdx(Character character)
 		{
 			var i = 0;
-			foreach (var member in this)
+			foreach (var member in _members)
 			{
 				if (member == character)
 					return (OriginalPartyIdx)(i);
