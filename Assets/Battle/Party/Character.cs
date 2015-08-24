@@ -146,9 +146,15 @@ namespace SPRPG.Battle
 		public SkillActor TryPerformSkill(SkillSlot idx)
 		{
 			if (IsDead) return null;
-			Guard.TryRelease();
 			var ret = SkillManager.TryPerform(idx);
-			if (ret != null) OnSkillStart.CheckAndCall(this, idx, ret);
+
+			var shouldReleaseGuard = true;
+			if (ret != null) shouldReleaseGuard &= !ret.Data.PreserveGuard;
+			if (shouldReleaseGuard) Guard.TryRelease();
+
+			if (ret != null)
+				OnSkillStart.CheckAndCall(this, idx, ret);
+
 			return ret;
 		}
 

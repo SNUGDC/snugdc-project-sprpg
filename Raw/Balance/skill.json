@@ -187,7 +187,8 @@
 		"Tier": 2,
 		"MajorUser": "Paladin",
 		"FlavorText": "방패를 이용하여 자신에 대한 적의 공격을 막아냅니다.",
-		"DescriptionFormat": "자신이 대상이 된 적의 다음 공격을 방어한다."
+		"DescriptionFormat": "자신이 대상이 된 적의 다음 공격을 방어한다.",
+		"PreserveGuard": true
 	},
 	{
 		"Key": "PaladinPurification",
@@ -212,7 +213,8 @@
 		"Tier": 4,
 		"MajorUser": "Paladin",
 		"FlavorText": "방패를 이용하여 아군에 대한 적의 공격을 막아냅니다.",
-		"DescriptionFormat": "아군이 대상이 된 적의 다음 공격을 방어한다."
+		"DescriptionFormat": "아군이 대상이 된 적의 다음 공격을 방어한다.",
+		"PreserveGuard": true
 	},
 	{
 		"Key": "MonkHeal",

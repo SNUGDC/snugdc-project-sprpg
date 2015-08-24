@@ -13,6 +13,7 @@ namespace SPRPG
 		public CharacterId MajorUser;
 		public StringOrDictionaryText DescriptionFormat;
 		public SkillDescriptor Descriptor;
+		public bool PreserveGuard;
 		public JsonData Arguments;
 
 		public string Describe()

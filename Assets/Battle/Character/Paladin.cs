@@ -1,29 +1,27 @@
 ﻿namespace SPRPG.Battle
 {
-	public class PaladinDefenseSkillActor : SkillActor
+	public class PaladinDefenseSkillActor : SingleDelayedPerformSkillActor
 	{
 		public PaladinDefenseSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
 		{
 		}
 
-		protected override void DoStart()
+		protected override void Perform()
 		{
 			Owner.Guard.Enable();
-			Stop();
 		}
 	}
 
-	public class PaladinMassDefenceSkillActor : SkillActor
+	public class PaladinMassDefenceSkillActor : SingleDelayedPerformSkillActor
 	{
 		public PaladinMassDefenceSkillActor(SkillBalanceData data, Battle context, Character owner) : base(data, context, owner)
 		{
 		}
 
-		protected override void DoStart()
+		protected override void Perform()
 		{
 			foreach (var member in Context.Party)
 				if (member.IsAlive) member.Guard.Enable();
-			Stop();
 		}
 	}
 }
