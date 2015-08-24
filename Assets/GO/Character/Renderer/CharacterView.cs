@@ -66,9 +66,7 @@ namespace SPRPG
 				return;
 			}
 
-			_fxStatusConditionPoison = Assets._.FxStatusConditionPoison.Instantiate();
-			_fxStatusConditionPoison.transform.SetParent(transform, false);
-			_fxStatusConditionPoison.transform.localPosition = Vector3.one;
+			_fxStatusConditionPoison = Points.InstantiateOnCenter(Assets._.FxStatusConditionPoison);
 		}
 
 		public void StopStatusConditionPoison()
