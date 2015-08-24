@@ -110,6 +110,8 @@ namespace SPRPG.Battle.View
 
 		private void PlayPoisonExplosion(List<Character> targets)
 		{
+			Animator.SetTrigger("PoisonExplosion");
+
 			if (Context == null) return;
 			if (targets == null) return;
 
