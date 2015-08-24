@@ -43,7 +43,7 @@
 		"Name": "키트콩",
 		"FlavorText": "신출귀몰로 유명한 도적이자 검은콩씨앗의 수호자 키트콩은 두개의 단도를 사용하는 도적으로서 다양한 기술로 적을 상태이상(스턴, 실명, 중독)으로 만드는데 유리한 캐릭터입니다.\n적의 공격에 대한 회피가 성공한 후 다음 공격에서 적에게 2번의 피해를 줍니다.",
 		"Stats": { "Hp": 500 },
-		"Passive": "None",
+		"Passive": "Thief",
 		"SkillSetDefault": [ "ThiefStab", "ThiefEvade", "ThiefSandAttack", "ThiefAssassination" ]
 	}
 }

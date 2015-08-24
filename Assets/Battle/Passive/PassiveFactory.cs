@@ -13,6 +13,8 @@ namespace SPRPG.Battle
 					return new Passive(context, owner);
 				case PassiveKey.Archer:
 					return new ArcherPassive(context, owner);
+				case PassiveKey.Thief:
+					return new ThiefPassive(context, owner);
 			}
 
 			Debug.LogError(LogMessages.EnumNotHandled(key));

@@ -77,11 +77,15 @@ namespace SPRPG.Battle
 			_ai.ResetByStun();
 		}
 
-		public bool TestHitIfBlindAndInvokeEventIfMissed()
+		public bool TestHitIfBlindAndInvokeEventIfMissed(Pawn target)
 		{
 			var accuracy = BattleBalance._.Data.Boss.StatusConditions.GetBlind().Accuracy;
 			var hitSuccess = !IsBlind || accuracy.Test();
-			if (!hitSuccess) OnMissed.CheckAndCall(this);
+			if (!hitSuccess)
+			{
+				OnMissed.CheckAndCall(this);
+				target.MissHit();
+			}
 			return hitSuccess;
 		}
 	}

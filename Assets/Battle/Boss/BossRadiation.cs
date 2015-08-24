@@ -82,7 +82,7 @@ namespace SPRPG.Battle
 		{
 			var target = Context.Party.GetAliveLeaderOrMember();
 			if (target == null) return;
-			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
+			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed(target)) return;
 			Owner.Attack(target, _damage);
 		}
 	}
@@ -126,7 +126,7 @@ namespace SPRPG.Battle
 			{
 				var character = Context.Party[target];
 				if (character.IsDead) continue;
-				if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) continue;
+				if (!Owner.TestHitIfBlindAndInvokeEventIfMissed(character)) continue;
 				Owner.Attack(character, _arguments.Damage);
 			}
 		}

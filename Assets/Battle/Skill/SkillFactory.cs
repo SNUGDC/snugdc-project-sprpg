@@ -22,7 +22,6 @@ namespace SPRPG.Battle
 				case SkillKey.WarriorStrongAttack:
 				case SkillKey.WizardFireBolt:
 				case SkillKey.WizardFireBall:
-				case SkillKey.ThiefAssassination:
 					return new AttackSkillActor(data, context, owner);
 				case SkillKey.WarriorHeal:
 				case SkillKey.MonkHeal:
@@ -37,11 +36,8 @@ namespace SPRPG.Battle
 					return new EvasionSkillActor(data, context, owner);
 				case SkillKey.WizardIceBolt:
 				case SkillKey.WizardIceSpear:
-				case SkillKey.ThiefSandAttack:
-				case SkillKey.ThiefPoisonAttack:
 					return new AttackAndGrantStatusConditionSkillActor(data, context, owner);
 				case SkillKey.PaladinBash:
-				case SkillKey.ThiefStab:
 					return new AttackAndTestStunSkillActor(data, context, owner);
 
 				case SkillKey.WizardLighteningBolt:
@@ -72,6 +68,14 @@ namespace SPRPG.Battle
 					return new MonkRevengeSkillActor(data, context, owner);
 				case SkillKey.MonkRecovery:
 					return new MonkRecoverySkillActor(data, context, owner);
+
+				case SkillKey.ThiefStab:
+					return new ThiefAttackAndTestStunSkillActor(data, context, owner);
+				case SkillKey.ThiefSandAttack:
+				case SkillKey.ThiefPoisonAttack:
+					return new ThiefAttackAndGrantStatusConditionSkillActor(data, context, owner);
+				case SkillKey.ThiefAssassination:
+					return new ThiefAssassinationSkillActor(data, context, owner);
 			}
 
 			Debug.LogError(LogMessages.EnumNotHandled(key));

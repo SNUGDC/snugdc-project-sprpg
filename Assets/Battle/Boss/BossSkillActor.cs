@@ -73,8 +73,10 @@ namespace SPRPG.Battle
 
 		protected override void DoStart()
 		{
-			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed()) return;
-			Context.Party.GetAliveLeaderOrMember().TestAndGrant(_statusConditionTest);
+			var target = Context.Party.GetAliveLeaderOrMember();
+			if (target == null) return;
+			if (!Owner.TestHitIfBlindAndInvokeEventIfMissed(target)) return;
+			target.TestAndGrant(_statusConditionTest);
 			Context.AddBeforeTurn(Data.Duration, Stop);
 		}
 	}
