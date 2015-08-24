@@ -22,6 +22,8 @@ namespace SPRPG.Battle.View
 
 		void Start()
 		{
+			SPRPG.BgmPlayer.Instance.StopBgm ();
+
 			_partyController = PartyController.CreateWithInstantiatingCharacters(_partyView, Context.Party);
 			_partyController.SetContext(this);
 
