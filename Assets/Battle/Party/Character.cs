@@ -95,6 +95,7 @@ namespace SPRPG.Battle
 		public readonly DamageIntercepter DamageIntercepter = new DamageIntercepter();
 
 		public Action<Character, SkillSlot, SkillActor> OnSkillStart;
+		public Action<Character, Damage> OnEvade;
 		public Action<Character> OnStun;
 
 		public Character(CharacterDef def, Battle context)
@@ -125,7 +126,12 @@ namespace SPRPG.Battle
 
 		public override void Hit(Damage damage)
 		{
-			if (CheckEvadeDuration()) return;
+			if (CheckEvadeDuration())
+			{
+				OnEvade.CheckAndCall(this, damage);
+				return;
+			}
+
 			if (Guard.TryRelease()) return;
 			if (DamageIntercepter.TryTake(this, damage)) return;
 			base.Hit(damage);

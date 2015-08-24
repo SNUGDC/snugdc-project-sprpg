@@ -36,8 +36,9 @@ namespace SPRPG
 
 	public enum PassiveKey
 	{
-		None = 0,
-		Archer = 1,
+		None,
+		Archer,
+		Thief,
 	}
 
 	public enum SkillKey

@@ -107,6 +107,13 @@ namespace SPRPG.Battle
 
 		protected virtual void AfterHit(Damage damage) { }
 
+		public void MissHit()
+		{
+			AfterMissHit();
+		}
+
+		protected virtual void AfterMissHit() { } 
+
 		public virtual void Heal(Hp val)
 		{
 			if (IsDead)
@@ -184,6 +191,7 @@ namespace SPRPG.Battle
 		public Action<T> OnDead;
 		public Action<T, Hp> OnAfterHeal;
 		public Action<T, Damage> OnAfterHit;
+		public Action<T> OnMissHit;
 		public Action<T, Pawn> OnAfterAttack;
 		public Action<T, StatusConditionType> OnGrantStatusCondition;
 		public Action<T, StatusConditionType> OnStopStatusCondition;
@@ -205,6 +213,11 @@ namespace SPRPG.Battle
 		protected override void AfterHit(Damage damage)
 		{
 			OnAfterHit.CheckAndCall((T)this, damage);	
+		}
+
+		protected override void AfterMissHit()
+		{
+			OnMissHit.CheckAndCall((T)this);
 		}
 
 		protected override void AfterAttack(Pawn target)
