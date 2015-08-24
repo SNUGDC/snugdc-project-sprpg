@@ -29,11 +29,6 @@ namespace SPRPG
 			Animator.SetTrigger("PaladinDefense");
 		}
 
-		public void PlayAnimationDefenseRelease()
-		{
-			Animator.SetTrigger("PaladinDefenseRelease");
-		}
-
 		public void PlayMassHeal()
 		{
 			Buff();
