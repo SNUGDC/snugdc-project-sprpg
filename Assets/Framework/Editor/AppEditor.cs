@@ -114,7 +114,7 @@ namespace SPRPG
 			GUILayout.BeginHorizontal();
 
 			GUI.enabled = Application.isPlaying;
-#if BALANCE 
+#if UNITY_EDITOR 
 			if (GUILayout.Button("reload"))
 				DataManager.Reload();
 #endif

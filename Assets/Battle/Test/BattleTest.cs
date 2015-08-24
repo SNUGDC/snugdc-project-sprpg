@@ -38,7 +38,7 @@ namespace SPRPG.Battle
 
 			var def = new BattleDef(Stage, Party.Build())
 			{
-#if BALANCE
+#if UNITY_EDITOR
 				UseDataInput = false,
 #endif
 			};

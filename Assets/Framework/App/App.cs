@@ -16,7 +16,7 @@ namespace SPRPG
 			TheGem.Update();
 		}
 
-#if BALANCE
+#if UNITY_EDITOR
 		void OnLevelWasLoaded()
 		{
 			if (DebugConfig.ReloadData)

@@ -1,4 +1,4 @@
-﻿#if BALANCE
+﻿#if UNITY_EDITOR
 using Gem;
 #endif
 using SPRPG.Battle;
@@ -63,7 +63,7 @@ namespace SPRPG
 		}
 
 
-#if BALANCE
+#if UNITY_EDITOR
 		private static Data _data;
 
 		static DebugConfig()
@@ -84,7 +84,7 @@ namespace SPRPG
 
 		public static void Load()
 		{
-#if BALANCE
+#if UNITY_EDITOR
 			Data tmp;
 			if (JsonHelper.LoadFromResources("Data/Data/debug", out tmp))
 				_data = tmp;

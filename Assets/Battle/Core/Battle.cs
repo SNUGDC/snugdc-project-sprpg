@@ -6,7 +6,7 @@ namespace SPRPG.Battle
 {
 	public class BattleDef
 	{
-#if BALANCE
+#if UNITY_EDITOR
 		public bool UseDataInput;
 #endif
 
@@ -52,7 +52,7 @@ namespace SPRPG.Battle
 			PlayerClock = new RelativeClock(Clock);
 			Fsm = new BattleFsm(this);
 
-#if BALANCE
+#if UNITY_EDITOR
 			if (def.UseDataInput)
 			{
 				// todo

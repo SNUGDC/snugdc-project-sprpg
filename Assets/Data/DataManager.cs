@@ -15,7 +15,7 @@
 			Battle.BattleBalance._.Load();
 		}
 
-#if BALANCE
+#if UNITY_EDITOR
 		public static void Reload()
 		{
 			DebugConfig.Load();
