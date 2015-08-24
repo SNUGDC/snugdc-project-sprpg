@@ -15,8 +15,7 @@ namespace SPRPG
 
 		public static bool Load()
 		{
-			// todo: load from Assets when BALANCE is undefined.
-			var success = JsonHelper.Load("Raw/Data/string.json", out _dict);
+			var success = JsonHelper.LoadFromResources("Data/Data/string", out _dict);
 			if (!success)
 			{
 				Debug.LogError("load string.json failed.");

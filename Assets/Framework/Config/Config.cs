@@ -6,7 +6,7 @@ namespace SPRPG
 {
 	public static class Config
 	{
-		private const string _defaultPath = "Data/default_config";
+		private const string _defaultPath = "Data/Default/default_config";
 		private const string _filename = "config.json";
 
 		private static ConfigData _data;

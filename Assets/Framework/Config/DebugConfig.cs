@@ -86,7 +86,7 @@ namespace SPRPG
 		{
 #if BALANCE
 			Data tmp;
-			if (JsonHelper.Load("Raw/Data/debug.json", out tmp))
+			if (JsonHelper.LoadFromResources("Data/Data/debug", out tmp))
 				_data = tmp;
 #endif
 		}

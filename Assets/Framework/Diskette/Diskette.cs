@@ -6,7 +6,7 @@ namespace SPRPG
 {
 	public static partial class Diskette
 	{
-		private const string DefaultSaveFilePath = "Data/default_save_file";
+		private const string DefaultSaveFilePath = "Data/Default/default_save_file";
 
 		public static bool IsLoaded { get; private set; }
 		public static string SaveName { get; private set; }

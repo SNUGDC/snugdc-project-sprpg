@@ -26,11 +26,10 @@ namespace SPRPG
 
 		public void LoadForced()
 		{
-			string path = "Raw/Balance/" + _name + ".json";
+			string path = "Data/Balance/" + _name;
 
-			// todo: load from Assets when BALANCE is undefined.
 			T tmp;
-			var success = JsonHelper.Load(path, out tmp);
+			var success = JsonHelper.LoadFromResources(path, out tmp);
 
 			if (success)
 			{
