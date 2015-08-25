@@ -73,7 +73,7 @@ namespace SPRPG.Battle
 		private readonly BossDamageArgument _damage;
 
 		public BossRadiationAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
-			: base(data, context, owner, (Tick)35)
+			: base(data, context, owner, (Tick)65)
 		{
 			_damage = new BossDamageArgument(data.Arguments, "Damage");
 		}
@@ -100,7 +100,7 @@ namespace SPRPG.Battle
 		public readonly List<ShiftedPartyIdx> Targets = new List<ShiftedPartyIdx>(3);
 
 		public BossRadiationRangeAttackSkillActor(BossSkillBalanceData data, Battle context, Boss owner)
-			: base(data, context, owner, (Tick)55)
+			: base(data, context, owner, (Tick)65)
 		{
 			_arguments = data.Arguments.ToObject<BossRadiationRangeAttackArguments>();
 		}
@@ -142,7 +142,7 @@ namespace SPRPG.Battle
 		private readonly List<Character> _targets = new List<Character>(3);
 		private readonly BossDamageArgument _argument;
 
-		public BossRadiationPoisonExplosion1(BossSkillBalanceData data, Battle context, Boss owner) : base(data, context, owner, (Tick)3)
+		public BossRadiationPoisonExplosion1(BossSkillBalanceData data, Battle context, Boss owner) : base(data, context, owner, (Tick)105)
 		{
 			_argument = new BossDamageArgument(data.Arguments, "Damage");
 		}
@@ -174,7 +174,7 @@ namespace SPRPG.Battle
 
 	public class BossRadiationPoisonExplosion2 : BossSingleDelayedPerformSkillActor
 	{
-		public BossRadiationPoisonExplosion2(BossSkillBalanceData data, Battle context, Boss owner) : base(data, context, owner, (Tick)3)
+		public BossRadiationPoisonExplosion2(BossSkillBalanceData data, Battle context, Boss owner) : base(data, context, owner, (Tick)105)
 		{
 		}
 
