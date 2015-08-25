@@ -114,9 +114,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: .100000001
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 8fae869b5381f4846b9d1ba2fb372269,
+    m_HighlightedSprite: {fileID: 21300000, guid: df348d6da3947dd4fa494466840f00ee,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: df348d6da3947dd4fa494466840f00ee, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 8fae869b5381f4846b9d1ba2fb372269, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -167,9 +167,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: .100000001
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 8fae869b5381f4846b9d1ba2fb372269,
+    m_HighlightedSprite: {fileID: 21300000, guid: df348d6da3947dd4fa494466840f00ee,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: df348d6da3947dd4fa494466840f00ee, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 8fae869b5381f4846b9d1ba2fb372269, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -495,6 +495,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8fae869b5381f4846b9d1ba2fb372269,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_SpriteState.m_HighlightedSprite
       value: 
       objectReference: {fileID: 21300000, guid: df348d6da3947dd4fa494466840f00ee,
         type: 3}
