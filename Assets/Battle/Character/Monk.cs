@@ -110,7 +110,7 @@ namespace SPRPG.Battle
 		{
 			var lossHpPercentage = Percentage._100 - Owner.HpPercentage;
 			var damage = (Hp) (lossHpPercentage*(int)_arguments.DamagePerLoseHpPercentage);
-			Owner.Hit(new Damage(damage));
+			Owner.Attack(Context.Boss, new Damage(damage));
 		}
 	}
 
