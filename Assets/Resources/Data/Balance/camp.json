@@ -1,7 +1,7 @@
 {
 	"DecelerationRate": 0.05,
 	"Cargo": {
-		"Position": { "X": 5.5, "Y": -0.95 },
+		"Position": { "x": 5.5, "y": -0.95 },
 		"Entries": [
 			{ "Position": { "x": 0.8, "y": 0.3 } },
 			{ "Position": { "x": -0.1, "y": -0.1, "z": -1 } },
@@ -10,35 +10,35 @@
 	},
 	"Characters": [
 		{
-			"Position": { "X": 0.9, "Y": -1.7 },
+			"Position": { "X": 0.9, "Y": -1.7, "z": 0 },
 			"Scale": { "X": 1.2, "Y": 1.2 },
 			"Flip": true,
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		},
 		{
-			"Position": { "X": -0.9, "Y": -2 },
+			"Position": { "X": -0.9, "Y": -2, "z": 0 },
 			"Scale": { "X": -1.2, "Y": 1.2 },
 			"Flip": true,
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		},
 		{
-			"Position": { "X": -4.8, "Y": -1.5},
+			"Position": { "X": -4.8, "Y": -1.5, "z": 0 },
 			"Scale": { "X": 1, "Y": 1 },
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 120 }
 		},
 		{
-			"Position": { "X": -2.5, "Y": -1 },
+			"Position": { "X": -2.5, "Y": -1, "z": 0 },
 			"Scale": { "X": 0.8, "Y": 0.8 },
 			"Flip": true,
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 120 }
 		},
 		{
-			"Position": { "X": -3.4, "Y": -1.7 },
+			"Position": { "X": -3.4, "Y": -1.7, "z": 0 },
 			"Scale": { "X": 1, "Y": 1 },
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		},
 		{
-			"Position": { "X": -7.2, "Y": -1.9 },
+			"Position": { "X": -7.2, "Y": -1.9, "z": 0 },
 			"Scale": { "X": -1.1, "Y": 1.1 },
 			"Flip": true,
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
