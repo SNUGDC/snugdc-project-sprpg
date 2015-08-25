@@ -7,6 +7,8 @@ namespace SPRPG.Camp
 {
 	public class CampCharacter : MonoBehaviour
 	{
+		private const float OpenToolOffsetY = 0.5f;
+
 		public static Transform ForegroundRoot;
 
 		[SerializeField]
@@ -90,7 +92,7 @@ namespace SPRPG.Camp
 
 			var height = ((RectTransform) _boundingButton.transform).offsetMax.y;
 			tool.transform.position = transform.position;
-			tool.transform.Translate(new Vector3(0, height/100.0f));
+			tool.transform.Translate(new Vector3(0, height/100.0f + OpenToolOffsetY));
 
 			tool.OnBeforeClose += characterTool => OnSelectCallback.CheckAndCall(this, false);
 			OnSelectCallback.CheckAndCall(this, true);
