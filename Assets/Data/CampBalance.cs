@@ -21,7 +21,7 @@ namespace SPRPG
 
 		public class Character_
 		{
-			public Vector2 Position;
+			public Vector3 Position;
 			public Vector2 Scale;
 			public bool Flip;
 			public IntRect BoundingRect;
