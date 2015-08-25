@@ -10,36 +10,36 @@
 	},
 	"Characters": [
 		{
-			"Position": { "X": 0.9, "Y": -1.7, "z": 0 },
-			"Scale": { "X": 1.2, "Y": 1.2 },
+			"Position": { "x": 0.9, "y": -1.7, "z": 0 },
+			"Scale": { "x": 1.2, "y": 1.2 },
 			"Flip": true,
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		},
 		{
-			"Position": { "X": -0.9, "Y": -2, "z": 0 },
-			"Scale": { "X": -1.2, "Y": 1.2 },
+			"Position": { "x": -0.9, "y": -2, "z": 0 },
+			"Scale": { "x": -1.2, "y": 1.2 },
 			"Flip": true,
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		},
 		{
-			"Position": { "X": -4.8, "Y": -1.5, "z": 0 },
-			"Scale": { "X": 1, "Y": 1 },
+			"Position": { "x": -4.8, "y": -1.5, "z": 0 },
+			"Scale": { "x": 1, "y": 1 },
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 120 }
 		},
 		{
-			"Position": { "X": -2.5, "Y": -1, "z": 0 },
-			"Scale": { "X": 0.8, "Y": 0.8 },
+			"Position": { "x": -2.5, "y": -1, "z": 0 },
+			"Scale": { "x": 0.8, "y": 0.8 },
 			"Flip": true,
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 120 }
 		},
 		{
-			"Position": { "X": -3.4, "Y": -1.7, "z": 0 },
-			"Scale": { "X": 1, "Y": 1 },
+			"Position": { "x": -3.4, "y": -1.7, "z": 0 },
+			"Scale": { "x": 1, "y": 1 },
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		},
 		{
-			"Position": { "X": -7.2, "Y": -1.9, "z": 0 },
-			"Scale": { "X": -1.1, "Y": 1.1 },
+			"Position": { "x": -7.2, "y": -1.9, "z": 0 },
+			"Scale": { "x": -1.1, "y": 1.1 },
 			"Flip": true,
 			"BoundingRect": { "MinX": -50, "MinY": 0, "MaxX": 50, "MaxY": 170 }
 		}
