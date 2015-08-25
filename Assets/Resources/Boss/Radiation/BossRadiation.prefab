@@ -1349,6 +1349,10 @@ Prefab:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 9502472}
+    - target: {fileID: 0}
+      propertyPath: FxPoisonExplosion
+      value: 
+      objectReference: {fileID: 100002, guid: e27bfc154dd5fdb4697ac547997f4c95, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113568}

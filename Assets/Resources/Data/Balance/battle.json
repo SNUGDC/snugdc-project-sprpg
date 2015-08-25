@@ -6,9 +6,9 @@
 		"DefaultSkillDuration": 7,
 		"_statusConditions": {
 			"Poison": {
-				"DefaultDuration": 60,
+				"DefaultDuration": 240,
 				"Cooltime": 30,
-				"Damage": 30
+				"Damage": 10
 			}
 		}
 	},
@@ -20,12 +20,12 @@
 				"DefaultDuration": 240
 			},
 			"Poison": {
-				"DefaultDuration": 60,
+				"DefaultDuration": 360,
 				"Cooltime": 30,
-				"Damage": 30
+				"Damage": 10
 			},
 			"Blind": {
-				"DefaultDuration": 60,
+				"DefaultDuration": 360,
 				"Accuracy": 50
 			}
 		}
