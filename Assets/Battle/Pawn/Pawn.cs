@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Gem;
 using UnityEngine;
 
@@ -160,9 +161,9 @@ namespace SPRPG.Battle
 
 		public void CureAll()
 		{
-			var statusConditions = new Dictionary<StatusConditionType, StatusCondition>(StatusConditions);
-			foreach (var kv in StatusConditions)
-				StopStatusCondition(kv.Key);
+			var statusConditions = StatusConditions.Select(kv => kv.Key).ToList();
+			foreach (var statusCondition in statusConditions)
+				StopStatusCondition(statusCondition);
 		}
 
 		private bool StopStatusCondition(StatusConditionType type)
