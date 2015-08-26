@@ -25,6 +25,9 @@ namespace SPRPG.Camp
 
 		private bool _goingToWorld;
 
+		[SerializeField]
+		private Button _goToWorld;
+
 		private readonly Dictionary<CharacterId, CampCharacter> _characters = new Dictionary<CharacterId, CampCharacter>();
 
 		void Start()
@@ -40,9 +43,19 @@ namespace SPRPG.Camp
 				AddCharacter(character);
 			Invoke("SyncCharacterPositions", 0);
 		}
-
+		void Update()
+		{
+			if (!Party._.IsFull) {
+				_goToWorld.interactable = false;
+			} 
+			else 
+			{
+				_goToWorld.interactable = true;
+			}
+		}
 		void LateUpdate()
 		{
+
 			var position = _worldAnchor.position;
 			_foregroundRoot.transform.position = position;
 			_worldRoot.transform.position = position;
@@ -64,15 +77,16 @@ namespace SPRPG.Camp
 
 		public void GotoWorld()
 		{
-			if (_goingToWorld) return;
-			_goingToWorld = true;
-			_animator.SetTrigger("GotoWorld");
-			Invoke("GotoWorldWithoutAnimation", 1);
+				if (_goingToWorld)
+					return;
+				_goingToWorld = true;
+				_animator.SetTrigger ("GotoWorld");
+				Invoke ("GotoWorldWithoutAnimation", 1);
 		}
 
 		private void GotoWorldWithoutAnimation()
 		{
-			Transition.TransferToWorld();
+				Transition.TransferToWorld ();
 		}
 
 		private void SetAllCharacterColor(Color color)
