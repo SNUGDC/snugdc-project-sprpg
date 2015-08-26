@@ -157,7 +157,7 @@
 		"MajorUser": "Archer",
 		"DescriptionFormat": "적에게 화살개수*{DamagePerArrow}의 데미지를 준다.",
 		"Arguments": {
-			"DamagePerArrow": 150
+			"DamagePerArrow": 100
 		}
 	},
 	{
@@ -315,6 +315,6 @@
 		"MajorUser": "Thief",
 		"FlavorText": "적에게 빠르게 접근하여 순식간에 무방비한 적의 급소를 노려 치명타를 가합니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage" },
-		"Arguments": { "Damage": { "Value": 400 } }
+		"Arguments": { "Damage": { "Value": 250 } }
 	}
 ]
