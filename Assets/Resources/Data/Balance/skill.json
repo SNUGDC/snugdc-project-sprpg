@@ -75,7 +75,7 @@
 		"Name": "라이트닝볼트",
 		"Tier": 1,
 		"MajorUser": "Wizard",
-		"FlavorText": "전기로 둘러싸인 구체를 소환하여 적에게 다소 큰 피해를 가하지만 근처의 아군에게도 약간의 피해를 줍니다. 일정확률로 적을 마비상태에 빠뜨립니다.",
+		"FlavorText": "전기로 둘러싸인 구체를 소환하여 적에게 다소 큰 피해를 가하지만 근처의 아군에게도 약간의 피해를 줍니다. 일정확률로 적을 스턴상태에 빠뜨립니다.",
 		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 임의의 아군에게 {DamageMember} 피해를 준다. 적에게 {StunPercentage}% 확률로 스턴을 건다.",
 		"Arguments": {
 			"Damage": { "Value": 100, "Element": "Electric" },
@@ -111,12 +111,12 @@
 		"Name": "라이트닝",
 		"Tier": 4,
 		"MajorUser": "Wizard",
-		"FlavorText": "번개를 소환하여 적에게 매우 큰 피해를 가하지만 근처의 아군에게도 피해를 줍니다. 높은 확률로 마비상태에 빠뜨립니다.",
+		"FlavorText": "번개를 소환하여 적에게 매우 큰 피해를 가하지만 근처의 아군에게도 피해를 줍니다. 높은 확률로 스턴상태에 빠뜨립니다.",
 		"DescriptionFormat": "적에게 {Damage} 피해를 준다. 임의의 아군에게 {DamageMember} 피해를 준다. 적에게 {StunPercentage}% 확률로 스턴을 건다.",
 		"Arguments": {
 			"Damage": { "Value": 500, "Element": "Electric" },
 			"DamageMember": { "Value": 100, "Element": "Electric" },
-			"StunTest": { "Percentage": 33 }
+			"StunTest": { "Percentage": 50 }
 		}
 	},
 	{
@@ -167,7 +167,7 @@
 		"MajorUser": "Paladin",
 		"FlavorText": "아군 전체의 체력을 일부 회복합니다.",
 		"DescriptionFormat": "아군 전체의 체력을 {Amount} 회복한다.",
-		"Arguments": { "Amount": 50 }
+		"Arguments": { "Amount": 30 }
 	},
 	{
 		"Key": "PaladinBash",
@@ -205,7 +205,7 @@
 		"MajorUser": "Paladin",
 		"FlavorText": "아군 전체의 체력을 크게 회복합니다.",
 		"DescriptionFormat": "아군 전체의 체력을 {Amount} 회복한다.",
-		"Arguments": { "Amount": 300 }
+		"Arguments": { "Amount": 200 }
 	},
 	{
 		"Key": "PaladinMassDefense",
@@ -222,7 +222,7 @@
 		"Tier": 1,
 		"MajorUser": "Monk",
 		"DescriptionFormat": { "Key": "skill-description-heal_self" },
-		"Arguments": { "Amount": 100 }
+		"Arguments": { "Amount": 30 }
 	},
 	{
 		"Key": "MonkSacrifice",
@@ -271,7 +271,7 @@
 		"FlavorText": "적을 찔러 충격을 줘서 일정 확률로 적을 스턴상태에 빠뜨립니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage_and_stun" },
 		"Arguments": {
-			"Damage": { "Value": 10 },
+			"Damage": { "Value": 30 },
 			"StunTest": { "Percentage": 20 }
 		}
 	},
@@ -315,6 +315,6 @@
 		"MajorUser": "Thief",
 		"FlavorText": "적에게 빠르게 접근하여 순식간에 무방비한 적의 급소를 노려 치명타를 가합니다.",
 		"DescriptionFormat": { "Key": "skill-description-damage" },
-		"Arguments": { "Damage": { "Value": 300 } }
+		"Arguments": { "Damage": { "Value": 400 } }
 	}
 ]
