@@ -239,8 +239,8 @@
 		"MajorUser": "Monk",
 		"DescriptionFormat": "자신에게 {Damage} 피해를 주고 다른 아군들의 체력을 각각 {Heal}씩 회복한다.",
 		"Arguments": { 
-			"Damage": { "Value": 300 },
-			"Heal": 150 
+			"Damage": { "Value": 200 },
+			"Heal": 100 
 		}
 	},
 	{
@@ -249,7 +249,7 @@
 		"Tier": 4,
 		"MajorUser": "Monk",
 		"DescriptionFormat": "적에게 자신이 잃은 체력 비율 X {DamagePerLoseHpPercentage}만큼의 데미지를 준다.",
-		"Arguments": { "DamagePerLoseHpPercentage": 10 }
+		"Arguments": { "DamagePerLoseHpPercentage": 5 }
 	},
 	{
 		"Key": "MonkRecovery",

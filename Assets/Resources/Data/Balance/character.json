@@ -35,7 +35,7 @@
 	"Monk": {
 		"Name": "마하콩",
 		"FlavorText": "씨앗섬의 산 꼭대기에서 수련을 하던 수도승이자 대추씨의 수호자인 마하콩은 수도승으로서 수련을 통해 익힌 깨달음을 바탕으로 기를 조절하여 파티원의 체력을 회복시키거나 적의 체력을 빼앗는 다양한 기술이 가능한 캐릭터입니다.",
-		"Stats": { "Hp": 1000 },
+		"Stats": { "Hp": 800 },
 		"Passive": "None",
 		"SkillSetDefault": [ "MonkHeal", "MonkSacrifice", "MonkEquility", "MonkRevenge" ]
 	},
